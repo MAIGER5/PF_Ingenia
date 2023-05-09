@@ -1,9 +1,9 @@
 const { Router } = require('express');
 
+const courseRouter = require('./course.routes');
+
 const router = Router();
 
-router.get('/start', (req, res) => {
-    res.send('This is working!')
-})
+router.use('/courses', courseRouter)
 
 module.exports = router
