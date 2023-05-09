@@ -2,30 +2,22 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("Instructor", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+    idInstructor: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    studies: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    asset: {
+      type: DataTypes.BOOLEAN,
+      default: false,
       allowNull: false,
     },
   });
