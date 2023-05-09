@@ -1,2 +1,2 @@
 //carpeta de componentes
-//se agrega comentario
+//comentario para borrar
