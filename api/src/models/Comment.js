@@ -1,19 +1,16 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("Category", {
-    idCategory: {
+  sequelize.define("Comment", {
+    idComment: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
     },
-    name: {
+    comement: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
-  },{
-    timestamps:false,
-});
+  });
 };
