@@ -19,9 +19,9 @@ export default function Layout(props) {
     <>
     <div>
     <ThemeProvider theme={theme}>
-      <header>cabecera</header>
+     
       <main>{props.children}</main>
-      <footer>pie de pagina</footer>
+ 
       </ThemeProvider>
     </div>
     </>
