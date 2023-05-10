@@ -1,7 +1,14 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const fs = require('fs');
-const path = require('path');
+
+const functionAssessment = require('./models/Assessment');
+const functionCategory = require('./models/Category');
+const functionComment = require('./models/Comment');
+const functionCourse = require('./models/Course')
+const functionData = require('./models/Data')
+const functionInstructor = require('./models/Instructor');
+const functionPublications = require('./models/Publications');
+const functionUser =require('./models/User');
 
 const {DB_USER, DB_PASSWORD, DB_HOST, DB} = process.env;
 
@@ -10,37 +17,21 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false, // permite que Sequelize sepa que podemos usar pg-native para ~30% más de velocidad
 });
 
-const basename = path.basename(__filename);
+functionAssessment(sequelize);
+functionCategory(sequelize);
+functionComment(sequelize);
+functionCourse(sequelize);
+functionData(sequelize);
+functionInstructor(sequelize);
+functionPublications(sequelize);
+functionUser(sequelize);
 
-const modelDefiners = [];
 
-fs.readdirSync(path.join(__dirname, '/models'))
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-  .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, '/models', file)));
-  });
-
-modelDefiners.forEach(model => model(sequelize));
-
-let entries = Object.entries(sequelize.models);
-let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
-sequelize.models = Object.fromEntries(capsEntries);
-
-// const sequelize = new Sequelize(
-//   `${DB_NAME}`,
-//   `${DB_USERNAME}`,
-//   `${DB_PASSWORD}`,
-//   {
-//     host: `${DB_HOST}`,
-//     dialect: "postgres",
-//   }
-// );
-
-const { Assessment,Category,Comment,Course,Data,Instructors,Publications,User} = sequelize.models;
+const { Assessment,Category,Comment,Course,Data,Instructor,Publications,User} = sequelize.models;
 // RELACION DE TABALS AQUÍ ABAJO
 
-Course.hasMany(Instructors);
-Instructors.belongsTo(Course);
+Course.hasMany(Instructor);
+Instructor.belongsTo(Course);
 
 Course.belongsToMany(Category,{through:"CourseCategory"});
 Category.belongsToMany(Course,{through:"CourseCategory"});
@@ -57,22 +48,22 @@ Comment.hasMany(Course);
 User.belongsTo(Comment);
 Comment.hasMany(User);
 
-Instructors.hasOne(Data)
-Data.hasOne(Instructors)
+Instructor.hasMany(Data)
+Data.hasMany(Instructor)
 
-Instructors.belongsTo(Publications)
-Publications.hasMany(Instructors)
+Instructor.belongsTo(Publications)
+Publications.hasMany(Instructor)
 
-Instructors.belongsTo(Comment)
-Comment.hasMany(Instructors)
+Instructor.belongsTo(Comment)
+Comment.hasMany(Instructor)
 
-User.hasOne(Data)
-Data.hasOne(User)
+User.hasMany(Data)
+Data.hasMany(User)
 
 Course.belongsToMany(User,{through:"CourseUser"});
 User.belongsToMany(Course,{through:"CourseUser"});
 
 module.exports = {
-  ...sequelize.models,
   sequelize,
+  ...sequelize.models
 };
