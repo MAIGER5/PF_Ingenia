@@ -16,7 +16,7 @@ const postUser = (name, lastName, password, email) => {
     };
     dataUser.push(newUser);
     //Con fines de prueba, con DB no seran enviados datos sencibles.
-    return "El usuario ha sido creado correctamente.", newUser;
+    return "El usuario ha sido creado correctamente", newUser;
   }
 };
 
