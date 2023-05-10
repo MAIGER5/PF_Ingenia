@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 export default function StartsFilter() {
-  const [selectedOption, setSelectedOption] = useState("5");
+  const [selectedOption, setSelectedOption] = useState(5);
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
