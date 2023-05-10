@@ -1,6 +1,8 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
+
+//********************   Nueva base de dato *******************
 const functionAssessment = require('./models/Assessment');
 const functionCategory = require('./models/Category');
 const functionComment = require('./models/Comment');
