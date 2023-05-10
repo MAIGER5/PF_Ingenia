@@ -36,7 +36,7 @@ const cursos = [
     title: "Introducción a Python",
     description: "Curso introductorio a Python para programadores novatos",
     imgCurso:
-      "https://cdn.pixabay.com/photo/2015/04/23/17/41/python-736887_1280.png",
+      "https://www.dongee.com/tutoriales/content/images/2023/01/image-47.png",
     idiom: "Español",
     price: 19.99,
     duration: "2 meses",
@@ -52,7 +52,7 @@ const cursos = [
     title: "Machine Learning con TensorFlow",
     description: "Curso de Machine Learning para expertos en TensorFlow",
     imgCurso:
-      "https://cdn.pixabay.com/photo/2018/05/08/08/38/artificial-intelligence-3382507_1280.png",
+      "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2015/12/139161-que-es-inteligencia-artificial.jpg?tf=3840x",
     idiom: "Inglés",
     price: 99.99,
     duration: "6 meses",
@@ -68,7 +68,7 @@ const cursos = [
     title: "Desarrollo web con React",
     description: "Curso de desarrollo web utilizando la librería React",
     imgCurso:
-      "https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbHt_SjisE0B--OHBCw5TOTIFPgOEtXhmcEmq39tH7_cYUqZe0JzwbadwcGkG4kjZFdD8&usqp=CAU",
     idiom: "Español",
     price: 49.99,
     duration: "4 meses",
@@ -85,7 +85,7 @@ const cursos = [
     description:
       "Curso introductorio para aprender los fundamentos de la inteligencia artificial",
     imgCurso:
-      "https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png",
+      "https://elordenmundial.com/wp-content/uploads/2023/04/que-es-inteligencia-artificial.jpg",
     idiom: "Español",
     price: 29.99,
     duration: "2 meses",
@@ -104,8 +104,7 @@ const cursos = [
     IdCurso: 7,
     title: "Programación avanzada en Python",
     description: "Curso avanzado de programación utilizando el lenguaje Python",
-    imgCurso:
-      "https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png",
+    imgCurso: "https://img-b.udemycdn.com/course/750x422/2722434_fd59_6.jpg",
     idiom: "Español",
     price: 79.99,
     duration: "6 meses",
@@ -121,7 +120,7 @@ const cursos = [
     title: "Diseño gráfico para principiantes",
     description: "Curso para aprender los conceptos básicos del diseño gráfico",
     imgCurso:
-      "https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNGXBjC3NRc_rGEEiADyNP85KEKmf5gN4iJy3huHZgS-rE8NXxkZ3NcRi8o8Sgt6FGmJ4&usqp=CAU",
     idiom: "Español",
     price: 19.99,
     duration: "2 meses",
@@ -138,7 +137,7 @@ const cursos = [
     description:
       "Curso para emprendedores que quieren aprender a hacer marketing digital",
     imgCurso:
-      "https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png",
+      "https://www.salesforce.com/content/dam/blogs/br/2021/por-que-investir-em-marketing-digital.jpg",
     idiom: "Español",
     price: 49.99,
     duration: "3 meses",
@@ -155,7 +154,7 @@ const cursos = [
     description:
       "Curso para desarrollar aplicaciones móviles utilizando el framework Flutter",
     imgCurso:
-      "https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png",
+      "https://cocktailmarketing.com.mx/wp-content/uploads/2021/07/que-es-y-que-hace-una-agencia-de-marketing-digital.jpg",
     idiom: "Español",
     price: 59.99,
   },
