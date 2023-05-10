@@ -1,10 +1,12 @@
 const { Router } = require("express");
+const getCourse = require("../controllers/getCourse");
 
 const courseRouter = Router();
 
 // Ruta para todos los cursos
 courseRouter.get("/", (req, res) => {
-  res.status(200).send("Main route to get all the courses");
+  const courses = getCourse();
+  res.status(200).send(courses);
 });
 
 // Ruta para el detalle de un curso

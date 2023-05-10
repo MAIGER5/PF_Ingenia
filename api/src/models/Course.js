@@ -2,11 +2,10 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("Course", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+    idCourse: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
-      allowNull: false,
     },
     title: {
       type: DataTypes.STRING,
@@ -18,38 +17,38 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
+      isUrl:true,
       allowNull: false,
     },
     lenguage: {
-      type: DataTypes.ENUM("ES", "EN"),
+      type: DataTypes.ENUM("ESPAÑOL", "ENGLISH"),
       allowNull: false,
-      defaultValue: "ES",
+      defaultValue: "ESPAÑOL",
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    pricePro:{
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     duration: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     habilities: {
-      type: DataTypes.ENUM(
-        "HTML",
-        "CSS",
-        "JS",
-        "REACT",
-        "NODE",
-        "SQL",
-        "PYTHON",
-        "JAVA"
-      ),
-      defaultValue: "HTML",
+      type: DataTypes.STRING,
       allowNull: false,
     },
     dificulty: {
       type: DataTypes.ENUM("BASIC", "MEDIUM", "ADVANCED"),
       defaultValue: "MEDIUM",
+      allowNull: false,
+    },
+    asset: {
+      type: DataTypes.BOOLEAN,
+      default: false,
       allowNull: false,
     },
   });
