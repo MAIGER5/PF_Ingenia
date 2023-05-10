@@ -29,7 +29,7 @@ server.use((err, req, res, next) => {
 });
 
 sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     console.log(`Database & tables created`);
     server.listen(port, () => {

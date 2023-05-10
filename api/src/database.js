@@ -1,86 +1,69 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const fs = require("fs");
-const path = require("path");
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB } = process.env;
+const functionAssessment = require('./models/Assessment');
+const functionCategory = require('./models/Category');
+const functionComment = require('./models/Comment');
+const functionCourse = require('./models/Course')
+const functionData = require('./models/Data')
+const functionInstructor = require('./models/Instructor');
+const functionPublications = require('./models/Publications');
+const functionUser =require('./models/User');
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`,
-  {
-    logging: false, // establecer en console.log para ver las consultas SQL sin procesar
-    native: false, // permite que Sequelize sepa que podemos usar pg-native para ~30% más de velocidad
-  }
-);
+const {DB_USER, DB_PASSWORD, DB_HOST, DB} = process.env;
 
-// const basename = path.basename(__filename);
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`, {
+  logging: false, // establecer en console.log para ver las consultas SQL sin procesar
+  native: false, // permite que Sequelize sepa que podemos usar pg-native para ~30% más de velocidad
+});
 
-// const modelDefiners = [];
+functionAssessment(sequelize);
+functionCategory(sequelize);
+functionComment(sequelize);
+functionCourse(sequelize);
+functionData(sequelize);
+functionInstructor(sequelize);
+functionPublications(sequelize);
+functionUser(sequelize);
 
-// fs.readdirSync(path.join(__dirname, "/models"))
-//   .filter(
-//     (file) =>
-//       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
-//   )
-//   .forEach((file) => {
-//     modelDefiners.push(require(path.join(__dirname, "/models", file)));
-//   });
 
-// modelDefiners.forEach((model) => model(sequelize));
+const { Assessment,Category,Comment,Course,Data,Instructor,Publications,User} = sequelize.models;
+// RELACION DE TABALS AQUÍ ABAJO
 
-// let entries = Object.entries(sequelize.models);
-// let capsEntries = entries.map((entry) => [
-//   entry[0][0].toUpperCase() + entry[0].slice(1),
-//   entry[1],
-// ]);
-// sequelize.models = Object.fromEntries(capsEntries);
+Course.hasMany(Instructor);
+Instructor.belongsTo(Course);
 
-// const {
-//   Assessment,
-//   Category,
-//   Comment,
-//   Course,
-//   Data,
-//   Instructors,
-//   Publications,
-//   User,
-// } = sequelize.models;
-// // RELACION DE TABALS AQUÍ ABAJO
+Course.belongsToMany(Category,{through:"CourseCategory"});
+Category.belongsToMany(Course,{through:"CourseCategory"});
 
-// Course.hasMany(Instructors);
-// Instructors.belongsTo(Course);
+Course.belongsTo(Assessment);
+Assessment.hasMany(Course);
 
-// Course.belongsToMany(Category, { through: "CourseCategory" });
-// Category.belongsToMany(Course, { through: "CourseCategory" });
+User.belongsTo(Assessment);
+Assessment.hasMany(User);
 
-// Course.belongsTo(Assessment);
-// Assessment.hasMany(Course);
+Course.belongsTo(Comment);
+Comment.hasMany(Course);
 
-// User.belongsTo(Assessment);
-// Assessment.hasMany(User);
+User.belongsTo(Comment);
+Comment.hasMany(User);
 
-// Course.belongsTo(Comment);
-// Comment.hasMany(Course);
+Instructor.hasMany(Data)
+Data.hasMany(Instructor)
 
-// User.belongsTo(Comment);
-// Comment.hasMany(User);
+Instructor.belongsTo(Publications)
+Publications.hasMany(Instructor)
 
-// Instructors.hasOne(Data);
-// Data.hasOne(Instructors);
+Instructor.belongsTo(Comment)
+Comment.hasMany(Instructor)
 
-// Instructors.belongsTo(Publications);
-// Publications.hasMany(Instructors);
+User.hasMany(Data)
+Data.hasMany(User)
 
-// Instructors.belongsTo(Comment);
-// Comment.hasMany(Instructors);
-
-// User.hasOne(Data);
-// Data.hasOne(User);
-
-// Course.belongsToMany(User, { through: "CourseUser" });
-// User.belongsToMany(Course, { through: "CourseUser" });
+Course.belongsToMany(User,{through:"CourseUser"});
+User.belongsToMany(Course,{through:"CourseUser"});
 
 module.exports = {
-  ...sequelize.models,
   sequelize,
+  ...sequelize.models
 };

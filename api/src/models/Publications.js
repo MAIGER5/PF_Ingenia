@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     tag:{
-        type: DataTypes.ARRAY,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     publications:{
