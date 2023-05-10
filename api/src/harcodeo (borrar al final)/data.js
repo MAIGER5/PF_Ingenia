@@ -3,7 +3,7 @@ const data = [
     idData: 1,
     name: "Juan",
     lastname: "Pérez",
-    correo: "juan.perez@gmail.com",
+    email: "juan.perez@gmail.com",
     password: "4d10e11d9b8c98c7",
     imgProfile: "https://acortar.link/IYsS7C",
   },
@@ -11,7 +11,7 @@ const data = [
     idData: 2,
     name: "María",
     lastname: "González",
-    correo: "maria.gonzalez@gmail.com",
+    email: "maria.gonzalez@gmail.com",
     password: "a320f29eae139",
     imgProfile:
       "https://acontecendoaqui.com.br/wp-content/uploads/2022/01/nfttwitter_destaque.jpg",
@@ -20,7 +20,7 @@ const data = [
     idData: 3,
     name: "Luis",
     lastname: "Ramírez",
-    correo: "luis.ramirez@gmail.com",
+    email: "luis.ramirez@gmail.com",
     password: "30a31bcfae7",
     imgProfile: "https://pbs.twimg.com/media/FJ_qyEIXIAIjnc7.jpg",
   },
@@ -28,7 +28,7 @@ const data = [
     idData: 4,
     name: "Ana",
     lastname: "Rodríguez",
-    correo: "ana.rodriguez@gmail.com",
+    email: "ana.rodriguez@gmail.com",
     password: "d9d1606bdf8f107",
     imgProfile:
       "https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2016/09/569465-whatsapp-que-tus-contactos-ponen-rana-perfil.jpg?itok=tpvHWpeZ",
@@ -37,7 +37,7 @@ const data = [
     idData: 5,
     name: "Pedro",
     lastname: "Hernández",
-    correo: "pedro.hernandez@gmail.com",
+    email: "pedro.hernandez@gmail.com",
     password: "f296f48a77",
     imgProfile:
       "https://us.123rf.com/450wm/fizkes/fizkes2104/fizkes210400405/167446118-cierra-el-retrato-de-la-pantalla-de-la-cabeza-de-un-joven-cauc%C3%A1sico-sonriente-que-mira-la.jpg?ver=6",
@@ -46,7 +46,7 @@ const data = [
     idData: 6,
     name: "Sofía",
     lastname: "López",
-    correo: "sofia.lopez@gmail.com",
+    email: "sofia.lopez@gmail.com",
     password: "a1654e4e6d",
     imgProfile:
       "https://i.pinimg.com/736x/b5/49/41/b5494197b2d462c940f88988b203d290.jpg",
@@ -55,7 +55,7 @@ const data = [
     idData: 7,
     name: "Jorge",
     lastname: "Martínez",
-    correo: "jorge.martinez@gmail.com",
+    email: "jorge.martinez@gmail.com",
     password: "ceeb163e74d",
     imgProfile:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYPcQLLlnqnepooI2vNWbKKH6lo0bFMeH3aLieN-mlOI5cAwDyeCyqh2jYA1gs94URzGc&usqp=CAU",
@@ -64,7 +64,7 @@ const data = [
     idData: 8,
     name: "Lucía",
     lastname: "García",
-    correo: "lucia.garcia@gmail.com",
+    email: "lucia.garcia@gmail.com",
     password: "78a4067a1e",
     imgProfile:
       "https://i.pinimg.com/236x/16/7e/ce/167ece7833c7924e019064367fe0393b.jpg",
@@ -73,7 +73,7 @@ const data = [
     idData: 9,
     name: "Raul",
     lastname: "Sanchez",
-    correo: "raul.sanchez@gmail.com",
+    email: "raul.sanchez@gmail.com",
     password: "92d39d1bc10765a97db0",
     imgProfile:
       "https://e0.pxfuel.com/wallpapers/442/989/desktop-wallpaper-perfil-boy-face-thumbnail.jpg",
@@ -82,7 +82,7 @@ const data = [
     idData: 10,
     name: "Carla",
     lastname: "Pérez",
-    correo: "carla.perez@gmail.com",
+    email: "carla.perez@gmail.com",
     password: "4d9f29b8a7d20ed19b3",
     imgProfile:
       "https://media.tycsports.com/files/2022/06/14/440409/las-20-mejores-fotos-de-perfil-para-tu-cuenta-de-free-fire_w416.webp",
@@ -91,7 +91,7 @@ const data = [
     idData: 11,
     name: "Juan",
     lastname: "García",
-    correo: "juan.garcia@gmail.com",
+    email: "juan.garcia@gmail.com",
     password: "1a2b3c4d5e6f7g8h9i",
     imgProfile:
       "https://www.okchicas.com/wp-content/uploads/2018/01/Poses-para-una-buena-foto-de-perfil-1-1.jpg",
@@ -100,7 +100,7 @@ const data = [
     idData: 12,
     name: "Laura",
     lastname: "González",
-    correo: "laura.gonzalez@gmail.com",
+    email: "laura.gonzalez@gmail.com",
     password: "a1b2c3d4e5f6g7h8i9",
     imgProfile: "https://definicion.de/wp-content/uploads/2010/07/perfil-1.jpg",
   },
@@ -108,7 +108,7 @@ const data = [
     idData: 13,
     name: "Pedro",
     lastname: "Sánchez",
-    correo: "pedro.sanchez@gmail.com",
+    email: "pedro.sanchez@gmail.com",
     password: "1234567890qwertyuiop",
     imgProfile:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-AzwV9lTyXUV-FrOVY9XX2orGXu7_HeJoSEydr4ah1JCDS5vD-QxV0xBm0_xWvRFisVA&usqp=CAU",
@@ -117,7 +117,7 @@ const data = [
     idData: 14,
     name: "María",
     lastname: "Rodríguez",
-    correo: "maria.rodriguez@gmail.com",
+    email: "maria.rodriguez@gmail.com",
     password: "qwertyuiop1234567890",
     imgProfile:
       "https://st.depositphotos.com/67617362/59367/i/600/depositphotos_593678724-stock-photo-young-man-using-a-chat.jpg",
@@ -126,7 +126,7 @@ const data = [
     idData: 15,
     name: "Ricardo",
     lastname: "Gómez",
-    correo: "ricardo.gomez@gmail.com",
+    email: "ricardo.gomez@gmail.com",
     password: "p@ssw0rd",
     imgProfile:
       "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -135,7 +135,7 @@ const data = [
     idData: 16,
     name: "Isabel",
     lastname: "López",
-    correo: "isabel.lopez@gmail.com",
+    email: "isabel.lopez@gmail.com",
     password: "password123",
     imgProfile:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS09EOrGn6PLD1TE8qpYNf5ItBRTX9mK3jpw&usqp=CAU",
@@ -144,7 +144,7 @@ const data = [
     idData: 17,
     name: "Miguel",
     lastname: "Fernández",
-    correo: "miguel.fernandez@gmail.com",
+    email: "miguel.fernandez@gmail.com",
     password: "m1guelFern",
     imgProfile:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpkzH9jE2zeQaJCxONDTcJv6mYXN7-z2sWSg&usqp=CAU",
@@ -153,7 +153,7 @@ const data = [
     idData: 18,
     name: "Ana",
     lastname: "Jiménez",
-    correo: "ana.jimenez@gmail.com",
+    email: "ana.jimenez@gmail.com",
     password: "J1m3n3z",
     imgProfile:
       "https://vivolabs.es/wp-content/uploads/2022/03/perfil-mujer-vivo.png",
@@ -162,7 +162,7 @@ const data = [
     idData: 19,
     name: "Pablo",
     lastname: "Torres",
-    correo: "pablo.torres@gmail.com",
+    email: "pablo.torres@gmail.com",
     password: "pabl0t0rr3s",
     imgProfile:
       "https://www.lavanguardia.com/files/og_thumbnail/uploads/2018/09/27/5fa44cf4543ff.jpeg",
@@ -171,7 +171,7 @@ const data = [
     idData: 20,
     name: "Elena",
     lastname: "Ruiz",
-    correo: "elena.ruiz@gmail.com",
+    email: "elena.ruiz@gmail.com",
     password: "e1en1t4ru1z",
     imgProfile:
       "https://us.123rf.com/450wm/havucvp/havucvp2011/havucvp201100093/158545557-retrato-de-una-mujer-asi%C3%A1tica-sosteniendo-su-cabeza-debido-a-un-dolor-de-cabeza.jpg?ver=6",
