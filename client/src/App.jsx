@@ -1,21 +1,16 @@
 import React from 'react'
 import './App.css'
-import FiltersButton from './Components/Filters/FiltersButtons/FiltersButton'
-import Order from './Components/Filters/OrderButton/Order'
-import { Stack } from '@mui/material'
-
+import Button from '@mui/material/Button';
+import Footer from "../src/Components/Footer"
+import FiltersComponets from './Components/Filters';
 function App() {
 
 
   return (
     <> 
-    <Stack
-    direction="row" 
-    spacing={2}
-    >
-     <FiltersButton/>
-     <Order/>
-     </Stack>
+     
+     <FiltersComponets/>
+     <Footer/>
     </>
   )
 }

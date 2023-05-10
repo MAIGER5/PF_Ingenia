@@ -29,7 +29,7 @@ export default function FiltersButton() {
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
+      
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
