@@ -1,12 +1,8 @@
 import {
   AppBar,
-  Avatar,
   Box,
-  Button,
   IconButton,
-  InputAdornment,
   Link,
-  TextField,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -16,33 +12,22 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React, { useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
+import MenuAvatar from "./MenuAvatar";
+import SearchBar from "./SearchBar";
+import SingInButtons from "./SingInButtons";
 
 export default function NavBar() {
   let estadoUsuario = 1;
+  /* variable auxiliar temporal:
+    0 => usuario no registrado
+    1 => coprador
+    2 => vendedor
+    4 => administrador */
 
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
-  const buttonColor = theme.palette.mode === "light" ? "black" : "white";
-
-  //↓↓↓↓↓ NavBar ↓↓↓↓↓
-  const [searchString, setSearchString] = useState("");
-
-  function handleChange(event) {
-    event.preventDefault();
-    setSearchString(event.target.value);
-    console.log(searchString);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(`Cadena de búsqueda: ${searchString}`);
-    //dispatch(getByName(searchString)); // envío el string a la función de búsqueda;
-   
-  }
-  //↑↑↑↑↑ NavBar ↑↑↑↑↑
+  const themeMode = theme.palette.mode === "light" ? "black" : "white";
 
   return (
     <>
@@ -54,43 +39,23 @@ export default function NavBar() {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h5">Ingenia</Typography>
+          <Link href="/AboutUs" underline="none">
+            <Typography variant="h5">Ingenia</Typography>
+          </Link>
+
           <Box
             sx={{
               display: "flex",
               width: "100%",
               alignItems: "center",
               justifyContent: "center",
-
+              height: "50px",
               color: "text.primary",
-              borderRadius: 1,
+              borderRadius: "60px",
               p: 0,
             }}
           >
-            <form onChange={handleChange}>
-              <TextField
-                id="search"
-                label="Buscar"
-                type="search"
-                variant="outlined"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment
-                      position="start"
-                      sx={{ borderRadius: "40px", height: "100%" }}
-                    >
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{ height: "100%" }}
-                onKeyPress={(event) => {
-                    if (event.key === "Enter") {
-                      handleSubmit(event);
-                    }
-                  }}
-              />
-            </form>
+            <SearchBar />
           </Box>
 
           {estadoUsuario === 1 ? (
@@ -140,7 +105,6 @@ export default function NavBar() {
               p: 0,
             }}
           >
-            {/* {theme.palette.mode} mode */}
             <IconButton
               sx={{ ml: 1 }}
               onClick={colorMode.toggleColorMode}
@@ -157,51 +121,12 @@ export default function NavBar() {
           {estadoUsuario === 1 ? (
             <>
               <Box>
-                <Avatar sx={{ width: 45, height: 45 }}>
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="label"
-                  >
-                    <AccountCircleIcon sx={{ width: 45, height: 45 }} />
-                  </IconButton>
-                </Avatar>
+                <MenuAvatar />
               </Box>
             </>
           ) : null}
 
-          {estadoUsuario === 0 ? (
-            <>
-              <Button
-                color="primary"
-                variant="outlined"
-                sx={{
-                  whiteSpace: "nowrap",
-                  mr: 2,
-                  color: buttonColor,
-                  fontWeight: "bold",
-                  er: "5px solid",
-                  padding: "8px 50px",
-                  margin: "0 20px",
-                }}
-              >
-                Iniciar Sesión
-              </Button>
-              <Button
-                color="primary"
-                variant="contained"
-                sx={{
-                  color: "white",
-                  fontWeight: "bold",
-                  padding: "8px 50px",
-                  margin: "0 20px",
-                }}
-              >
-                {" "}
-                Registrarse
-              </Button>
-            </>
-          ) : null}
+          {estadoUsuario === 0 ? <SingInButtons themeMode={themeMode} /> : null}
         </Toolbar>
       </AppBar>
     </>

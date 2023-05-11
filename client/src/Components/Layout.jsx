@@ -1,7 +1,6 @@
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { pink, orange } from "@mui/material/colors";
-import NavBar from "./NavBar/NavBar";
 import { CssBaseline } from "@mui/material";
 
 export const ColorModeContext = React.createContext({
@@ -41,10 +40,7 @@ export default function Layout(props) {
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <header>
-              <NavBar />
-            </header>
-
+            <header></header>
             <main>{props.children}</main>
             <footer>pie de pagina</footer>
           </ThemeProvider>
