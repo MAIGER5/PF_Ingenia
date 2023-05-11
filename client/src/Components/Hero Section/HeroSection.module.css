@@ -5,14 +5,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -200px;
+    margin-left: 90px;
+    margin-top: 20px;
+    
     }
   .imgcarrusel {
     position: absolute;
     width: 90%;
     height: 90%;
-    object-fit: cover;
-    object-position: center;
+    object-fit: fill;
+   
+    border-radius: 10px;
   }
   .next,
   .prev {

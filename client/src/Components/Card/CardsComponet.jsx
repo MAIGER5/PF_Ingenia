@@ -7,7 +7,7 @@ export default function CardsComponet(cursos) {
 
     return (
         <Box  >
-        <Grid container spacing={3} sx={{marginLeft:-30 }} >
+        <Grid container spacing={3} sx={{marginLeft:6 }} >
           {cursos.cursos.map((curso) => (
             <Grid item xs={3} sm={6} md={4} xl={2} key={curso.title}>
               <CardHome

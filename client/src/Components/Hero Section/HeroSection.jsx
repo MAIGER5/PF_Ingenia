@@ -4,9 +4,11 @@ import styled from "./HeroSection.module.css"
 import { Box, IconButton } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 export default function Carrusel() {
     const [index, setIndex] = useState(0);
     const images = [
+      "https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-6/346104913_539103718192657_2351278473975457690_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeEvsowZhmzEA_nOjqwc8v2iCznxgdTUxOULOfGB1NTE5Twt4DXXxFUloI_0SHpY20rW1SNsk8gKGw-d1CEBUpTy&_nc_ohc=bUYCBNvcC8QAX8si4mo&_nc_oc=AQl-GzqUrJzzrW5JUB_EQAN_UmJr92iWV3tktRGRlFiG_hncagQ5NWCWmvkAFjaocBoBOk6hHsGyE-hn9yYWlJml&_nc_ht=scontent.fbog9-1.fna&oh=00_AfAj9ytnBS6HbOcjPPzoLb8X2rnqu8GUpzQboksWQEKWqw&oe=6461F26A",
      "https://escuela.it/storage/course_images/imagen-curso-programacion-desde-cero-57.jpg",
     "https://edteam-media.s3.amazonaws.com/specialities/original/26d2798f-ef08-4c43-8e99-3e6e6bbce390.png",
       "https://edteam-media.s3.amazonaws.com/blogs/original/750fbc09-c98f-43cf-8386-4c509aaab937.png",

@@ -5,7 +5,7 @@ import { Box, Button, Stack } from '@mui/material'
 import { Link } from 'react-router-dom';
 export default function NotFound() {
   return (
-    <Box>
+    <Box sx={{marginTop:15, marginBottom:25}}>
       <Stack
        direction="row"
        justifyContent="center"

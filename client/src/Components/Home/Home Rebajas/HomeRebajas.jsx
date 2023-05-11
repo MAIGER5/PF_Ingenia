@@ -5,7 +5,7 @@ import CardsComponet from '../../Card/CardsComponet'
 export default function HomeRebajas() {
   return (
    <Box  sx={{width:1540}}>
-    <Typography variant="h5" color="primary" sx={{marginBottom:4, marginTop:4,marginLeft:-28}} >Rebajas</Typography>
+    <Typography variant="h5" color="primary" sx={{marginBottom:4, marginTop:10,marginLeft:-165}} >Rebajas</Typography>
     <CardsComponet cursos={cursos} />
    </Box>
   )

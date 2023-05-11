@@ -7,7 +7,7 @@ export default function HomeTopPublicaiones() {
   return (
     <Box >
       
-      <Typography variant="h5" color="primary" sx={{marginBottom:4}} >Top publicaciones</Typography>
+      <Typography variant="h5" color="primary" sx={{marginBottom:4, marginLeft:17}} >Top publicaciones</Typography>
         <HomeCardComents/>
       
         

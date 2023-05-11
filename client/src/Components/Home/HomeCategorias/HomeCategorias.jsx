@@ -7,8 +7,8 @@ export default function HomeCategorias() {
   return (
    
     <Box sx={{marginTop:4, width:1600}}>
-         <Typography variant="h5" color="primary"  sx={{marginBottom:4, marginTop:4,marginLeft:-28}}>Categorias</Typography>
-         <Grid container spacing={3} sx={{marginLeft:-30}} >
+         <Typography variant="h5" color="primary"  sx={{marginBottom:4, marginTop:4,marginLeft:-169}}>Categorias</Typography>
+         <Grid container spacing={3} sx={{marginLeft:10}} >
      {categorias.map(categori=>(
         <Grid item xs={3} sm={6} md={4} xl={2}>
         <ButtonCategori/>

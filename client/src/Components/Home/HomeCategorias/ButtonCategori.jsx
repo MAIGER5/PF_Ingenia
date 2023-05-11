@@ -5,7 +5,7 @@ export default function ButtonCategori() {
   return (
     <>
    
-    <Button variant="contained" color="secondary" sx={{width:190 ,height:60}}>
+    <Button variant="contained" color="secondary" sx={{width:220 ,height:60}}>
       Programacion Web
     </Button>
     </>
