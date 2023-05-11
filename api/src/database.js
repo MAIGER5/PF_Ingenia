@@ -12,12 +12,15 @@ const functionSold = require('./models/Sold');
 const functionPublications = require('./models/Publications');
 const functionUser =require('./models/User');
 
-const {DB_USER, DB_PASSWORD, DB_HOST, DB} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`, {
-  logging: false, // establecer en console.log para ver las consultas SQL sin procesar
-  native: false, // permite que Sequelize sepa que podemos usar pg-native para ~30% más de velocidad
-});
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`,
+  {
+    logging: false, // establecer en console.log para ver las consultas SQL sin procesar
+    native: false, // permite que Sequelize sepa que podemos usar pg-native para ~30% más de velocidad
+  }
+);
 
 functionAssessment(sequelize);
 functionCategory(sequelize);
@@ -36,6 +39,6 @@ User.Course = User.belongsTo(Course);
 
 module.exports = {
   sequelize,
-  ...sequelize.models
+  ...sequelize.models,
 };
 
