@@ -4,9 +4,9 @@ import Cards from '../../Card/Cards'
 import cursos from "../../Card/harcodedecursosborra"
 export default function HomeTopVentas() {
   return (
-    <Box  >
+    <Box sx={{width:1000, height:670, }}  >
        
-          <Typography variant="h5" color="primary"  sx={{   marginLeft:-31,marginBottom:4 }}>Top ventas</Typography>
+          <Typography variant="h5" color="primary"  sx={{   marginLeft:-28,marginBottom:4 }}>Top ventas</Typography>
          <Cards cursos={cursos}/>
         
     </Box>

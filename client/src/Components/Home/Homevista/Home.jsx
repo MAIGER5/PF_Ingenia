@@ -4,6 +4,9 @@ import Carrusel from '../../Hero Section/HeroSection';
 import styled from "./Home.module.css"
 import HomeTopVentas from '../HomeTopVentas/HomeTopVentas';
 import HomeTopPublicaiones from '../HomeTopPublicaiones/HomeTopPublicaiones';
+import HomeRebajas from '../Home Rebajas/HomeRebajas';
+import HomeMejorcalificados from '../HomeMejorcalificados/HomeMejorcalificados';
+import HomeCategorias from '../HomeCategorias/HomeCategorias';
 export default function HomeComponent() {
   return (
     <Box>
@@ -15,6 +18,9 @@ export default function HomeComponent() {
      <HomeTopVentas/>
      <HomeTopPublicaiones/>
      </div>
+     <HomeRebajas/>
+     <HomeMejorcalificados/>
+     <HomeCategorias/>
      </Box>
   )
 }

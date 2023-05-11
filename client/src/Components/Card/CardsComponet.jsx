@@ -3,13 +3,13 @@ import React from 'react'
 import CardHome from './CardHome'
 import { Box, Grid } from '@mui/material';
 
-export default function Cards(cursos) {
+export default function CardsComponet(cursos) {
 
     return (
         <Box  >
-        <Grid container spacing={3} sx={{marginLeft:-35}} >
+        <Grid container spacing={3} sx={{marginLeft:-30 }} >
           {cursos.cursos.map((curso) => (
-            <Grid item xs={3} sm={6} md={4} key={curso.title}>
+            <Grid item xs={3} sm={6} md={4} xl={2} key={curso.title}>
               <CardHome
                 title={curso.title}
                 description={curso.description}

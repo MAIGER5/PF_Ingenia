@@ -36,7 +36,7 @@ function CardHome({title,imgCurso,instructor,price,ratings}) {
            {instructor}
           </Typography>
         </CardContent>
-        <Rating name="read-only" value={ratings} readOnly  />
+        <Rating name="read-only" value={ratings} readOnly sx={{ color: "#e91e63" }} />
         <CardActions>
           <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
           >Add

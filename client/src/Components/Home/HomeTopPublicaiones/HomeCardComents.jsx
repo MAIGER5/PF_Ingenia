@@ -8,10 +8,11 @@ export default function HomeCardComents() {
   return (
     <>
     <Stack
+    
      spacing={4}
     >
     {comentarios.map(comentarios=>(
-         <CardComentshome/>
+         <CardComentshome key={comentarios.title}/>
     ))}
     </Stack>
     </>

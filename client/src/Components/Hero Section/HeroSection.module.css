@@ -1,10 +1,11 @@
 .contenedorinicial{
-    width: 1400px;
+    width: 1700px;
     height: 290px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: -200px;
     }
   .imgcarrusel {
     position: absolute;
