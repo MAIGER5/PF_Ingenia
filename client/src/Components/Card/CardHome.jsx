@@ -25,9 +25,12 @@ function CardHome({title,imgCurso,instructor,price,ratings}) {
         <CardMedia
           sx={{ height: 190 }}
           component='img'
+
           image={imgCurso}
           title="green iguana"
+
         />
+
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
           {title}
@@ -36,7 +39,10 @@ function CardHome({title,imgCurso,instructor,price,ratings}) {
            {instructor}
           </Typography>
         </CardContent>
+
         <Rating name="read-only" value={ratings} readOnly sx={{ color: "#e91e63" }} />
+
+
         <CardActions>
           <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
           >Add
