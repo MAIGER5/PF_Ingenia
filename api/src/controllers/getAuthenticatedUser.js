@@ -6,6 +6,8 @@ const getAuthenticatedUser = (email, password) => {
 
   if (!user) {
     return "Correo electronico o contraseña invalidas";
+  } else {
+    return "usuario logueado";
   }
 };
 
