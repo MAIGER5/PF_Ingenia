@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+.title{
+    font-weight: 400;
+    font-size: 20px;
+    color: #FF8906;
+    margin: 0;
+}
+
+.textBottom{
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.textLink{
+    color: #E53170;
+}
