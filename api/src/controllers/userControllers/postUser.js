@@ -1,4 +1,4 @@
-const dataUser = require("../harcodeo (borrar al final)/data");
+const dataUser = require("../../harcodeo (borrar al final)/data");
 const bcryptjs = require("bcryptjs");
 
 const postUser = async (name, lastName, password, email) => {
