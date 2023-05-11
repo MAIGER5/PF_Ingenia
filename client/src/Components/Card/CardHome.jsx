@@ -23,8 +23,9 @@ function CardHome() {
           sx={{ height: 300 }}
           component='img'
           image="./Image/maxresdefault.jpg"
-          title="green iguana"
+          title="imagen del curso"
         />
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
           Ecommerce & Marketing course: Agency, Marketer
@@ -33,6 +34,7 @@ function CardHome() {
             Por: Ruben Diaz
           </Typography>
         </CardContent>
+        
         <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
         <CardActions>
           <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
