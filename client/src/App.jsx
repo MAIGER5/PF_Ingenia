@@ -8,11 +8,13 @@ import SignupVendedor from './Pages/SignupVendedor/SignupVendedor';
 import CoureseDetail from './Pages/CoureseDetail';
 import CategoryCourses from './Pages/CategoryCourses';
 import NotFound from './Pages/NotFound';
+import NavBar from './Components/NavBar/NavBar';
 
 function App() {
 return (
     <> 
     <BrowserRouter>
+    <NavBar/>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/AboutUs" element={<AboutUs/>} />
