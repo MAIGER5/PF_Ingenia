@@ -1,16 +1,21 @@
 .contenedorinicial{
-    width: 1010px;
+    width: 1700px;
     height: 290px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 90px;
+    margin-top: 20px;
+    
     }
   .imgcarrusel {
     position: absolute;
     width: 90%;
     height: 90%;
-    object-fit: cover;
+    object-fit: fill;
+   
+    border-radius: 10px;
   }
   .next,
   .prev {

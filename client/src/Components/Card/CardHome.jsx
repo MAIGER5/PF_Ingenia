@@ -8,41 +8,48 @@ import { Box, Button, CardActionArea, Rating } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
-function CardHome() {
+function CardHome({title,imgCurso,instructor,price,ratings}) {
+ 
+ 
   return (
     <Card sx={{ 
       transition: '0.2s', 
       '&:hover': {
         transform: 'scale(1.05)'
       }, 
-      maxWidth: 380
+      maxWidth: 380,
+      height:450
     }}
     >
       <CardActionArea>
         <CardMedia
-          sx={{ height: 300 }}
+          sx={{ height: 190 }}
           component='img'
-          image="./Image/maxresdefault.jpg"
-          title="imagen del curso"
+
+          image={imgCurso}
+          title="green iguana"
+
         />
 
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          Ecommerce & Marketing course: Agency, Marketer
+          <Typography gutterBottom variant="h6" component="div">
+          {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Por: Ruben Diaz
+           {instructor}
           </Typography>
         </CardContent>
-        
-        <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+
+        <Rating name="read-only" value={ratings} readOnly sx={{ color: "#e91e63" }} />
+
+
         <CardActions>
           <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
           >Add
           </Button>
         </CardActions>
         <Box component='h3'>
-          $100 USD
+         ${price}
         </Box>
 
       </CardActionArea>
