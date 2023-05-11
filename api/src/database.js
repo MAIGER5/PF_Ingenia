@@ -7,8 +7,8 @@ const functionAssessment = require('./models/Assessment');
 const functionCategory = require('./models/Category');
 const functionComment = require('./models/Comment');
 const functionCourse = require('./models/Course')
-const functionData = require('./models/Data')
-const functionInstructor = require('./models/Instructor');
+const functionBill = require('./models/Bill')
+const functionSold = require('./models/Sold');
 const functionPublications = require('./models/Publications');
 const functionUser =require('./models/User');
 
@@ -23,49 +23,19 @@ functionAssessment(sequelize);
 functionCategory(sequelize);
 functionComment(sequelize);
 functionCourse(sequelize);
-functionData(sequelize);
-functionInstructor(sequelize);
+functionBill(sequelize);
+functionSold(sequelize);
 functionPublications(sequelize);
 functionUser(sequelize);
 
 
-const { Assessment,Category,Comment,Course,Data,Instructor,Publications,User} = sequelize.models;
+const { Assessment,Category,Comment,Course,Bill,Sold,Publications,User} = sequelize.models;
 // RELACION DE TABALS AQUÍ ABAJO
 
-Course.hasMany(Instructor);
-Instructor.belongsTo(Course);
-
-Course.belongsToMany(Category,{through:"CourseCategory"});
-Category.belongsToMany(Course,{through:"CourseCategory"});
-
-Course.belongsTo(Assessment);
-Assessment.hasMany(Course);
-
-User.belongsTo(Assessment);
-Assessment.hasMany(User);
-
-Course.belongsTo(Comment);
-Comment.hasMany(Course);
-
-User.belongsTo(Comment);
-Comment.hasMany(User);
-
-Instructor.hasMany(Data)
-Data.hasMany(Instructor)
-
-Instructor.belongsTo(Publications)
-Publications.hasMany(Instructor)
-
-Instructor.belongsTo(Comment)
-Comment.hasMany(Instructor)
-
-User.hasMany(Data)
-Data.hasMany(User)
-
-Course.belongsToMany(User,{through:"CourseUser"});
-User.belongsToMany(Course,{through:"CourseUser"});
+User.Course = User.belongsTo(Course);
 
 module.exports = {
   sequelize,
   ...sequelize.models
 };
+
