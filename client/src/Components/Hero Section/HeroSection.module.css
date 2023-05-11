@@ -1,5 +1,5 @@
 .contenedorinicial{
-    width: 1010px;
+    width: 1400px;
     height: 290px;
     position: relative;
     display: flex;
@@ -11,6 +11,7 @@
     width: 90%;
     height: 90%;
     object-fit: cover;
+    object-position: center;
   }
   .next,
   .prev {
