@@ -9,7 +9,8 @@ import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function CardCategory() {
+
+export function CardDetailCourse() {
   return (
     <Card sx={{ 
         display: 'flex',
@@ -19,7 +20,7 @@ function CardCategory() {
         <CardMedia
           sx={{ height: 300, width: 600}}
           component='img'
-          image="https://okdiario.com/img/2021/04/20/curiosidades-sobre-los-gatos-domesticos-635x358.jpg"
+          image="./Image/maxresdefault.jpg"
           title="imagen de curso"
         />
 
@@ -31,14 +32,14 @@ function CardCategory() {
                 padding={2} >
 
                 <Grid >
-                    <Typography gutterBottom variant="h3" component="div" sx={{
+                    <Typography gutterBottom variant="h5" component="div" sx={{
                         textAlign: 'justify'
 
                     }}>
                         Ecommerce & Marketing course: Agency, Marketer
                     </Typography>
 
-                    <Typography gutterBottom variant="h5" component="div" sx={{
+                    <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                     }}>
@@ -59,7 +60,7 @@ function CardCategory() {
                             Por: Ruben Diaz
                         </Typography>
 
-                        <Typography gutterBottom variant="h7" component="div" sx={{
+                        <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
@@ -73,8 +74,7 @@ function CardCategory() {
                             alignItems="baseline"
                         >
                             <Grid>
-                                <Rating name="half-rating" size="large" defaultValue={2.5} precision={0.5}
-                                color='#E53170' />
+                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
                             </Grid>
 
 
@@ -86,7 +86,7 @@ function CardCategory() {
                                 <FavoriteIcon />
                             </Fab>
                             <Grid item xs={3}>
-                                <Box component='h2'
+                                <Box component='h3'
                                 >
                                     $100 USD
                                 </Box>
@@ -100,4 +100,4 @@ function CardCategory() {
   );
 };
 
-export default CardCategory;
+export default CardDetailCourse;
