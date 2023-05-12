@@ -4,11 +4,14 @@
     align-items: center;
     flex-direction: column;
     row-gap: 40px;
+    margin-top: 50px;
 }
 
 .disclaimer{
     font-weight: 400;
     font-size: 11px;
+    width: 285px;
+    margin-top: 25px;
 }
 
 .title{

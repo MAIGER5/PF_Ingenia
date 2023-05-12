@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.subContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.user{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.userText{
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.optionsContainer{
+
+}
+
+.optionsContainer{
+    width: 170px;
+}
+
+.form{
+    width: 300px;
+}
