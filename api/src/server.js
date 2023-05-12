@@ -30,7 +30,7 @@ server.use((err, req, res, next) => {
 });
 
 sequelize
-  .sync({ force: false })
+  .sync({ alter: true })
   .then(() => {
     console.log(`Database & tables created`);
     server.listen(port, () => {
