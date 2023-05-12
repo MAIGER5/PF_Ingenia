@@ -23,7 +23,7 @@ export default function SingInButtons({ themeMode }) {
         </Button>
       </Link>
 
-      <Link to="/SingUp">
+      <Link to="/SignupUsuario">
         <Button
           color="primary"
           variant="contained"
