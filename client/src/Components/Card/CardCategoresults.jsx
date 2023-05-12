@@ -1,50 +1,50 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, CardActionArea, Grid, Hidden, Rating } from '@mui/material';
+import { Box, Button, Grid, Rating } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
-export function CardDetailCurso({title, imgCurso, description, instructor, price }) {
+function CardCategoresults({title, descriction,difficulty,ratings,price,imgCurso, instructor}) {
+   
   return (
-
     <Card sx={{ 
         display: 'flex',
         alignItems: 'center',
+        width:1500
         }}
         >
         <CardMedia
-          sx={{ height: 300, width: 600}}
+          sx={{ height: 300, width:400}}
           component='img'
-          image= {imgCurso}
-          title="imagen de curso"
+          image={imgCurso}
+          title={title}
         />
 
         <CardContent>
-            <Grid container spacing={0}
+            <Grid container spacing={1}
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                marginLeft={5}
-                padding={1} >
+                padding={2} >
 
                 <Grid >
-                    <Typography gutterBottom variant="h3" component="h3" sx={{
+                    <Typography gutterBottom variant="h4" component="div"  sx={{
                         textAlign: 'justify'
 
                     }}>
                         {title}
                     </Typography>
 
-                    <Typography gutterBottom variant="h8" component="div" sx={{
+                    <Typography gutterBottom variant="body1" component="div" sx={{
                         textAlign: 'justify'
+
                     }}>
-                        {description}
+                       {descriction}
                     </Typography>
                 </Grid>
 
@@ -54,18 +54,18 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
                     alignItems="flex-start">
                         
                     <Grid item xs={8}>
-                        <Typography variant="h6" color="text.Primary" sx={{
+                        <Typography variant="body2" color="text.Primary" sx={{
                             textAlign: 'justify'
 
                         }}>
-                            {instructor}
+                           {instructor}
                         </Typography>
 
-                        <Typography gutterBottom variant="h8" component="div" sx={{
+                        <Typography gutterBottom variant="body1" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            {title}
+                            {difficulty}
                         </Typography>
                         
                         <Grid width={600}
@@ -75,7 +75,8 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
                             alignItems="baseline"
                         >
                             <Grid>
-                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
+                                <Rating name="half-rating" size="large" value={ratings}
+                                color='#E53170' />
                             </Grid>
 
 
@@ -87,9 +88,9 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
                                 <FavoriteIcon />
                             </Fab>
                             <Grid item xs={3}>
-                                <Box component='h2'
+                                <Box component='body1'
                                 >
-                                    {price}
+                                   {price}
                                 </Box>
                             </Grid>
                         </Grid>
@@ -101,4 +102,4 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
   );
 };
 
-export default CardDetailCurso;
+export default CardCategoresults;
