@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
-const getAuthenticatedUser = require("../controllers/userControllers/getAuthenticatedUser");
-const userGetHandler = require("../handlers/user/userGetHandler");
+const getAuthenticatedUser = require("../controllers/userControllers/userAuthenticatedController");
+const userPostHandler = require("../handlers/user/userPostHandler");
 
 const userRouter = Router();
 
@@ -14,7 +14,7 @@ userRouter.get("/:id", (req, res) => {
   } catch (error) {}
 });
 
-userRouter.post("/created", userGetHandler);
+userRouter.post("/created", userPostHandler);
 
 userRouter.post("/login", (req, res) => {
   try {
