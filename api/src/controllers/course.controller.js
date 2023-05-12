@@ -1,34 +1,66 @@
-const cursos = require("../harcodeo (borrar al final)/cursos");
+const { Course } = require('../database')
+
+const { Op } = require('sequelize')
 
 const getCourse = async (req, res) => {
   try {
-    const courses = cursos;
-    const { title } = req.query;
+    const {
+      page = 0,
+      size = 20,
+      title,
+      // sort,
+    } = req.query;
 
-    if (!title) return res.status(202).send(courses);
+    const options = {
+      limit: +size,
+      offset: +page * +size,
+      where: { title: '' },
+      order: [['createdAt', 'DESC']],
+    };
 
-    const course = courses.filter(
-      (course) => course.title.toLowerCase() === title.toLowerCase()
-    );
+    if (title) {
+      options.where.title = {
+        [Op.iLike]: `%${title}%`,
+      };
+    }
 
-    if (course.length === 0)
-      return res.status(404).send({ message: "Course not found" });
+    // Por el momento los filtros en el back
 
-    return res.status(200).send(course);
-  } catch (error) {}
+    // if (sort === 'priceAsc') {
+    //   options.order = [['price', 'ASC']];
+    // } else if (sort === 'priceDesc') {
+    //   options.order = [['price', 'DESC']];
+    // } else if (sort === 'titleAsc') {
+    //   options.order = [['title', 'ASC']];
+    // } else if (sort === 'titleDesc') {
+    //   options.order = [['title', 'DESC']];
+    // }
+
+    const courses = await Course.findAll(options);
+
+    return res.status(200).send(courses);
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(400)
+      .json({ message: 'Failed to retrieve/get the data.' });
+  }
 };
 
 const getCourseByID = async (req, res) => {
   try {
     const { id } = req.params;
-    const courses = cursos;
 
-    let mapeoDeCursos = courses.find((course) => course.IdCurso == id);
+    const ad = await Course.findByPk(id);
 
-    // NOS SÉ QUE NO ESTA FUNCIONANDO AQUÍ
+    if (!ad) {
+      return res.status(404).json({ message: 'Ad not found' });
+    }
+
+    return res.status(200).json(ad);
   } catch (error) {
     console.error(error);
-    return res.status(404).json({ msg: "Failed to get course" });
+    return res.status(400).json({ message: 'Failed to retrieve the data' });
   }
 };
 
@@ -49,8 +81,9 @@ const createCourse = async (req, res) => {
 
     // Esto va ser cuando usemos los modelos solo que con await y el .Create
     // const course = new Model.Create()
+    // Aañadir las propiedades de quien lo vende, etc.
 
-    const newCourse = {
+    const course = await Course.create({
       title,
       description,
       image,
@@ -61,13 +94,10 @@ const createCourse = async (req, res) => {
       habilities,
       dificulty,
       asset,
-    };
+    }); 
 
-    // Aañadir las propiedades de quien lo vende, etc.
-
-    cursos.push(newCourse);
-
-    return res.status(200).json({ newCourse });
+    console.log(course.dataValues)
+    return res.status(201).json({ message: 'Course created'})
   } catch (error) {
     console.log(error);
     return res.status(404).json({ msg: "Failed to create course", error });
