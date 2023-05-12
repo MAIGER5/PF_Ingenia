@@ -1,27 +1,19 @@
 const { Router } = require("express");
 
-const getAuthenticatedUser = require("../controllers/userControllers/userAuthenticatedController");
 const userPostHandler = require("../handlers/user/userPostHandler");
+const userAuthenticated = require("../handlers/user/userAuthenticatedHandler");
+const user = require("../controllers/userControllers/userPrueba");
+
+const checkAuth = require("../middleware/authUser");
+const checkRoleAuth = require("../middleware/roleAuth");
 
 const userRouter = Router();
 
 // Ruta para users
-userRouter.get("/:id", (req, res) => {
-  try {
-    const { id } = req.params;
-    const user = getUser(id);
-    res.status(200).send(user);
-  } catch (error) {}
-});
+userRouter.get("/", checkAuth, checkRoleAuth(["STUDEN", "INSTRUCTOR"]), user);
 
 userRouter.post("/created", userPostHandler);
 
-userRouter.post("/login", (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = getAuthenticatedUser(email, password);
-    res.status(200).send(user);
-  } catch (error) {}
-});
+userRouter.post("/login", userAuthenticated);
 
 module.exports = userRouter;

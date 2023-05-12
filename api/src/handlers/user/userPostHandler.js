@@ -1,7 +1,7 @@
-const postUser = require("../../controllers/userControllers/postUserController");
+const postUser = require("../../controllers/userControllers/userPostController");
 const bcryptjs = require("bcryptjs");
 
-const userGetHandler = async (req, res) => {
+const userPostHandler = async (req, res) => {
   const { name, lastName, password, email } = req.body;
 
   try {
@@ -17,4 +17,4 @@ const userGetHandler = async (req, res) => {
   }
 };
 
-module.exports = userGetHandler;
+module.exports = userPostHandler;
