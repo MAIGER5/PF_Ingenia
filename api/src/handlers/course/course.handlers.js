@@ -1,8 +1,10 @@
-const { Course } = require('../database')
+const createCourse = require('../../controllers/courseControllers/createCourse')
+
+const { Course } = require('../../database')
 
 const { Op } = require('sequelize')
 
-const getCourse = async (req, res) => {
+const getCourseHandlers = async (req, res) => {
   try {
 
     const coursesBase = await Course.findAll()
@@ -49,7 +51,7 @@ const getCourse = async (req, res) => {
   }
 };
 
-const getCourseByID = async (req, res) => {
+const getCourseByIDHandlers = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -66,44 +68,17 @@ const getCourseByID = async (req, res) => {
   }
 };
 
-const createCourse = async (req, res) => {
+const createCourseHandlers = async (req, res) => {
+  const {title,description,image,lenguage,price,duration,habilities,
+    dificulty,IdUser,Category,requirement,users} = req.body;
   try {
-    const {
-      title,
-      description,
-      image,
-      lenguage,
-      price,
-      pricePro,
-      duration,
-      habilities,
-      dificulty,
-      asset,
-    } = req.body;
-
-    // Esto va ser cuando usemos los modelos solo que con await y el .Create
-    // const course = new Model.Create()
-    // Aañadir las propiedades de quien lo vende, etc.
-
-    const course = await Course.create({
-      title,
-      description,
-      image,
-      lenguage,
-      price,
-      pricePro,
-      duration,
-      habilities,
-      dificulty,
-      asset,
-    }); 
-
-    // console.log(course.dataValues) 
-    return res.status(201).json({ message: 'Course created'})
+    const response = await createCourse(title,description,image,lenguage,price,duration,habilities,
+      dificulty,IdUser,Category,requirement,users);
+    res.status(200).json(response);
   } catch (error) {
     console.log(error);
     return res.status(404).json({ msg: "Failed to create course", error });
   }
 };
 
-module.exports = { getCourse, getCourseByID, createCourse };
+module.exports = { getCourseHandlers, getCourseByIDHandlers, createCourseHandlers };
