@@ -39,7 +39,7 @@ export default function NavBar() {
             justifyContent: "space-between",
           }}
         >
-          <Link href="/AboutUs" underline="none">
+          <Link href="/" underline="none">
             <Typography variant="h5">Ingenia</Typography>
           </Link>
 
