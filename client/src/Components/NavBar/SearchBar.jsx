@@ -25,13 +25,26 @@ export default function SearchBar() {
           label="Buscar"
           type="search"
           variant="outlined"
+          sx={{
+            width: {
+              sm: "200px",
+              md: "200px",
+              lg: "400px"
+            },
+            marginLeft: "-100px",
+          }}
           
           InputProps={{
             endAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon/>
               </InputAdornment>
             ),
+            style: {
+               borderRadius: "40px",
+               alignItems: "center",
+               justifyContent:"center",
+            }   
           }}
           onKeyPress={(event) => {
             if (event.key === "Enter") {
