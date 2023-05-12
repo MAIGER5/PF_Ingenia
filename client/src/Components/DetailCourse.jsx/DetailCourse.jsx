@@ -1,24 +1,31 @@
-import * as React from 'react';
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import { Grid, Rating } from '@mui/material';
-import CardCategory from '../Card/CardCategory';
 import ValoracionesCurso from './ValoracionesCurso';
 import AcercaProfesor from './AcercaProfesor';
+import cursos from '../Card/harcodedecursosborra';
+import CardsD from '../Card/CardsD';
+
 
 
 function DetailCourse() {
+
+
   return (
-    <div  > 
 
-        <CardCategory/>
+    <Grid 
+        marginX={15}
+        marginY={3}
+    > 
 
+        <CardsD cursos={cursos} />
 
         <Grid   container
             direction="row"
             justifyContent="space-between"
             alignItems="flex-start"
             className='interno dos'
-            marginTop={6}
+            marginTop={5}
             maxHeight={300}>
             <Grid item xs={5}>
                 <Grid >
@@ -30,18 +37,18 @@ function DetailCourse() {
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
                     }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                        Java es un lenguaje de programación que fue diseñado para ser portable o compatible con cualquier computadora o sistema operativo. La portabilidad se logra a través de la compilación de códigos independientes que se ejecutan en una máquina virtual de Java conocida
                     </Typography>
 
                     <Typography gutterBottom variant="h5" component="div" sx={{
                         textAlign: 'justify'
                     }}>
-                        Método de entrega
+                        Metodología de enseñanza
                     </Typography>
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
                     }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                        La metodología empleada en los cursos, es el trabajo colaborativo y el aprendizaje significativo, de modo que involucre al participante de modo activo y la transformación de información en conocimiento sea lo más eficiente.
                     </Typography>
 
                     <Typography gutterBottom variant="h5" component="div" sx={{
@@ -54,7 +61,9 @@ function DetailCourse() {
                         textAlign: 'justify'
 
                     }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                        Disponibilidad horaria
+                        Herramientas informaticas y ofimaticas
+                        Nivel basico tics
                     </Typography>
 
                 </Grid>
@@ -66,26 +75,26 @@ function DetailCourse() {
                         textAlign: 'justify'
 
                     }}>
-                        Lo que aprenderás
+                        Descripción
                     </Typography>
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                     }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                       La metodología empleada en los cursos, es el trabajo colaborativo y el aprendizaje significativo, de modo que involucre al participante de modo activo y la transformación de información en conocimiento sea lo más eficiente.
                     </Typography>
 
                     <Typography gutterBottom variant="h5" component="div" sx={{
                         textAlign: 'justify'
 
                     }}>
-                        Método de entrega
+                        Categoria
                     </Typography>
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                     }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                        Telecomuniaciones, programacion, desarrollo, develop
                     </Typography>
 
                 </Grid>
@@ -108,7 +117,7 @@ function DetailCourse() {
 
             
         </Grid>
-    </div>
+    </Grid>
   );
 };
 

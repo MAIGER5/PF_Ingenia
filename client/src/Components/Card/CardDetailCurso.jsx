@@ -10,8 +10,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
-export function CardDetailCourse() {
+export function CardDetailCurso({title, imgCurso, description, instructor, price }) {
   return (
+
     <Card sx={{ 
         display: 'flex',
         alignItems: 'center',
@@ -20,30 +21,30 @@ export function CardDetailCourse() {
         <CardMedia
           sx={{ height: 300, width: 600}}
           component='img'
-          image="./Image/maxresdefault.jpg"
+          image= {imgCurso}
           title="imagen de curso"
         />
 
         <CardContent>
-            <Grid container spacing={1}
+            <Grid container spacing={0}
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                padding={2} >
+                marginLeft={5}
+                padding={1} >
 
                 <Grid >
-                    <Typography gutterBottom variant="h5" component="div" sx={{
+                    <Typography gutterBottom variant="h3" component="h3" sx={{
                         textAlign: 'justify'
 
                     }}>
-                        Ecommerce & Marketing course: Agency, Marketer
+                        {title}
                     </Typography>
 
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
-
                     }}>
-                        Best Ecommerce & Digital Marketing course, social media marketing, sales funnels, WordPress website, SEO, Ads, ...
+                        {description}
                     </Typography>
                 </Grid>
 
@@ -57,14 +58,14 @@ export function CardDetailCourse() {
                             textAlign: 'justify'
 
                         }}>
-                            Por: Ruben Diaz
+                            {instructor}
                         </Typography>
 
                         <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            Todos los niveles
+                            {title}
                         </Typography>
                         
                         <Grid width={600}
@@ -74,7 +75,7 @@ export function CardDetailCourse() {
                             alignItems="baseline"
                         >
                             <Grid>
-                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
                             </Grid>
 
 
@@ -86,9 +87,9 @@ export function CardDetailCourse() {
                                 <FavoriteIcon />
                             </Fab>
                             <Grid item xs={3}>
-                                <Box component='h3'
+                                <Box component='h2'
                                 >
-                                    $100 USD
+                                    {price}
                                 </Box>
                             </Grid>
                         </Grid>
@@ -100,4 +101,4 @@ export function CardDetailCourse() {
   );
 };
 
-export default CardDetailCourse;
+export default CardDetailCurso;
