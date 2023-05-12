@@ -1,6 +1,7 @@
 const { Router } = require("express");
-const postUser = require("../controllers/userControllers/postUser");
+
 const getAuthenticatedUser = require("../controllers/userControllers/getAuthenticatedUser");
+const userGetHandler = require("../handlers/user/userGetHandler");
 
 const userRouter = Router();
 
@@ -13,13 +14,7 @@ userRouter.get("/:id", (req, res) => {
   } catch (error) {}
 });
 
-userRouter.post("/created", (req, res) => {
-  try {
-    const { name, lastName, password, email } = req.body;
-    const user = postUser(name, lastName, password, email);
-    res.status(200).send(user);
-  } catch (error) {}
-});
+userRouter.post("/created", userGetHandler);
 
 userRouter.post("/login", (req, res) => {
   try {
