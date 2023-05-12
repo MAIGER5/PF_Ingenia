@@ -4,6 +4,8 @@ const { Op } = require('sequelize')
 
 const getCourse = async (req, res) => {
   try {
+
+    const coursesBase = await Course.findAll()
     const {
       page = 0,
       size = 20,
@@ -23,7 +25,7 @@ const getCourse = async (req, res) => {
         [Op.iLike]: `%${title}%`,
       };
     }
-
+ 
     // Por el momento los filtros en el back
 
     // if (sort === 'priceAsc') {
@@ -38,7 +40,7 @@ const getCourse = async (req, res) => {
 
     const courses = await Course.findAll(options);
 
-    return res.status(200).send(courses);
+    courses.length ? res.status(202).send(courses) : res.status(202).send(coursesBase)
   } catch (error) {
     console.error(error);
     return res
@@ -54,7 +56,7 @@ const getCourseByID = async (req, res) => {
     const ad = await Course.findByPk(id);
 
     if (!ad) {
-      return res.status(404).json({ message: 'Ad not found' });
+      return res.status(404).json({ message: 'Course not found' });
     }
 
     return res.status(200).json(ad);
@@ -96,7 +98,7 @@ const createCourse = async (req, res) => {
       asset,
     }); 
 
-    console.log(course.dataValues)
+    // console.log(course.dataValues) 
     return res.status(201).json({ message: 'Course created'})
   } catch (error) {
     console.log(error);
