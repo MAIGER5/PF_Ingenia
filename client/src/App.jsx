@@ -11,8 +11,6 @@ import NotFound from './Pages/NotFound';
 import NavBar from './Components/NavBar/NavBar';
 import Profile from './Pages/Profile/Profile';
 import LandingSeller from './Pages/LandingSeller/LandingSeller';
-import DetailCourse from './Components/DetailCourse.jsx/DetailCourse';
-
 
 function App() {
 return (
