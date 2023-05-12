@@ -1,5 +1,5 @@
 # Explanation of the functioning of the backend
-
+# para levantar el servidor => npm run dev
 ## Explanation of the folders
 
 - ### src
@@ -14,12 +14,11 @@
 
   #### Este esta configurado de esta forma:
 
-      DB_NAME=ingenia
-      DB_USER=postgres
-      DB_PASSWORD=YOURpassword
-      DB_HOST=localhost
-
-      PORT=3001
+  DB_USER=postgres
+  DB_PASSWORD=Lazone12$12
+  DB_HOST=localhost:5432
+  DB =ingenia
+  PORT=3001
 - ### package.json
 
   #### Archivo que describe la aplicación y sus dependencias.

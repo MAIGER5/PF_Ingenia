@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 
 const bodyParser = require("body-parser");
-
+const morgan = require('morgan')
 const cors = require("cors");
 
 const port = process.env.PORT || 3001;
@@ -21,6 +21,7 @@ const corsOptions = {
 server.use(cors(corsOptions));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: false }));
+server.use(morgan('dev'))
 server.use("/", router);
 
 server.use((err, req, res, next) => {
