@@ -11,6 +11,7 @@ import NavBar from './Components/NavBar/NavBar';
 import Profile from './Pages/Profile/Profile';
 import LandingSeller from './Pages/LandingSeller/LandingSeller';
 import DetailCourse from './Components/DetailCourse.jsx/DetailCourse';
+import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
 
 function App() {
 return (
@@ -25,8 +26,9 @@ return (
           <Route path="/SignupVendedor" element={<SignupVendedor/>} />
           <Route path="/DetailCourse/:id" element={<DetailCourse/>} />
           <Route path="/CategoryCourses" element={<CategoryCourses/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/Profile" element={<Profile/>}/>
           <Route path="/LandingSeller" element={<LandingSeller/>}/>
+          <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>

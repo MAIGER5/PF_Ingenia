@@ -18,16 +18,16 @@ export default function Login() {
   const loginBottom = (type) => {
     return ( 
       <div className={styles.containerBottom}>
-        <div>
-          <span></span>
-          <span>o</span>
-          <span></span>
+        <div className={styles.decoContainer}>
+          <hr className={styles.line}/>
+          <span className={styles.decoration}>o</span>
+          <hr className={styles.line}/>
         </div>
         <Button
           variant="outlined"
           color="secondary"
           startIcon={<GoogleIcon />}
-          sx={{ width: "280px" }}
+          sx={{ width: "280px", fontSize: "15px" }}
         >
           Continuar con Google
         </Button>
@@ -53,8 +53,14 @@ export default function Login() {
           onChange={handleTabChange}
           centered
         >
-          <Tab label="Usuario" />
-          <Tab label="Vendedor" />
+          <Tab 
+            label="Usuario" 
+            sx={{ fontSize: "16px" }}
+          />
+          <Tab 
+            label="Vendedor" 
+            sx={{ fontSize: "16px" }}  
+          />
         </Tabs>
         <Box sx={{ padding: 2 }}>
           {tabIndex === 0 && (

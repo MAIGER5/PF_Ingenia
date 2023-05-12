@@ -4,6 +4,7 @@
     row-gap: 30px;
     justify-content: center;
     align-items: center;
+    margin-top: 35px;
 }
 
 .input{
@@ -12,6 +13,12 @@
     border-width: 1px;
     width: 280px;
     height: 40px;
+}
+
+.textLegend{
+    margin: 7px 0 0 170px ;
+    font-size: 12px;
+    color: #E53170;
 }
 
 
