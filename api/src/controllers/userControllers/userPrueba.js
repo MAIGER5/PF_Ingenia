@@ -1,4 +1,4 @@
-const data = require("../../harcodeo (borrar al final)/data");
+const data = require("../../Para rellenar base de datos/data");
 
 const user = (req, res) => {
   try {
