@@ -1,4 +1,5 @@
 const { User, Course } = require("../../database");
+const userDataForm = require("../../helper/userDataForm");
 
 const postUser = async (name, lastname, password, email) => {
   //Definimos su roll
@@ -13,7 +14,7 @@ const postUser = async (name, lastname, password, email) => {
     Is,
     asset: true,
   });
-  return newUser;
+  return { user: userDataForm(newUser) };
 };
 
 module.exports = postUser;

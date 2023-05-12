@@ -5,12 +5,14 @@ const userDataForm = ({
   email,
   imgProfile,
   Is,
+  assessment,
+  studies,
   asset,
   CourseIdCourse,
   createdAt,
   updatedAt,
 }) => {
-  const user = {
+  const userStuden = {
     idUser,
     name,
     lastname,
@@ -22,7 +24,29 @@ const userDataForm = ({
     createdAt,
     updatedAt,
   };
-  return user;
+
+  const userInstructor = {
+    idUser,
+    name,
+    lastname,
+    email,
+    imgProfile,
+    Is,
+    assessment,
+    studies,
+    asset,
+    CourseIdCourse,
+    createdAt,
+    updatedAt,
+  };
+
+  if (Is === "STUDEN") {
+    return userStuden;
+  } else if (Is === "INSTRUCTOR") {
+    return userInstructor;
+  } else {
+    return "Is admin";
+  }
 };
 
 module.exports = userDataForm;
