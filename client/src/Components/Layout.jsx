@@ -30,7 +30,12 @@ export default function Layout(props) {
           secondary: {
             main: pink[500],
           },
-        },
+        }, typography: {
+          "fontFamily": `"Figtree", sans-serif`,
+          button: {
+            textTransform: 'none'
+          }
+        }
       }),
     [mode]
   );

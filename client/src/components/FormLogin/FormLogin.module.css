@@ -9,7 +9,8 @@
 .input{
     padding-left: 10px;
     border-color: black;
-    width: 270px;
+    border-width: 1px;
+    width: 280px;
     height: 40px;
 }
 
@@ -18,7 +19,7 @@
     background: #FF8906;
     border-radius: 5px;
     border-style: none;
-    width: 285px;
+    width: 280px;
     height: 40px;
 }
 

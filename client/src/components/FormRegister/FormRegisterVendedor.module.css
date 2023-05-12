@@ -1,16 +1,56 @@
 .form{
     display: flex;
-    flex-direction: column;
-    row-gap: 30px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    row-gap: 45px;
+}
+
+.container{
+    display: flex;
+    column-gap: 50PX;
+}
+
+.containerMedium{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.containerLarge{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
 }
 
 .input{
     padding-left: 10px;
     border-color: black;
+    border-width: 1px;
     width: 270px;
     height: 40px;
+}
+
+.textareaMedium{
+    border-color: black;
+    width: 360px;
+    height: 60px;
+    resize: none;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: 'Figtree', sans-serif;
+    padding: 10px;
+}
+
+.textareaLarge{
+    border-color: black;
+    width: 360px;
+    height: 125px;
+    resize: none;
+     font-weight: 400;
+    font-size: 15px;
+    font-family: 'Figtree', sans-serif;
+    padding: 10px;
 }
 
 
@@ -29,7 +69,6 @@
 
 .button_text{
     color: #FFFFFE;
-    font-style: normal;
     font-weight: 400;
     font-size: 15px;
     font-family: 'Figtree', sans-serif;

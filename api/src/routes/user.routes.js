@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const postUser = require("../controllers/postUser");
-const getAuthenticatedUser = require("../controllers/getAuthenticatedUser");
+const postUser = require("../controllers/userControllers/postUser");
+const getAuthenticatedUser = require("../controllers/userControllers/getAuthenticatedUser");
 
 const userRouter = Router();
 
