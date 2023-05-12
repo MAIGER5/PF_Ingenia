@@ -5,12 +5,12 @@ import AboutUs from './Pages/AboutUs';
 import Login from './Pages/Login/Login';
 import SignupUsuario from './Pages/SignupUsuario/SignupUsuario';
 import SignupVendedor from './Pages/SignupVendedor/SignupVendedor';
-import CoureseDetail from './Pages/CoureseDetail';
 import CategoryCourses from './Pages/CategoryCourses';
 import NotFound from './Pages/NotFound';
 import NavBar from './Components/NavBar/NavBar';
 import Profile from './Pages/Profile/Profile';
 import LandingSeller from './Pages/LandingSeller/LandingSeller';
+import DetailCourse from './Components/DetailCourse.jsx/DetailCourse';
 
 function App() {
 return (
