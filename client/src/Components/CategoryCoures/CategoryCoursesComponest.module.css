@@ -1,0 +1,11 @@
+.Banercategory{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 1162px;
+height: 110px;
+left: 50px;
+top: 150px;
+color: rgba(250, 241, 241, 0);
+background-color: rgb(255, 196, 196);
+}
