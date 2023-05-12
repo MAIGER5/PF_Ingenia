@@ -1,0 +1,293 @@
+{
+  "title":"Introducción a Python",
+  "description":"Curso básico de programación en Python",
+  "image":"https://www.dongee.com/tutoriales/content/images/2023/01/image-47.png",
+  "lenguage":"ESPAÑOL",
+  "price":19.99,
+  "duration":"1 mes",
+  "habilities":"Este curso lo iniciará en los fundamentos de la programación en Python",
+  "dificulty":"BASIC",
+  "requirement":["Ninguno"],
+  "users":[],
+  "categoria":[1,3,5]
+  }
+  
+  {
+  "title":"Desarrollo Web con React",
+  "description":"Aprenda a construir aplicaciones web con React",
+  "image":"https://miro.medium.com/max/1400/1*HSisLuifMO6KbLfPOKtLow.jpeg",
+  "lenguage":"INGLÉS",
+  "price":39.99,
+  "duration":"3 meses",
+  "habilities":"Aprenda a desarrollar aplicaciones web interactivas con React",
+  "dificulty":"INTERMEDIATE",
+  "requirement":["JavaScript","HTML","CSS"],
+  "users":[],
+  "categoria":[2,4,6]
+  }
+  
+  {
+  "title":"Machine Learning Fundamentals",
+  "description":"Curso introductorio al aprendizaje automático",
+  "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStKtA4Um2ReQD86HS3bytmT8BxQawMnnVUboW00aHmqVP4vezIxFJCUr_3bRiE5NzU1Zo&usqp=CAU",
+  "lenguage":"INGLÉS",
+  "price":59.99,
+  "duration":"4 meses",
+  "habilities":"Este curso lo iniciará en los fundamentos del aprendizaje automático",
+  "dificulty":"ADVANCED",
+  "requirement":["Python","Matemáticas"],
+  "users":[],
+  "categoria":[3,5,8]
+  }
+  
+  {
+  "title":"Desarrollo de Videojuegos con Unity",
+  "description":"Aprenda a crear videojuegos utilizando la herramienta Unity",
+  "image":"https://www.muylinux.com/wp-content/uploads/2020/08/Unity-Technologies.jpg",
+  "lenguage":"ESPAÑOL",
+  "price":49.99,
+  "duration":"3 meses",
+  "habilities":"Desarrolle habilidades para crear videojuegos utilizando Unity",
+  "dificulty":"INTERMEDIATE",
+  "requirement":["C#","Unity"],
+  "users":[],
+  "categoria":[2,4,6]
+  }
+  
+  {
+  "title":"Fundamentos de la Seguridad Informática",
+  "description":"Curso introductorio a la seguridad informática",
+  "image":"https://conceptoabc.com/wp-content/uploads/2020/03/Tecnolopedia-seguridad-informC3A1tica-portada.jpg",
+  "lenguage":"ESPAÑOL",
+  "price":29.99,
+  "duration":"2 meses",
+  "habilities":"Aprenda los fundamentos de la seguridad informática",
+  "dificulty":"BASIC",
+  "requirement":["Ninguno"],
+  "users":[],
+  "categoria":[3,5,7]
+  }
+
+  {
+"title":"Programación Orientada a Objetos en Java",
+"description":"Curso avanzado de programación en Java",
+"image":"https://www.computerworld.es/archivos/202205/java-concurrency.png",
+"lenguage":"ESPAÑOL",
+"price":49.99,
+"duration":"3 meses",
+"habilities":"Este curso lo iniciará en la programación orientada a objetos en Java",
+"dificulty":"ADVANCED",
+"requirement":["Java","Programación básica"],
+"users":[],
+"categoria":[1,4,7]
+}
+
+{
+"title":"Desarrollo de Aplicaciones Móviles con Flutter",
+"description":"Aprenda a crear aplicaciones móviles con Flutter",
+"image":"https://i.ytimg.com/vi/fq4N0hgOWzU/maxresdefault.jpg",
+"lenguage":"INGLÉS",
+"price":59.99,
+"duration":"4 meses",
+"habilities":"Desarrolle habilidades para crear aplicaciones móviles con Flutter",
+"dificulty":"INTERMEDIATE",
+"requirement":["Dart","Programación móvil"],
+"users":[],
+"categoria":[2,4,8]
+}
+
+{
+"title":"Desarrollo Web con Angular",
+"description":"Aprenda a construir aplicaciones web con Angular",
+"image":"https://www.hostinger.es/tutoriales/wp-content/uploads/sites/7/2020/09/angular-homepage.jpg",
+"lenguage":"ESPAÑOL",
+"price":39.99,
+"duration":"3 meses",
+"habilities":"Aprenda a desarrollar aplicaciones web interactivas con Angular",
+"dificulty":"INTERMEDIATE",
+"requirement":["JavaScript","HTML","CSS"],
+"users":[],
+"categoria":[2,5,7]
+}
+
+{
+"title":"Aprendizaje Profundo con TensorFlow",
+"description":"Curso avanzado de aprendizaje profundo utilizando TensorFlow",
+"image":"https://i.ytimg.com/vi/yjprpOoH5c8/maxresdefault.jpg",
+"lenguage":"INGLÉS",
+"price":69.99,
+"duration":"5 meses",
+"habilities":"Aprenda a aplicar técnicas avanzadas de aprendizaje profundo utilizando TensorFlow",
+"dificulty":"ADVANCED",
+"requirement":["Python","Aprendizaje automático"],
+"users":[],
+"categoria":[3,6,8]
+}
+
+{
+"title":"Introducción a la Ciencia de Datos",
+"description":"Curso introductorio a la ciencia de datos",
+"image":"https://www.itconsultors.com/images/blog/blog3c08f9fdc86151d46f3499da8227ac9f_data-science.jpg",
+"lenguage":"ESPAÑOL",
+"price":19.99,
+"duration":"2 meses",
+"habilities":"En este curso, aprenderás los conceptos básicos de la ciencia de datos y cómo aplicarlos en la vida real",
+"dificulty":"BASIC",
+"requirement":["Python","Estadísticas básicas"],
+"users":[],
+"categoria":[3,5]
+}
+
+{
+"title":"Desarrollo de Aplicaciones para Android con Kotlin",
+"description":"Aprenda a crear aplicaciones para Android utilizando el lenguaje Kotlin",
+"image":"https://cdn.plainconcepts.com/wp-content/uploads/2022/03/Kotlin.jpg",
+"lenguage":"INGLÉS",
+"price":49.99,
+"duration":"3 meses",
+"habilities":"Desarrolle habilidades para crear aplicaciones para Android utilizando el lenguaje Kotlin",
+"dificulty":"INTERMEDIATE",
+"requirement":["Kotlin","Programación móvil"],
+"users":[],
+"categoria":[2,4,8]
+}
+
+{
+"title":"Machine Learning con Python",
+"description":"Curso de Machine Learning con Python",
+"image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3SnarTkVTm2FT5MqNDkAU1jfXvd4bnedksA&usqp=CAU",
+"lenguage":"ESPAÑOL",
+"price":59.99,
+"duration":"4 meses",
+"habilities":"Aprenda a aplicar técnicas de Machine Learning utilizando el lenguaje Python",
+"dificulty":"ADVANCED",
+"requirement":["Python","Estadísticas avanzadas"],
+"users":[],
+"categoria":[3,6,8]
+}
+
+{
+"title":"Desarrollo Web con React",
+"description":"Aprenda a crear aplicaciones web utilizando la librería React",
+"image":"https://miro.medium.com/max/1200/1*E2YBvmjx5lvDB5MfCj8fCA.png",
+"lenguage":"INGLÉS",
+"price":39.99,
+"duration":"3 meses",
+"habilities":"Desarrolle habilidades para crear aplicaciones web utilizando la librería React",
+"dificulty":"INTERMEDIATE",
+"requirement":["JavaScript","HTML","CSS"],
+"users":[],
+"categoria":[2,5,7]
+}
+
+{
+"title":"Inteligencia Artificial con Python",
+"description":"Aprende a desarrollar soluciones de Inteligencia Artificial utilizando Python",
+"image":"https://miro.medium.com/max/1200/1*AbOBlv_bO1_Bh1_G_hg01Q.jpeg",
+"lenguage":"ESPAÑOL",
+"price":79.99,
+"duration":"6 meses",
+"habilities":"Desarrolla habilidades para crear soluciones de IA utilizando Python",
+"dificulty":"ADVANCED",
+"requirement":["Python","Matemáticas avanzadas"],
+"users":[],
+"categoria":[3,6,8]
+}
+
+{
+"title":"Desarrollo de Juegos con Unity",
+"description":"Aprende a desarrollar juegos utilizando el motor Unity",
+"image":"https://i.ytimg.com/vi/Fr7spVnJ4j4/maxresdefault.jpg",
+"lenguage":"ESPAÑOL",
+"price":49.99,
+"duration":"3 meses",
+"habilities":"Desarrolla habilidades para crear juegos utilizando el motor Unity",
+"dificulty":"INTERMEDIATE",
+"requirement":["C#","Diseño de videojuegos"],
+"users":[],
+"categoria":[2,4,7]
+}
+
+{
+"title":"Desarrollo de Aplicaciones Web con Angular",
+"description":"Aprende a crear aplicaciones web utilizando el framework Angular",
+"image":"https://www.campusmvp.es/recursos/image.axd?picture=/2020/4-Q2/angular.png",
+"lenguage":"ESPAÑOL",
+"price":59.99,
+"duration":"4 meses",
+"habilities":"Desarrolla habilidades para crear aplicaciones web utilizando el framework Angular",
+"dificulty":"INTERMEDIATE",
+"requirement":["JavaScript","HTML","CSS"],
+"users":[],
+"categoria":[2,5,7]
+}
+
+{
+"title":"Desarrollo de Aplicaciones Móviles con Flutter",
+"description":"Aprende a crear aplicaciones móviles utilizando el framework Flutter",
+"image":"https://miro.medium.com/max/1200/1*m3JG-gbCBj9OKNoUDqGQzQ.png",
+"lenguage":"ESPAÑOL",
+"price":49.99,
+"duration":"3 meses",
+"habilities":"Desarrolla habilidades para crear aplicaciones móviles utilizando el framework Flutter",
+"dificulty":"INTERMEDIATE",
+"requirement":["Dart","Programación móvil"],
+"users":[],
+"categoria":[2,4,8]
+}
+
+{
+"title":"Aprende a tocar guitarra eléctrica",
+"description":"Curso para aprender a tocar guitarra eléctrica desde cero",
+"image":"https://www.sweetwater.com/insync/media/2018/06/electric-guitar-feature.jpg",
+"lenguage":"ESPAÑOL",
+"price":39.99,
+"duration":"2 meses",
+"habilities":"Aprenderás a tocar guitarra eléctrica de forma fluida y técnica",
+"dificulty":"BASIC",
+"requirement":["Guitarra eléctrica"],
+"users":[],
+"categoria":[1,5]
+}
+
+{
+"title":"Edición de video profesional con Adobe Premiere",
+"description":"Aprende a editar videos de forma profesional utilizando Adobe Premiere",
+"image":"https://www.adobe.com/content/dam/cc/us/en/creativecloud/max2020/mnemonics/premier-pro-desktop-app-2x.png.img.png",
+"lenguage":"ESPAÑOL",
+"price":59.99,
+"duration":"3 meses",
+"habilities":"Desarrolla habilidades para editar videos de forma profesional utilizando Adobe Premiere",
+"dificulty":"INTERMEDIATE",
+"requirement":["Conocimientos básicos de edición de video"],
+"users":[],
+"categoria":[2,4,6]
+}
+
+{
+"title":"Desarrollo de aplicaciones de escritorio con Java",
+"description":"Aprende a crear aplicaciones de escritorio utilizando Java",
+"image":"https://miro.medium.com/max/452/1*NyNyDnmUuK0w0NFZUj5dWg.png",
+"lenguage":"ESPAÑOL",
+"price":49.99,
+"duration":"3 meses",
+"habilities":"Desarrolla habilidades para crear aplicaciones de escritorio utilizando Java",
+"dificulty":"INTERMEDIATE",
+"requirement":["Conocimientos básicos de programación"],
+"users":[],
+"categoria":[2,5,7]
+}
+
+{
+"title":"Aprende a cocinar como un chef",
+"description":"Curso para aprender a cocinar como un chef desde cero",
+"image":"https://www.masterclass.com/content/dam/mclass/mc-banners/chefs/JB-PrimaryHero-2880x1620.jpg",
+"lenguage":"ESPAÑOL",
+"price":79.99,
+"duration":"6 meses",
+"habilities":"Aprenderás técnicas y habilidades para cocinar como un chef profesional",
+"dificulty":"BASIC",
+"requirement":["Cocina"],
+"users":[],
+"categoria":[1,4,5]
+}
