@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import FormLogin from "../../components/FormLogin/FormLogin";
 
 import GoogleIcon from "@mui/icons-material/Google";
-import { Box, Tab, Tabs, Typography, Button } from "@mui/material";
+import { Box, Tab, Tabs, Button } from "@mui/material";
 
 import styles from "./Login.module.css";
 
@@ -42,7 +42,6 @@ export default function Login() {
   }
 
 
-  //TODO agregar texto diferenciador tabs
   return (
     <div className={styles.container}>
       <p className={styles.title}>
@@ -60,15 +59,12 @@ export default function Login() {
         <Box sx={{ padding: 2 }}>
           {tabIndex === 0 && (
             <Box>
-        
-              <Typography>Usuario</Typography>
               <FormLogin />
               {loginBottom("SignupUsuario")}
             </Box>
           )}
           {tabIndex === 1 && (
             <Box>
-              <Typography>Vendedor</Typography>
               <FormLogin />
               {loginBottom("SignupVendedor")}
             </Box>
