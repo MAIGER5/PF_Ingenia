@@ -12,6 +12,10 @@ import Profile from './Pages/Profile/Profile';
 import LandingSeller from './Pages/LandingSeller/LandingSeller';
 import DetailCourse from './Components/DetailCourse.jsx/DetailCourse';
 import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
+import MyCourses from './Pages/MyCourses/MyCourses';
+import Notifications from './Pages/Notifications/Notifications';
+import Cart from './Pages/Cart/Cart';
+import Support from './Pages/Support/Support';
 
 function App() {
 return (
@@ -29,6 +33,10 @@ return (
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/LandingSeller" element={<LandingSeller/>}/>
           <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
+          <Route path="/MyCourses" element={<MyCourses/>}/>
+          <Route path="/Notifications" element={<Notifications/>}/>
+          <Route path="/Cart" element={<Cart/>}/>  
+          <Route path="/Support" element={<Support/>}/>  
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>

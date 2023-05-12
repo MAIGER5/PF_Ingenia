@@ -52,8 +52,7 @@ export default function FormLogin() {
                 className={styles.input}
             />
             <NavLink 
-                activeStyle={{color: "#E53170"}}
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: 'none'}}
                 to={"/ForgotPassword"}
             >
                 <p className={styles.textLegend}>Olvide mi contraseña</p>
