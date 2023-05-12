@@ -5,7 +5,6 @@ import AboutUs from './Pages/AboutUs';
 import Login from './Pages/Login/Login';
 import SignupUsuario from './Pages/SignupUsuario/SignupUsuario';
 import SignupVendedor from './Pages/SignupVendedor/SignupVendedor';
-import CoureseDetail from './Pages/CoureseDetail';
 import CategoryCourses from './Pages/CategoryCourses';
 import NotFound from './Pages/NotFound';
 import NavBar from './Components/NavBar/NavBar';
