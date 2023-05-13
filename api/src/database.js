@@ -35,8 +35,11 @@ functionUser(sequelize);
 const { Assessment,Category,Comment,Course,Bill,Sold,Publications,User} = sequelize.models;
 // RELACION DE TABALS AQUÍ ABAJO
 
-User.belongsTo(Course);
-Course.hasMany(User)
+User.belongsToMany(Course,{through:"UserCourse"});
+Course.belongsToMany(User,{through:"UserCourse"})
+
+Course.belongsToMany(Category,{through:"CourseCategory"});
+Category.belongsToMany(Course,{through:"CourseCategory"});
 
 module.exports = {
   sequelize,
