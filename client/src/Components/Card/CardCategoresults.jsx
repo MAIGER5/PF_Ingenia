@@ -9,7 +9,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
-function CardCategoresults({title, descriction,difficulty,ratings,price,imgCurso, instructor}) {
+function CardCategoresults({title, description, dificulty, duration, price, image, lenguage}) {
    
   return (
     <Card sx={{ 
@@ -21,7 +21,7 @@ function CardCategoresults({title, descriction,difficulty,ratings,price,imgCurso
         <CardMedia
           sx={{ height: 300, width:400}}
           component='img'
-          image={imgCurso}
+          image={image}
           title={title}
         />
 
@@ -44,7 +44,7 @@ function CardCategoresults({title, descriction,difficulty,ratings,price,imgCurso
                         textAlign: 'justify'
 
                     }}>
-                       {descriction}
+                       {description}
                     </Typography>
                 </Grid>
 
@@ -58,14 +58,14 @@ function CardCategoresults({title, descriction,difficulty,ratings,price,imgCurso
                             textAlign: 'justify'
 
                         }}>
-                           {instructor}
+                           {dificulty}
                         </Typography>
 
                         <Typography gutterBottom variant="body1" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            {difficulty}
+                            {lenguage}
                         </Typography>
                         
                         <Grid width={600}
@@ -75,7 +75,7 @@ function CardCategoresults({title, descriction,difficulty,ratings,price,imgCurso
                             alignItems="baseline"
                         >
                             <Grid>
-                                <Rating name="half-rating" size="large" value={ratings}
+                                <Rating name="half-rating" size="large" value={duration}
                                 color='#E53170' />
                             </Grid>
 
