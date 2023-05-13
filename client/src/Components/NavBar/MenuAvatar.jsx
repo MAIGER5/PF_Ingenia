@@ -74,20 +74,45 @@ export default function MenuAvatar() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem 
+          onClick={handleClose} 
+          component={Link} 
+          to="/Profile"
+        >
           <Avatar />{" "}
-          <Typography variant="subtitle1" fontWeight="bold">
+          <Typography variant="subtitle1" fontWeight="bold" >
             Perfil Usuario
           </Typography>
         </MenuItem>
-
-        <MenuItem onClick={handleClose} sx={{ mt: 2 }} component={Link} to="/Login">
+        <MenuItem 
+          onClick={handleClose} 
+          sx={{ mt: 2 }} 
+          component={Link} 
+          to="/MyCourses"
+        >
           Mis Cursos
         </MenuItem>
-
-        <MenuItem onClick={handleClose}  component={Link} to="/SingUp">Favoritos</MenuItem>
-        <MenuItem onClick={handleClose}  component={Link} to="/CategoryCourses">Notificaciones</MenuItem>
-        <MenuItem onClick={handleClose}  component={Link} to="/CoureseDetail/:id">Ayuda</MenuItem>
+        <MenuItem 
+          onClick={handleClose}  
+          component={Link} 
+          to="/MyCourses"
+        >
+          Favoritos
+        </MenuItem>
+        <MenuItem 
+          onClick={handleClose}  
+          component={Link} 
+          to="/Notifications"
+        >
+          Notificaciones
+        </MenuItem>
+        <MenuItem 
+          onClick={handleClose}  
+          component={Link} 
+          to="/Support"
+        >
+          Ayuda
+        </MenuItem>
         <Divider />
 
         <MenuItem onClick={handleClose}>

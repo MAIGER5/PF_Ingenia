@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box, Stack, Typography} from '@mui/material';
 import Carrusel from '../../Hero Section/HeroSection';
 import styled from "./Home.module.css"
@@ -7,7 +7,20 @@ import HomeTopPublicaiones from '../HomeTopPublicaiones/HomeTopPublicaiones';
 import HomeRebajas from '../Home Rebajas/HomeRebajas';
 import HomeMejorcalificados from '../HomeMejorcalificados/HomeMejorcalificados';
 import HomeCategorias from '../HomeCategorias/HomeCategorias';
+import { useDispatch } from 'react-redux';
+import { getCourses } from '../../../Redux/Actions/getCourses';
+
+
+
 export default function HomeComponent() {
+
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(getCourses());
+  }, [dispatch])
+
+
   return (
     <Box>
      <Carrusel/>
@@ -15,7 +28,7 @@ export default function HomeComponent() {
       <Typography variant="h6"  sx={{marginTop:1 , color:"#FFFFFE" ,display:"flex" ,justifyContent:"center",}} >Vende con nosotros</Typography>
      </div>
     <div className={styled.Home}>
-     <HomeTopVentas/>
+     <HomeTopVentas />
      <HomeTopPublicaiones/>
      </div>
      <HomeRebajas/>

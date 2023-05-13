@@ -1,17 +1,21 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, CardActionArea, Grid, Hidden, Rating } from '@mui/material';
+import { Box, Button, Grid, Rating } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useSelector } from 'react-redux';
 
 
-export function CardDetailCourse() {
-  return (
+export function CardsDetail({}) {
+    
+    const curses = useSelector((state)=> state.courseDetail)
+  
+    return (
+
     <Card sx={{ 
         display: 'flex',
         alignItems: 'center',
@@ -20,30 +24,30 @@ export function CardDetailCourse() {
         <CardMedia
           sx={{ height: 300, width: 600}}
           component='img'
-          image="./Image/maxresdefault.jpg"
+          image= {curses.image}
           title="imagen de curso"
         />
 
         <CardContent>
-            <Grid container spacing={1}
+            <Grid container spacing={0}
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                padding={2} >
+                marginLeft={5}
+                padding={1} >
 
                 <Grid >
-                    <Typography gutterBottom variant="h5" component="div" sx={{
+                    <Typography gutterBottom variant="h3" component="h3" sx={{
                         textAlign: 'justify'
 
                     }}>
-                        Ecommerce & Marketing course: Agency, Marketer
+                        {curses.title}
                     </Typography>
 
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
-
                     }}>
-                        Best Ecommerce & Digital Marketing course, social media marketing, sales funnels, WordPress website, SEO, Ads, ...
+                        {curses.description}
                     </Typography>
                 </Grid>
 
@@ -57,14 +61,14 @@ export function CardDetailCourse() {
                             textAlign: 'justify'
 
                         }}>
-                            Por: Ruben Diaz
+                            {curses.dificulty}
                         </Typography>
 
                         <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            Todos los niveles
+                            {curses.dificulty}
                         </Typography>
                         
                         <Grid width={600}
@@ -74,7 +78,7 @@ export function CardDetailCourse() {
                             alignItems="baseline"
                         >
                             <Grid>
-                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
                             </Grid>
 
 
@@ -86,9 +90,9 @@ export function CardDetailCourse() {
                                 <FavoriteIcon />
                             </Fab>
                             <Grid item xs={3}>
-                                <Box component='h3'
+                                <Box component='h2'
                                 >
-                                    $100 USD
+                                    {curses.price}
                                 </Box>
                             </Grid>
                         </Grid>
@@ -100,4 +104,4 @@ export function CardDetailCourse() {
   );
 };
 
-export default CardDetailCourse;
+export default CardsDetail;

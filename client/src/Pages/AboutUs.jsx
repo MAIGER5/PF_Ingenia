@@ -1,76 +1,35 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import React from 'react'
+import Typography from '@mui/material/Typography'
+import { Box, Stack } from '@mui/material'
+import SvgComponentingenia from '../Components/imageningeia'
+
 
 export default function AboutUs() {
   return (
-    <div>
-      <Box
-        paddingTop={8}
-        paddingBottom={12}
-        sx={{ display: "flex", flexDirection: "row" }}
+    <Box sx={{marginTop:10 ,marginBottom:16}}>
+      <Stack
+     direction="row"
+     justifyContent="center"
+    
+     spacing={14}
       >
-        {" "}
-        <Box
-          sx={{
-            backgroundColor: "grey",
-            padding: "10px",
-            flexGrow: 1,
-            flexBasis: "100%",
-          }}
-        ></Box>
-        <Box
-          paddingRight={20}
-          paddingBottom={20}
-          paddingTop={5}
-          paddingLeft={2}
-        >
-          <Box>
-            <Typography
-              variant="h1"
-              align="left"
-              sx={{ fontSize: "30px", padding: "20px" }}
-            >
-              Ingenia: El proyecto
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant="body1"
-              align="left"
-              sx={{ fontSize: "20px", padding: "20px" }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-              ullam fugit odit eum nulla explicabo corrupti maiores, culpa
-              voluptatem eos harum sapiente. Numquam quibusdam rerum aperiam
-              quasi dolor eveniet placeat. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Ullam architecto, vel nam commodi
-              iusto labore a quisquam. Quod, illum dolorem tenetur velit tempore
-              necessitatibus sapiente deserunt atque voluptas nesciunt expedita!
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant="h1"
-              align="left"
-              sx={{ fontSize: "30px", padding: "20px" }}
-            >
-              Nosotros
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant="body1"
-              align="left"
-              sx={{ fontSize: "20px", padding: "20px" }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-              ullam fugit odit eum nulla explicabo corrupti maiores, culpa
-              voluptatem eos harum sapiente. Numquam quibusdam rerum aperiam
-              quasi dolor eveniet placeat.
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-    </div>
-  );
+     <SvgComponentingenia/>
+     <Stack  spacing={4}>
+      <Typography variant="h2" color="primary"> Somos Ingenia</Typography>
+      <Typography variant="body1" color="initial" sx={{width: 536,height: 150}} >
+        una empresa especializada en la venta de cursos en línea, con un enfoque particular en el mundo de la tecnología de la información (TI).
+        Nuestro objetivo es ofrecer a nuestros clientes una experiencia de aprendizaje en línea de alta calidad y asequible, que les permita mejorar sus habilidades
+        técnicas y avanzar en sus carreras profesionales.
+        Creemos que el aprendizaje en línea es una herramienta poderosa para democratizar el conocimiento y brindar a las personas acceso a oportunidades educativas de alta
+        calidad, independientemente de su ubicación geográfica o situación económica. Es por eso que hemos invertido en tecnología y recursos para crear una plataforma
+        de aprendizaje
+        en línea intuitiva y fácil de usar, que permite a nuestros clientes aprender a su propio ritmo y en su propio horario.
+        En Ingenia, nos apasiona la tecnología y la educación, y nos esforzamos por ofrecer cursos en línea de la más alta calidad en una amplia variedad de temas de
+        TI. Nuestros instructores son expertos en sus campos, con amplia experiencia en la industria, y están comprometidos con proporcionar una experiencia de aprendizaje
+        enriquecedora y práctica a nuestros clientes.
+      </Typography>
+      </Stack>
+      </Stack>
+    </Box>
+  )
 }

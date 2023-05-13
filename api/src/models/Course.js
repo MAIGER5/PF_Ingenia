@@ -46,6 +46,10 @@ module.exports = (sequelize) => {
       defaultValue: "MEDIUM",
       allowNull: false,
     },
+    requirement:{
+      type:DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:false
+    },
     asset: {
       type: DataTypes.BOOLEAN,
       default: false,
