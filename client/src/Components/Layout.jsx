@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { pink, orange } from "@mui/material/colors";
 import { CssBaseline } from "@mui/material";
@@ -9,7 +9,13 @@ export const ColorModeContext = React.createContext({
 });
 
 export default function Layout(props) {
-  const [mode, setMode] = React.useState("light");
+  const [mode, setMode] = React.useState(
+    localStorage.getItem("mode") || "light"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("mode", mode);
+  }, [mode]);
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
