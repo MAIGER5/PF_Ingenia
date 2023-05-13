@@ -1,17 +1,20 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, CardActionArea, Grid, Hidden, Rating } from '@mui/material';
+import { Box, Button, Grid, Rating } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useSelector } from 'react-redux';
 
 
-export function CardDetailCurso({title, imgCurso, description, instructor, price }) {
-  return (
+export function CardsDetail({}) {
+    
+    const curses = useSelector((state)=> state.courseDetail)
+  
+    return (
 
     <Card sx={{ 
         display: 'flex',
@@ -21,7 +24,7 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
         <CardMedia
           sx={{ height: 300, width: 600}}
           component='img'
-          image= {imgCurso}
+          image= {curses.image}
           title="imagen de curso"
         />
 
@@ -38,13 +41,13 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
                         textAlign: 'justify'
 
                     }}>
-                        {title}
+                        {curses.title}
                     </Typography>
 
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
                     }}>
-                        {description}
+                        {curses.description}
                     </Typography>
                 </Grid>
 
@@ -58,14 +61,14 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
                             textAlign: 'justify'
 
                         }}>
-                            {instructor}
+                            {curses.dificulty}
                         </Typography>
 
                         <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            {title}
+                            {curses.dificulty}
                         </Typography>
                         
                         <Grid width={600}
@@ -89,7 +92,7 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
                             <Grid item xs={3}>
                                 <Box component='h2'
                                 >
-                                    {price}
+                                    {curses.price}
                                 </Box>
                             </Grid>
                         </Grid>
@@ -101,4 +104,4 @@ export function CardDetailCurso({title, imgCurso, description, instructor, price
   );
 };
 
-export default CardDetailCurso;
+export default CardsDetail;

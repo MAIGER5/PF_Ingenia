@@ -1,123 +1,136 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import { Grid, Rating } from '@mui/material';
 import ValoracionesCurso from './ValoracionesCurso';
 import AcercaProfesor from './AcercaProfesor';
-import cursos from '../Card/harcodedecursosborra';
-import CardsD from '../Card/CardsD';
-
+import CardsDetail from './CardsDetail';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDetailCourse } from '../../Redux/Actions/getDetailCourse';
+import { cleandDetail } from '../../Redux/Actions/cleanDetail';
+import { useParams } from 'react-router-dom';
 
 
 function DetailCourse() {
 
+    const {id} = useParams();
+    console.log({id})
+    const dispatch = useDispatch();
 
-  return (
+    const curses = useSelector((state)=>state.courseDetail)
 
-    <Grid 
-        marginX={15}
-        marginY={3}
-    > 
+    useEffect(()=> {
+        dispatch(getDetailCourse(id));
+        
+        return ()=> {
+            dispatch(cleandDetail())
+        }
+    }, [id]);
 
-        <CardsD cursos={cursos} />
+    return (
 
-        <Grid   container
-            direction="row"
-            justifyContent="space-between"
-            alignItems="flex-start"
-            className='interno dos'
-            marginTop={5}
-            maxHeight={300}>
-            <Grid item xs={5}>
-                <Grid >
-                    <Typography gutterBottom variant="h5" component="div" sx={{
-                        textAlign: 'justify'
-                    }}>
-                        Lo que aprenderás
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="div" sx={{
-                        textAlign: 'justify'
-                    }}>
-                        Java es un lenguaje de programación que fue diseñado para ser portable o compatible con cualquier computadora o sistema operativo. La portabilidad se logra a través de la compilación de códigos independientes que se ejecutan en una máquina virtual de Java conocida
-                    </Typography>
+        <Grid 
+            marginX={15}
+            marginY={3}
+        > 
 
-                    <Typography gutterBottom variant="h5" component="div" sx={{
-                        textAlign: 'justify'
-                    }}>
-                        Metodología de enseñanza
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="div" sx={{
-                        textAlign: 'justify'
-                    }}>
-                        La metodología empleada en los cursos, es el trabajo colaborativo y el aprendizaje significativo, de modo que involucre al participante de modo activo y la transformación de información en conocimiento sea lo más eficiente.
-                    </Typography>
+            <CardsDetail />
 
-                    <Typography gutterBottom variant="h5" component="div" sx={{
-                        textAlign: 'justify'
+            <Grid   container
+                direction="row"
+                justifyContent="space-between"
+                alignItems="flex-start"
+                className='interno dos'
+                marginTop={5}
+                maxHeight={300}>
+                <Grid item xs={5}>
+                    <Grid >
+                        <Typography gutterBottom variant="h5" component="div" sx={{
+                            textAlign: 'justify'
+                        }}>
+                            Lo que aprenderás
+                        </Typography>
+                        <Typography gutterBottom variant="h8" component="div" sx={{
+                            textAlign: 'justify'
+                        }}>
+                            {curses.description}
+                        </Typography>
 
-                    }}>
-                        Requisitos
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="div" sx={{
-                        textAlign: 'justify'
+                        <Typography gutterBottom variant="h5" component="div" sx={{
+                            textAlign: 'justify'
+                        }}>
+                            Metodología de enseñanza
+                        </Typography>
+                        <Typography gutterBottom variant="h8" component="div" sx={{
+                            textAlign: 'justify'
+                        }}>
+                            {curses.habilities}
+                        </Typography>
 
-                    }}>
-                        Disponibilidad horaria
-                        Herramientas informaticas y ofimaticas
-                        Nivel basico tics
-                    </Typography>
+                        <Typography gutterBottom variant="h5" component="div" sx={{
+                            textAlign: 'justify'
 
+                        }}>
+                            Requisitos
+                        </Typography>
+                        <Typography gutterBottom variant="h8" component="div" sx={{
+                            textAlign: 'justify'
+
+                        }}>
+                            {curses.description}
+                        </Typography>
+
+                    </Grid>
+                </Grid>
+                    
+                <Grid item xs={5.8}>
+                    <Grid >
+                        <Typography gutterBottom variant="h5" component="div" sx={{
+                            textAlign: 'justify'
+
+                        }}>
+                            Descripción
+                        </Typography>
+                        <Typography gutterBottom variant="h8" component="div" sx={{
+                            textAlign: 'justify'
+
+                        }}>
+                            {curses.description}
+                        </Typography>
+
+                        <Typography gutterBottom variant="h5" component="div" sx={{
+                            textAlign: 'justify'
+
+                        }}>
+                            Categoria
+                        </Typography>
+                        <Typography gutterBottom variant="h8" component="div" sx={{
+                            textAlign: 'justify'
+
+                        }}>
+                            {curses.title}
+                        </Typography>
+
+                    </Grid>
                 </Grid>
             </Grid>
+
+
+
+            <Grid   container
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                className='interno tres'
+            >
                 
-            <Grid item xs={5.8}>
-                <Grid >
-                    <Typography gutterBottom variant="h5" component="div" sx={{
-                        textAlign: 'justify'
+                <ValoracionesCurso/>
+                <AcercaProfesor/>
 
-                    }}>
-                        Descripción
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="div" sx={{
-                        textAlign: 'justify'
 
-                    }}>
-                       La metodología empleada en los cursos, es el trabajo colaborativo y el aprendizaje significativo, de modo que involucre al participante de modo activo y la transformación de información en conocimiento sea lo más eficiente.
-                    </Typography>
 
-                    <Typography gutterBottom variant="h5" component="div" sx={{
-                        textAlign: 'justify'
-
-                    }}>
-                        Categoria
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="div" sx={{
-                        textAlign: 'justify'
-
-                    }}>
-                        Telecomuniaciones, programacion, desarrollo, develop
-                    </Typography>
-
-                </Grid>
+                
             </Grid>
         </Grid>
-
-
-
-        <Grid   container
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            className='interno tres'
-        >
-            
-            <ValoracionesCurso/>
-            <AcercaProfesor/>
-
-
-
-            
-        </Grid>
-    </Grid>
   );
 };
 
