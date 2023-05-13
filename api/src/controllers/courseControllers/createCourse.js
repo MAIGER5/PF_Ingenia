@@ -1,7 +1,7 @@
-const {Course,User} = require('../../database')
+const {Course,User,Category} = require('../../database')
 
 const createCourse = async (title,description,image,lenguage,price,duration,habilities,
-    dificulty,IdUser,Category,requirement,users)=>{
+    dificulty,IdUser,Category,requirement,users,category)=>{
 
     const pricePro = price - (price * 0.2);
     const newCourse = await Course.create({
@@ -17,6 +17,7 @@ const createCourse = async (title,description,image,lenguage,price,duration,habi
         asset:true
     }); 
     newCourse.addUsers(users)
+    newCourse.addCategories(category)
     return newCourse;
 }
 module.exports = createCourse;

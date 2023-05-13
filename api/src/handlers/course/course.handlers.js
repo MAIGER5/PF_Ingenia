@@ -1,12 +1,11 @@
 const createCourse = require('../../controllers/courseControllers/createCourse')
 
-const { Course } = require('../../database')
+const { Course,User,Category } = require('../../database')
 
-const { Op } = require('sequelize')
+const { Op } = require('sequelize');
 
 const getCourseHandlers = async (req, res) => {
   try {
-
     const coursesBase = await Course.findAll()
     const {
       page = 0,
@@ -55,7 +54,23 @@ const getCourseByIDHandlers = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const ad = await Course.findByPk(id);
+    const ad = await Course.findByPk(id,{
+      include:[{
+          model: User,
+          attributes:["name"],
+          through:{
+              attributes:[],
+          },
+      },
+      {
+        model:Category,
+        attributes:['name'],
+        through:{
+          attributes:[],
+      },
+      }
+    ],
+  });
 
     if (!ad) {
       return res.status(404).json({ message: 'Course not found' });
@@ -70,10 +85,10 @@ const getCourseByIDHandlers = async (req, res) => {
 
 const createCourseHandlers = async (req, res) => {
   const {title,description,image,lenguage,price,duration,habilities,
-    dificulty,IdUser,Category,requirement,users} = req.body;
+    dificulty,IdUser,Category,requirement,users,category} = req.body;
   try {
     const response = await createCourse(title,description,image,lenguage,price,duration,habilities,
-      dificulty,IdUser,Category,requirement,users);
+      dificulty,IdUser,Category,requirement,users,category);
     res.status(200).json(response);
   } catch (error) {
     console.log(error);
