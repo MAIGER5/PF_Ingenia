@@ -9,12 +9,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 
 
-function CardHome({title,imgCurso,instructor,price,ratings, id}) {
+function CardHome({title, image, instructor, price, ratings, idCourse}) {
  
  
   return (
 
-    <Link to={`/DetailCourse/${id}`}>
+    <Link to={`/DetailCourse/${idCourse}`}>
       <Card sx={{ 
         transition: '0.2s', 
         '&:hover': {
@@ -30,7 +30,7 @@ function CardHome({title,imgCurso,instructor,price,ratings, id}) {
               sx={{ height: 190 }}
               component='img'
 
-              image={imgCurso}
+              image={image}
               title="xxxxx"
 
             />
