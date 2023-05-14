@@ -53,7 +53,7 @@ export default function FormLogin() {
             />
             <NavLink 
                 style={{ textDecoration: 'none'}}
-                to={"/ForgotPassword"}
+                to={"/ResetPassword"}
             >
                 <p className={styles.textLegend}>Olvide mi contraseña</p>
             </NavLink>

@@ -1,7 +1,11 @@
-
+import styles from "./Support.module.css";
 
 export default function Support() {
   return (
-    <div>Support</div>
+    <div className={styles.container}>
+      <h3 className={styles.title}>
+          Soporte
+      </h3>
+    </div>
   )
 }

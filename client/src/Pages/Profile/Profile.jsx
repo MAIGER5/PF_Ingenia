@@ -29,9 +29,9 @@ export default function Profile() {
         return {
             sx: {
             bgcolor: stringToColor(name),
-            height: '50px', 
-            width: '50px',
-            fontSize: "20px",
+            height: '90px', 
+            width: '90px',
+            fontSize: "45px",
             marginLeft: "15px",
             },
             children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,

@@ -1,12 +1,10 @@
-.BanerHomeVendeConNosotros{
-   
-position: absolute;
-width: 100%;
-height: 48px;
-left: 0px;
-top: 390px;
-background: #FF8906;
-margin-bottom: 6rem;
+.BanerHomeVendeConNosotros{ 
+    position: absolute;
+    width: 100%;
+    height: 48px;
+    left: 0px;
+    background: #FF8906;
+    margin-bottom: 6rem;
 }
 .Home{
     display: flex;

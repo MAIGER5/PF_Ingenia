@@ -11,12 +11,13 @@ import NavBar from './Components/NavBar/NavBar';
 import Profile from './Pages/Profile/Profile';
 import LandingSeller from './Pages/LandingSeller/LandingSeller';
 import DetailCourse from './Components/DetailCourse.jsx/DetailCourse';
-import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
+import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import MyCourses from './Pages/MyCourses/MyCourses';
 import Notifications from './Pages/Notifications/Notifications';
 import Cart from './Pages/Cart/Cart';
 import Support from './Pages/Support/Support';
 import Footer from './Components/Footer/Footer';
+import Terms from './Pages/Terms/Terms';
 
 function App() {
 return (
@@ -33,11 +34,12 @@ return (
           <Route path="/CategoryCourses" element={<CategoryCourses/>}/>
           <Route path="/Profile" element={<Profile/>}/>
           <Route path="/LandingSeller" element={<LandingSeller/>}/>
-          <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
+          <Route path="/ResetPassword" element={<ResetPassword/>}/>
           <Route path="/MyCourses" element={<MyCourses/>}/>
           <Route path="/Notifications" element={<Notifications/>}/>
           <Route path="/Cart" element={<Cart/>}/>  
-          <Route path="/Support" element={<Support/>}/>  
+          <Route path="/Support" element={<Support/>}/> 
+          <Route path="/Terms" element={<Terms/>}/>   
           <Route path="*" element={<NotFound/>} />
         </Routes>
       <Footer/>

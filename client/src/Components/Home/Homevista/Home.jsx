@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Box, Stack, Typography} from '@mui/material';
+import { useEffect } from 'react'
+import { Box, Typography} from '@mui/material';
 import Carrusel from '../../Hero Section/HeroSection';
 import styled from "./Home.module.css"
 import HomeTopVentas from '../HomeTopVentas/HomeTopVentas';
@@ -9,6 +9,7 @@ import HomeMejorcalificados from '../HomeMejorcalificados/HomeMejorcalificados';
 import HomeCategorias from '../HomeCategorias/HomeCategorias';
 import { useDispatch } from 'react-redux';
 import { getCourses } from '../../../Redux/Actions/getCourses';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -25,7 +26,24 @@ export default function HomeComponent() {
     <Box>
      <Carrusel/>
      <div  className={styled.BanerHomeVendeConNosotros}>
-      <Typography variant="h6"  sx={{marginTop:1 , color:"#FFFFFE" ,display:"flex" ,justifyContent:"center",}} >Vende con nosotros</Typography>
+      <NavLink 
+        to={"/LandingSeller"} 
+        style={{ textDecoration: 'none' }}
+      >
+        <Typography 
+          variant="h6"  
+          sx={{ 
+            marginTop:1 , 
+            color:"#FFFFFE" ,
+            display:"flex" ,
+            justifyContent:"center",
+
+          }}
+        >
+          Vende con nosotros
+        </Typography>
+      </NavLink>
+     
      </div>
     <div className={styled.Home}>
      <HomeTopVentas />
