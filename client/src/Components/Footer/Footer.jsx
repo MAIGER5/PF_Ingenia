@@ -1,12 +1,15 @@
-import { Box, Divider, Typography } from '@mui/material'
-import React from 'react'
-import styled from "./Footer.module.css"
+import { NavLink } from 'react-router-dom';
+import styles from "./Footer.module.css"
 
 export default function Footer() {
   return (
-    <Box sx={{marginTop:10}}>
-      <div className={styled.footer}>.</div>
-       <Typography variant="h5" color="primary" >Ingenia</Typography>
-    </Box>
+    <footer className={styles.footer}>  
+      <NavLink to={"/"}  style={{ textDecoration: "none"}}>
+       <p className={styles.ingeniaText}>Ingenia</p>
+      </NavLink>
+      <NavLink to={"/AboutUs"} style={{ textDecoration: "none"}}>
+       <p className={styles.aboutText}>Acerca de</p>
+      </NavLink>
+    </footer>
   )
 }
