@@ -33,7 +33,10 @@ export default function Login() {
         </Button>
         <p className={styles.textBottom}>
           ¿Aún no tienes una cuenta?
-          <NavLink to={`/${type}`}>
+          <NavLink 
+            style={{ textDecoration: 'none'}}
+            to={`/${type}`}
+          >
             <span className={styles.textLink}> Registrate</span>
           </NavLink>
         </p>

@@ -11,12 +11,21 @@ export default function SignupUsuario() {
         <FormRegisterUsuario />
 
         <p className={styles.disclaimer}>
-          Al registrarte, aceptas nuestras Condiciones de uso y nuestra Política de privacidad.
+          Al registrarte, 
+          <NavLink 
+            to={"/Terms"} 
+            style={{ textDecoration: 'none' }}
+          >
+            <span className={styles.textLink}> condiciones de uso y nuestra Política de privacidad.</span>
+          </NavLink> 
         </p>
       </div>
       <p className={styles.textBottom}>
         ¿Ya tienes una cuenta?
-        <NavLink to={"/Login"}>
+        <NavLink 
+          to={"/Login"}
+          style={{ textDecoration: 'none' }}
+        >
           <span className={styles.textLink}> Inicia Sesión</span>
         </NavLink>
       </p>
