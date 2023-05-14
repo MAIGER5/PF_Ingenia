@@ -16,12 +16,13 @@ import MyCourses from './Pages/MyCourses/MyCourses';
 import Notifications from './Pages/Notifications/Notifications';
 import Cart from './Pages/Cart/Cart';
 import Support from './Pages/Support/Support';
+import Footer from './Components/Footer/Footer';
 
 function App() {
 return (
     <> 
     <BrowserRouter>
-    <NavBar/>
+      <NavBar/>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/AboutUs" element={<AboutUs/>} />
@@ -39,8 +40,8 @@ return (
           <Route path="/Support" element={<Support/>}/>  
           <Route path="*" element={<NotFound/>} />
         </Routes>
-      </BrowserRouter>
-     
+      <Footer/>
+    </BrowserRouter>
     </>
   )
 }

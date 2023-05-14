@@ -1,3 +1,17 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.subcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 50px 0 80px; 
+}
 
 .list{
     list-style: none;
@@ -6,3 +20,13 @@
 .styles.listElement{
    
 }
+
+.banner{
+  width:940px;
+  height:720px;
+  background-image: url('https://i.postimg.cc/2jXWHHW2/banner-vendedor.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;	
+}
+

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { pink, orange } from "@mui/material/colors";
 import { CssBaseline } from "@mui/material";
-import Footer from "./Footer/Footer";
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
@@ -54,7 +53,7 @@ export default function Layout(props) {
             <CssBaseline />
             <header></header>
             <main>{props.children}</main>
-            <Footer/>
+            <footer></footer>
           </ThemeProvider>
         </ColorModeContext.Provider>
       </div>

@@ -18,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           left: 0,
           right: 0,
           bottom: 0,
+          scrollBehavior: "smooth",
         }}
       >
         <Layout>
