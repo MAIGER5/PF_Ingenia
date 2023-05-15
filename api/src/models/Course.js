@@ -29,6 +29,10 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    pro:{
+      type:DataTypes.BOOLEAN,
+      default:false
+    },
     pricePro:{
       type: DataTypes.FLOAT,
       allowNull: false,
@@ -37,7 +41,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    habilities: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -47,12 +51,20 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     requirement:{
+      type:DataTypes.STRING,
+      allowNull:false
+    },
+    learnTo:{
       type:DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false
     },
+    studyMethod:{
+      type:DataTypes.STRING,
+      allowNull:true
+    },
     asset: {
       type: DataTypes.BOOLEAN,
-      default: false,
+      default: true,
       allowNull: false,
     },
   });

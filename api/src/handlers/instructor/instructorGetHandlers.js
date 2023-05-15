@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs");
 
 const instructorGetHandlers = (req, res) => {};
 const instructorPostHandlers = async (req, res) => {
-  const { name, lastname, email, password, studies } = req.body;
+  const { name, lastname, email, password, studies,description } = req.body;
   const passwordHash = await bcryptjs.hash(password, 8);
   try {
     const response = await createInstructor(
@@ -11,7 +11,8 @@ const instructorPostHandlers = async (req, res) => {
       lastname,
       email,
       passwordHash,
-      studies
+      studies,
+      description
     );
     res.status(200).json(response);
   } catch (error) {
