@@ -28,6 +28,9 @@ module.exports = (sequelize) => {
         type:DataTypes.STRING,
         isUrl: true,
     },
+    description:{
+      type:DataTypes.STRING,
+    },
     Is:{
       type: DataTypes.ENUM('STUDEN','INSTRUCTOR','ADMIN')
     },
@@ -39,8 +42,8 @@ module.exports = (sequelize) => {
     },
     asset: {
       type: DataTypes.BOOLEAN,
-      default:false,
+      default:true,
       allowNull: false,
-    },
+    } 
   });
 };

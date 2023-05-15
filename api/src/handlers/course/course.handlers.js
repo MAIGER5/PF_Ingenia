@@ -1,82 +1,23 @@
 const createCourse = require('../../controllers/courseControllers/createCourse')
-
-const { Course,User,Category } = require('../../database')
-
-const { Op } = require('sequelize');
+const getCourseControllers = require('../../controllers/courseControllers/getCourseControllers')
+const getCourseByIDControllers = require('../../controllers/courseControllers/getCourseByIDControllers')
 
 const getCourseHandlers = async (req, res) => {
+  const {page = 0,size = 20,title} = req.query;
   try {
-    const coursesBase = await Course.findAll()
-    const {
-      page = 0,
-      size = 20,
-      title,
-      // sort,
-    } = req.query;
-
-    const options = {
-      limit: +size,
-      offset: +page * +size,
-      where: { title: '' },
-      order: [['createdAt', 'DESC']],
-    };
-
-    if (title) {
-      options.where.title = {
-        [Op.iLike]: `%${title}%`,
-      };
-    }
- 
-    // Por el momento los filtros en el back
-
-    // if (sort === 'priceAsc') {
-    //   options.order = [['price', 'ASC']];
-    // } else if (sort === 'priceDesc') {
-    //   options.order = [['price', 'DESC']];
-    // } else if (sort === 'titleAsc') {
-    //   options.order = [['title', 'ASC']];
-    // } else if (sort === 'titleDesc') {
-    //   options.order = [['title', 'DESC']];
-    // }
-
-    const courses = await Course.findAll(options);
-
-    courses.length ? res.status(202).send(courses) : res.status(202).send(coursesBase)
+    const response = await getCourseControllers(page,size,title)
+    res.status(200).json(response)
   } catch (error) {
-    console.error(error);
     return res
-      .status(400)
-      .json({ message: 'Failed to retrieve/get the data.' });
+      .status(400).json({ message: 'Failed to retrieve/get the data.' });
   }
 };
 
 const getCourseByIDHandlers = async (req, res) => {
   try {
     const { id } = req.params;
-
-    const ad = await Course.findByPk(id,{
-      include:[{
-          model: User,
-          attributes:["name"],
-          through:{
-              attributes:[],
-          },
-      },
-      {
-        model:Category,
-        attributes:['name'],
-        through:{
-          attributes:[],
-      },
-      }
-    ],
-  });
-
-    if (!ad) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-
-    return res.status(200).json(ad);
+    const response = await getCourseByIDControllers(id);
+    res.status(200).json(response)
   } catch (error) {
     console.error(error);
     return res.status(400).json({ message: 'Failed to retrieve the data' });
@@ -84,11 +25,38 @@ const getCourseByIDHandlers = async (req, res) => {
 };
 
 const createCourseHandlers = async (req, res) => {
-  const {title,description,image,lenguage,price,duration,habilities,
-    dificulty,IdUser,Category,requirement,users,category} = req.body;
+  const {    
+    title,
+    description,
+    image,
+    lenguage,
+    price,
+    pro,
+    duration,
+    content,
+    dificulty,
+    requirement,
+    learnTo,
+    studyMethod,
+    users,
+    catego} = req.body;
   try {
-    const response = await createCourse(title,description,image,lenguage,price,duration,habilities,
-      dificulty,IdUser,Category,requirement,users,category);
+    const response = await createCourse(
+      title,
+      description,
+      image,
+      lenguage,
+      price,
+      pro,
+      duration,
+      content,
+      dificulty,
+      requirement,
+      learnTo,
+      studyMethod,
+      users,
+      catego
+    );
     res.status(200).json(response);
   } catch (error) {
     console.log(error);
