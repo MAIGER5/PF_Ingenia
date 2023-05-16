@@ -1,15 +1,8 @@
 const {Category,Course} = require('../../database')
 
 const getCategoryControllers = async ()=>{
-    const response = await Category.findAll({
-        include:{
-            model: Course,
-            attributes:["title"],
-            through:{
-               attributes:[]
-            }
-         }
-    })
+    const response = await Category.findAll()
 return response
 }
 module.exports = getCategoryControllers;
+
