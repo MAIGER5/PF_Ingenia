@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import LoaderPage from "../LoaderPage/LoaderPage";
+import { Alert, Snackbar }from '@mui/material';
 import styles from "./FormRegisterVendedor.module.css";
 
 export default function FormRegisterVendedor() {
@@ -11,12 +14,19 @@ export default function FormRegisterVendedor() {
         description: "",
         degrees: "",
     })
+    const [isLoading, setisLoading] = useState(false);
+    const [isAlert, setIsAlert] = useState(false);  
 
+    const navigate = useNavigate();
+    
     const handleSubmit = async(event) => {
         event.preventDefault();
 
+        
+      
         console.log(user)
-     
+        setIsAlert(true)
+   
         // await fetch("http://localhost:3001/user/created", {
         // method: "POST",
         // headers: {
@@ -26,6 +36,11 @@ export default function FormRegisterVendedor() {
         // }).catch(error => {
         //     console.log(error);
         // });
+        setTimeout(() => {
+            setisLoading(true);
+            navigate("/")
+        }, "1000");
+        setisLoading(false)
         setUser({
             name: "",
             lastName: "",
@@ -34,6 +49,7 @@ export default function FormRegisterVendedor() {
             description: "",
             degrees: "",
         })
+
     }
 
     const handleInput = (event) => {
@@ -45,11 +61,21 @@ export default function FormRegisterVendedor() {
         });
     }
 
+    
   return (
-    <form 
+    <>
+        {isLoading && <LoaderPage/>}
+        {isAlert && (<Snackbar open={isAlert} autoHideDuration={2000} onClose={()=>setIsAlert(false)}>
+            <Alert 
+                variant="filled" severity="success"
+            >
+                Registrado Satisfactoriamente
+            </Alert>
+        </Snackbar>)}
+         <form 
         className={styles.form}
         onSubmit={handleSubmit}
-    >
+        >
         <div className={styles.container}>
             <div className={styles.containerMedium} >
                 <input 
@@ -106,5 +132,10 @@ export default function FormRegisterVendedor() {
             <span className={styles.button_text}>Registrate</span>
         </button>
     </form>
+
+
+
+    </>
+   
   )
 }
