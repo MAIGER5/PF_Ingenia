@@ -1,12 +1,15 @@
 import { GET_COURSES } from "../Actions/getCourses";
 import { CLEAN_DETAIL } from "../Actions/cleanDetail";
 import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
+import { GET_CATEGORIES } from "../Actions/getCategories";
+
 
 
 const initialState = {
     allCourse: [],
     allCourseCopy: [],
-    courseDetail: []
+    courseDetail: [],
+    categories: []
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,6 +32,14 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 courseDetail:[],
             };
+
+        case GET_CATEGORIES:
+            return {
+                ...state,
+                categories:action.payload,
+            };
+
+            
 
         default:
             return { ...state };
