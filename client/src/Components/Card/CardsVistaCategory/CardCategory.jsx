@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -9,7 +8,7 @@ import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function CardCategory() {
+function CardCategory({title, description, dificulty,  price, image}) {
   return (
     <Card sx={{ 
         display: 'flex',
@@ -19,8 +18,8 @@ function CardCategory() {
         <CardMedia
           sx={{ height: 300, width: 600}}
           component='img'
-          image="https://okdiario.com/img/2021/04/20/curiosidades-sobre-los-gatos-domesticos-635x358.jpg"
-          title="imagen de curso"
+          image={image}
+          title={title}
         />
 
         <CardContent>
@@ -35,14 +34,14 @@ function CardCategory() {
                         textAlign: 'justify'
 
                     }}>
-                        Ecommerce & Marketing course: Agency, Marketer
+                      {title}
                     </Typography>
 
                     <Typography gutterBottom variant="h5" component="div" sx={{
                         textAlign: 'justify'
 
                     }}>
-                        Best Ecommerce & Digital Marketing course, social media marketing, sales funnels, WordPress website, SEO, Ads, ...
+                          { description}
                     </Typography>
                 </Grid>
 
@@ -56,14 +55,14 @@ function CardCategory() {
                             textAlign: 'justify'
 
                         }}>
-                            Por: Ruben Diaz
+                            Por: gisell
                         </Typography>
 
                         <Typography gutterBottom variant="h7" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            Todos los niveles
+                          {dificulty}
                         </Typography>
                         
                         <Grid width={600}
@@ -88,7 +87,7 @@ function CardCategory() {
                             <Grid item xs={3}>
                                 <Box component='h2'
                                 >
-                                    $100 USD
+                                  {price}
                                 </Box>
                             </Grid>
                         </Grid>

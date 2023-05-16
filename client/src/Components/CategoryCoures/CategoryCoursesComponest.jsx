@@ -1,8 +1,9 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import FiltersComponets from '../Filters'
-import Cardsresults from '../Card/Cardsresults'
 import PaginationButtons from '../Pagination/Pagination'
+import Cardsresulcategory from '../Card/CardsVistaCategory/CarsdCategory'
+
 export default function CategoryCoursesComponest() {
   return (
     <Box sx={{marginTop:6}}>
@@ -13,7 +14,7 @@ export default function CategoryCoursesComponest() {
         sx={{marginLeft:5}}
       >
       <FiltersComponets/>
-      <Cardsresults/>
+      <Cardsresulcategory/>
       </Stack>
       <Stack
        sx={{marginTop:6, marginBottom:-6}}
