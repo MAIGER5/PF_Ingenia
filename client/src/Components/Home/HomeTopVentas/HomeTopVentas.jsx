@@ -6,9 +6,9 @@ import Cards from '../../Card/Cards'
 
 export default function HomeTopVentas() {
   return (
-    <Box sx={{width:1000, height:670, }}  >
+    <Box>
        
-          <Typography variant="h5" color="primary"  sx={{   marginLeft:-92,marginBottom:4 }}>Top ventas</Typography>
+          <Typography variant="h5" color="primary"  sx={{   marginLeft:-75,marginBottom:4 }}>Top ventas</Typography>
          <Cards/>
         
     </Box>

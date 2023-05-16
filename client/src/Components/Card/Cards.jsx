@@ -17,9 +17,10 @@ export default function Cards() {
               <CardHome
                 idCourse = {curso.idCourse}
                 title={curso.title}
-                description={curso.description}
+                lenguage={curso.lenguage}
                 image={curso.image}
-                instructor={curso.users}
+                instructorLastName={curso.Users[0].lastname}
+                instructorName={curso.Users[0].name}
                 price={curso.price}
                 habilities={curso.habilities}
               />
