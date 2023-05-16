@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.3",
     "axios": "^1.4.0",
+    "firebase": "^9.22.0",
     "framer-motion": "^10.12.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

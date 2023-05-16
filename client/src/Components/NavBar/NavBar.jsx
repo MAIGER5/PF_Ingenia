@@ -5,7 +5,6 @@ import {
   Box,
   IconButton,
   Link,
-  Toolbar,
   Typography,
 } from "@mui/material";
 import { ColorModeContext } from "../Layout";
@@ -32,6 +31,8 @@ export default function NavBar() {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
   const themeMode = theme.palette.mode === "light" ? "black" : "white";
+
+
 
   return (
     <>

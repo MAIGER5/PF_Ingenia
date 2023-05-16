@@ -1,6 +1,11 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import AvatarComponent from "../AvatarComponent/AvatarComponent";
+import { auth } from "../../firebase/config";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
+
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -8,19 +13,54 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function MenuAvatar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [userName, setUserName] = React.useState("");
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
+  //TODO: Felipe
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        // console.log(user.displayName)
+        // console.log(user)
+        setUserName(user.displayName)
+      } else {
+        setUserName("M")
+        
+      } 
+      console.log(userName);
+    });
+  })
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogOut = () => {
+  
+    //Lógica del logout
+    //Revisar Errores
+    signOut(auth).then(() => {
+      console.log("Ok logout")
+    }).catch((error) => {
+      console.log(error.message)
+    });
+
+    navigate("/")
+  }
+
+ 
+
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -33,9 +73,12 @@ export default function MenuAvatar() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>
-              <AccountCircleIcon sx={{ width: 45, height: 45 }} />
-            </Avatar>
+            <AvatarComponent 
+              name={"Luis Felipe"} 
+              width={"32px"} 
+              height={"32px"} 
+              fontSize={"15px"}
+            />
           </IconButton>
         </Tooltip>
       </Box>
@@ -78,8 +121,14 @@ export default function MenuAvatar() {
           onClick={handleClose} 
           component={Link} 
           to="/Profile"
-        >
-          <Avatar />{" "}
+        > 
+          <AvatarComponent 
+            name={"Luis Felipe"} 
+            width={"32px"} 
+            height={"32px"} 
+            fontSize={"15px"}
+          />
+          {" "}
           <Typography variant="subtitle1" fontWeight="bold" >
             Perfil Usuario
           </Typography>
@@ -115,7 +164,7 @@ export default function MenuAvatar() {
         </MenuItem>
         <Divider />
 
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

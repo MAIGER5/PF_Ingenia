@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import styles from "./FormRegisterUsuario.module.css"
 
 export default function FormRegisterUsuario() {
@@ -12,19 +13,12 @@ export default function FormRegisterUsuario() {
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-
-
-        console.log(user)
      
-        // await fetch("http://localhost:3001/user/created", {
-        // method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
-        // body: JSON.stringify(user),
-        // }).catch(error => {
-        //     console.log(error);
-        // });
+        axios.post('http://localhost:3001/user/created', user)
+        .then(res => console.log("res", res))
+        .catch((error) => {
+            console.log(error);
+        });
         setUser({
             name: "",
             lastName: "",
