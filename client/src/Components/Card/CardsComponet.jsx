@@ -7,19 +7,20 @@ import { useSelector } from 'react-redux';
 export default function CardsComponet() {
 
   const curs = useSelector((state)=> state.allCourse)
-  const cursos = curs.slice(0, 6);
+  const cursos = curs.slice(0, 4);
 
     return (
         <Box  >
         <Grid container spacing={5} sx={{marginLeft:3 }} >
           {cursos.map((curso) => (
-            <Grid item xs={3} sm={6} md={4} xl={2} key={curso.idCourse}>
+            <Grid item xs={3} sm={6} md={4} xl={3} key={curso.idCourse}>
               <CardHome
                 idCourse = {curso.idCourse}
                 title={curso.title}
-                description={curso.description}
+                lenguage={curso.lenguage}
                 image={curso.image}
-                instructor={curso.users}
+                instructorLastName={curso.Users[0].lastname}
+                instructorName={curso.Users[0].name}
                 price={curso.price}
                 habilities={curso.habilities}
               />

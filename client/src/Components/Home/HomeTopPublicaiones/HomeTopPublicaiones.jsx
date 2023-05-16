@@ -5,7 +5,7 @@ import HomeCardComents from './HomeCardComents'
 
 export default function HomeTopPublicaiones() {
   return (
-    <Box >
+    <Box>
       
       <Typography variant="h5" color="primary" sx={{marginBottom:4, marginLeft:17}} >Top publicaciones</Typography>
         <HomeCardComents/>
