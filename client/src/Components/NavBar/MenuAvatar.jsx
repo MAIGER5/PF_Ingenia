@@ -34,7 +34,7 @@ export default function MenuAvatar() {
         setUserName("M")
         
       } 
-      console.log(userName);
+      //console.log(userName);
     });
   })
 
