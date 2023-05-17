@@ -87,7 +87,7 @@ export default function FormRegisterVendedor() {
                     className={styles.input}
                 />
                 <input 
-                    type="Apellido" 
+                    type="text" 
                     placeholder="Contraseña"
                     name="lastName"
                     value={user.lastName}

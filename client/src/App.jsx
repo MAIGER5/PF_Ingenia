@@ -18,6 +18,8 @@ import Cart from './Pages/Cart/Cart';
 import Support from './Pages/Support/Support';
 import Footer from './Components/Footer/Footer';
 import Terms from './Pages/Terms/Terms';
+import PostArticle from './Pages/PostArticle/PostArticle';
+import PostPublication from './Pages/PostPublication/PostPublication';
 
 function App() {
 return (
@@ -40,6 +42,8 @@ return (
           <Route path="/Cart" element={<Cart/>}/>  
           <Route path="/Support" element={<Support/>}/> 
           <Route path="/Terms" element={<Terms/>}/>   
+          <Route path="/PostArticle" element={<PostArticle/>}/> 
+          <Route path="/PostPublication" element={<PostPublication/>}/> 
           <Route path="*" element={<NotFound/>} />
         </Routes>
       <Footer/>
