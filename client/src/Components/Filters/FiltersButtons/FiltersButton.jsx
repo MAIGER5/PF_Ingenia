@@ -8,7 +8,6 @@ import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography'
 import StartsFilter from './StartsFilter';
 import LanguageButton from './LanguageButton';
-import CategoryButton from './CategoryButton';
 import LevelButton from './LevelButton';
 import PriceButton from './PriceButton';
 
@@ -50,12 +49,7 @@ export default function FiltersButton() {
 
       <Divider />
 
-      <List>
-        <Typography variant="body1" color="initial">Categoria</Typography>
-        <ListItem disablePadding>
-          <CategoryButton />
-        </ListItem>
-      </List>
+      
 
 
       <Divider />

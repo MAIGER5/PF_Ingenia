@@ -4,6 +4,7 @@ import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
 import { GET_CATEGORIES } from "../Actions/getCategories";
 import {GET_COURSESCATEGORY} from "../Actions/getCoursescategory"
 import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
+import { FILTER_BY_DIFFICULTY} from "../Actions/filterDificulti";
 
 const initialState = {
     allCourse: [],
@@ -40,21 +41,26 @@ const rootReducer = (state = initialState, action) => {
                     ...state,
                     allCourseCategory: action.payload,
                     
-                };  
-                case FILTER_BY_LANGUAGE:
+                };    
+            case GET_CATEGORIES:
+            return {
+                ...state,
+                categories:action.payload,
+            };
+            case FILTER_BY_LANGUAGE:
                     
                     return {
                         ...state,
                         filtercourses: action.payload,
                         
-                    };  
-
-        case GET_CATEGORIES:
-            return {
-                ...state,
-                categories:action.payload,
-            };
-
+                    };
+                    case  FILTER_BY_DIFFICULTY:
+                    
+                    return {
+                        ...state,
+                        filtercourses: action.payload,
+                        
+                    };
             
 
         default:
