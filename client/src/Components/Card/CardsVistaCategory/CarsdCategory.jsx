@@ -7,7 +7,7 @@ import CardCategory from './CardCategory';
 export default function Cardsresulcategory() {
 
     const cursos=useSelector((state)=>state.filtercourses)
-    const  cursosinitiales = useSelector((state)=> state. allCourseCategory)
+    const  cursosinitiales = useSelector((state)=> state.allCourseCategory)
 
     return (
         <>
