@@ -41,55 +41,55 @@ const createCourseHandlers = async (req, res) => {
     studyMethod,
     users,
     catego} = req.body;
+
   try {
-    // console.log("image", title);
-    // if(image){
-    //   console.log("dentro del if", image)
-    //   const uploadImage = await cloudinary.uploader.upload(image, {
-    //     upload_preset: 'ingenia',
-    //   });
+    
+    if(image.length > 150){
+      const uploadImage = await cloudinary.uploader.upload(image, {
+        upload_preset: 'ingenia',
+      });
 
-    //   if(uploadImage){
-    //     const response = await createCourse(
-    //       title,
-    //       description,
-    //       uploadImage.url,
-    //       lenguage,
-    //       price,
-    //       pro,
-    //       duration,
-    //       content,
-    //       dificulty,
-    //       requirement,
-    //       learnTo,
-    //       studyMethod,
-    //       users,
-    //       catego
-    //     );
-    //     res.status(200).json(response);
-    //   }
+      if(uploadImage){
+        const response = await createCourse(
+          title,
+          description,
+          uploadImage.url,
+          lenguage,
+          price,
+          pro,
+          duration,
+          content,
+          dificulty,
+          requirement,
+          learnTo,
+          studyMethod,
+          users,
+          catego
+        );
+        res.status(200).json(response);
+      }
 
-    // }
-    // else {
-    //   throw Error("no se logro")
-    // }
-    const response = await createCourse(
-      title,
-      description,
-      image,
-      lenguage,
-      price,
-      pro,
-      duration,
-      content,
-      dificulty,
-      requirement,
-      learnTo,
-      studyMethod,
-      users,
-      catego
-    );
-    res.status(200).json(response);
+    } else {
+      const response = await createCourse(
+        title,
+        description,
+        image,
+        lenguage,
+        price,
+        pro,
+        duration,
+        content,
+        dificulty,
+        requirement,
+        learnTo,
+        studyMethod,
+        users,
+        catego
+      );
+      res.status(200).json(response);
+    }  
+    
+
   } catch (error) {
     console.log(error);
     return res.status(404).json({ msg: "Failed to create course", error });

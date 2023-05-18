@@ -17,3 +17,20 @@
     font-weight: 500;
     color: #FF8906;
 }
+
+@media only screen and (max-width: 375px) {
+    .container{
+        margin-left: 0px;
+    }
+    .subContainer{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .title{
+        font-size: 26px;
+        font-weight: 500;
+        color: #FF8906;
+    }
+}
+
