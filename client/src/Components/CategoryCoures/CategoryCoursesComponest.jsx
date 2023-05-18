@@ -1,17 +1,11 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import FiltersComponets from '../Filters'
-import Cardsresults from '../Card/Cardsresults'
 import PaginationButtons from '../Pagination/Pagination'
-
-
+import CarsdCategory from "../Card/CardsVistaCategory/CarsdCategory"
 
 export default function CategoryCoursesComponest() {
-
-
-
-
-  return (
+return (
     <Box sx={{marginTop:6}}>
       <Typography variant="h5" color="initial" sx={{marginBottom:4 ,marginLeft:-170}}>3.229 resultados para “ecommerce”</Typography>
       <Stack
@@ -20,7 +14,7 @@ export default function CategoryCoursesComponest() {
         sx={{marginLeft:5}}
       >
       <FiltersComponets/>
-      <Cardsresults/>
+      <CarsdCategory/>
       </Stack>
       <Stack
        sx={{marginTop:6, marginBottom:-6}}

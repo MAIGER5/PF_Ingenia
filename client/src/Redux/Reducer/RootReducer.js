@@ -2,14 +2,18 @@ import { GET_COURSES } from "../Actions/getCourses";
 import { CLEAN_DETAIL } from "../Actions/cleanDetail";
 import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
 import { GET_CATEGORIES } from "../Actions/getCategories";
-
-
+import {GET_COURSESCATEGORY} from "../Actions/getCoursescategory"
+import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
+import { FILTER_BY_DIFFICULTY} from "../Actions/filterDificulti";
 
 const initialState = {
     allCourse: [],
     allCourseCopy: [],
     courseDetail: [],
-    categories: []
+    categories:[], 
+    filtercourses:[],
+    allCourseCategory:[]
+
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -32,13 +36,31 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 courseDetail:[],
             };
-
-        case GET_CATEGORIES:
+            case GET_COURSESCATEGORY:
+                return {
+                    ...state,
+                    allCourseCategory: action.payload,
+                    
+                };    
+            case GET_CATEGORIES:
             return {
                 ...state,
                 categories:action.payload,
             };
-
+            case FILTER_BY_LANGUAGE:
+                    
+                    return {
+                        ...state,
+                        filtercourses: action.payload,
+                        
+                    };
+                    case  FILTER_BY_DIFFICULTY:
+                    
+                    return {
+                        ...state,
+                        filtercourses: action.payload,
+                        
+                    };
             
 
         default:
