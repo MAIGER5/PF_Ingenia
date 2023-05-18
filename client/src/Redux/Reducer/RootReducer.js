@@ -5,6 +5,7 @@ import { GET_CATEGORIES } from "../Actions/getCategories";
 import {GET_COURSESCATEGORY} from "../Actions/getCoursescategory"
 import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
 import { FILTER_BY_DIFFICULTY} from "../Actions/filterDificulti";
+import { ORDER_BY_DATE } from "../Actions/filterByDate";
 
 const initialState = {
     allCourse: [],
@@ -62,7 +63,13 @@ const rootReducer = (state = initialState, action) => {
                         filtercourses: action.payload,
                         
                     };
-            
+                    case ORDER_BY_DATE:
+
+                    return {
+                        ...state,
+                        filtercourses: action.payload,
+        
+                    };
 
         default:
             return { ...state };
