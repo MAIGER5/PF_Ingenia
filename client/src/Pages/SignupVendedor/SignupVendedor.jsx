@@ -25,7 +25,6 @@ export default function SignupVendedor() {
   }
 
 
-
   return (
     <div className={styles.container}>
       <p className={styles.title}>Registrate y comienza inspirar a otros</p>

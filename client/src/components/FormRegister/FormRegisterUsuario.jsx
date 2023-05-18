@@ -14,11 +14,12 @@ export default function FormRegisterUsuario() {
     const handleSubmit = async(event) => {
         event.preventDefault();
      
-        axios.post('http://localhost:3001/user/created', user)
-        .then(res => console.log("res", res))
-        .catch((error) => {
-            console.log(error);
-        });
+        // axios.post('http://localhost:3001/user/created', user)
+        // .then(res => console.log("res", res))
+        // .catch((error) => {
+        //     console.log(error);
+        // });
+        console.log(user)
         setUser({
             name: "",
             lastName: "",
@@ -50,7 +51,7 @@ export default function FormRegisterUsuario() {
             className={styles.input}
         />
         <input 
-            type="Apellido" 
+            type="text" 
             placeholder="Apellido"
             name="lastName"
             value={user.lastName}

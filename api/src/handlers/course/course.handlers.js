@@ -1,6 +1,7 @@
 const createCourse = require('../../controllers/courseControllers/createCourse')
 const getCourseControllers = require('../../controllers/courseControllers/getCourseControllers')
 const getCourseByIDControllers = require('../../controllers/courseControllers/getCourseByIDControllers')
+const { cloudinary } = require('../../utils/cloudinary');
 
 const getCourseHandlers = async (req, res) => {
   const {page = 0,size = 20,title} = req.query;
@@ -41,23 +42,52 @@ const createCourseHandlers = async (req, res) => {
     users,
     catego} = req.body;
   try {
-    const response = await createCourse(
-      title,
-      description,
-      image,
-      lenguage,
-      price,
-      pro,
-      duration,
-      content,
-      dificulty,
-      requirement,
-      learnTo,
-      studyMethod,
-      users,
-      catego
-    );
-    res.status(200).json(response);
+    
+    if(image){
+
+      const uploadImage = await cloudinary.uploader.upload(image, {
+        upload_preset: 'ingenia',
+      });
+
+      if(uploadImage){
+        const response = await createCourse(
+          title,
+          description,
+          uploadImage.url,
+          lenguage,
+          price,
+          pro,
+          duration,
+          content,
+          dificulty,
+          requirement,
+          learnTo,
+          studyMethod,
+          users,
+          catego
+        );
+        res.status(200).json(response);
+      }
+
+    }
+
+    // const response = await createCourse(
+    //   title,
+    //   description,
+    //   image,
+    //   lenguage,
+    //   price,
+    //   pro,
+    //   duration,
+    //   content,
+    //   dificulty,
+    //   requirement,
+    //   learnTo,
+    //   studyMethod,
+    //   users,
+    //   catego
+    // );
+    // res.status(200).json(response);
   } catch (error) {
     console.log(error);
     return res.status(404).json({ msg: "Failed to create course", error });
