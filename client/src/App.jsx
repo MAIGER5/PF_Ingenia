@@ -19,7 +19,7 @@ import Support from './Pages/Support/Support';
 import Footer from './Components/Footer/Footer';
 import Terms from './Pages/Terms/Terms';
 import PostArticle from './Pages/PostArticle/PostArticle';
-import PostPublication from './Pages/PostPublication/PostPublication';
+import PostCourse from './Pages/PostCourse/PostCourse';
 
 function App() {
 return (
@@ -43,7 +43,7 @@ return (
           <Route path="/Support" element={<Support/>}/> 
           <Route path="/Terms" element={<Terms/>}/>   
           <Route path="/PostArticle" element={<PostArticle/>}/> 
-          <Route path="/PostPublication" element={<PostPublication/>}/> 
+          <Route path="/PostCourse" element={<PostCourse/>}/> 
           <Route path="*" element={<NotFound/>} />
         </Routes>
       <Footer/>

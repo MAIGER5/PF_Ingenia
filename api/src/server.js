@@ -12,6 +12,7 @@ const router = require("./routes/index.routes");
 
 const { sequelize } = require("./database.js");
 
+
 const server = express();
 
 const corsOptions = {
@@ -19,8 +20,8 @@ const corsOptions = {
 };
 
 server.use(cors(corsOptions));
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: false }));
+server.use(bodyParser.json({ limit: '10mb', extended: true }));
+server.use(bodyParser.urlencoded({limit: '10mb', extended: false}));
 server.use(morgan('dev'))
 server.use("/", router);
 

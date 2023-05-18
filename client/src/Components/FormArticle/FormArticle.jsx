@@ -16,6 +16,11 @@ export default function FormArticle() {
         text3: "",
     })
 
+    const [fileImage, setfileImage] = useState("");
+    const [fileInputState, setfileInputState] = useState("");
+    const [selectedFile, setSelectedFile] = useState("");
+    const [previewSource, setPreviewSource] = useState();
+
     const handleSubmit = async(event) => {
         event.preventDefault();
      
@@ -24,6 +29,10 @@ export default function FormArticle() {
         // .catch((error) => {
         //     console.log(error);
         // });
+
+        if(!previewSource) return;
+        uploadImage(previewSource);
+
         console.log(article)
         setArticle({
             image: "",
@@ -48,20 +57,61 @@ export default function FormArticle() {
         });
     }
 
+    const handleFileImage = (event) => {
+        const file = event.target.files[0];
+        previewFile(file)
+    }
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(reader.result);
+        }
+    }
+
+    const uploadImage = async(base64EncondedImage) => {
+        console.log(base64EncondedImage)
+        // try {
+        //     await fetch('http://localhost:3001/courses/upload', {
+        //         method: "POST",
+        //         body: JSON.stringify({data: base64EncondedImage}),
+        //         headers: {'content-type': "application/json"}
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        // }
+    }
 
   return (
     <form 
     className={styles.form}
     onSubmit={handleSubmit}
     >
-        <input 
+        {/* <input 
             type="text" 
             placeholder="Selecciona tu imagen"
             name="image"
             value={article.image}
             onChange={handleInput}
             className={styles.input}
+        /> */}
+        <input 
+            type="file"
+            name="image"
+            onChange={handleFileImage}
+            value={fileInputState}
+            className={styles.input}
+
         />
+        {previewSource && (
+            <img 
+                src={previewSource} 
+                alt="preview"  
+                style={{height: "300px" }}
+            />
+        )}
+
         <input 
             type="text" 
             placeholder="title1"

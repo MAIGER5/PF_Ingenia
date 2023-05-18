@@ -11,8 +11,10 @@ export default function SignupUsuario() {
 
   const navigate = useNavigate();
 
+  //Provider de Google
   const provider = new GoogleAuthProvider();
-
+  
+  //Registrarse con Google
   const signInGoogle = () => {
     signInWithPopup(auth, provider)
     .then((result) => {
