@@ -3,15 +3,16 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, Grid, Rating } from '@mui/material';
+import { Box, Button, Grid, Rating, makeStyles } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector } from 'react-redux';
 
 
+
 export function CardsDetail({}) {
-    
+
     const curses = useSelector((state)=> state.courseDetail)
   
     return (
@@ -24,7 +25,7 @@ export function CardsDetail({}) {
         <CardMedia
           sx={{ height: 300, width: 600}}
           component='img'
-          image= {curses.image}
+        //   image= {curses.image}
           title="imagen de curso"
         />
 
@@ -41,13 +42,13 @@ export function CardsDetail({}) {
                         textAlign: 'justify'
 
                     }}>
-                        {curses.title}
+                        {/* {curses.title} */}
                     </Typography>
 
                     <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
                     }}>
-                        {curses.description}
+                        {/* {curses.description} */}
                     </Typography>
                 </Grid>
 
@@ -61,14 +62,14 @@ export function CardsDetail({}) {
                             textAlign: 'justify'
 
                         }}>
-                            {curses.dificulty}
+                            {/* Por: {curses.users?.name} {curses.users?.lastname} */}
                         </Typography>
 
                         <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            {curses.dificulty}
+                            {curses.lenguage}
                         </Typography>
                         
                         <Grid width={600}
@@ -92,10 +93,11 @@ export function CardsDetail({}) {
                             <Grid item xs={3}>
                                 <Box component='h2'
                                 >
-                                    {curses.price}
+                                    {/* {curses.price} */}
                                 </Box>
                             </Grid>
                         </Grid>
+
                     </Grid>
                 </Grid>
             </Grid>
