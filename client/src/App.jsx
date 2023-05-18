@@ -20,6 +20,7 @@ import Footer from './Components/Footer/Footer';
 import Terms from './Pages/Terms/Terms';
 import PostArticle from './Pages/PostArticle/PostArticle';
 import PostCourse from './Pages/PostCourse/PostCourse';
+import { Carrito } from './Components/Carrito/Carrito';
 
 function App() {
 return (
@@ -39,7 +40,7 @@ return (
           <Route path="/ResetPassword" element={<ResetPassword/>}/>
           <Route path="/MyCourses" element={<MyCourses/>}/>
           <Route path="/Notifications" element={<Notifications/>}/>
-          <Route path="/Cart" element={<Cart/>}/>  
+          <Route path="/Carrito" element={<Carrito/>}/>  
           <Route path="/Support" element={<Support/>}/> 
           <Route path="/Terms" element={<Terms/>}/>   
           <Route path="/PostArticle" element={<PostArticle/>}/> 
