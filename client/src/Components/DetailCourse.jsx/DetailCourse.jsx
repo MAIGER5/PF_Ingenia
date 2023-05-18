@@ -10,6 +10,7 @@ import { cleandDetail } from '../../Redux/Actions/cleanDetail';
 import { useParams } from 'react-router-dom';
 
 
+
 function DetailCourse() {
 
     const {id} = useParams();
@@ -49,10 +50,11 @@ function DetailCourse() {
                         }}>
                             Lo que aprenderás
                         </Typography>
-                        <Typography gutterBottom variant="h8" component="div" sx={{
-                            textAlign: 'justify'
-                        }}>
-                            {curses.description}
+                        <Typography align='left' marginLeft={2} >
+                            {curses.learnTo? curses.learnTo.map((ele)=>
+                                <Typography>  {ele} </Typography>
+                            ): "nada"
+                            }
                         </Typography>
 
                         <Typography gutterBottom variant="h5" component="div" sx={{
