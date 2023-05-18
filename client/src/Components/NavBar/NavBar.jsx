@@ -22,6 +22,7 @@ import { useSelector } from "react-redux";
 
 
 
+
 export default function NavBar() {
   let loginUser = { type: 0 };
   console.log(localStorage.getItem("type"));
@@ -155,7 +156,7 @@ export default function NavBar() {
               }}
             >
               <Box>
-                <NavLink to={"/Cart"}>
+                <NavLink to={"/Carrito"}>
                   <IconButton
                     color="primary"
                     aria-label="upload picture"

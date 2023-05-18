@@ -13,7 +13,8 @@ const initialState = {
     courseDetail: [],
     categories:[], 
     filtercourses:[],
-    allCourseCategory:[]
+    allCourseCategory:[],
+    carrito:[]
 ,
     loginUser: {
         type: 0,
