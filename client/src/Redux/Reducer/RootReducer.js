@@ -12,7 +12,8 @@ const initialState = {
     courseDetail: [],
     categories:[], 
     filtercourses:[],
-    allCourseCategory:[]
+    allCourseCategory:[],
+    carrito:[]
 
 };
 const rootReducer = (state = initialState, action) => {

@@ -20,6 +20,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 
+
 export default function NavBar() {
   let estadoUsuario = 1;
   /* variable auxiliar temporal:
@@ -138,7 +139,7 @@ export default function NavBar() {
               }}
           >
             <Box>
-              <NavLink to={"/Cart"} >
+              <NavLink to={"/Carrito"} >
                 <IconButton
                   color="primary"
                   aria-label="upload picture"
