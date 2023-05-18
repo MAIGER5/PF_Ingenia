@@ -24,24 +24,49 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
-      case GET_COURSES:
-        return {
-            ...state,
-            allCourse: action.payload,
-            allCourseCopy: action.payload
-        };
-
-        case GET_DATAIL_COURSE:
+        case GET_COURSES:
             return {
                 ...state,
-                courseDetail: action.payload
+                allCourse: action.payload,
+                allCourseCopy: action.payload
             };
-
-        case CLEAN_DETAIL:
-            return {
-                ...state,
-                courseDetail:[],
-            };
+    
+            case GET_DATAIL_COURSE:
+                return {
+                    ...state,
+                    courseDetail: action.payload
+                };
+    
+            case CLEAN_DETAIL:
+                return {
+                    ...state,
+                    courseDetail:[],
+                };
+                case GET_COURSESCATEGORY:
+                    return {
+                        ...state,
+                        allCourseCategory: action.payload,
+                        
+                    };    
+                case GET_CATEGORIES:
+                return {
+                    ...state,
+                    categories:action.payload,
+                };
+                case FILTER_BY_LANGUAGE:
+                        
+                        return {
+                            ...state,
+                            filtercourses: action.payload,
+                            
+                        };
+                        case  FILTER_BY_DIFFICULTY:
+                        
+                        return {
+                            ...state,
+                            filtercourses: action.payload,
+                            
+                        };
 
         case LOGIN_USER:
             console.log("Paso por el Reducer");
