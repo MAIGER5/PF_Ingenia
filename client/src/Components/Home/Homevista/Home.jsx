@@ -10,6 +10,7 @@ import HomeCategorias from '../HomeCategorias/HomeCategorias';
 import { useDispatch } from 'react-redux';
 import { getCourses } from '../../../Redux/Actions/getCourses';
 import { NavLink } from 'react-router-dom';
+import { getCategories } from '../../../Redux/Actions/getCategories';
 
 
 
@@ -19,39 +20,39 @@ export default function HomeComponent() {
 
   useEffect(()=> {
     dispatch(getCourses());
+    dispatch(getCategories());
   }, [dispatch])
 
-
   return (
-    <Box>
-     <Carrusel/>
-     <div  className={styled.BanerHomeVendeConNosotros}>
-      <NavLink 
-        to={"/LandingSeller"} 
-        style={{ textDecoration: 'none' }}
-      >
-        <Typography 
-          variant="h6"  
-          sx={{ 
-            marginTop:1 , 
-            color:"#FFFFFE" ,
-            display:"flex" ,
-            justifyContent:"center",
-
-          }}
+    <Box sx={{width:1600}}>
+      <Carrusel/>
+      <div  className={styled.BanerHomeVendeConNosotros}>
+        <NavLink 
+          to={"/LandingSeller"} 
+          style={{ textDecoration: 'none' }}
         >
-          Vende con nosotros
-        </Typography>
-      </NavLink>
-     
-     </div>
-    <div className={styled.Home}>
-     <HomeTopVentas />
-     <HomeTopPublicaiones/>
-     </div>
-     <HomeRebajas/>
-     <HomeMejorcalificados/>
-     <HomeCategorias/>
-     </Box>
+          <Typography 
+            variant="h6"  
+            sx={{ 
+              marginTop:1 , 
+              color:"#FFFFFE" ,
+              display:"flex" ,
+              justifyContent:"center",
+
+            }}
+          >
+            Vende con nosotros
+          </Typography>
+        </NavLink>
+      
+      </div>
+      <div className={styled.Home}>
+        <HomeTopVentas />
+        <HomeTopPublicaiones/>
+      </div>
+      <HomeRebajas/>
+      <HomeMejorcalificados/>
+      <HomeCategorias/>
+    </Box>
   )
 }

@@ -21,6 +21,24 @@
     margin: 0;
 }
 
+.decoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    margin: 0;
+}
+
+.line{
+    width: 80px;
+    height: 1px;
+    border-color: #E53170;
+}
+
+.decoration{
+    color: #E53170;
+}
+
 .textBottom{
     font-weight: 400;
     font-size: 15px;

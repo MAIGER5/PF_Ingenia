@@ -1,19 +1,37 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-
+import { useState  } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, signInWithPopup,} from "firebase/auth";
+import { auth } from "../../firebase/config";
 import FormLogin from "../../Components/FormLogin/FormLogin";
 
 import GoogleIcon from "@mui/icons-material/Google";
 import { Box, Tab, Tabs, Button } from "@mui/material";
-
 import styles from "./Login.module.css";
+
 
 export default function Login() {
   const [tabIndex, setTabIndex] = useState(0);
 
+  const navigate = useNavigate();
+
+  //Provider de Google
+  const provider = new GoogleAuthProvider();
+
   const handleTabChange = (event, newTabIndex) => {
     setTabIndex(newTabIndex);
   };
+
+  //Iniciar sesión con Google
+  const signInGoogle = () => {
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      //const user = result.user;
+      console.log("success")
+      navigate("/")
+    }).catch((error) => {
+      console.log(error.message)
+    });
+  }
 
   const loginBottom = (type) => {
     console.log("control en Login");
@@ -29,6 +47,7 @@ export default function Login() {
           color="secondary"
           startIcon={<GoogleIcon />}
           sx={{ width: "280px", fontSize: "15px" }}
+          onClick={signInGoogle}
         >
           Continuar con Google
         </Button>

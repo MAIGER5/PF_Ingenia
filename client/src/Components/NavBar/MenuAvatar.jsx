@@ -27,14 +27,14 @@ export default function MenuAvatar() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
-        // console.log(user.displayName)
-        // console.log(user)
+        console.log(user.displayName)
+        console.log(user)
         setUserName(user.displayName)
       } else {
         setUserName("M")
         
       } 
-      console.log(userName);
+      //console.log(userName);
     });
   })
 

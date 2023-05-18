@@ -2,12 +2,19 @@ import { GET_COURSES } from "../Actions/getCourses";
 import { CLEAN_DETAIL } from "../Actions/cleanDetail";
 import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
 import { LOGIN_USER } from "../../Components/FormLogin/FormLogin";
-
+import { GET_CATEGORIES } from "../Actions/getCategories";
+import {GET_COURSESCATEGORY} from "../Actions/getCoursescategory"
+import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
+import { FILTER_BY_DIFFICULTY} from "../Actions/filterDificulti";
 
 const initialState = {
     allCourse: [],
     allCourseCopy: [],
     courseDetail: [],
+    categories:[], 
+    filtercourses:[],
+    allCourseCategory:[]
+,
     loginUser: {
         type: 0,
         email: "",

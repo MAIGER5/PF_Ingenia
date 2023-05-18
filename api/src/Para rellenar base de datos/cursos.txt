@@ -3,13 +3,14 @@
   "description":"Curso básico de programación en Python",
   "image":"https://www.dongee.com/tutoriales/content/images/2023/01/image-47.png",
   "lenguage":"ESPAÑOL",
+  "pro": false,
   "price":19.99,
   "duration":"1 mes",
-  "habilities":"Este curso lo iniciará en los fundamentos de la programación en Python",
+  "content": "este es el contenido",
   "dificulty":"BASIC",
-  "requirement":["Ninguno"],
-  "users":[],
-  "categoria":[1,3,5]
+  "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+  "studyMethod": "Este es el método de estudio"
   }
   
   {
