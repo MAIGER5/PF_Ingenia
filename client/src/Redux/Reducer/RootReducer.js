@@ -1,12 +1,18 @@
 import { GET_COURSES } from "../Actions/getCourses";
 import { CLEAN_DETAIL } from "../Actions/cleanDetail";
 import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
+import { LOGIN_USER } from "../../Components/FormLogin/FormLogin";
 
 
 const initialState = {
     allCourse: [],
     allCourseCopy: [],
-    courseDetail: []
+    courseDetail: [],
+    loginUser: {
+        type: 0,
+        email: "",
+        password: "",
+      }
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,6 +35,17 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 courseDetail:[],
             };
+
+        case LOGIN_USER:
+            console.log("Paso por el Reducer");
+            console.log(action.payload);
+            localStorage.setItem("type", action.payload.type);
+            localStorage.setItem("email", action.payload.email);
+            localStorage.setItem("password", action.payload.password);
+            return {
+                ...state,
+                loginUser: action.payload
+            }
 
         default:
             return { ...state };

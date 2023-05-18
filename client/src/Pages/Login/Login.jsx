@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import FormLogin from "../../components/FormLogin/FormLogin";
+import FormLogin from "../../Components/FormLogin/FormLogin";
 
 import GoogleIcon from "@mui/icons-material/Google";
 import { Box, Tab, Tabs, Button } from "@mui/material";
@@ -16,6 +16,7 @@ export default function Login() {
   };
 
   const loginBottom = (type) => {
+    console.log("control en Login");
     return ( 
       <div className={styles.containerBottom}>
         <div className={styles.decoContainer}>
@@ -68,13 +69,13 @@ export default function Login() {
         <Box sx={{ padding: 2 }}>
           {tabIndex === 0 && (
             <Box>
-              <FormLogin />
+              <FormLogin type={1} />
               {loginBottom("SignupUsuario")}
             </Box>
           )}
           {tabIndex === 1 && (
             <Box>
-              <FormLogin />
+              <FormLogin type={2}/>
               {loginBottom("SignupVendedor")}
             </Box>
           )}

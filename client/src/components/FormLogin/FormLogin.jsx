@@ -1,67 +1,72 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./FormLogin.module.css";
+import { useDispatch } from "react-redux";
 
+export const LOGIN_USER = "LOGIN_USER"
 
-export default function FormLogin() {
-  
+export default function FormLogin({ type }) {
+  console.log("control en FormLogin");
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState({
-        password: "",
-        email: "",
-    })
+    type: 0,
+    password: "",
+    email: "",
+  });
 
-    const handleSubmit = async(event) => {
-        event.preventDefault();
-        console.log(user)
-        setUser({
-            password: "",
-            email: "", 
-        })
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(user);
+    // --- se envían datos para validación por servidor ---
+    // --- retornan datos validados -----------------------
+    // --- retorna un rechazo de validación ---------------
 
-    //Detecta cambios de los input input
-    const handleInput = (event) => {
-        const { name, value } = event.target;
+    dispatch({ type: LOGIN_USER, payload: user });
 
-        setUser({
-            ...user,
-            [name]: value
-        });
-    }
+    //luego de loguear me redirige a la página principal
+    window.location.href = "http://localhost:5173";
+
+  };
+
+  //Detecta cambios de los input input
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    console.log(event.target.value);
+
+    setUser({
+      ...user,
+      type,
+      [name]: value,
+    });
+  };
 
   return (
-    <form 
-      className={styles.form}
-      onSubmit={handleSubmit}
-    >
-        <input 
-            type="email" 
-            placeholder="Correo Electrónico"
-            name="email"
-            value={user.email}
-            onChange={handleInput}
-            className={styles.input}
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <input
+        type="email"
+        placeholder="Correo Electrónico"
+        name="email"
+        value={user.email}
+        onChange={handleInput}
+        className={styles.input}
+      />
+      <div>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          name="password"
+          value={user.password}
+          onChange={handleInput}
+          className={styles.input}
         />
-        <div>
-            <input 
-                type="password" 
-                placeholder="Contraseña"
-                name="password"
-                value={user.password}
-                onChange={handleInput}
-                className={styles.input}
-            />
-            <NavLink 
-                style={{ textDecoration: 'none'}}
-                to={"/ResetPassword"}
-            >
-                <p className={styles.textLegend}>Olvide mi contraseña</p>
-            </NavLink>
-        </div>
-        <button className={styles.button}  type="submit">
-            <span className={styles.button_text}>Iniciar Sesión</span>
-        </button>
+        <NavLink style={{ textDecoration: "none" }} to={"/ResetPassword"}>
+          <p className={styles.textLegend}>Olvide mi contraseña</p>
+        </NavLink>
+      </div>
+      <button className={styles.button} type="submit">
+        <span className={styles.button_text}>Iniciar Sesión</span>
+      </button>
     </form>
-    
-  )
+  );
 }
