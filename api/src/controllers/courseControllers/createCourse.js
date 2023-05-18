@@ -3,7 +3,7 @@ const {Course,User,Category} = require('../../database')
 const createCourse = async (
     title,
     description,
-    image,
+    uploadImage,
     lenguage,
     price,
     pro,
@@ -23,7 +23,7 @@ const createCourse = async (
     const newCourse = await Course.create({
         title,
         description,
-        image,
+        image: uploadImage,
         lenguage,
         price,
         pro,

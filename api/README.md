@@ -19,6 +19,9 @@
   DB_HOST=localhost:5432
   DB =ingenia
   PORT=3001
+  CLOUDINARY_NAME= (agregar nombre aqui)
+  CLOUDINARY_API_KEY= (agregar api key aqui)
+  CLOUDINARY_API_SECRET= (agregar api secret aqui)
 - ### package.json
 
   #### Archivo que describe la aplicación y sus dependencias.
