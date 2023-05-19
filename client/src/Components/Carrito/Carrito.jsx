@@ -1,21 +1,23 @@
 import { Button, Grid, Typography } from "@mui/material";
-import { CardCarrito } from "./CardCarrito";
 import { useSelector } from "react-redux";
+import { CardsCarr } from "./CardsCarr";
 
 
 
 export function Carrito() {
 
-    const car = useSelector((state)=>state.carrito)
+    const car = useSelector((state)=>state.allCarrito)
+
+    const sumar = car.reduce((accumulator, ele)=> accumulator + ele.price, 0)
 
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} margin={10}>
         <Grid item xs={9}>
-            <Typography align="left" variant="h5" marginBottom={3}>
+            <Typography align="left" variant="h4" marginBottom={3}>
                 Mi carrito
             </Typography>
-            <CardCarrito/>
+            <CardsCarr/>
 
             <Typography align="left" variant="h5" marginY={4}>
                 Sugerencias para tí
@@ -27,12 +29,12 @@ export function Carrito() {
             justifyContent="flex-start"
             alignItems="flex-start"
             marginLeft={5}>
-            <Typography variant="h5" align="left">
+            <Typography variant="h3" align="left">
                 Total
             </Typography>
 
-            <Typography variant="h5" align="left" marginY={2}>
-                $ 100 USD
+            <Typography variant="h4" align="left" marginY={2}>
+               $ {sumar.toLocaleString()} USD
             </Typography>
 
             <Button variant="contained" size="large" >
