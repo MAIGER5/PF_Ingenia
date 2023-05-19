@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("User", {
@@ -11,39 +11,38 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastname:{
-        type: DataTypes.STRING,
-        allowNull: false,
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    email:{
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    password:{ 
-        type:DataTypes.STRING,
-        allowNull:false,
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    imgProfile:{
-        type:DataTypes.STRING,
-        isUrl: true,
+    imgProfile: {
+      type: DataTypes.STRING,
+      isUrl: true,
     },
-    description:{
-      type:DataTypes.STRING,
+    description: {
+      type: DataTypes.STRING,
     },
-    Is:{
-      type: DataTypes.ENUM('STUDEN','INSTRUCTOR','ADMIN')
+    Is: {
+      type: DataTypes.ENUM("STUDEN", "INSTRUCTOR", "ADMIN"),
     },
-    assessment:{
-      type:DataTypes.DOUBLE,
+    assessment: {
+      type: DataTypes.DOUBLE,
     },
-    studies:{
-      type:DataTypes.STRING
+    studies: {
+      type: DataTypes.STRING,
     },
     asset: {
       type: DataTypes.BOOLEAN,
-      default:true,
+      default: true,
       allowNull: false,
-    } 
+    },
   });
 };
