@@ -13,21 +13,25 @@ const initialState = {
     allCourse: [],
     allCourseCopy: [],
     courseDetail: [],
-    categories: [],
-    filtercourses: [],
-    allCourseCategory: [],
-    carrito: []
+    categories:[], 
+    filtercourses:[],
+    allCourseCategory:[],
+    allCarrito:[]
+
 
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case GET_COURSES:
-            return {
-                ...state,
-                allCourse: action.payload,
-                allCourseCopy: action.payload
-            };
+
+      case GET_COURSES:
+        return {
+            ...state,
+            allCourse: action.payload,
+            allCourseCopy: action.payload,
+            allCarrito: action.payload
+        };
+
 
         case GET_DATAIL_COURSE:
             return {

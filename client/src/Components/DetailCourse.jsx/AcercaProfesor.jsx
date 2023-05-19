@@ -25,6 +25,7 @@ export function AcercaProfesor() {
                     direction="row"
                     justifyContent="left"
                     alignItems="center"
+                    marginTop={5}
                 >
                     <Grid item xs={1.8}>
                         <Avatar sx={{ bgcolor: '#FF8906',

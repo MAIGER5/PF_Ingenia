@@ -8,7 +8,7 @@ import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function CardCategory({title, description, dificulty,  price, image}) {
+function CardCategory({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName}) {
   return (
     <Card sx={{ 
         display: 'flex',
@@ -55,7 +55,7 @@ function CardCategory({title, description, dificulty,  price, image}) {
                             textAlign: 'justify'
 
                         }}>
-                            Por: gisell
+                            Por: {instructorName}  {instructorLastName}
                         </Typography>
 
                         <Typography gutterBottom variant="h7" component="div" sx={{
@@ -87,12 +87,28 @@ function CardCategory({title, description, dificulty,  price, image}) {
                             <Grid item xs={3}>
                                 <Box component='h2'
                                 >
-                                  {price}
+                                  $ {price} USD
                                 </Box>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
+
+                <Grid width={600}
+                            container
+                            direction="row"
+                            justifyContent="flex-start"
+                            alignItems="normal">
+                                <Grid>
+                                    <Button variant="text" sx={{backgroundColor:"#E53170", color: 'black'}} > {dificulty}  </Button>
+                                </Grid>
+                                <Grid marginX={1} >
+                                    <Button marginLeft='2'  sx={{backgroundColor:"#E53170", color: 'black'}}> {lenguage} </Button>
+                                </Grid>
+                                {/* <Grid>
+                                    <Button variant='contained'> {curses.categories} </Button>
+                                </Grid> */}
+                        </Grid>
             </Grid>
         </CardContent>
     </Card>

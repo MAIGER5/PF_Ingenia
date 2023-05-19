@@ -41,23 +41,22 @@ export default function Cardsresulcategory() {
               image={curso.image}
               lenguage={curso.lenguage}
             />
-          ))}
-        </Stack>
-        <Stack
-        sx={{marginTop:4}}
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-        >
-        {totalItems > itemsPerPage && (
-        <PaginationButtons
-        
-          count={totalPages}
-          page={currentPage}
-          onChange={handlePageChange}
-          color="primary"
-        />
-      )}
+          ))
+        ) : (
+          cursosinitiales.map((curso) => (
+            <CardCategory
+              key={curso.idCourse}
+              idCourse={curso.idCourse}
+              title={curso.title}
+              description={curso.description}
+              duration={curso.duration}
+              dificulty={curso.dificulty}
+              price={curso.price}
+              image={curso.image}
+              lenguage={curso.lenguage}
+            />
+          ))
+        )}
       </Stack>
       </Box>
 

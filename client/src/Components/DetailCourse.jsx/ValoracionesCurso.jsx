@@ -10,7 +10,7 @@ function ValoracionesCurso() {
               direction="column"
               justifyContent="flex-start"
               alignItems="flex-start"
-              marginTop={6}
+              marginTop={8}
             >
                 <Grid >
                     <Typography gutterBottom variant="h5" component="div" sx={{
