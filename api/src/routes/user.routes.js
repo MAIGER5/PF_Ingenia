@@ -10,7 +10,7 @@ const checkRoleAuth = require("../middleware/roleAuth");
 const userRouter = Router();
 
 // Ruta para users
-userRouter.get("/", checkAuth, checkRoleAuth(["INSTRUCTOR"]), user);
+userRouter.get("/", checkAuth, checkRoleAuth(["STUDEN"]), user);
 
 userRouter.post("/created", userPostHandler);
 
