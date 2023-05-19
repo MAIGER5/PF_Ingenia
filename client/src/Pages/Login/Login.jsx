@@ -7,6 +7,7 @@ import FormLogin from "../../Components/FormLogin/FormLogin";
 import GoogleIcon from "@mui/icons-material/Google";
 import { Box, Tab, Tabs, Button } from "@mui/material";
 import styles from "./Login.module.css";
+import LoginToBackendGoogle from "../../Components/LoginToBackendGoogle/LoginToBackendGoogle";
 
 
 export default function Login() {
@@ -22,12 +23,13 @@ export default function Login() {
   };
 
   //Iniciar sesión con Google
-  const signInGoogle = () => {
+  const signInGoogle = (type) => {
     signInWithPopup(auth, provider)
     .then((result) => {
       //const user = result.user;
+      LoginToBackendGoogle(result, type)
       console.log("success")
-      navigate("/")
+      //navigate("/")
     }).catch((error) => {
       console.log(error.message)
     });
@@ -47,7 +49,7 @@ export default function Login() {
           color="secondary"
           startIcon={<GoogleIcon />}
           sx={{ width: "280px", fontSize: "15px" }}
-          onClick={signInGoogle}
+          onClick={() => signInGoogle(type)}
         >
           Continuar con Google
         </Button>
@@ -88,13 +90,13 @@ export default function Login() {
         <Box sx={{ padding: 2 }}>
           {tabIndex === 0 && (
             <Box>
-              <FormLogin type={1} />
+              <FormLogin userType="SignupUsuario"/>
               {loginBottom("SignupUsuario")}
             </Box>
           )}
           {tabIndex === 1 && (
             <Box>
-              <FormLogin type={2}/>
+              <FormLogin userType="SignupVendedor"/>
               {loginBottom("SignupVendedor")}
             </Box>
           )}

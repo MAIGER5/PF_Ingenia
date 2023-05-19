@@ -2,15 +2,16 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./FormLogin.module.css";
 import { useDispatch } from "react-redux";
+import LoginToBackendOwnAccess from "../LoginToBackendOwnAccess/LoginToBackendOwnAccess";
 
 export const LOGIN_USER = "LOGIN_USER"
 
-export default function FormLogin({ type }) {
+export default function FormLogin({ userType }) {
   console.log("control en FormLogin");
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const [user, setUser] = useState({
-    type: 0,
+    userType: "",
     password: "",
     email: "",
   });
@@ -18,15 +19,9 @@ export default function FormLogin({ type }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(user);
-    // --- se envían datos para validación por servidor ---
-    // --- retornan datos validados -----------------------
-    // --- retorna un rechazo de validación ---------------
 
-    dispatch({ type: LOGIN_USER, payload: user });
-
-    //luego de loguear me redirige a la página principal
-    window.location.href = "http://localhost:5173";
-
+    //se envían datos para validación por servidor
+    LoginToBackendOwnAccess(user, userType);
   };
 
   //Detecta cambios de los input input
@@ -36,7 +31,7 @@ export default function FormLogin({ type }) {
 
     setUser({
       ...user,
-      type,
+      userType,
       [name]: value,
     });
   };

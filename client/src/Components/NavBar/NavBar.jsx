@@ -24,29 +24,30 @@ import { useSelector } from "react-redux";
 
 
 export default function NavBar() {
-  let loginUser = { type: 0 };
-  console.log(localStorage.getItem("type"));
-  console.log(loginUser.type);
+  //let loginUser = { type: 0 };
+  let userType = 0;
+  //console.log(localStorage.getItem("userType"));
+  //console.log(loginUser.userType);
 
-  //prevengo un dato "loginUser.type = null"
-  if (localStorage.getItem("type") == null) {
-    localStorage.setItem("type", "0");
+  //prevengo un dato "loginUser.userType = null"
+  if (localStorage.getItem("userType") == null) {
+    localStorage.setItem("userType", "0");
   }
 
-  if (localStorage.getItem("type") != 0) {
-    loginUser.type = parseInt(localStorage.getItem("type"), 10);
-    loginUser.email = localStorage.getItem("email");
-    loginUser.password = localStorage.getItem("password");
+  if (localStorage.getItem("userType") != 0) {
+    userType = parseInt(localStorage.getItem("userType"), 10);
+    //loginUser.email = localStorage.getItem("email");
+    //loginUser.password = localStorage.getItem("password");
     console.log(`NavBar/if:`);
-    console.log(loginUser);
+    //console.log(loginUser);
   } else {
-    loginUser = useSelector((state) => state.loginUser);
-    console.log("NavBar/else:" + loginUser);
+    //loginUser = useSelector((state) => state.loginUser);
+    //console.log("NavBar/else:" + loginUser);
   }
 
-  console.log("En el NavBar: ");
-  console.log(loginUser);
-  //console.log(loginUser.type);
+  //console.log("En el NavBar: ");
+  //console.log(userType);
+  //console.log(userType);
   /* variable auxiliar temporal:
     0 => usuario no registrado
     1 => comprador
@@ -63,7 +64,7 @@ export default function NavBar() {
         position="static"
         elevation={0}
         sx={{ bgcolor: "background.default" }}
-      >
+        >
         <div
           style={{
             display: "flex",
@@ -71,7 +72,7 @@ export default function NavBar() {
             justifyContent: "space-between",
             margin: "30px 30px 25px 0",
           }}
-        >
+          >
           <Link href="/" underline="none">
             <Typography
               variant="h5"
@@ -95,7 +96,7 @@ export default function NavBar() {
               position: "relative",
             }}
           >
-            {loginUser.type === 1 ? (
+            {userType === 1 ? (
               <div
                 style={{
                   display: "flex",
@@ -192,7 +193,7 @@ export default function NavBar() {
               </Box>
             </div>
 
-            {loginUser.type === 1 ? (
+            {userType === 1 ? (
               <>
                 <Box>
                   <MenuAvatar />
@@ -200,7 +201,7 @@ export default function NavBar() {
               </>
             ) : null}
 
-            {loginUser.type === 0 ? (
+            {userType === 0 ? (
               <SingInButtons themeMode={themeMode} />
             ) : null}
           </div>
