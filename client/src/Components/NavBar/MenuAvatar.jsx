@@ -15,10 +15,12 @@ import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import { Modal, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import LogoutComponent from "../LogoutComponent/LogoutCoponent";
 
 export default function MenuAvatar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userName, setUserName] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(false); // Nuevo estado para controlar la apertura de la ventana modal
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
@@ -46,55 +48,7 @@ export default function MenuAvatar() {
   };
 
   const handleLogOut = () => {
-  
-    //Lógica del logout
-    //Revisar Errores
-/*     signOut(auth).then(() => {
-      console.log("Ok logout")
-    }).catch((error) => {
-      console.log(error.message)
-    });
-
-    navigate("/") */
-
-   /*  const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
-    </div>
-  );
-} */
+    setOpenModal(true); // Abre la ventana modal cuando se hace clic en Cerrar Sesión
   }
 
  
@@ -209,6 +163,8 @@ export default function BasicModal() {
           Cerrar Sesión
         </MenuItem>
       </Menu>
+      {openModal && <LogoutComponent onClose={() => setOpenModal(false)} />} {/* Muestra la ventana modal si openModal es true */}
+      {/* <LogoutComponent/> */}
     </React.Fragment>
   );
 }
