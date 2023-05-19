@@ -7,7 +7,7 @@ const userPostHandler = async (req, res) => {
 
   try {
     //Definimos el rol, para verificaciones y creación.
-    const Is = "STUDEN";
+    const Is = "STUDENT";
     //Verifica si el usuario tiene una cuenta creada con nosotros.
     await verifyUserExistence(email, Is);
 
