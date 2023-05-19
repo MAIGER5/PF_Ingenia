@@ -15,7 +15,7 @@ const initialState = {
     categories:[], 
     filtercourses:[],
     allCourseCategory:[],
-    carrito:[]
+    allCarrito:[]
 
 };
 const rootReducer = (state = initialState, action) => {
@@ -25,7 +25,8 @@ const rootReducer = (state = initialState, action) => {
         return {
             ...state,
             allCourse: action.payload,
-            allCourseCopy: action.payload
+            allCourseCopy: action.payload,
+            allCarrito: action.payload
         };
 
         case GET_DATAIL_COURSE:

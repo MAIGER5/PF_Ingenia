@@ -7,12 +7,12 @@ import { Box, Button, Grid, Rating } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
-export function CardCarrito() {
 
-    const curses = useSelector((state)=> state.courseDetail)
+export function CardCarrito({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName, categories, idCourse}) {
+
 
     return (
         <Card sx={{ 
@@ -20,36 +20,37 @@ export function CardCarrito() {
             alignItems: 'center',
             }}
             >
-            <CardMedia
-            sx={{ height: 300, width: 600}}
-            component='img'
-            image= {curses.image}
-            title="imagen de curso"
-            />
-
+            <Link to={`/DetailCourse/${idCourse}`}>
+                <CardMedia
+                sx={{ height: 300, width: 600}}
+                component='img'
+                image={image}
+                />
+            </Link>
+    
             <CardContent>
-                <Grid container spacing={0}
+                <Grid container spacing={1}
                     direction="column"
                     justifyContent="flex-start"
                     alignItems="flex-start"
-                    marginLeft={5}
-                    padding={1} >
-
+                    padding={2} >
+    
                     <Grid >
-                        <Typography gutterBottom variant="h3" component="h3" sx={{
+                        <Typography gutterBottom variant="h3" component="div" sx={{
                             textAlign: 'justify'
-
+    
                         }}>
-                            {curses.title}
+                          {title}
                         </Typography>
-
-                        <Typography gutterBottom variant="h8" component="div" sx={{
+    
+                        <Typography gutterBottom variant="h5" component="div" sx={{
                             textAlign: 'justify'
+    
                         }}>
-                            {curses.description}
+                            {description}
                         </Typography>
                     </Grid>
-
+    
                     <Grid   container
                         direction="row"
                         justifyContent="flex-start"
@@ -58,17 +59,17 @@ export function CardCarrito() {
                         <Grid item xs={8}>
                             <Typography variant="h6" color="text.Primary" sx={{
                                 textAlign: 'justify'
-
+    
                             }}>
-                                {curses.dificulty}
+                                Por: {instructorName} {instructorLastName}
                             </Typography>
-
-                            <Typography gutterBottom variant="h8" component="div" sx={{
+    
+                            {/* <Typography gutterBottom variant="h7" component="div" sx={{
                             textAlign: 'justify'
-
+    
                             }}>
-                                {curses.dificulty}
-                            </Typography>
+                              {dificulty}
+                            </Typography> */}
                             
                             <Grid width={600}
                                 container
@@ -76,29 +77,47 @@ export function CardCarrito() {
                                 justifyContent="space-between"
                                 alignItems="baseline"
                             >
-                                <Grid marginLeft={10}>
-                                    <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
+                                <Grid>
+                                    <Rating name="half-rating" size="large" defaultValue={2.5} precision={0.5}
+                                    color='#E53170' />
                                 </Grid>
-
-
-                                {/* <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
+    
+    
+                                <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
                                     >Add
-                                </Button> */}
-
-                                {/* <Fab disabled aria-label="like">
+                                </Button>
+    
+                                <Fab disabled aria-label="like">
                                     <FavoriteIcon />
-                                </Fab> */}
+                                </Fab>
                                 <Grid item xs={3}>
                                     <Box component='h2'
                                     >
-                                        {curses.price}
+                                      $ {price} USD
                                     </Box>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
+    
+                    <Grid width={600}
+                        container
+                        direction="row"
+                        justifyContent="flex-start"
+                        alignItems="normal"
+                    >
+                        <Grid>
+                            <Button variant="text" sx={{backgroundColor:"#E53170", color: 'black'}} > {dificulty}  </Button>
+                        </Grid>
+                        <Grid marginX={1} >
+                            <Button marginLeft='2'  sx={{backgroundColor:"#E53170", color: 'black'}}> {lenguage} </Button>
+                        </Grid>
+                        <Grid>
+                             <Button variant="text" sx={{backgroundColor:"#E53170", color: 'black'}}> {categories} </Button>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </CardContent>
         </Card>
-  );
+    );
 };
