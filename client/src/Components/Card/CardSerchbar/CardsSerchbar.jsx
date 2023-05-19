@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Stack,  } from '@mui/material';
+import { Box, Stack, Button,  } from '@mui/material';
 import { useSelector } from 'react-redux';
 import CardSerbar from './CardSerchbar';
 
@@ -39,10 +39,11 @@ export default function Cardsresulserchbar() {
                   price={curso.price}
                   image={curso.image}
                   lenguage={curso.lenguage}
+                  
                 />
               ))
             )}
-            
+         
           </Stack>
         </Box>
       </>
