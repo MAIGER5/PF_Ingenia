@@ -12,7 +12,7 @@ export default function FormRegisterVendedor() {
         password: "",
         email: "",
         description: "",
-        degrees: "",
+        studies: "",
     })
     const [isLoading, setisLoading] = useState(false);
     const [isAlert, setIsAlert] = useState(false);  
@@ -47,7 +47,7 @@ export default function FormRegisterVendedor() {
             password: "",
             email: "", 
             description: "",
-            degrees: "",
+            studies: "",
         })
 
     }
@@ -114,8 +114,8 @@ export default function FormRegisterVendedor() {
             <div className={styles.containerLarge} >
                 <textarea
                     placeholder="¿Cuentas con algún estudio en tu especialidad?"
-                    name="degrees"
-                    value={user.degrees}
+                    name="studies"
+                    value={user.studies}
                     onChange={handleInput}
                     className={styles.textareaMedium}
                 />
