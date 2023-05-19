@@ -32,6 +32,8 @@ export default function Cardsresulcategory() {
             <CardCategory
               key={curso.idCourse}
               idCourse={curso.idCourse}
+              instructorName={curso.Users? curso.Users[0].name : "nada"}
+              instructorLastName={curso.Users? curso.Users[0].lastname : "nada"}
               title={curso.title}
               description={curso.description}
               duration={curso.duration}

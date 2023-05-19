@@ -105,13 +105,13 @@ export function CardsDetail({}) {
                             justifyContent="flex-start"
                             alignItems="normal">
                                 <Grid>
-                                    <Button variant='contained'> {curses.dificulty} </Button>
+                                    <Button variant="text"  sx={{backgroundColor:"#E53170", color: 'black'}} > {curses.dificulty}  </Button>
                                 </Grid>
                                 <Grid marginX={1}>
-                                    <Button marginLeft='2' variant='contained'> {curses.lenguage} </Button>
+                                    <Button marginLeft='2' sx={{backgroundColor:"#E53170", color: 'black'}}> {curses.lenguage} </Button>
                                 </Grid>
                                 <Grid>
-                                    <Button variant='contained'> {curses.categories} </Button>
+                                    <Button  sx={{backgroundColor:"#E53170", color: 'black'}}> {curses.categories} </Button>
                                 </Grid>
                         </Grid>
                     </Grid>
