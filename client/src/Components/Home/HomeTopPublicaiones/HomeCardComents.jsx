@@ -11,9 +11,9 @@ export default function HomeCardComents() {
     sx={{marginLeft:45}}
      spacing={4}
     >
-    {comentarios.map(comentarios=>(
-         <CardComentshome key={comentarios.title}/>
-    ))}
+    {comentarios.map((comentario, index) => (
+          <CardComentshome key={index} />
+        ))}
     </Stack>
     </>
   )

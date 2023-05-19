@@ -8,7 +8,7 @@ import { getStorage } from "firebase/storage";
 //"AIzaSyD3ToUSR1jwFA5oUswh7AlCij7HZRjzyk0"
 
 export const firebaseConfig = {
-  apiKey: `${import.meta.env.VITE_FB_API_KEY}`,
+  apiKey: `AIzaSyD3ToUSR1jwFA5oUswh7AlCij7HZRjzyk0`,
   authDomain: "ingenia-9b3cf.firebaseapp.com",
   projectId: "ingenia-9b3cf",
   storageBucket: "ingenia-9b3cf.appspot.com",
