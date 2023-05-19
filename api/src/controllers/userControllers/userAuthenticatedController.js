@@ -7,17 +7,17 @@ const userAuthenticated = async (email, password) => {
   const loginUser = await User.findOne({ where: { email } });
 
   if (!loginUser) {
-    throw Error("Usuario no encontrado");
+    throw Error("Lo sentimos, no se encontró el usuario especificado.");
+  } else if (!loginUser.asset) {
+    throw Error("Lo sentimos, no se encontró el usuario especificado.");
   }
 
-  if (!loginUser.asset) {
-    throw Error("Usuario no activo");
-  }
-
-  const passwordMatch = bcryptjs.compare(password, loginUser.password);
+  const passwordMatch = await bcryptjs.compare(password, loginUser.password);
 
   if (!passwordMatch) {
-    throw Error("Contraseña incorrecta");
+    throw Error(
+      "La contraseña ingresada es incorrecta. Por favor, verifica tus datos e intenta nuevamente."
+    );
   }
 
   const tokenSession = await tokenSingUp(loginUser);
