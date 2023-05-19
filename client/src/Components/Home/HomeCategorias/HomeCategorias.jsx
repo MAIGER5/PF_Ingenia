@@ -3,6 +3,8 @@ import { Box, Button, Grid, Typography,  } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { filterCoursesCategory } from '../../../Redux/Actions/filterCoursesCategory'
+import { getCoursesCategory } from '../../../Redux/Actions/getCoursescategory'
+
 
 export default function HomeCategorias() {
 
@@ -17,7 +19,7 @@ export default function HomeCategorias() {
         {categorias.map(categori=>(
           <Grid item xs={3} sm={5} md={4} xl={2}>
             <Link to='/CategoryCourses'>
-              <Button onClick={()=> dispatch(filterCoursesCategory(categori.idCategory))} variant="contained" color="secondary" sx={{width:220 ,height:60}}>
+              <Button onClick={()=> dispatch(getCoursesCategory(categori.name))} variant="contained" color="secondary" sx={{width:220 ,height:60}}>
                 {categori.name}
               </Button>
             </Link>
