@@ -5,8 +5,11 @@ const bcryptjs = require("bcryptjs");
 const instructorGetHandlers = (req, res) => {};
 const instructorPostHandlers = async (req, res) => {
   const { name, lastname, email, password, studies, description } = req.body;
+
   try {
-    await verifyUserExistence(email);
+    //Definimos el rol, para verificaciones y creación.
+    const Is = "INSTRUCTOR";
+    await verifyUserExistence(email, Is);
 
     const passwordHash = await bcryptjs.hash(password, 8);
 
@@ -16,7 +19,8 @@ const instructorPostHandlers = async (req, res) => {
       email,
       passwordHash,
       studies,
-      description
+      description,
+      Is
     );
     res.status(200).json(response);
   } catch (error) {
