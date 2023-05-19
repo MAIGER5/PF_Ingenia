@@ -9,6 +9,8 @@ import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 
 export function CardsDetail({}) {
@@ -84,7 +86,7 @@ export function CardsDetail({}) {
                             </Grid>
 
 
-                            <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
+                            <Button component={Link} to={'/SignupUsuario'} variant='contained' startIcon={<ShoppingCartIcon/>} 
                                 >Add
                             </Button>
 

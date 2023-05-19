@@ -7,6 +7,9 @@ import { Box, Button, CardActionArea, Grid, Hidden, Rating } from '@mui/material
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link, NavLink } from 'react-router-dom';
+
+
 
 function CardCategory({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName}) {
   return (
@@ -76,10 +79,10 @@ function CardCategory({title, description, dificulty,  price, image, instructorN
                                 color='#E53170' />
                             </Grid>
 
-
-                            <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
+                            <Button component={Link} to={'/SignupUsuario'} variant='contained' startIcon={<ShoppingCartIcon/>} 
                                 >Add
                             </Button>
+
 
                             <Fab disabled aria-label="like">
                                 <FavoriteIcon />
