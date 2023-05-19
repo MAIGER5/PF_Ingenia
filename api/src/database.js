@@ -41,7 +41,7 @@ Course.belongsToMany(User,{through:"UserCourse"})
 Course.belongsToMany(Category,{through:"CourseCategory"});
 Category.belongsToMany(Course,{through:"CourseCategory"});
 
-User.hasOne(Buy)
+User.hasMany(Buy)
 Buy.belongsTo(User)
 
 module.exports = {

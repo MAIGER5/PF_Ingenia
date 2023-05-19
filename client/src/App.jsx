@@ -21,6 +21,7 @@ import Terms from './Pages/Terms/Terms';
 import PostArticle from './Pages/PostArticle/PostArticle';
 import PostCourse from './Pages/PostCourse/PostCourse';
 import { Carrito } from './Components/Carrito/Carrito';
+import SerchCardResults from './Pages/serchCardResults/serchCardResults';
 
 function App() {
 return (
@@ -45,6 +46,7 @@ return (
           <Route path="/Terms" element={<Terms/>}/>   
           <Route path="/PostArticle" element={<PostArticle/>}/> 
           <Route path="/PostCourse" element={<PostCourse/>}/> 
+          <Route path="/SerchCardResults" element={<SerchCardResults/>}/> 
           <Route path="*" element={<NotFound/>} />
         </Routes>
       <Footer/>

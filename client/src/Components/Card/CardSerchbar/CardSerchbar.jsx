@@ -8,7 +8,7 @@ import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function CardCategory({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName}) {
+function CardSerbar({title, description, dificulty,  price, image}) {
   return (
     <Card sx={{ 
         display: 'flex',
@@ -55,7 +55,7 @@ function CardCategory({title, description, dificulty,  price, image, instructorN
                             textAlign: 'justify'
 
                         }}>
-                            Por: {instructorName}  {instructorLastName}
+                            Por: gisell
                         </Typography>
 
                         <Typography gutterBottom variant="h7" component="div" sx={{
@@ -87,32 +87,16 @@ function CardCategory({title, description, dificulty,  price, image, instructorN
                             <Grid item xs={3}>
                                 <Box component='h2'
                                 >
-                                  $ {price} USD
+                                  {price}
                                 </Box>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-
-                <Grid width={600}
-                            container
-                            direction="row"
-                            justifyContent="flex-start"
-                            alignItems="normal">
-                                <Grid>
-                                    <Button variant="text" sx={{backgroundColor:"#E53170", color: 'black'}} > {dificulty}  </Button>
-                                </Grid>
-                                <Grid marginX={1} >
-                                    <Button marginLeft='2'  sx={{backgroundColor:"#E53170", color: 'black'}}> {lenguage} </Button>
-                                </Grid>
-                                {/* <Grid>
-                                    <Button variant='contained'> {curses.categories} </Button>
-                                </Grid> */}
-                        </Grid>
             </Grid>
         </CardContent>
     </Card>
   );
 };
 
-export default CardCategory;
+export default CardSerbar;

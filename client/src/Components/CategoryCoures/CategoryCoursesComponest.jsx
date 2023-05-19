@@ -3,10 +3,15 @@ import { Box, Stack, Typography } from '@mui/material'
 import FiltersComponets from '../Filters'
 import PaginationButtons from '../Pagination/Pagination'
 import CarsdCategory from "../Card/CardsVistaCategory/CarsdCategory"
+import { useParams } from 'react-router'
 
 export default function CategoryCoursesComponest() {
+
+  const {idcategory} = useParams();
+
 return (
-    <Box sx={{marginTop:6}}>
+  <Box sx={{marginTop:6}}>
+      <p> {idcategory} </p>
       <Typography variant="h5" color="initial" sx={{marginBottom:4 ,marginLeft:-170}}>3.229 resultados para “ecommerce”</Typography>
       <Stack
         direction="row"

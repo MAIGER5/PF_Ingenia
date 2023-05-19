@@ -6,6 +6,8 @@ import { GET_CATEGORIES } from "../Actions/getCategories";
 import {GET_COURSESCATEGORY} from "../Actions/getCoursescategory"
 import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
 import { FILTER_BY_DIFFICULTY} from "../Actions/filterDificulti";
+import { ORDER_BY_DATE } from "../Actions/filterByDate";
+import { GET_COURSESEACH } from "../Actions/SerchcCourses";
 
 const initialState = {
     allCourse: [],
@@ -14,71 +16,70 @@ const initialState = {
     categories:[], 
     filtercourses:[],
     allCourseCategory:[],
-    carrito:[]
-,
-    loginUser: {
-        type: 0,
-        email: "",
-        password: "",
-      }
+    allCarrito:[]
+
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case GET_COURSES:
+      case GET_COURSES:
+        return {
+            ...state,
+            allCourse: action.payload,
+            allCourseCopy: action.payload,
+            allCarrito: action.payload
+        };
+
+        case GET_DATAIL_COURSE:
             return {
                 ...state,
-                allCourse: action.payload,
-                allCourseCopy: action.payload
+                courseDetail: action.payload
             };
-    
-            case GET_DATAIL_COURSE:
+
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                courseDetail:[],
+            };
+            case GET_COURSESCATEGORY:
                 return {
                     ...state,
-                    courseDetail: action.payload
-                };
-    
-            case CLEAN_DETAIL:
-                return {
-                    ...state,
-                    courseDetail:[],
-                };
-                case GET_COURSESCATEGORY:
+                    allCourseCategory: action.payload,
+                    
+                };    
+            case GET_CATEGORIES:
+            return {
+                ...state,
+                categories:action.payload,
+            };
+            case FILTER_BY_LANGUAGE:
+                    
+                    return {
+                        ...state,
+                        filtercourses: action.payload,
+                        
+                    };
+                    case  FILTER_BY_DIFFICULTY:
+                    
+                    return {
+                        ...state,
+                        filtercourses: action.payload,
+                        
+                    };
+                    case ORDER_BY_DATE:
+
+                    return {
+                        ...state,
+                        filtercourses: action.payload,
+        
+                    };
+                    case  GET_COURSESEACH:
+
                     return {
                         ...state,
                         allCourseCategory: action.payload,
-                        
-                    };    
-                case GET_CATEGORIES:
-                return {
-                    ...state,
-                    categories:action.payload,
-                };
-                case FILTER_BY_LANGUAGE:
-                        
-                        return {
-                            ...state,
-                            filtercourses: action.payload,
-                            
-                        };
-                        case  FILTER_BY_DIFFICULTY:
-                        
-                        return {
-                            ...state,
-                            filtercourses: action.payload,
-                            
-                        };
-
-        case LOGIN_USER:
-            console.log("Paso por el Reducer");
-            console.log(action.payload);
-            localStorage.setItem("type", action.payload.type);
-            localStorage.setItem("email", action.payload.email);
-            localStorage.setItem("password", action.payload.password);
-            return {
-                ...state,
-                loginUser: action.payload
-            }
+        
+                    };
 
         default:
             return { ...state };

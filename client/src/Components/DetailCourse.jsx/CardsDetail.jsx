@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, Grid, Rating } from '@mui/material';
+import { makeStyles } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -13,6 +14,7 @@ import { useSelector } from 'react-redux';
 export function CardsDetail({}) {
     
     const curses = useSelector((state)=> state.courseDetail)
+
   
     return (
 
@@ -22,7 +24,7 @@ export function CardsDetail({}) {
         }}
         >
         <CardMedia
-          sx={{ height: 300, width: 600}}
+          sx={{ height: 300, width: 700}}
           component='img'
           image= {curses.image}
           title="imagen de curso"
@@ -61,14 +63,14 @@ export function CardsDetail({}) {
                             textAlign: 'justify'
 
                         }}>
-                            {curses.dificulty}
+                            Por: {curses.users?.name} {curses.users?.lastname}
                         </Typography>
 
                         <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'
 
                         }}>
-                            {curses.dificulty}
+                            {/* {curses.lenguage} */}
                         </Typography>
                         
                         <Grid width={600}
@@ -89,12 +91,28 @@ export function CardsDetail({}) {
                             <Fab disabled aria-label="like">
                                 <FavoriteIcon />
                             </Fab>
-                            <Grid item xs={3}>
+                            <Grid item xs={4.5}>
                                 <Box component='h2'
                                 >
-                                    {curses.price}
+                                   $ {curses.price} USD
                                 </Box>
                             </Grid>
+                        </Grid>
+
+                        <Grid width={600}
+                            container
+                            direction="row"
+                            justifyContent="flex-start"
+                            alignItems="normal">
+                                <Grid>
+                                    <Button variant="text"  sx={{backgroundColor:"#E53170", color: 'black'}} > {curses.dificulty}  </Button>
+                                </Grid>
+                                <Grid marginX={1}>
+                                    <Button marginLeft='2' sx={{backgroundColor:"#E53170", color: 'black'}}> {curses.lenguage} </Button>
+                                </Grid>
+                                <Grid>
+                                    <Button  sx={{backgroundColor:"#E53170", color: 'black'}}> {curses.categories} </Button>
+                                </Grid>
                         </Grid>
                     </Grid>
                 </Grid>

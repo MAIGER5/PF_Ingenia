@@ -10,6 +10,7 @@ import { cleandDetail } from '../../Redux/Actions/cleanDetail';
 import { useParams } from 'react-router-dom';
 
 
+
 function DetailCourse() {
 
     const {id} = useParams();
@@ -49,13 +50,14 @@ function DetailCourse() {
                         }}>
                             Lo que aprenderás
                         </Typography>
-                        <Typography gutterBottom variant="h8" component="div" sx={{
-                            textAlign: 'justify'
-                        }}>
-                            {curses.description}
+                        <Typography align='left' marginLeft={2} >
+                            {curses.learnTo? curses.learnTo.map((ele)=>
+                                <Typography> * {ele} </Typography>
+                            ): "nada"
+                            }
                         </Typography>
 
-                        <Typography gutterBottom variant="h5" component="div" sx={{
+                        <Typography marginY={3} gutterBottom variant="h5" component="div" sx={{
                             textAlign: 'justify'
                         }}>
                             Metodología de enseñanza
@@ -63,10 +65,10 @@ function DetailCourse() {
                         <Typography gutterBottom variant="h8" component="div" sx={{
                             textAlign: 'justify'
                         }}>
-                            {curses.habilities}
+                            {curses.studyMethod}
                         </Typography>
 
-                        <Typography gutterBottom variant="h5" component="div" sx={{
+                        <Typography marginY={3} gutterBottom variant="h5" component="div" sx={{
                             textAlign: 'justify'
 
                         }}>
@@ -76,7 +78,7 @@ function DetailCourse() {
                             textAlign: 'justify'
 
                         }}>
-                            {curses.description}
+                            {curses.requirement}
                         </Typography>
 
                     </Grid>
@@ -84,6 +86,19 @@ function DetailCourse() {
                     
                 <Grid item xs={5.8}>
                     <Grid >
+                        <Typography gutterBottom variant="h5" component="div" sx={{
+                            textAlign: 'justify'
+
+                        }}>
+                            Contenido del curso
+                        </Typography>
+                        <Typography marginY={3} gutterBottom variant="h8" component="div" sx={{
+                            textAlign: 'justify'
+
+                        }}>
+                            {curses.content}
+                        </Typography>
+
                         <Typography gutterBottom variant="h5" component="div" sx={{
                             textAlign: 'justify'
 
@@ -97,38 +112,22 @@ function DetailCourse() {
                             {curses.description}
                         </Typography>
 
-                        <Typography gutterBottom variant="h5" component="div" sx={{
-                            textAlign: 'justify'
-
-                        }}>
-                            Categoria
-                        </Typography>
-                        <Typography gutterBottom variant="h8" component="div" sx={{
-                            textAlign: 'justify'
-
-                        }}>
-                            {curses.title}
-                        </Typography>
-
                     </Grid>
                 </Grid>
             </Grid>
 
 
 
-            <Grid   container
+            <Grid   
+                container
                 direction="row"
-                justifyContent="space-between"
+                justifyContent="space-betwee"
                 alignItems="center"
-                className='interno tres'
+                marginTop={12}
+                spacing={12}
             >
-                
                 <ValoracionesCurso/>
                 <AcercaProfesor/>
-
-
-
-                
             </Grid>
         </Grid>
   );

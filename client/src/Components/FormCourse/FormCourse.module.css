@@ -6,13 +6,63 @@
     align-items: center;
 }
 
+.container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
 .input{
     padding-left: 10px;
     border-color: black;
     border-width: 1px;
-    width: 280px;
+    width: 250px;
     height: 40px;
 }
+
+.inputImage[type="file"] {
+    display: none;
+}
+
+.inputImageLabel{
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: #E53170;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    color: #FFFFFE;
+}
+
+.inputSelect{
+    padding-left: 10px;
+    border-color: black;
+    border-width: 1px;
+    width: 250px;
+    height: 40px;
+}
+
+.textarea{
+    border-color: black;
+    width: 250px;
+    height: 160px;
+    resize: none;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: 'Figtree', sans-serif;
+    padding: 10px;
+}
+
+.checkboxContainer{
+    display: flex;
+    justify-content: flex-start;
+    width: 250px;
+}
+
+
 
 
 .button{

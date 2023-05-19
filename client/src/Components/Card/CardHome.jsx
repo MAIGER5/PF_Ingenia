@@ -61,7 +61,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
               </Button>
             </CardActions>
             <Box component='h2'>
-            ${price}
+            ${price} USD
             </Box>
 
           </CardActionArea>
