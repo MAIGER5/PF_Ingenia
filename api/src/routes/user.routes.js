@@ -16,4 +16,6 @@ userRouter.post("/created", userPostHandler);
 
 userRouter.post("/login", userAuthenticated);
 
+userRouter.post("/login/goole", userAuthenticated);
+
 module.exports = userRouter;

@@ -4,9 +4,20 @@ export const GET_COURSESCATEGORY = 'GET_COURSESCATEGORY';
 
 const URLcourse = 'http://localhost:3001/courses'
 
-export function getCoursesCategory() {
+export function getCoursesCategory(categoria) {
   return async function(dispatch) {
-    const response = await axios.get(`${URLcourse}/`);
-    dispatch({type:GET_COURSESCATEGORY, payload: response.data})
+    try {
+      const response = await axios.get(`${URLcourse}/`);
+      const cursos = response.data;
+      
+      const cursosFiltrados = cursos.filter(element => {
+        return element.Categories && element.Categories.some(category => categoria.includes(category.name));
+      });
+      
+      dispatch({ type: GET_COURSESCATEGORY, payload: cursosFiltrados });
+    } catch (error) {
+      // Manejo de errores
+      console.error(error);
+    }
   }
-};
+}

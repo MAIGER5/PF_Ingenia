@@ -40,7 +40,7 @@ const userDataForm = ({
     updatedAt,
   };
 
-  if (Is === "STUDEN") {
+  if (Is === "STUDENT") {
     return userStuden;
   } else if (Is === "INSTRUCTOR") {
     return userInstructor;
