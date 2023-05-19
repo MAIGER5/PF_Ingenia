@@ -3,41 +3,43 @@ import { NavLink } from "react-router-dom";
 import styles from "./FormLogin.module.css";
 import { useDispatch } from "react-redux";
 import LoginToBackendOwnAccess from "../LoginToBackendOwnAccess/LoginToBackendOwnAccess";
+import { postLoginUser } from "../../Redux/Actions/postLoginUser";
 
 export const LOGIN_USER = "LOGIN_USER"
 
 export default function FormLogin({ userType }) {
   console.log("control en FormLogin");
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState({
     userType: "",
     password: "",
-    email: "",
+    email: ""
   });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(user);
+  const handleInput = (event) => {
 
-    //se envían datos para validación por servidor
-    LoginToBackendOwnAccess(user, userType);
+    const property = event.target.name;
+    const value = event.target.value
+
+    setUser({...user, userType, [property]: value})
   };
 
-  //Detecta cambios de los input input
-  const handleInput = (event) => {
-    const { name, value } = event.target;
-    console.log(event.target.value);
+  const handleSubmit = (event) => {
+    dispatch(postLoginUser(user));
 
     setUser({
-      ...user,
-      userType,
-      [name]: value,
+      userType: "",
+      password: "",
+      email: ""
     });
-  };
+}
+
+
+
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form onSubmit={(event)=> handleSubmit()} className={styles.form}>
       <input
         type="email"
         placeholder="Correo Electrónico"
