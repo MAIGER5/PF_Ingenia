@@ -23,6 +23,7 @@ const userDataForm = ({
     CourseIdCourse,
     createdAt,
     updatedAt,
+    loginVerification: true,
   };
 
   const userInstructor = {
