@@ -19,7 +19,7 @@ const userPostHandler = async (req, res) => {
 
     res.status(200).json(user);
   } catch (err) {
-    res.status(401).json({ error: err.message });
+    res.status(401).json({ error: err.message, createVerification: false });
   }
 };
 
