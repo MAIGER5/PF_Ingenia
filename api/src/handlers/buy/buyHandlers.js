@@ -2,6 +2,8 @@ const request = require('request');
 require('dotenv').config();
 const {CLIENTPAYPAL,SECRET} = process.env;
 
+// const {executePaymentControllers} = require('../../controllers/buy/paypal/executePaymentControllers')
+
 const PAYPAL_API = 'https://api-m.sandbox.paypal.com';
 const auth = {user: CLIENTPAYPAL, pass:SECRET};
 
@@ -17,7 +19,13 @@ const buyHandlers = (req,res)=>{
 }
 const executePayment = (req,res)=>{
     const {token} = req.query;
-    console.log(token);
+    // try {
+    //     const response = executePaymentControllers()
+    //     res.status(200)
+        
+    // } catch (error) {
+        
+    // }
     request.post(`${PAYPAL_API}/v2/checkout/orders/${token}/capture`, {
         auth,
         body: {},
