@@ -3,8 +3,8 @@ const userDataForm = require("../../helper/userDataForm");
 const { tokenSingUp } = require("../../helper/tokenSingUp");
 const bcryptjs = require("bcryptjs");
 
-const userAuthenticated = async (email, password, role) => {
-  const loginUser = await User.findOne({ where: { email, Is: role } });
+const userAuthenticated = async (email, password, userType) => {
+  const loginUser = await User.findOne({ where: { email, Is: userType } });
 
   if (!loginUser) {
     throw Error("Lo sentimos, no se encontró el usuario especificado.");
