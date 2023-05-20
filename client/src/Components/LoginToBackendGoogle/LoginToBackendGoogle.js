@@ -27,7 +27,7 @@ export default function LoginToBackendGoogle (credentials, userType) {
             if(response.data.user.userType == "STUDENT") localStorage.setItem("userType", "1");
             if(response.data.user.userType == "INSTRUCTOR") localStorage.setItem("userType", "2");
             if(response.data.user.userType == "ADMIN") localStorage.setItem("userType", "3");
-            window.location.href = "http://localhost:5173";
+            window.location.href = '/';
           }
         } catch (error) {
           console.error("Error en la solicitud POST:", error);

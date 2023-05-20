@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Alert, Snackbar } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -18,11 +19,13 @@ const style = {
 
 export default function LogoutComponent({ onClose }) {
   const [open, setOpen] = React.useState(true);
+  //const [openSnackbar, setOpenSnackbar] = React.useState(false);
   /* const handleOpen = () => setOpen(true); */
   /* const handleClose = () => setOpen(false); */
   const handleClose = () => {
     setOpen(false);
     onClose(); // Llama a la función onClose pasada como prop para cerrar la ventana modal
+    //setOpenSnackbar(true);
   };
 
   const handleAccept = () => {
@@ -34,6 +37,11 @@ export default function LogoutComponent({ onClose }) {
 
     // Redireccionar a la página "/"
     window.location.href = '/';
+    /* setOpenSnackbar(true);
+
+    setTimeout(() => {
+      window.location.href = '/'; // Redireccionar a la página "/"
+    }, 5000); */
   };
 
   const handleCancel = () => {
@@ -43,6 +51,15 @@ export default function LogoutComponent({ onClose }) {
 
   return (
     <div>
+            {/* <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={() => setOpenSnackbar(false)}
+      >
+        <Alert onClose={() => setOpenSnackbar(false)} severity="success">
+          Sesión cerrada
+        </Alert>
+      </Snackbar> */}
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={open}
@@ -57,7 +74,7 @@ export default function LogoutComponent({ onClose }) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Confirme el cierre de sesión.
           </Typography>
-          <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
+          <Box sx={{ mt: 2, display: "flex", justifyContent: "flex-end" }}>
             <Button onClick={handleAccept} sx={{ mr: 2 }}>
               Aceptar
             </Button>

@@ -9,37 +9,30 @@ export const LOGIN_USER = "LOGIN_USER"
 
 export default function FormLogin({ userType }) {
   console.log("control en FormLogin");
-  const dispatch = useDispatch();
-
+  //const dispatch = useDispatch();
   const [user, setUser] = useState({
     userType: "",
     password: "",
-    email: ""
+    email: "",
   });
-
-  const handleInput = (event) => {
-
-    const property = event.target.name;
-    const value = event.target.value
-
-    setUser({...user, userType, [property]: value})
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(user);
+    //se envían datos para validación por servidor
+    LoginToBackendOwnAccess(user, userType);
   };
-
-  const handleSubmit = (event) => {
-    dispatch(postLoginUser(user));
-
+  //Detecta cambios de los input input
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    console.log(event.target.value);
     setUser({
-      userType: "",
-      password: "",
-      email: ""
+      ...user,
+      userType,
+      [name]: value,
     });
-}
-
-
-
-
+  };
   return (
-    <form onSubmit={(event)=> handleSubmit()} className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input
         type="email"
         placeholder="Correo Electrónico"

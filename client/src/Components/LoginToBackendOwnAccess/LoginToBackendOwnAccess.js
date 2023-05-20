@@ -9,7 +9,7 @@ export default function LoginToBackendOwnAccess(data) {
 
   async function dataOwnAccessToBackent() {
     try {
-      const response = await axios.post(`http://localhost:3001/logpropio`,data);
+      const response = await axios.post(`http://localhost:3001/user/login`,data);
       console.log("Respuesta del servidor:");
       console.log(response.data);
       if (response.data.loginVerification === false) {
@@ -21,7 +21,7 @@ export default function LoginToBackendOwnAccess(data) {
         if(response.data.user.userType == "STUDENT") localStorage.setItem("userType", "1");
         if(response.data.user.userType == "INSTRUCTOR") localStorage.setItem("userType", "2");
         if(response.data.user.userType == "ADMIN") localStorage.setItem("userType", "3");
-        window.location.href = "http://localhost:5173";
+        //window.location.href = '/'
       }
     } catch (error) {
       console.error("Error en la solicitud POST:", error);
