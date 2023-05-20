@@ -9,6 +9,7 @@ const userDataForm = ({
   studies,
   asset,
   CourseIdCourse,
+  tokenSession,
   createdAt,
   updatedAt,
 }) => {
@@ -23,6 +24,7 @@ const userDataForm = ({
     CourseIdCourse,
     createdAt,
     updatedAt,
+    tokenSession,
     loginVerification: true,
   };
 
@@ -34,11 +36,13 @@ const userDataForm = ({
     imgProfile,
     Is,
     assessment,
+    description,
     studies,
     asset,
     CourseIdCourse,
     createdAt,
     updatedAt,
+    tokenSession,
     loginVerification: true,
   };
 
