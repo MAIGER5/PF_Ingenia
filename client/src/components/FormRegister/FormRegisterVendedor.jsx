@@ -27,15 +27,15 @@ export default function FormRegisterVendedor() {
         console.log(user)
         setIsAlert(true)
    
-        // await fetch("http://localhost:3001/user/created", {
-        // method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
-        // body: JSON.stringify(user),
-        // }).catch(error => {
-        //     console.log(error);
-        // });
+        await fetch("http://localhost:3001/instructor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+        }).catch(error => {
+            console.log(error);
+        });
         setTimeout(() => {
             setisLoading(true);
             navigate("/")
