@@ -5,26 +5,41 @@ const bcryptjs = require("bcryptjs");
 
 const userPostGooHandler = async (req, res) => {
   try {
-    const { displayName, email, photoURL, emailVerified, userType } = req.body;
+    const { displayName, email, photoURL, login, emailVerified, userType } =
+      req.body;
 
     const verify = await verifyUserExistence(email, userType);
     const nameFormat = displayName.split(" ")[0];
 
-    if (!verify) {
-      if (!emailVerified) {
-        throw new Error("Email no verificado");
-      } else {
-        const password = passwordRandom();
-        const passwordHash = await bcryptjs.hash(password, 8);
+    if (login) {
+      if (verify) {
+        // Usuario existe, realizar alguna acción
+        // por ejemplo, obtener información del usuario
+        // y enviarla como respuesta
 
-        const user = await userPostGoogleController(
-          nameFormat,
-          email,
-          passwordHash,
-          photoURL,
-          userType
-        );
-        res.status(200).json({ user, loginVerification: true });
+        res.status(200).json("verify");
+      } else {
+        res.status(404).json({ error: "Usuario no encontrado" });
+      }
+    } else {
+      if (!verify) {
+        if (!emailVerified) {
+          throw new Error("Email no verificado");
+        } else {
+          const password = passwordRandom();
+          const passwordHash = await bcryptjs.hash(password, 8);
+
+          const user = await userPostGoogleController(
+            nameFormat,
+            email,
+            passwordHash,
+            photoURL,
+            userType
+          );
+          res.status(200).json({ user });
+        }
+      } else {
+        res.status(400).json({ error: "El usuario ya existe" });
       }
     }
   } catch (error) {

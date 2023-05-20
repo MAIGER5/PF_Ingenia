@@ -22,7 +22,7 @@ const userAuthenticated = async (email, password, userType) => {
 
   const tokenSession = await tokenSingUp(loginUser);
 
-  return { user: userDataForm(loginUser), tokenSession };
+  return { user: userDataForm(loginUser, tokenSession) };
 };
 
 module.exports = userAuthenticated;
