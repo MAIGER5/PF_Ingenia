@@ -24,7 +24,7 @@ const instructorPostHandlers = async (req, res) => {
     );
     res.status(200).json(response);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message, createVerification: false });
   }
 };
 

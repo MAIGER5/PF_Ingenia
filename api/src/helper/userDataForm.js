@@ -39,6 +39,7 @@ const userDataForm = ({
     CourseIdCourse,
     createdAt,
     updatedAt,
+    loginVerification: true,
   };
 
   if (Is === "STUDENT") {
