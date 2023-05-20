@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 
 const bodyParser = require("body-parser");
-const morgan = require('morgan')
+const morgan = require("morgan");
 const cors = require("cors");
 
 const port = process.env.PORT || 3001;
@@ -12,7 +12,6 @@ const router = require("./routes/index.routes");
 
 const { sequelize } = require("./database.js");
 
-
 const server = express();
 
 const corsOptions = {
@@ -20,9 +19,9 @@ const corsOptions = {
 };
 
 server.use(cors(corsOptions));
-server.use(bodyParser.json({ limit: '10mb', extended: true }));
-server.use(bodyParser.urlencoded({limit: '10mb', extended: false}));
-server.use(morgan('dev'))
+server.use(bodyParser.json({ limit: "10mb", extended: true }));
+server.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
+server.use(morgan("dev"));
 server.use("/", router);
 
 server.use((err, req, res, next) => {
@@ -31,7 +30,7 @@ server.use((err, req, res, next) => {
 });
 
 sequelize
-  .sync({ alter: true }) // para resetar la base de dato
+  .sync({ alter: false }) // para resetar la base de dato
   .then(() => {
     console.log(`Database & tables created`);
     server.listen(port, () => {
