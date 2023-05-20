@@ -11,11 +11,11 @@ export default function LoginToBackendGoogle (credentials, userType) {
     if (data.userType == "SignupVendedor") data.userType = "INSTRUCTOR";
 
     //Para visualizar los datos recibidos de Google:
-    //console.log(data);
+    console.log(data);
 
     async function dataGoogleToBackent() {
         try {
-          const response = await axios.post(`http://localhost:3001/google`,data);
+          const response = await axios.post(`http://localhost:3001/user/login/google`,data);
           console.log("Respuesta del servidor:");
           console.log(response.data);
           if (response.data.loginVerification === false) {
