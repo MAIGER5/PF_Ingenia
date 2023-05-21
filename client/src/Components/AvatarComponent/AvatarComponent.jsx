@@ -11,7 +11,20 @@ export default function AvatarComponent( props ) {
         const name = localStorage.getItem('name');
         const lastname = localStorage.getItem('lastname');
 
-        return { 
+        if (lastname == "null") {
+
+            return { 
+                sx: {
+                bgcolor: "#FF8906",
+                height: `${userHeight}`, 
+                width: `${userWidth}`,
+                fontSize: `${userFontSize}`,
+                },
+                /* children: `${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`, */
+                children: `${name.charAt(0)}`,
+            };
+        } else {
+            return { 
             sx: {
             bgcolor: "#FF8906",
             height: `${userHeight}`, 
@@ -21,6 +34,9 @@ export default function AvatarComponent( props ) {
             /* children: `${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`, */
             children: `${name.charAt(0)}${lastname.charAt(0)}`,
         };
+        }
+
+        
     }
 
   return (

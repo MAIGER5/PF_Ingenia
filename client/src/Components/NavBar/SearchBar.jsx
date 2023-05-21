@@ -37,8 +37,7 @@ export default function SearchBar() {
               sm: "200px",
               md: "200px",
               lg: "400px"
-            },
-            marginLeft: "-100px",
+            },            
           }}
           
           InputProps={{
