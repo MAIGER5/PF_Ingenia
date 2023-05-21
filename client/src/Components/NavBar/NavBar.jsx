@@ -82,32 +82,69 @@ export default function NavBar() {
               // justifyContent: "center",
               justifyContent: "flex-end",
               alignItems: "center",
-              gap: "10px",
+              gap: "20px",
               width: "500px",
-              marginLeft: "-80px",
+              
               position: "relative",
             }}
-          >
-            {/* Mis Cursos */}
-            {userType === 1 ? (
+            >
+
+              {/* Publicaciones */}
+              <div>
+                {userType == 2 ? (
+                  <NavLink
+                  style={{
+                    textDecoration: "none",
+                    color: "#FF8906",
+                    fontSize: "20px",
+                  }}
+                  to={"/postCourse"}
+                  >
+                  <p>Publicaciones</p>
+                </NavLink>
+                ) : null}
+              </div>
+              
+              {/* Artículos */}
+              <div>
+                {userType == 2 ? (
+                  <NavLink
+                  style={{
+                    textDecoration: "none",
+                    color: "#FF8906",
+                    fontSize: "20px",      
+                  }}
+                  to={"/Articles"}
+                  >
+                  <p>Artículos</p>
+                </NavLink>
+                ) : null}
+              </div>
+
+            {/* Mis Cursos - Favoritos */}
+            <div>
+              {userType === 1 ? (
               <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  width: "430px",
-                }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                
+              }}
               >
+                
+                
+                {/* Mis Cursos */}
                 <NavLink
                   style={{
                     textDecoration: "none",
                     color: "#FF8906",
                     fontSize: "20px",
-                    width: "100px",
-                    marginRight: "30px",
+                    
+                    
                   }}
                   to={"/MyCourses"}
-                >
+                  >
                   <p>Mis cursos</p>
                 </NavLink>
 
@@ -118,14 +155,22 @@ export default function NavBar() {
                       color="primary"
                       aria-label="upload picture"
                       component="label"
-                    >                      
+                      >                      
 
                       <FavoriteIcon />
                     </IconButton>
                   </NavLink>
                 </Box>
+              </div>
+            ) : null}
+            </div>
+            
 
-                <Box>
+            {/* Notificaciones */}
+            <div>
+            {userType === 1 || userType === 2 ? (
+                <div>
+                  <Box>
                   <NavLink to={"/Notifications"}>
                     <IconButton
                       color="primary"
@@ -136,20 +181,22 @@ export default function NavBar() {
                       <NotificationsIcon />
                     </IconButton>
                   </NavLink>
-                </Box>
-              </div>
-            ) : null}
+                  </Box>
+                </div>
+            ) : null}              
+            </div>
+
+
+            {/* Carrito - Modo Dark/Ligth */}
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                gap: "10px",
-                marginLeft: "-200px",
               }}
-            >
+              >
               {/* Carrito */}
-              <Box>
+              {userType == 1 ? (<Box>
                 <NavLink to="/Carrito">
                   <IconButton
                     color="primary"
@@ -162,7 +209,7 @@ export default function NavBar() {
                     </Badge>
                   </IconButton>
                 </NavLink>
-              </Box>
+              </Box>) : null}
 
               {/* Mode Dark/Ligth */}
               <Box
@@ -191,13 +238,16 @@ export default function NavBar() {
             </div>
 
             {/* Menu Avatar */}
+            <div>
             {userType === 1 || userType === 2 ? (
               <>
                 <Box>
                   <MenuAvatar userType={userType}/>
                 </Box>
               </>
-            ) : null}
+            ) : null}              
+            </div>
+
 
             {/* Inicio de Sesión - Registro */}
             {userType === 0 ? (

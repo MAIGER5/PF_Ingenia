@@ -17,7 +17,7 @@ import { Modal, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import LogoutComponent from "../LogoutComponent/LogoutCoponent";
 
-export default function MenuAvatar(userType) {
+export default function MenuAvatar({userType}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userName, setUserName] = React.useState("");
   const [openModal, setOpenModal] = React.useState(false); // Nuevo estado para controlar la apertura de la ventana modal
