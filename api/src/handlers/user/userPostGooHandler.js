@@ -2,25 +2,27 @@ const verifyUserExistence = require("../../helper/verifyUserExistence");
 const userPostGoogleController = require("../../controllers/userControllers/userPostGoogleController");
 const passwordRandom = require("../../helper/PasswordRandom");
 const bcryptjs = require("bcryptjs");
+const { sendMail } = require("../../helper/emailer/sendMail");
 
 const userPostGooHandler = async (req, res) => {
   try {
-    const { displayName, email, photoURL, login, emailVerified, userType } =
-      req.body;
+    const {
+      providerId,
+      displayName,
+      email,
+      photoURL,
+      emailVerified,
+      userType,
+    } = req.body;
 
-    const verify = await verifyUserExistence(email, userType);
+    console.log(req.body);
+
+    const verify = await verifyUserExistence(email, userType, providerId);
     const nameFormat = displayName.split(" ")[0];
+    console.log(verify);
 
-    if (login) {
-      if (verify) {
-        // Usuario existe, realizar alguna acción
-        // por ejemplo, obtener información del usuario
-        // y enviarla como respuesta
-
-        res.status(200).json("verify");
-      } else {
-        res.status(404).json({ error: "Usuario no encontrado" });
-      }
+    if (verify) {
+      res.status(200).json(verify);
     } else {
       if (!verify) {
         if (!emailVerified) {
@@ -36,10 +38,9 @@ const userPostGooHandler = async (req, res) => {
             photoURL,
             userType
           );
-          res.status(200).json({ user });
+          user ? sendMail(email, displayName, password) : null;
+          res.status(200).json(user);
         }
-      } else {
-        res.status(400).json({ error: "El usuario ya existe" });
       }
     }
   } catch (error) {

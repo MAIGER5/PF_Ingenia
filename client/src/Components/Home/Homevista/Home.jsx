@@ -41,7 +41,7 @@ export default function HomeComponent() {
 
             }}
           >
-            Vende con nosotros
+            ¡Vende con nosotros! - Registrate aquí
           </Typography>
         </NavLink>
       

@@ -6,6 +6,7 @@ const userDataForm = ({
   imgProfile,
   Is,
   assessment,
+  description,
   studies,
   asset,
   CourseIdCourse,

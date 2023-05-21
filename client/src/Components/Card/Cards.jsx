@@ -1,5 +1,4 @@
 
-import React from 'react'
 import CardHome from './CardHome'
 import { Box, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -11,9 +10,9 @@ export default function Cards() {
 
     return (
         <Box  >
-        <Grid container spacing={3} >
+        <Grid container spacing={10}>
           {cursos.map((curso) => (
-            <Grid item xs={2} sm={6} md={6} key={curso.idCourse}>
+            <Grid item xs={2} sm={6} md={4} key={curso.idCourse}>
               <CardHome
                 idCourse = {curso.idCourse}
                 title={curso.title}
