@@ -5,22 +5,20 @@ const bcryptjs = require("bcryptjs");
 
 const userPostGooHandler = async (req, res) => {
   try {
-    const { displayName, email, photoURL, login, emailVerified, userType } =
-      req.body;
+    const {
+      providerId,
+      displayName,
+      email,
+      photoURL,
+      emailVerified,
+      userType,
+    } = req.body;
 
-    const verify = await verifyUserExistence(email, userType);
+    const verify = await verifyUserExistence(email, userType, providerId);
     const nameFormat = displayName.split(" ")[0];
 
-    if (login) {
-      if (verify) {
-        // Usuario existe, realizar alguna acción
-        // por ejemplo, obtener información del usuario
-        // y enviarla como respuesta
-
-        res.status(200).json("verify");
-      } else {
-        res.status(404).json({ error: "Usuario no encontrado" });
-      }
+    if (verify) {
+      res.status(200).json(verify);
     } else {
       if (!verify) {
         if (!emailVerified) {
@@ -36,10 +34,8 @@ const userPostGooHandler = async (req, res) => {
             photoURL,
             userType
           );
-          res.status(200).json({ user });
+          res.status(200).json(user);
         }
-      } else {
-        res.status(400).json({ error: "El usuario ya existe" });
       }
     }
   } catch (error) {
