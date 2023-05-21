@@ -196,7 +196,7 @@ export default function NavBar() {
               }}
               >
               {/* Carrito */}
-              {userType == 1 ? (<Box>
+              {userType == 1 || userType == 0 ? (<Box>
                 <NavLink to="/Carrito">
                   <IconButton
                     color="primary"
