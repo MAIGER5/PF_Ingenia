@@ -19,8 +19,8 @@ export default function CardsComponet() {
                 title={curso.title}
                 lenguage={curso.lenguage}
                 image={curso.image}
-                instructorLastName={curso.Users[0].lastname}
-                instructorName={curso.Users[0].name}
+                instructorLastName={curso.Users[0]?.lastname}
+                instructorName={curso.Users[0]?.name}
                 price={curso.price}
                 habilities={curso.habilities}
               />

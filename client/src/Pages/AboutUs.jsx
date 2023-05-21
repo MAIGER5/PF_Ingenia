@@ -1,7 +1,7 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
 import { Box, Stack } from '@mui/material'
-import SvgComponentingenia from '../Components/imageningeia'
+
 
 
 export default function AboutUs() {
@@ -13,7 +13,11 @@ export default function AboutUs() {
     
      spacing={14}
       >
-     <SvgComponentingenia/>
+      <img  
+        src='https://res.cloudinary.com/dvvqbwhcc/image/upload/v1684286572/ingeniaAssets/banner-vendedor_p1ztmc.png' 
+        alt='banner_ingenia' 
+        width="800" 
+      />
      <Stack  spacing={4}>
       <Typography variant="h2" color="primary"> Somos Ingenia</Typography>
       <Typography variant="body1" color="initial" sx={{width: 536,height: 150}} >

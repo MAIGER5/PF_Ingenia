@@ -11,16 +11,16 @@ export default function Cards() {
 
     return (
         <Box  >
-        <Grid container spacing={3} sx={{marginLeft:5}} >
+        <Grid container spacing={3} >
           {cursos.map((curso) => (
-            <Grid item xs={3} sm={6} md={4} key={curso.idCourse}>
+            <Grid item xs={2} sm={6} md={6} key={curso.idCourse}>
               <CardHome
                 idCourse = {curso.idCourse}
                 title={curso.title}
                 lenguage={curso.lenguage}
                 image={curso.image}
-                instructorLastName={curso.Users[0].lastname}
-                instructorName={curso.Users[0].name}
+                instructorLastName={curso.Users[0]?.lastname}
+                instructorName={curso.Users[0]?.name}
                 price={curso.price}
                 habilities={curso.habilities}
               />
