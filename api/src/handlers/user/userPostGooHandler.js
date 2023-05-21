@@ -2,6 +2,7 @@ const verifyUserExistence = require("../../helper/verifyUserExistence");
 const userPostGoogleController = require("../../controllers/userControllers/userPostGoogleController");
 const passwordRandom = require("../../helper/PasswordRandom");
 const bcryptjs = require("bcryptjs");
+const { sendMail } = require("../../helper/emailer/sendMail");
 
 const userPostGooHandler = async (req, res) => {
   try {
@@ -14,8 +15,11 @@ const userPostGooHandler = async (req, res) => {
       userType,
     } = req.body;
 
+    console.log(req.body);
+
     const verify = await verifyUserExistence(email, userType, providerId);
     const nameFormat = displayName.split(" ")[0];
+    console.log(verify);
 
     if (verify) {
       res.status(200).json(verify);
@@ -34,6 +38,7 @@ const userPostGooHandler = async (req, res) => {
             photoURL,
             userType
           );
+          user ? sendMail(email, displayName, password) : null;
           res.status(200).json(user);
         }
       }
