@@ -19,7 +19,7 @@ export default function Carrusel() {
         <motion.img
           className={styled.imgcarrusel}
           key={index}
-          src={images[index]}
+          src={images[index]}e 
           alt="slide"
           initial={{ x: 300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -29,18 +29,26 @@ export default function Carrusel() {
         />
       </AnimatePresence>
    
-      <div >
-        <motion.button whileHover={{ scale: 1.2 ,opacity:1 }}    onClick={() => setIndex((index + images.length - 1) % images.length)} className={styled.prev}>
-        <IconButton >
-        <ArrowBackIosIcon color='secondary'/>
-        </IconButton>
-        </motion.button>
-        <motion.button whileHover={{ scale: 1.2 ,opacity:1   }} onClick={() => setIndex((index + 1) % images.length)} className={styled.next}>
-        <IconButton >
-        <ArrowForwardIosIcon color='secondary'/>
-        </IconButton>
-        </motion.button>
-      </div>
+      <div>
+  <motion.div
+    whileHover={{ scale: 1.2 , opacity: 1 }}
+    onClick={() => setIndex((index + images.length - 1) % images.length)}
+    className={styled.prev}
+  >
+    <IconButton>
+      <ArrowBackIosIcon color='secondary'/>
+    </IconButton>
+  </motion.div>
+  <motion.div
+    whileHover={{ scale: 1.2 , opacity: 1 }}
+    onClick={() => setIndex((index + 1) % images.length)}
+    className={styled.next}
+  >
+    <IconButton>
+      <ArrowForwardIosIcon color='secondary'/>
+    </IconButton>
+  </motion.div>
+</div>
      
       
     </Box>
