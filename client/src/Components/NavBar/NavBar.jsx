@@ -6,6 +6,7 @@ import {
   IconButton,
   Link,
   Typography,
+  Badge
 } from "@mui/material";
 import { ColorModeContext } from "../Layout";
 import { useTheme } from "@emotion/react";
@@ -24,6 +25,11 @@ import { useSelector } from "react-redux";
 
 
 export default function NavBar() {
+
+  //Badge para el cart desde el navbar
+  const cart = useSelector((state)=> state.allCourse)
+  const cartCourses = cart.length
+  
   //let loginUser = { type: 0 };
   let userType = 0;
   //console.log(localStorage.getItem("userType"));
@@ -164,7 +170,9 @@ export default function NavBar() {
                     component="label"
                   >
                     {/* <input hidden accept="image/*" type="file" /> */}
-                    <ShoppingCartIcon />
+                    <Badge badgeContent={cartCourses} color="secondary">
+                      <ShoppingCartIcon />
+                    </Badge>
                   </IconButton>
                 </NavLink>
               </Box>

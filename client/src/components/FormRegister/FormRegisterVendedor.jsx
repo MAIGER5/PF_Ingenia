@@ -88,7 +88,7 @@ export default function FormRegisterVendedor() {
                 />
                 <input 
                     type="text" 
-                    placeholder="Contraseña"
+                    placeholder="apellido"
                     name="lastName"
                     value={user.lastName}
                     onChange={handleInput}

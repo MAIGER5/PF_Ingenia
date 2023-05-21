@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
-import Rating from '@mui/material/Rating';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import { 
+  Alert, 
+  Snackbar, 
+  CardMedia, 
+  Typography, 
+  Rating,
+}from '@mui/material';
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import styles from "./CardHome.module.css"; 
@@ -14,6 +20,8 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
 
   const [isActive, setIsActive] = useState(false);
   const [colorCart, setcolorCart] = useState("");
+  const [isAlertAdd, setIsAlertAdd] = useState(false);  
+  const [isAlertDelete, setIsAlertDelete] = useState(false);  
 
   //Logica para el cambio de color del carrito
   useEffect(() => {
@@ -28,14 +36,34 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
   const handleCart = () => {
     if(!isActive){
       setIsActive(true)
+      setIsAlertAdd(true)
     }else {
       setIsActive(false)
+      setIsAlertDelete(true)
     }
   }
 
  
   return (
-
+    <>
+      {isAlertAdd && 
+        (<Snackbar open={isAlertAdd} autoHideDuration={2000} onClose={()=>setIsAlertAdd(false)}>
+            <Alert 
+                variant="filled" severity="info"
+                icon={<InsertEmoticonIcon fontSize="inherit" />} 
+            >
+              Has agregado un curso a tu carrito 
+            </Alert>
+        </Snackbar>)}
+      {isAlertDelete && 
+        (<Snackbar open={isAlertDelete} autoHideDuration={2000} onClose={()=>setIsAlertDelete(false)}>
+            <Alert 
+                variant="filled" severity="info"
+                icon={<SentimentVeryDissatisfiedIcon fontSize="inherit" />} 
+            >
+              Has eliminado un curso de tu carrito
+            </Alert>
+        </Snackbar>)}
     <div className={styles.container}>
       <div>
         <NavLink 
@@ -43,7 +71,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
             style={{ textDecoration: 'none' }}
         >
           <CardMedia
-            sx={{ height: 210, borderRadius: "5px" }}
+            sx={{ height: 180, width: 230,  borderRadius: "5px" }}
             component='img'
             image={image}
             title="xxxxx"
@@ -97,11 +125,15 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
             >
 
               {isActive ? 
-                <ShoppingCartIcon color='secondary'/>
+                <ShoppingCartIcon 
+                  color='secondary'
+                  sx={{ width: "20px" }}
+                />
               
               :
               <ShoppingCartIcon sx={{
-                color: `${colorCart}`
+                color: `${colorCart}`,
+                width: "20px"
                 }}/>
               }
             </button>
@@ -112,6 +144,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
         </div>
       </div>   
     </div>
+    </>
   )
 }
 

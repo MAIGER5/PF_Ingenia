@@ -12,12 +12,31 @@
     margin: 0 50px 0 80px; 
 }
 
+.title{
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.subtitle{
+    font-size: 20px;
+}
+
 .list{
     list-style: none;
+    margin-left: -50px;
+}
+
+.textContainer{
+    width: 480px;
+    height: 150px;
+}
+
+.text{
+    font-size: 16px;
 }
 
 .banner{
-  width:940px;
+  width:900px;
   height:720px;
   background-image: url('https://res.cloudinary.com/dvvqbwhcc/image/upload/v1684286572/ingeniaAssets/banner-vendedor_p1ztmc.png');
   background-size:cover;
