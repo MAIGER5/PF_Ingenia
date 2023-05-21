@@ -24,36 +24,19 @@ import { useSelector } from "react-redux";
 
 
 export default function NavBar() {
-  //let loginUser = { type: 0 };
   let userType = 0;
-  //console.log(localStorage.getItem("userType"));
-  //console.log(loginUser.userType);
 
   //prevengo un dato "loginUser.userType = null"
   if (localStorage.getItem("userType") == null) {
     localStorage.setItem("userType", "0");
   }
 
+  // Consulto qué tipo de usuario está registrado
   if (localStorage.getItem("userType") != 0) {
     userType = parseInt(localStorage.getItem("userType"), 10);
-    //loginUser.email = localStorage.getItem("email");
-    //loginUser.password = localStorage.getItem("password");
-    console.log(`NavBar/if:`);
-    //console.log(loginUser);
-  } else {
-    //loginUser = useSelector((state) => state.loginUser);
-    //console.log("NavBar/else:" + loginUser);
-  }
+  } 
 
-  //console.log("En el NavBar: ");
-  //console.log(userType);
-  //console.log(userType);
-  /* variable auxiliar temporal:
-    0 => usuario no registrado
-    1 => comprador
-    2 => vendedor
-    4 => administrador */
-
+  // Modo Dark/Ligth
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
   const themeMode = theme.palette.mode === "light" ? "black" : "white";
@@ -73,6 +56,7 @@ export default function NavBar() {
             margin: "30px 30px 25px 0",
           }}
           >
+            {/* Logo ingenia */}
           <Link href="/" underline="none">
             <Typography
               variant="h5"
@@ -82,6 +66,7 @@ export default function NavBar() {
             </Typography>
           </Link>
 
+          {/* SearchBar */}
           <SearchBar />
 
           <div
@@ -96,6 +81,7 @@ export default function NavBar() {
               position: "relative",
             }}
           >
+            {/* Mis Cursos */}
             {userType === 1 ? (
               <div
                 style={{
@@ -118,14 +104,14 @@ export default function NavBar() {
                   <p>Mis cursos</p>
                 </NavLink>
 
+                  {/* Favoritos */}
                 <Box>
                   <NavLink to={"/MyCourses"}>
                     <IconButton
                       color="primary"
                       aria-label="upload picture"
                       component="label"
-                    >
-                      {/* <input hidden accept="image/*" type="file" /> */}
+                    >                      
 
                       <FavoriteIcon />
                     </IconButton>
@@ -138,8 +124,7 @@ export default function NavBar() {
                       color="primary"
                       aria-label="upload picture"
                       component="label"
-                    >
-                      {/* <input hidden accept="image/*" type="file" /> */}
+                    >                      
 
                       <NotificationsIcon />
                     </IconButton>
@@ -156,18 +141,20 @@ export default function NavBar() {
                 marginLeft: "-200px",
               }}
             >
+              {/* Carrito */}
               <Box>
                 <NavLink to="/Carrito">
                   <IconButton
                     color="primary"
                     aria-label="upload picture"
                     component="label"
-                  >
-                    {/* <input hidden accept="image/*" type="file" /> */}
+                  >                    
                     <ShoppingCartIcon />
                   </IconButton>
                 </NavLink>
               </Box>
+
+              {/* Mode Dark/Ligth */}
               <Box
                 sx={{
                   display: "flex",
@@ -193,19 +180,20 @@ export default function NavBar() {
               </Box>
             </div>
 
-            {userType === 1 ? (
+            {/* Menu Avatar */}
+            {userType === 1 || userType === 2 ? (
               <>
                 <Box>
-                  <MenuAvatar />
+                  <MenuAvatar userType={userType}/>
                 </Box>
               </>
             ) : null}
 
+            {/* Inicio de Sesión - Registro */}
             {userType === 0 ? (
               <SingInButtons themeMode={themeMode} />
             ) : null}
-          </div>
-          {/* </Toolbar> */}
+          </div>          
         </div>
       </AppBar>
     </>

@@ -17,7 +17,7 @@ import { Modal, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import LogoutComponent from "../LogoutComponent/LogoutCoponent";
 
-export default function MenuAvatar() {
+export default function MenuAvatar(userType) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userName, setUserName] = React.useState("");
   const [openModal, setOpenModal] = React.useState(false); // Nuevo estado para controlar la apertura de la ventana modal
@@ -125,14 +125,16 @@ export default function MenuAvatar() {
             Perfil Usuario
           </Typography>
         </MenuItem>
-        <MenuItem 
+
+        {userType == 1 ? (<MenuItem 
           onClick={handleClose} 
           sx={{ mt: 2 }} 
           component={Link} 
           to="/MyCourses"
         >
           Mis Cursos
-        </MenuItem>
+        </MenuItem>) : null}
+
         <MenuItem 
           onClick={handleClose}  
           component={Link} 
