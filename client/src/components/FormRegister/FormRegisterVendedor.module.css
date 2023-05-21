@@ -53,6 +53,13 @@
     padding: 10px;
 }
 
+.error{
+    margin: -14px 0 0 0;
+    text-align: left;
+    color: #E53170;
+    font-size: 13px;
+    font-weight: 500;
+}
 
 .button{
     background: #FF8906;
@@ -67,10 +74,18 @@
     box-shadow: 0 0 4px rgba(0,0,0,0.25);
 }
 
+.buttonOff{
+    background: #9B9B9B;
+    border-radius: 5px;
+    border-style: none;
+    width: 285px;
+    height: 40px;
+}
+
 .button_text{
     color: #FFFFFE;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 18px;
     font-family: 'Figtree', sans-serif;
 }
 

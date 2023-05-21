@@ -5,6 +5,7 @@ import { categoryOptions } from "./validations";
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { Typography, Alert, Snackbar  } from "@mui/material";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 import styles from "./FormCourse.module.css";
 
@@ -188,30 +189,97 @@ export default function FormCourseCopy() {
                         onChange={(e) => setTitle(e.target.value)}
                         className={styles.input}
                     />
-                </div>        
-             
-                <input 
-                    type="text" 
-                    placeholder="Describe tu publicación"
-                    onChange={(e) => setDescription(e.target.value)}
-                    className={styles.input}
-                />
-                <textarea
+                </div> 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Describe tu publicación
+                        </Typography>
+                    </HtmlTooltip>
+                    <input 
+                        type="text" 
+                        placeholder="Describe tu publicación"
+                        onChange={(e) => setDescription(e.target.value)}
+                        className={styles.input}
+                    />
+                </div>       
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Contenido de tu publicación
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea
                     type="text" 
                     placeholder="Contenido de tu publicación"
                     onChange={(e) => setContent(e.target.value)}
                     className={styles.textarea}
-                />
-                <textarea  
-                    placeholder="Método de Entrega"
-                    onChange={(e) => setStudyMethod(e.target.value)}
-                    className={styles.textarea}
-                />
-                <textarea  
-                    placeholder="Realización de entrega"
-                    onChange={(e) => setDeliveryMethod(e.target.value)}
-                    className={styles.textarea}
-                />
+                    />
+                </div>
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Método de entrega
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea  
+                        placeholder="Método de Entrega"
+                        onChange={(e) => setStudyMethod(e.target.value)}
+                        className={styles.textarea}
+                    />
+                </div>
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            <ErrorOutlineIcon 
+                                color="secondary" 
+                                sx={{
+                                    width: "20px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px"
+                                }}
+                            />
+                            Realización de entrega
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea  
+                        placeholder="Realización de entrega"
+                        onChange={(e) => setDeliveryMethod(e.target.value)}
+                        className={styles.textarea}
+                    />
+                </div> 
             </div>
             <div className={styles.subContainer}>  
                 <div className={styles.subContainerSelect}>
@@ -271,26 +339,81 @@ export default function FormCourseCopy() {
                         type="checkbox" 
                         onChange={handlePromo}
                     /> 
-                    <label className={styles.label} >Aplicar promoción de 30% de descuento</label>  
+                     <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <label className={styles.label} >Aplicar promoción de 30% de descuento</label>  
+                    </HtmlTooltip>
                 </div>
-            
-                <input 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Duración estimada
+                        </Typography>
+                    </HtmlTooltip>
+                    <input 
                     type="text" 
                     placeholder="Duración estimada"
                     onChange={(e) => setDuration(e.target.value)}
                     className={styles.input}
-                /> 
-                <textarea 
+                    /> 
+                </div>
+                
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Requerimientos del curso
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea 
                     placeholder="requirement"
                     onChange={(e) => setRequirement(e.target.value)}
                     className={styles.textarea}
-                />
-                <input 
+                    />
+                </div>
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Tooltip with HTML</Typography>
+                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+                            {"It's very engaging. Right?"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                        Lo que aprenderás en el curso
+                        </Typography>
+                    </HtmlTooltip>
+                    <input 
                     type="text" 
                     placeholder="learnTo"
                     onChange={(e) => setLearnTo(e.target.value)}
                     className={styles.input}
-                />
+                    />
+                </div>
             </div>     
         </div>
 
