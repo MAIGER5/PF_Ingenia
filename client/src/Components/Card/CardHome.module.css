@@ -1,10 +1,10 @@
 .container{
-    width: 300px;
+    width: 230px;
     margin-bottom: 15px;
 }
 
 .container:hover{
-    transform: scaleX(1.04) scaleY(1.04);
+    transform: scaleX(1.025) scaleY(1.025);
     transition: ease-in-out;;
 }
 
