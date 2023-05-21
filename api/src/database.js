@@ -9,7 +9,7 @@ const functionComment = require('./models/Comment');
 const functionCourse = require('./models/Course')
 const functionBill = require('./models/Buy')
 const functionSold = require('./models/Sold');
-const functionPublications = require('./models/Publications');
+const functionPublications = require('./models/Publication');
 const functionUser =require('./models/User');
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB } = process.env;
@@ -32,7 +32,7 @@ functionPublications(sequelize);
 functionUser(sequelize);
 
 
-const { Assessment,Category,Comment,Course,Buy,Sold,Publications,User} = sequelize.models;
+const { Assessment,Category,Comment,Course,Buy,Sold,Publication,User} = sequelize.models;
 // RELACION DE TABALS AQUÍ ABAJO
 
 User.belongsToMany(Course,{through:"UserCourse"});
@@ -43,6 +43,9 @@ Category.belongsToMany(Course,{through:"CourseCategory"});
 
 User.hasMany(Buy)
 Buy.belongsTo(User)
+
+User.hasMany(Publication)
+Publication.belongsTo(User)
 
 module.exports = {
   sequelize,
