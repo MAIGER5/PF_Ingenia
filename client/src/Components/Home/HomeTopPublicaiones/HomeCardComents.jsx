@@ -8,7 +8,7 @@ export default function HomeCardComents() {
   return (
     <>
     <Stack
-    sx={{marginLeft:45}}
+    sx={{ marginRight: "50px" }}
      spacing={4}
     >
     {comentarios.map((comentario, index) => (

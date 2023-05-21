@@ -157,7 +157,7 @@ export default function NavBar() {
               }}
             >
               <Box>
-                <NavLink to={"/Carrito"}>
+                <NavLink to="/Carrito">
                   <IconButton
                     color="primary"
                     aria-label="upload picture"
