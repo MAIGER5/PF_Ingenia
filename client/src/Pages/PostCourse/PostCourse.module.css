@@ -29,6 +29,14 @@
     text-align: left;
 }
 
+.subtitleInfo{
+    font-size: 14px;
+    font-weight: 400;
+    color: #E53170;
+    margin: 0;
+    text-align: left;
+}
+
 @media only screen and (max-width: 1000px) {
 
 }   
