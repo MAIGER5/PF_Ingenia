@@ -3,6 +3,7 @@ const userAuthenticated = require("../../controllers/userControllers/userAuthent
 const postUserAuthenticated = async (req, res) => {
   const { email, password, userType } = req.body;
 
+  console.log(req.body);
   try {
     const loginUser = await userAuthenticated(email, password, userType);
     res.status(200).json(loginUser);
