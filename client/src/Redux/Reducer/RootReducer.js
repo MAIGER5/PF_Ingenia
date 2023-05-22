@@ -9,7 +9,7 @@ import { FILTER_BY_DIFFICULTY } from "../Actions/filterDificulti";
 import { ORDER_BY_DATE } from "../Actions/filterByDate";
 import { GET_COURSESEACH } from "../Actions/SerchcCourses";
 import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
-import { POST_LOGIN_USER } from "../Actions/postLoginUser";
+import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
 
 const initialState = {
     allCourse: [],
@@ -32,7 +32,6 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             allCourse: action.payload,
             allCourseCopy: action.payload,
-            allCarrito: action.payload
         };
 
 
@@ -79,18 +78,18 @@ const rootReducer = (state = initialState, action) => {
                 filtercourses: action.payload,
 
             };
-        case POST_LOGIN_USER:
-
-            return {
-                ...state,
-                userLogin: action.payload,
-
-            };
         case GET_COURSESEACH:
 
             return {
                 ...state,
                 allCourseCategory: action.payload,
+
+            };
+        case ADD_TO_CARRITO:
+
+            return {
+                ...state,
+                allCarrito: [...state.allCarrito, action.payload],
 
             };
             case FILTER_BY_PRICE:

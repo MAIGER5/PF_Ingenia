@@ -1,10 +1,13 @@
 import { useState, Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { categoryOptions } from "./validations";
+
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { Typography, Alert, Snackbar  } from "@mui/material";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 import styles from "./FormCourse.module.css";
 
@@ -27,11 +30,11 @@ export default function FormCourseCopy() {
     //TODO : agregar delivery Method
     const [deliveryMethod, setDeliveryMethod] = useState("");
 
-    const [isAlert, setIsAlert] = useState(false);  
+    const [isAlert, setIsAlert] = useState(false); 
+    const navigate = useNavigate(); 
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-    
         console.log({
             title,
             description,
@@ -43,12 +46,28 @@ export default function FormCourseCopy() {
             content,
             dificulty,
             requirement,
-            learnTo: learnTo.split(','),
+            learnTo: learnTo,
             studyMethod
           });
 
-        try {
-            const response = await axios.post(
+        if(!title || 
+            !description || 
+            !lenguage || 
+            !price || 
+            !duration ||
+            !content ||
+            !dificulty ||
+            !requirement ||
+            !learnTo ||
+            !studyMethod ||
+            !productImg ||
+            !category ||
+            !previewSource ) {
+            setIsAlert(true)
+            return
+        }
+           
+            await axios.post(
               `http://localhost:3001/courses/`,
               {
                 title,
@@ -65,42 +84,40 @@ export default function FormCourseCopy() {
                 studyMethod,
                 catego: category,
               }  
-            );
-            setPreviewSource('')
-            setProductImg('');
-            setTitle('')
-            setDescription('')
-            setLenguage('')
-            setPrice('')
-            setPro('')
-            setDuration('')
-            setContent('')
-            setDificulty('')
-            setRequirement('')
-            setCategory('')
-            setLearnTo('')
-            setDeliveryMethod('')
-
-            setIsAlert(true)
-            return response.data;
-          } catch (error) {
-            console.log(error);
-          }
+            ).then(async (response) => {
+                console.log(response);
+                let id = response.data?.idCourse
+                navigate(`/DetailCourse/${id}`)
+                // setPreviewSource('')
+                // setProductImg('');
+                // setTitle('')
+                // setDescription('')
+                // setLenguage('')
+                // setPrice('')
+                // setPro('')
+                // setDuration('')
+                // setContent('')
+                // setDificulty('')
+                // setRequirement('')
+                // setCategory('')
+                // setLearnTo('')
+                // setDeliveryMethod('')
+                //window.location.reload()
+            })
     }
 
-      const handleProductImageUpload = (e) => {
+    const handleProductImageUpload = (e) => {
         const file = e.target.files[0];
         TransformFileData(file);
-        previewFile(file)
-        
-      };
+        previewFile(file)   
+    };
 
-      const handlePromo = () => {
+    const handlePromo = () => {
         if(pro === true) setPro(false);
         if(pro === false) setPro(true);
-      }
+    }
 
-      const previewFile = (file) => {
+    const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
@@ -140,11 +157,11 @@ export default function FormCourseCopy() {
     className={styles.form}
     onSubmit={handleSubmit}
     >
-         {isAlert && (<Snackbar open={isAlert} autoHideDuration={2000} onClose={()=>setIsAlert(false)}>
+        {isAlert && (<Snackbar open={isAlert} autoHideDuration={2000} onClose={()=>setIsAlert(false)}>
             <Alert 
-                variant="filled" severity="success"
+                variant="filled" severity="error"
             >
-                Registrado Satisfactoriamente
+                Debes de llenar todos lo campos
             </Alert>
         </Snackbar>)}
         <div className={styles.container}>
@@ -157,7 +174,6 @@ export default function FormCourseCopy() {
                         accept="image/*"
                         onChange={handleProductImageUpload}
                         className={styles.inputImage}
-                        required
                     />
                 </label>
             
@@ -174,9 +190,7 @@ export default function FormCourseCopy() {
                     <HtmlTooltip
                         title={
                         <Fragment>
-                            <Typography color="inherit">Tooltip with HTML</Typography>
-                            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
-                            {"It's very engaging. Right?"}
+                            {"Ingresá un título que cautive a las personas"}
                         </Fragment>
                         }
                     >
@@ -188,30 +202,90 @@ export default function FormCourseCopy() {
                         onChange={(e) => setTitle(e.target.value)}
                         className={styles.input}
                     />
-                </div>        
-             
-                <input 
-                    type="text" 
-                    placeholder="Describe tu publicación"
-                    onChange={(e) => setDescription(e.target.value)}
-                    className={styles.input}
-                />
-                <textarea
+                </div> 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Describe de que trata tu curso, los motivos del porqué estudiarlo"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Describe tu publicación
+                        </Typography>
+                    </HtmlTooltip>
+                    <input 
+                        type="text" 
+                        placeholder="Describe tu publicación"
+                        onChange={(e) => setDescription(e.target.value)}
+                        className={styles.input}
+                    />
+                </div>       
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Responde a la pregunta qué encontrarán en tu curso"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Contenido de tu publicación
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea
                     type="text" 
                     placeholder="Contenido de tu publicación"
                     onChange={(e) => setContent(e.target.value)}
                     className={styles.textarea}
-                />
-                <textarea  
-                    placeholder="Método de Entrega"
-                    onChange={(e) => setStudyMethod(e.target.value)}
-                    className={styles.textarea}
-                />
-                <textarea  
-                    placeholder="Realización de entrega"
-                    onChange={(e) => setDeliveryMethod(e.target.value)}
-                    className={styles.textarea}
-                />
+                    />
+                </div>
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                             {"Describe una vez que una persona compre tu curso, cómo podrá disfrutarlo, a través de qué plataforma será, etc."}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Método de entrega
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea  
+                        placeholder="Método de Entrega"
+                        onChange={(e) => setStudyMethod(e.target.value)}
+                        className={styles.textarea}
+                    />
+                </div>
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            <Typography color="inherit">Sólo lo verán quienes adquiran tu curso</Typography>
+                            {"Ingresa los pasos a seguir para las personas que compren tu curso"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            <ErrorOutlineIcon 
+                                color="secondary" 
+                                sx={{
+                                    width: "20px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px"
+                                }}
+                            />
+                            Realización de entrega
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea  
+                        placeholder="Realización de entrega"
+                        onChange={(e) => setDeliveryMethod(e.target.value)}
+                        className={styles.textarea}
+                    />
+                </div> 
             </div>
             <div className={styles.subContainer}>  
                 <div className={styles.subContainerSelect}>
@@ -271,26 +345,73 @@ export default function FormCourseCopy() {
                         type="checkbox" 
                         onChange={handlePromo}
                     /> 
-                    <label className={styles.label} >Aplicar promoción de 30% de descuento</label>  
+                     <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Esta promoción tendrá una duración de 20 días naturales, pasados esos días se desactivará la opción y podrás volver a activar tu promoción"}
+                        </Fragment>
+                        }
+                    >
+                        <label className={styles.label} >Aplicar promoción de 30% de descuento</label>  
+                    </HtmlTooltip>
                 </div>
-            
-                <input 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Puede ser un tiempo estimado de '1 mes', '1 semana, 3 meses', etc."}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Duración estimada
+                        </Typography>
+                    </HtmlTooltip>
+                    <input 
                     type="text" 
                     placeholder="Duración estimada"
                     onChange={(e) => setDuration(e.target.value)}
                     className={styles.input}
-                /> 
-                <textarea 
-                    placeholder="requirement"
+                    /> 
+                </div>
+                
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Describe en este espacio si hay lagún requerimiento tecnológico, de software o conocimientos para iniciar tu curso"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Requerimientos del curso
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea 
+                    placeholder="Escribe aquí los requerimientos"
                     onChange={(e) => setRequirement(e.target.value)}
                     className={styles.textarea}
-                />
-                <input 
+                    />
+                </div>
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Ingresa los puntos resumidos de lo que aprenderás en este curso"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                        Lo que aprenderán en el curso
+                        </Typography>
+                    </HtmlTooltip>
+                    <input 
                     type="text" 
-                    placeholder="learnTo"
+                    placeholder="Escribe lo que aprenderán las personas"
                     onChange={(e) => setLearnTo(e.target.value)}
                     className={styles.input}
-                />
+                    />
+                </div>
             </div>     
         </div>
 

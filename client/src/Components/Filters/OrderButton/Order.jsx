@@ -37,9 +37,9 @@ export default function Order() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         variant="contained" 
-        sx={{ color: '#ffffff', outline: "none" }}
+        sx={{ color: '#ffffff', outline: "none", width: "100px" }}
       >
-        Dashboard
+        Por fecha
       </Button>
       <Menu
         id="basic-menu"

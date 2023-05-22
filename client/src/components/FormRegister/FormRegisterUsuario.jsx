@@ -1,11 +1,16 @@
 import { useState } from "react";
-import styles from "./FormRegisterUsuario.module.css"
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { postRegisterUser } from "../../Redux/Actions/postRegisterUser";
+import { validationClient } from "./validations";
+import RegisterUserToBackend from "./RegisterUserToBackend";
+
+import { Alert, Snackbar }from '@mui/material';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import styles from "./FormRegisterUsuario.module.css"
 
 export default function FormRegisterUsuario() {
 
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     
     const [user, setUser] = useState({
         name: "",
@@ -13,19 +18,43 @@ export default function FormRegisterUsuario() {
         password: "",
         email: "",
     })
-    
+    const [errors, setErrors] = useState({ 
+        name: "",
+        lastname: "",
+        password: "",
+        email: "",
+    });
+
+    const [isLoading, setisLoading] = useState(false);
+    const [isAlert, setIsAlert] = useState(false); 
+    const [isAlertError, setIsAlertError] = useState(false) 
+    const navigate = useNavigate();
     
     const handleInput = (event) => {
-        const property = event.target.name;
-        const value = event.target.value
-    
-        setUser({...user, [property]: value})
+        const { name, value } = event.target;
+
+        setUser({
+            ...user,
+            [name]: value
+        });
+        setErrors(
+            validationClient({
+              ...user,
+              [name]: value 
+            })
+        )
     }
     
+    const handleSubmit = async(event) => {
+        event.preventDefault();
+        setIsAlert(true)
 
-    const handleSubmit = (event) => {
-        dispatch(postRegisterUser(user));
-    
+        RegisterUserToBackend(user)
+        setTimeout(() => {
+            setisLoading(true);
+            navigate("/")
+        }, "1000");
+        setisLoading(false)
         setUser({
             name: "",
             lastname: "",
@@ -34,10 +63,17 @@ export default function FormRegisterUsuario() {
         });
     }
     
-
     return (
+        <>
+         {isAlert && (<Snackbar open={isAlert} autoHideDuration={2000} onClose={()=>setIsAlert(false)}>
+            <Alert 
+                variant="filled" severity="success"
+            >
+                Registrado Satisfactoriamente
+            </Alert>
+        </Snackbar>)}
         <form 
-            onSubmit={(event)=> handleSubmit()} 
+            onSubmit={handleSubmit} 
             className={styles.form}
         >
             <input 
@@ -48,6 +84,18 @@ export default function FormRegisterUsuario() {
                 onChange={handleInput}
                 className={styles.input}
             />
+            {errors.name && 
+                <p className={styles.error}>
+                <ErrorOutlineIcon
+                    sx={{ 
+                        width: "15px",
+                        marginRight: "5px",
+                        marginBottom: "-7px" 
+                    }}
+                />
+                {errors.name}
+                </p>
+            }
             <input 
                 type="text" 
                 placeholder="Apellido"
@@ -56,6 +104,18 @@ export default function FormRegisterUsuario() {
                 onChange={handleInput}
                 className={styles.input}
             />
+            {errors.lastname && 
+                <p className={styles.error}>
+                <ErrorOutlineIcon
+                    sx={{ 
+                        width: "15px",
+                        marginRight: "5px",
+                        marginBottom: "-7px" 
+                    }}
+                />
+                {errors.lastname}
+                </p>
+            }
             <input 
                 type="email" 
                 placeholder="Correo Electrónico"
@@ -64,6 +124,18 @@ export default function FormRegisterUsuario() {
                 onChange={handleInput}
                 className={styles.input}
             />
+            {errors.email && 
+                <p className={styles.error}>
+                <ErrorOutlineIcon
+                    sx={{ 
+                        width: "15px",
+                        marginRight: "5px",
+                        marginBottom: "-7px" 
+                    }}
+                />
+                {errors.email}
+            </p>
+            }
             <input 
                 type="password" 
                 placeholder="Contraseña"
@@ -72,9 +144,27 @@ export default function FormRegisterUsuario() {
                 onChange={handleInput}
                 className={styles.input}
             />
-            <button type="submit" className={styles.button}>
+            {errors.password && 
+                <p className={styles.error}>
+                <ErrorOutlineIcon
+                    sx={{ 
+                        width: "15px",
+                        marginRight: "5px",
+                        marginBottom: "-7px" 
+                    }}
+                />
+                {errors.password}
+            </p>
+            }
+            {Object.entries(errors).length === 0 ?
+            <button className={styles.button}  type="submit">
                 <span className={styles.button_text}>Registrate</span>
             </button>
+            : <button className={styles.buttonOff} disabled>
+                <span className={styles.button_text}>Registrate</span>
+            </button>
+            }  
         </form>
+        </>
     );
-};
+}

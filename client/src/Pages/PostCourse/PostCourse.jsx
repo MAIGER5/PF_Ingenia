@@ -11,6 +11,12 @@ export default function PostCourse() {
           <p className={styles.subtitle}>
             Ten todo listo para darte a conocer al mundo. Comienza 3...2..1...
           </p>
+          <p className={styles.subtitleInfo}>
+            Para poder cautivar a las personas que vean tu publicación, todos los campos son obligatorios
+          </p>
+          <p className={styles.subtitleInfo}>
+            No te preocupes, te guiaremos en el camino
+          </p>
       </div>
       <FormCourse />
    
