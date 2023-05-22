@@ -80,7 +80,8 @@ export default function FormCourseCopy() {
                 content,
                 dificulty,
                 requirement,
-                learnTo: learnTo.split(','),
+                //learnTo: learnTo.split(','),
+                learnTo: [learnTo],
                 studyMethod,
                 catego: category,
               }  
@@ -166,6 +167,10 @@ export default function FormCourseCopy() {
         </Snackbar>)}
         <div className={styles.container}>
             <div className={styles.subContainer}>
+                <div className={styles.inputContainer}>
+                <Typography color="secondary" sx={{ fontSize: "13px"}}>
+                    Tamaño max de 5MB
+                </Typography>
                 <label className={styles.inputImageLabel}> 
                     Seleccionar Imagen
                     <input
@@ -176,6 +181,7 @@ export default function FormCourseCopy() {
                         className={styles.inputImage}
                     />
                 </label>
+                </div>
             
                 {previewSource && (
                     <img
@@ -215,11 +221,11 @@ export default function FormCourseCopy() {
                             Describe tu publicación
                         </Typography>
                     </HtmlTooltip>
-                    <input 
+                    <textarea
                         type="text" 
                         placeholder="Describe tu publicación"
                         onChange={(e) => setDescription(e.target.value)}
-                        className={styles.input}
+                        className={styles.textareaMedium}
                     />
                 </div>       
                 <div className={styles.inputContainer}>
@@ -235,7 +241,6 @@ export default function FormCourseCopy() {
                         </Typography>
                     </HtmlTooltip>
                     <textarea
-                    type="text" 
                     placeholder="Contenido de tu publicación"
                     onChange={(e) => setContent(e.target.value)}
                     className={styles.textarea}
@@ -405,11 +410,10 @@ export default function FormCourseCopy() {
                         Lo que aprenderán en el curso
                         </Typography>
                     </HtmlTooltip>
-                    <input 
-                    type="text" 
+                    <textarea
                     placeholder="Escribe lo que aprenderán las personas"
                     onChange={(e) => setLearnTo(e.target.value)}
-                    className={styles.input}
+                    className={styles.textareaMedium}
                     />
                 </div>
             </div>     
