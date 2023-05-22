@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+
 import { validationSign } from "./validations";
 import { Alert, Snackbar }from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -10,8 +10,7 @@ import styles from "./FormLogin.module.css";
 export const LOGIN_USER = "LOGIN_USER"
 
 export default function FormLogin({ userType }) {
-  console.log("control en FormLogin");
-  //const dispatch = useDispatch();
+
   const [user, setUser] = useState({
     userType: "",
     password: "",
@@ -22,7 +21,6 @@ export default function FormLogin({ userType }) {
     email: "",
   });
   const [isAlert, setIsAlert] = useState(false); 
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,14 +28,10 @@ export default function FormLogin({ userType }) {
 
     //se envían datos para validación por servidor
     LoginToBackendOwnAccess(user, userType);
-    //setIsAlert(true)
     setUser({
       password: "",
       email: "", 
     })
-    setTimeout(() => {
-        navigate("/")
-    }, "1000");
 
   };
   //Detecta cambios de los input input
