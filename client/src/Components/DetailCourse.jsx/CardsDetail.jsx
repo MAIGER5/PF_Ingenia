@@ -8,15 +8,25 @@ import { makeStyles } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, useParams } from 'react-router-dom';
+import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
+import Login from '../../Pages/Login/Login';
 
 
 
 export function CardsDetail({}) {
     
     const curses = useSelector((state)=> state.courseDetail)
+    const {id} = useParams();
+    const dispatch = useDispatch();
 
+    const [mostrarLogin, setmostrarLogin] = React.useState(false);
+
+    function handleclick(){
+        localStorage.getItem('name')? dispatch(addToCarrito(id)): setmostrarLogin(true);
+        mostrarLogin? <Login/> : "nada"
+    }
   
     return (
 
@@ -85,10 +95,12 @@ export function CardsDetail({}) {
                                 <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
                             </Grid>
 
+                            {/* component={Link} to={'/SignupUsuario'} */}
 
-                            <Button component={Link} to={'/SignupUsuario'} variant='contained' startIcon={<ShoppingCartIcon/>} 
+                            <Button onClick={handleclick} variant='contained' startIcon={<ShoppingCartIcon/>} 
                                 >Add
                             </Button>
+                            {mostrarLogin && <Login />}
 
                             <Fab disabled aria-label="like">
                                 <FavoriteIcon />

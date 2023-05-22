@@ -1,10 +1,13 @@
+import axios from "axios";
+
 export const ADD_TO_CARRITO = 'ADD_TO_CARRITO';
 
-const URLcarrito = 'http://localhost:3001/XXXXXX'
+const URLcourse = 'http://localhost:3001/courses'
 
-export const addToCarrito = (payload) => {
+export const addToCarrito = (id) => {
   return async function(dispatch) {
-    const response = await axios.post(`${URLcarrito}/`, payload)
-    return response;
-  }
-}
+    const response = await axios.get(`${URLcourse}/${id}`);
+    dispatch({type: ADD_TO_CARRITO, payload: response.data});
+};
+  
+};

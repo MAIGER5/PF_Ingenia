@@ -27,7 +27,7 @@ import { useSelector } from "react-redux";
 export default function NavBar() {
 
   //Badge para el cart desde el navbar
-  const cart = useSelector((state)=> state.allCourse)
+  const cart = useSelector((state)=> state.allCarrito)
   const cartCourses = cart.length
   
   //let loginUser = { type: 0 };
