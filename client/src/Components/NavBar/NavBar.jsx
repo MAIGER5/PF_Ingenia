@@ -1,10 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import {
   AppBar,
   Box,
   IconButton,
-  Link,
   Typography,
   Badge
 } from "@mui/material";
@@ -49,7 +48,7 @@ export default function NavBar() {
   const themeMode = theme.palette.mode === "light" ? "black" : "white";
 
   return (
-    <>
+    <div>
       <AppBar
         position="static"
         elevation={0}
@@ -64,10 +63,14 @@ export default function NavBar() {
           }}
           >
             {/* Logo ingenia */}
-          <Link href="/" underline="none">
+          <Link to={"/"}
+            style={{ textDecoration: 'none' }}
+          >
             <Typography
               variant="h5"
+              color={'#FF8906'}
               sx={{ fontSize: "36px", fontWeight: "700", marginLeft: "40px" }}
+              
             >
               Ingenia
             </Typography>
@@ -256,6 +259,6 @@ export default function NavBar() {
           </div>          
         </div>
       </AppBar>
-    </>
+    </div>
   );
 }

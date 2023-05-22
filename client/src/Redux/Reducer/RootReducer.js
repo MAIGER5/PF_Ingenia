@@ -89,7 +89,7 @@ const rootReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                allCarrito: [action.payload],
+                allCarrito: [...state.allCarrito, action.payload],
 
             };
             case FILTER_BY_PRICE:
