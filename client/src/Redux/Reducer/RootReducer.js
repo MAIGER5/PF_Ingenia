@@ -9,7 +9,6 @@ import { FILTER_BY_DIFFICULTY } from "../Actions/filterDificulti";
 import { ORDER_BY_DATE } from "../Actions/filterByDate";
 import { GET_COURSESEACH } from "../Actions/SerchcCourses";
 import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
-import { POST_LOGIN_USER } from "../Actions/postLoginUser";
 import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
 
 const initialState = {
@@ -77,13 +76,6 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filtercourses: action.payload,
-
-            };
-        case POST_LOGIN_USER:
-
-            return {
-                ...state,
-                userLogin: action.payload,
 
             };
         case GET_COURSESEACH:
