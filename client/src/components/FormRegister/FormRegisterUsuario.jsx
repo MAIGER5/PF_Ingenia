@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { validationClient } from "./validations";
-import { postRegisterUser } from "../../Redux/Actions/postRegisterUser";
+import RegisterUserToBackend from "./RegisterUserToBackend";
 
 import { Alert, Snackbar }from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -10,7 +10,7 @@ import styles from "./FormRegisterUsuario.module.css"
 
 export default function FormRegisterUsuario() {
 
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     
     const [user, setUser] = useState({
         name: "",
@@ -29,7 +29,6 @@ export default function FormRegisterUsuario() {
     const [isAlert, setIsAlert] = useState(false); 
     const [isAlertError, setIsAlertError] = useState(false) 
     const navigate = useNavigate();
-    
     
     const handleInput = (event) => {
         const { name, value } = event.target;
@@ -50,8 +49,8 @@ export default function FormRegisterUsuario() {
         event.preventDefault();
         setIsAlert(true)
 
-        dispatch(postRegisterUser(user));
-            setTimeout(() => {
+        RegisterUserToBackend(user)
+        setTimeout(() => {
             setisLoading(true);
             navigate("/")
         }, "1000");

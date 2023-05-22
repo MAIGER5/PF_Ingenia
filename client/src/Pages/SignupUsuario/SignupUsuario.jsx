@@ -1,7 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import FormRegisterUsuario from "../../components/FormRegister/FormRegisterUsuario"
-import { GoogleAuthProvider, signInWithPopup,} from "firebase/auth";
+import LoginToBackendGoogle from "../../Components/LoginToBackendGoogle/LoginToBackendGoogle";
 import { auth } from "../../firebase/config";
+import { GoogleAuthProvider, signInWithPopup,} from "firebase/auth";
 
 import { Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -19,6 +20,7 @@ export default function SignupUsuario() {
     signInWithPopup(auth, provider)
     .then((result) => {
       //const user = result.user;
+      LoginToBackendGoogle(result, "STUDENT")
       console.log("success")
       navigate("/")
     }).catch((error) => {

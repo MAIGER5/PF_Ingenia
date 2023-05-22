@@ -5,7 +5,6 @@ import { validationSign } from "./validations";
 import { Alert, Snackbar }from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import LoginToBackendOwnAccess from "../LoginToBackendOwnAccess/LoginToBackendOwnAccess";
-import { postLoginUser } from "../../Redux/Actions/postLoginUser";
 import styles from "./FormLogin.module.css";
 
 export const LOGIN_USER = "LOGIN_USER"
@@ -31,7 +30,7 @@ export default function FormLogin({ userType }) {
 
     //se envían datos para validación por servidor
     LoginToBackendOwnAccess(user, userType);
-    setIsAlert(true)
+    //setIsAlert(true)
     setUser({
       password: "",
       email: "", 
