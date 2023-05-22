@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validationVendor } from "./validations";
 import LoaderPage from "../LoaderPage/LoaderPage";
+import RegisterVendorToBackend from "./RegisterVendorToBackend";
 import { Alert, Snackbar }from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import styles from "./FormRegisterVendedor.module.css";
+
 
 export default function FormRegisterVendedor() {
 
@@ -35,22 +37,21 @@ export default function FormRegisterVendedor() {
         event.preventDefault();
 
         console.log(user)
-        setIsAlert(true)
-   
-        await fetch("http://localhost:3001/instructor", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-        }).catch(error => {
-            console.log(error);
-        });
-        setTimeout(() => {
-            setisLoading(true);
-            navigate("/")
-        }, "1000");
-        setisLoading(false)
+        RegisterVendorToBackend(user)
+        // await fetch("http://localhost:3001/instructor", {
+        // method: "POST",
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
+        // body: JSON.stringify(user),
+        // }).catch(error => {
+        //     console.log(error);
+        // });
+        // setTimeout(() => {
+        //     setisLoading(true);
+        //     navigate("/")
+        // }, "1000");
+        // setisLoading(false)
         setUser({
             name: "",
             lastname: "",

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function RegisterUserToBackend(data) {
+export default function RegisterVendorToBackend(data) {
     //Para visualizar los datos recibidos de Login:
     data.userType = "INSTRUCTOR";
     console.log("datos de RegisterVendorToBackend:");
@@ -8,7 +8,7 @@ export default function RegisterUserToBackend(data) {
    
     async function dataOwnAccessToBacken() {
         axios
-          .post(`"http://localhost:3001/instructor"`, data)
+          .post(`http://localhost:3001/instructor`, data)
           .then((response) => {console.log(response)
           localStorage.setItem("Token", response.data.tokenSession);
           localStorage.setItem("name", response.data.user.name);
