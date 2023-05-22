@@ -7,12 +7,23 @@ import { Box, Button, CardActionArea, Grid, Hidden, Rating } from '@mui/material
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { addToCarrito } from '../../../Redux/Actions/actionsCarrito/addToCarrito';
+import { useDispatch } from 'react-redux';
 
 
 
-function CardCategory({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName}) {
-  return (
+function CardCategory({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName, categories, idCourse}) {
+  
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+
+    function handleclick(){
+        localStorage.getItem('name')? dispatch(addToCarrito(idCourse)): navigate('/Login');
+    }
+
+    return (
     <Card sx={{ 
         display: 'flex',
         alignItems: 'center',
@@ -79,7 +90,7 @@ function CardCategory({title, description, dificulty,  price, image, instructorN
                                 color='#E53170' />
                             </Grid>
 
-                            <Button component={Link} to={'/SignupUsuario'} variant='contained' startIcon={<ShoppingCartIcon/>} 
+                            <Button onClick={handleclick} variant='contained' startIcon={<ShoppingCartIcon/>} 
                                 >Add
                             </Button>
 
@@ -108,9 +119,9 @@ function CardCategory({title, description, dificulty,  price, image, instructorN
                                 <Grid marginX={1} >
                                     <Button marginLeft='2'  sx={{backgroundColor:"#E53170", color: 'black'}}> {lenguage} </Button>
                                 </Grid>
-                                {/* <Grid>
-                                    <Button variant='contained'> {curses.categories} </Button>
-                                </Grid> */}
+                                <Grid marginX={1} >
+                                    <Button marginLeft='2'  sx={{backgroundColor:"#E53170", color: 'black'}}> {categories} </Button>
+                                </Grid>
                         </Grid>
             </Grid>
         </CardContent>
