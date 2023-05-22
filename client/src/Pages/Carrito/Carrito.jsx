@@ -2,6 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { Button, Grid, Typography } from "@mui/material";
 import { CardsCarr } from '../../Components/Carrito/CardsCarr';
+import HomeRebajas from '../../Components/Home/Home Rebajas/HomeRebajas';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { color } from 'framer-motion';
 
 
 export default function Carrito() {
@@ -25,11 +28,15 @@ export default function Carrito() {
             >
                 Mi carrito
             </Typography>
-            <CardsCarr/>
 
-            <Typography align="left" variant="h5" marginY={4}>
+            {sumar == 0? <Button color='secondary'><AddShoppingCartIcon size='large' sx={{color:'aqua'}} /> <Typography marginLeft={5}>Tu cesta está vacía. ¡Sigue comprando para encontrar un curso!</Typography></Button>:<CardsCarr/>}
+            
+
+            <Typography align="left" variant="h5" marginTop={20}>
                 Sugerencias para tí
             </Typography>
+
+            <HomeRebajas/>
         </Grid>
 
         <Grid item xs={2} marginTop={6}   container
