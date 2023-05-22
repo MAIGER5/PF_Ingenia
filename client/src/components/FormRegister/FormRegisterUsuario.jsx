@@ -47,14 +47,13 @@ export default function FormRegisterUsuario() {
     
     const handleSubmit = async(event) => {
         event.preventDefault();
-        setIsAlert(true)
 
         RegisterUserToBackend(user)
-        setTimeout(() => {
-            setisLoading(true);
-            navigate("/")
-        }, "1000");
-        setisLoading(false)
+        // setTimeout(() => {
+        //     setisLoading(true);
+        //     navigate("/")
+        // }, "1000");
+        // setisLoading(false)
         setUser({
             name: "",
             lastname: "",
