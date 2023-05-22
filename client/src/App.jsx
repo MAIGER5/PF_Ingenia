@@ -19,7 +19,6 @@ import Footer from './Components/Footer/Footer';
 import Terms from './Pages/Terms/Terms';
 import PostArticle from './Pages/PostArticle/PostArticle';
 import PostCourse from './Pages/PostCourse/PostCourse';
-//import { Carrito } from './Components/Carrito/Carrito';
 import Purchaserejection from './Pages/purchaserejection/purchaserejection';
 import SerchCardResults from './Pages/serchCardResults/serchCardResults';
 import Purchaseconfirmation from './Pages/purchaseconfirmation/purchaseconfirmation';
