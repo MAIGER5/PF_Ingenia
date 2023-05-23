@@ -25,12 +25,14 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
 
+  const userType = useSelector((state) => state.user.userType);
+
   //Badge para el cart desde el navbar
   const cart = useSelector((state)=> state.allCarrito)
   const cartCourses = cart.length
   
-  //let loginUser = { type: 0 };
-  let userType = 0;
+/*   //let loginUser = { type: 0 };
+  //let userType = 0;
 
   //prevengo un dato "loginUser.userType = null"
   if (localStorage.getItem("userType") == null) {
@@ -39,8 +41,8 @@ export default function NavBar() {
 
   // Consulto qué tipo de usuario está registrado
   if (localStorage.getItem("userType") != 0) {
-    userType = parseInt(localStorage.getItem("userType"), 10);
-  } 
+    userType = parseInt(localStorage.getItem("userType"), 10); 
+  } */
 
   // Modo Dark/Ligth
   const theme = useTheme();

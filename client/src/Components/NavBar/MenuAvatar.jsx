@@ -20,7 +20,7 @@ import LogoutComponent from "../LogoutComponent/LogoutCoponent";
 export default function MenuAvatar({userType}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userName, setUserName] = React.useState("");
-  const [openModal, setOpenModal] = React.useState(false); // Nuevo estado para controlar la apertura de la ventana modal
+  const [openModal, setOpenModal] = React.useState(false); 
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
@@ -48,7 +48,8 @@ export default function MenuAvatar({userType}) {
   };
 
   const handleLogOut = () => {
-    setOpenModal(true); // Abre la ventana modal cuando se hace clic en Cerrar Sesión
+    // Abre la ventana modal cuando se hace clic en "Cerrar Sesión"
+    setOpenModal(true); 
   }
 
  
@@ -165,8 +166,11 @@ export default function MenuAvatar({userType}) {
           Cerrar Sesión
         </MenuItem>
       </Menu>
-      {openModal && <LogoutComponent onClose={() => setOpenModal(false)} />} {/* Muestra la ventana modal si openModal es true */}
+
+      {/* Muestra la ventana modal si openModal es true */}
+      {openModal && <LogoutComponent onClose={() => setOpenModal(false)} />} 
       {/* <LogoutComponent/> */}
+      
     </React.Fragment>
   );
 }
