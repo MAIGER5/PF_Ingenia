@@ -25,8 +25,17 @@ export default function LoginToBackendOwnAccess(data, dispatch) {
         if (respBack.Is == "INSTRUCTOR") respBack.userType = 2;
         if (respBack.Is == "ADMIN") respBack.userType = 3;
 
-        console.log("Variable recibida del Back y adaptada, aun en el LoginToBackendOwnAccess:");
-        console.log(respBack);
+        //console.log("Variable recibida del Back y adaptada, aun en el LoginToBackendOwnAccess:");
+        //console.log(respBack);
+
+        // Guardo datos en el local Storage
+        localStorage.setItem("Token", response.data.tokenSession);
+        localStorage.setItem("name", response.data.user.name);
+        localStorage.setItem("lastname", response.data.user.lastname);
+        localStorage.setItem("idUser", response.data.user.idUser);
+        if(response.data.user.Is == "STUDENT") localStorage.setItem("userType", "1");
+        if(response.data.user.Is == "INSTRUCTOR") localStorage.setItem("userType", "2");
+        if(response.data.user.Is == "ADMIN") localStorage.setItem("userType", "3");
 
         dispatch({
           type: DATA_LOGIN,
@@ -37,14 +46,15 @@ export default function LoginToBackendOwnAccess(data, dispatch) {
         resolve(devolution);
       })
       .catch((error) => {
-        const objetojson = error.request.response;
-        const objeto = JSON.parse(objetojson);
-        window.alert(objeto.error);
-
-        console.log(objeto.loginVerification);
-
-        devolution.error = objeto.error;
-        reject(devolution);
+          // Adapto el dato recibido para trabajarlo mejor:
+            const objetojson = error.request.response;
+             const objeto = JSON.parse(objetojson);
+              //window.alert(objeto.error);
+                //console.log(objeto.loginVerification);
+        
+          // Envío la respuesta:
+            devolution.error = objeto.error;
+            reject(devolution);
       });
   });
 }

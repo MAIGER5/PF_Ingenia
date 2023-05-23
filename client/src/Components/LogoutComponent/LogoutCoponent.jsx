@@ -34,6 +34,7 @@ export default function LogoutComponent({ onClose }) {
     localStorage.removeItem('lastname');
     localStorage.removeItem('name');
     localStorage.removeItem('userType');
+    localStorage.removeItem('idUser');
 
     // Redireccionar a la página "/"
     window.location.href = '/';
@@ -51,16 +52,6 @@ export default function LogoutComponent({ onClose }) {
 
   return (
     <div>
-            {/* <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={() => setOpenSnackbar(false)}
-      >
-        <Alert onClose={() => setOpenSnackbar(false)} severity="success">
-          Sesión cerrada
-        </Alert>
-      </Snackbar> */}
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={open}
         onClose={handleClose}
