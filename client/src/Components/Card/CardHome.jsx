@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -19,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
 import { RemoveOneFromCarrito } from '../../Redux/Actions/actionsCarrito/RemoveOneFromCarrito';
 import { addToCarritoBd } from '../../Redux/Actions/addToCarritoBd';
+import { RemoveToByBD } from '../../Redux/Actions/RemoveToByBD';
 
 
 function CardHome({title, image, instructorName, instructorLastName, price, lenguage, ratings = 5, idCourse}) {
@@ -60,6 +60,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
       setIsActive(false)
       setIsAlertDelete(true)
       dispatch(RemoveOneFromCarrito(idCourse))
+      dispatch(RemoveToByBD(idCourse))
     }
   }
 
