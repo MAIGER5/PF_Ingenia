@@ -5,6 +5,10 @@ module.exports = (sequelize) => {
     idBuy: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
+    },
+    idCor:{
+      type: DataTypes.INTEGER,
     },
     title: {
       type: DataTypes.STRING,
