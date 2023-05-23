@@ -7,23 +7,13 @@ import HomeTopPublicaiones from '../HomeTopPublicaiones/HomeTopPublicaiones';
 import HomeRebajas from '../Home Rebajas/HomeRebajas';
 import HomeMejorcalificados from '../HomeMejorcalificados/HomeMejorcalificados';
 import HomeCategorias from '../HomeCategorias/HomeCategorias';
-import { useDispatch } from 'react-redux';
-import { getCourses } from '../../../Redux/Actions/getCourses';
 import { NavLink } from 'react-router-dom';
-import { getCategories } from '../../../Redux/Actions/getCategories';
-import { postLocalStorage } from '../../../Redux/Actions/actionsCarrito/postLocalStorage';
 
 
 
 export default function HomeComponent() {
 
-  const dispatch = useDispatch();
 
-  useEffect(()=> {
-    dispatch(getCourses());
-    dispatch(getCategories());
-    dispatch(postLocalStorage())
-  }, [dispatch])
 
   return (
     <Box sx={{width:1600}}>
