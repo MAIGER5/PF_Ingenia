@@ -23,8 +23,8 @@ const initialState = {
     filtercourses:[],
     allCourseCategory:[],
     allCarrito:[],
-    localStorageData:null,
-    ButtonPaypal:false
+    localStorageData:null
+
 
 };
 const rootReducer = (state = initialState, action) => {
