@@ -1,4 +1,5 @@
 import { Avatar } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 
 export default function AvatarComponent( props ) {
@@ -8,10 +9,14 @@ export default function AvatarComponent( props ) {
     /* function stringAvatar(userName, userHeight, userWidth, userFontSize) { */
     function stringAvatar(userHeight, userWidth, userFontSize) {
         // Obtener los valores de 'name' y 'lastname' del localStorage
-        const name = localStorage.getItem('name');
-        const lastname = localStorage.getItem('lastname');
+        //const name = localStorage.getItem('name');
+        //const lastname = localStorage.getItem('lastname');
+        const name = useSelector(state => state.user.name)
+        const lastname = useSelector(state => state.user.lastname)
 
-        if (lastname == "null") {
+        //console.log(name);
+
+        if (lastname == null) {
 
             return { 
                 sx: {

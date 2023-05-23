@@ -8,10 +8,13 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Box, Tab, Tabs, Button } from "@mui/material";
 import styles from "./Login.module.css";
 import LoginToBackendGoogle from "../../Components/LoginToBackendGoogle/LoginToBackendGoogle";
+import { useDispatch } from "react-redux";
 
 
 export default function Login() {
   const [tabIndex, setTabIndex] = useState(0);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -25,10 +28,12 @@ export default function Login() {
   //Iniciar sesión con Google
   const signInGoogle = (type) => {
     signInWithPopup(auth, provider)
-    .then((result) => {
-      //const user = result.user;
-      LoginToBackendGoogle(result, type)
-      //navigate("/")
+    .then(async (result) => {
+      //se envían datos para validación por servidor
+      await LoginToBackendGoogle(result, type, dispatch)
+
+      navigate("/");
+      
     }).catch((error) => {
       console.log(error.message)
     });

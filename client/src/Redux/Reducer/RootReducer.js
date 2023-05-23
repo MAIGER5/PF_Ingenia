@@ -1,7 +1,6 @@
 import { GET_COURSES } from "../Actions/getCourses";
 import { CLEAN_DETAIL } from "../Actions/cleanDetail";
 import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
-import { LOGIN_USER } from "../../Components/FormLogin/FormLogin";
 import { GET_CATEGORIES } from "../Actions/getCategories";
 import { GET_COURSESCATEGORY } from "../Actions/getCoursescategory"
 import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
@@ -10,6 +9,9 @@ import { ORDER_BY_DATE } from "../Actions/filterByDate";
 import { GET_COURSESEACH } from "../Actions/SerchcCourses";
 import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
 import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
+//import { DATA_LOGIN } from "../Actions/dataLogin";
+import { DATA_LOGIN } from "../../Components/LoginToBackendOwnAccess/LoginToBackendOwnAccess";
+
 
 const initialState = {
     allCourse: [],
@@ -19,7 +21,15 @@ const initialState = {
     filtercourses:[],
     allCourseCategory:[],
     allCarrito:[],
-    userLogin:{}
+    userLogin:{},
+    user : {
+        userType: 0,
+        name: "",
+        lastName:"",
+        mail: "",
+        Token: "",
+        idUser: 0,
+    }
 
 
 };
@@ -99,6 +109,15 @@ const rootReducer = (state = initialState, action) => {
                 filtercourses: action.payload,
 
             };
+            
+        case DATA_LOGIN: {
+            return {
+                ...state,
+                user: action.payload
+            };
+            
+        }
+            
 
         default:
             return { ...state };
