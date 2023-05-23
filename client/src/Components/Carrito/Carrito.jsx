@@ -1,6 +1,8 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { CardsCarr } from "./CardsCarr";
+import Paypalbuton from "../../PayPal/paypalbuton";
+
 
 
 
@@ -12,6 +14,8 @@ export function Carrito() {
 
 
   return (
+    <Box>
+      
     <Grid container spacing={2} margin={10}>
         <Grid item xs={9}>
             <Typography align="left" variant="h4" marginBottom={3}>
@@ -36,12 +40,10 @@ export function Carrito() {
             <Typography variant="h4" align="left" marginY={2}>
                $ {sumar.toLocaleString()} USD
             </Typography>
-
-            <Button variant="contained" size="large" >
-                Pagar
-            </Button>
+            <Paypalbuton/>
+            
         </Grid>
     </Grid>
-
+    </Box>
   );
 };

@@ -11,7 +11,7 @@ export default function Cardsresulcategory() {
   const itemsPerPage = 3;
 
   useEffect(() => {
-    setCurrentPage(1); // Reinicia la página actual cuando cambie el estado de cursos
+    setCurrentPage(1); 
   }, [cursos]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
