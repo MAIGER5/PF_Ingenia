@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Stack, Button,  } from '@mui/material';
 import { useSelector } from 'react-redux';
-import CardSerbar from './CardSerchbar';
+import CardSerbar from './SIN USAR CardSerchbar';
 import PaginationButtons from "../../Pagination/Pagination"
+import CardCategory from '../CardsVistaCategory/CardCategory';
 
 
 export default function Cardsresulserchbar() {
@@ -30,16 +31,19 @@ export default function Cardsresulserchbar() {
     <Box>
       <Stack spacing={6}>
         {currentItems.map((curso) => (
-          <CardSerbar
-            key={curso.idCourse}
-            idCourse={curso.idCourse}
-            title={curso.title}
-            description={curso.description}
-            duration={curso.duration}
-            dificulty={curso.dificulty}
-            price={curso.price}
-            image={curso.image}
-            lenguage={curso.lenguage}
+          <CardCategory
+          key={curso.idCourse}
+          idCourse={curso.idCourse}
+          instructorName={curso.Users.map(use=> use.name)}
+          instructorLastName={curso.Users.map(use=> use.lastname)}
+          categories={curso.Categories.map(cat=> cat.name)}
+          title={curso.title}
+          description={curso.description}
+          duration={curso.duration}
+          dificulty={curso.dificulty}
+          price={curso.price}
+          image={curso.image}
+          lenguage={curso.lenguage}
           />
         ))}
       </Stack>

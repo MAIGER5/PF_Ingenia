@@ -1,10 +1,15 @@
 const { User } = require("../database");
+const userDataForm = require("../helper/userDataForm");
 
-const verifyUserExistence = async (email, Is) => {
-  const user = await User.findOne({ where: { email, Is } });
+const verifyUserExistence = async (email, userType, providerId) => {
+  const user = await User.findOne({ where: { email, Is: userType } });
 
   if (user) {
-    throw new Error("Ya existe una cuenta asociada a este usuario.");
+    if (providerId === "google.com") {
+      return { user: userDataForm(user) };
+    } else {
+      throw new Error("Ya existe una cuenta asociada a este usuario.");
+    }
   }
   return user;
 };

@@ -1,0 +1,36 @@
+.container{
+    width: 230px;
+    margin-bottom: 15px;
+}
+
+.container:hover{
+    transform: scaleX(1.025) scaleY(1.025);
+    transition: ease-in-out;;
+}
+
+.containerInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.containerRating{
+    display: flex;
+    align-items: center;
+}
+
+.button{
+    background: none !important;
+    border-radius: 50%;
+    border: none;
+    height: 40px;
+    position: relative;
+    width: 40px;
+    cursor: pointer;
+}
+
+.pricetag{
+    margin: 0 10px 0 0;
+    font-weight: 700;
+}

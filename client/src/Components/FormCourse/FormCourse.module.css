@@ -14,12 +14,62 @@
     align-items: center;
 }
 
+.subContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.subContainerSelect{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.subContainerDivision{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: flex-start;
+}
+
+.priceContainer{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: flex-start;
+}
+
 .input{
     padding-left: 10px;
     border-color: black;
     border-width: 1px;
     width: 250px;
     height: 40px;
+    border-radius: 5px;
+}
+
+.inputPrice{
+    padding-left: 10px;
+    border-color: black;
+    border-width: 1px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.labelPrice{
+    margin: 0 0 0 -15px;
+
 }
 
 .inputImage[type="file"] {
@@ -32,7 +82,7 @@
     cursor: pointer;
     background: #E53170;
     border-radius: 5px;
-    width: 200px;
+    width: 250px;
     height: 40px;
     color: #FFFFFE;
 }
@@ -43,6 +93,7 @@
     border-width: 1px;
     width: 250px;
     height: 40px;
+    border-radius: 5px;
 }
 
 .textarea{
@@ -54,21 +105,33 @@
     font-size: 15px;
     font-family: 'Figtree', sans-serif;
     padding: 10px;
+    border-radius: 5px;
+}
+
+.textareaMedium{
+    border-color: black;
+    width: 250px;
+    height: 100px;
+    resize: none;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: 'Figtree', sans-serif;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .checkboxContainer{
     display: flex;
     justify-content: flex-start;
+    column-gap: 5px;
     width: 250px;
 }
-
-
-
 
 .button{
     background: #FF8906;
     border-radius: 5px;
     border-style: none;
+    margin-top: 50px;
     width: 280px;
     height: 40px;
 }
@@ -85,3 +148,62 @@
     font-size: 15px;
     font-family: 'Figtree', sans-serif;
 }
+
+@media only screen and (min-width: 600px) {
+
+    .subContainer{
+        justify-content: flex-start;
+    }
+
+    .subContainer:first-child{
+        width: 600px;
+    }
+
+    .subContainerDivision{
+        display: flex;
+        flex-direction: row;
+        column-gap: 20px;
+        align-items: center;
+    }
+  
+    .input{
+        width: 400px;
+    }
+
+    .inputPrice{
+        width: 145px;
+    }
+
+    .inputSelect{
+        width: 190px;
+    }
+
+    .textarea{
+        width: 400px;
+    }
+
+    .textareaMedium{
+        width: 400px;
+    }
+
+    .inputImageLabel{
+        width: 400px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .container{
+        flex-direction: row;
+        gap: 80px;
+        align-items: flex-start;
+    }
+
+    .input{
+        width: 400px;
+    }
+
+    .checkboxContainer{
+        width: 400px;
+    }
+}
+  

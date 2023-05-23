@@ -14,16 +14,15 @@ import DetailCourse from './Components/DetailCourse.jsx/DetailCourse';
 import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import MyCourses from './Pages/MyCourses/MyCourses';
 import Notifications from './Pages/Notifications/Notifications';
-import Cart from './Pages/Cart/Cart';
 import Support from './Pages/Support/Support';
 import Footer from './Components/Footer/Footer';
 import Terms from './Pages/Terms/Terms';
 import PostArticle from './Pages/PostArticle/PostArticle';
 import PostCourse from './Pages/PostCourse/PostCourse';
-import { Carrito } from './Components/Carrito/Carrito';
+import Purchaserejection from './Pages/purchaserejection/purchaserejection';
 import SerchCardResults from './Pages/serchCardResults/serchCardResults';
 import Purchaseconfirmation from './Pages/purchaseconfirmation/purchaseconfirmation';
-import Purchaserejection from './Pages/purchaserejection/purchaserejection';
+import Carrito from './Pages/Carrito/Carrito';
 
 function App() {
 return (
@@ -31,9 +30,9 @@ return (
     <BrowserRouter>
       <NavBar/>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route exact path="/" element={<Home/>} />
           <Route path="/AboutUs" element={<AboutUs/>} />
-          <Route path="/Login" element={<Login/>} />
+          <Route exact path="/Login" element={<Login/>} />
           <Route path="/SignupUsuario" element={<SignupUsuario/>} />
           <Route path="/SignupVendedor" element={<SignupVendedor/>} />
           <Route path="/DetailCourse/:id" element={<DetailCourse/>} />
@@ -42,8 +41,8 @@ return (
           <Route path="/LandingSeller" element={<LandingSeller/>}/>
           <Route path="/ResetPassword" element={<ResetPassword/>}/>
           <Route path="/MyCourses" element={<MyCourses/>}/>
-          <Route path="/Notifications" element={<Notifications/>}/>
-          <Route path="/Carrito" element={<Carrito/>}/>  
+          <Route path="/Notifications" element={<Notifications/>}/> 
+          <Route path="/Carrito" element={<Carrito />}/>  
           <Route path="/Support" element={<Support/>}/> 
           <Route path="/Terms" element={<Terms/>}/>   
           <Route path="/PostArticle" element={<PostArticle/>}/> 

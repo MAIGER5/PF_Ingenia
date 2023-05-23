@@ -4,17 +4,27 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, Grid, Rating } from '@mui/material';
-import { makeStyles } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
+
 
 
 export function CardsDetail({}) {
     
     const curses = useSelector((state)=> state.courseDetail)
+    const {id} = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    // const [mostrarLogin, setmostrarLogin] = React.useState(false);
+
+    function handleclick(){
+        localStorage.getItem('name')? dispatch(addToCarrito(id)):  navigate('/Login');
+    }
   
     return (
 
@@ -83,10 +93,12 @@ export function CardsDetail({}) {
                                 <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
                             </Grid>
 
+                            {/* component={Link} to={'/SignupUsuario'} */}
 
-                            <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
+                            <Button onClick={handleclick} variant='contained' startIcon={<ShoppingCartIcon/>} 
                                 >Add
                             </Button>
+                            {/* {<Login />} */}
 
                             <Fab disabled aria-label="like">
                                 <FavoriteIcon />

@@ -7,7 +7,7 @@ const userPostHandler = async (req, res) => {
 
   try {
     //Definimos el rol, para verificaciones y creación.
-    const Is = "STUDEN";
+    const Is = "STUDENT";
     //Verifica si el usuario tiene una cuenta creada con nosotros.
     await verifyUserExistence(email, Is);
 
@@ -19,7 +19,7 @@ const userPostHandler = async (req, res) => {
 
     res.status(200).json(user);
   } catch (err) {
-    res.status(401).json({ error: err.message });
+    res.status(401).json({ error: err.message, createVerification: false });
   }
 };
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import SvgComponent from '../Components/imagen'
 import Typography from '@mui/material/Typography'
 import { Box, Button, Stack } from '@mui/material'
 import { Link } from 'react-router-dom';
@@ -27,7 +26,12 @@ export default function NotFound() {
       Ok! Llevame al Home
       </Button></Link>
       </Stack>
-      <SvgComponent/>
+          <img 
+            src='https://res.cloudinary.com/dvvqbwhcc/image/upload/v1684629753/ingeniaAssets/404_zjbx9s.png' 
+            alt='erro_404' 
+            width="500" height="500"
+            />
+   
       </Stack>
     </Box>
   )

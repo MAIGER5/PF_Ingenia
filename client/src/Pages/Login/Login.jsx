@@ -28,7 +28,6 @@ export default function Login() {
     .then((result) => {
       //const user = result.user;
       LoginToBackendGoogle(result, type)
-      console.log("success")
       //navigate("/")
     }).catch((error) => {
       console.log(error.message)
@@ -36,7 +35,6 @@ export default function Login() {
   }
 
   const loginBottom = (type) => {
-    console.log("control en Login");
     return ( 
       <div className={styles.containerBottom}>
         <div className={styles.decoContainer}>

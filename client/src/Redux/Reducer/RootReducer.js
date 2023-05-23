@@ -9,6 +9,9 @@ import { FILTER_BY_DIFFICULTY } from "../Actions/filterDificulti";
 import { ORDER_BY_DATE } from "../Actions/filterByDate";
 import { GET_COURSESEACH } from "../Actions/SerchcCourses";
 import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
+import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
+import { POST_LOCAL_STORAGE} from "../Actions/actionsCarrito/postLocalStorage";
+import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFromCarrito";
 
 const initialState = {
     allCourse: [],
@@ -17,7 +20,8 @@ const initialState = {
     categories:[], 
     filtercourses:[],
     allCourseCategory:[],
-    allCarrito:[]
+    allCarrito:[],
+    localStorageData:null
 
 
 };
@@ -30,7 +34,6 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             allCourse: action.payload,
             allCourseCopy: action.payload,
-            allCarrito: action.payload
         };
 
 
@@ -82,6 +85,27 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allCourseCategory: action.payload,
+
+            };
+        case ADD_TO_CARRITO:
+
+            return {
+                ...state,
+                allCarrito: [...state.allCarrito, action.payload],
+
+            };
+        case REMOVE_ONE_FROM_CARRITO:
+
+            return {
+                ...state,
+                allCarrito: state.allCarrito.filter((ele)=>ele.idCourse !== action.payload),
+
+            };
+        case POST_LOCAL_STORAGE:
+
+            return {
+                ...state,
+                localStorageData: action.payload,
 
             };
             case FILTER_BY_PRICE:

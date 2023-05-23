@@ -15,7 +15,9 @@ export default function LandingSeller() {
   return (
     <div className={styles.container}> 
       <div className={styles.subcontainer}>
-        <h3>Hay tantas razones para empezar</h3>
+        <h3 className={styles.title}>
+          Hay tantas razones para empezar
+        </h3>
           <ul className={styles.list}>
               <li className={styles.listElement}>
                   <CheckIcon color="secondary" />Vende desde otras plataformas
@@ -27,32 +29,53 @@ export default function LandingSeller() {
                   <CheckIcon  color="secondary" />Consigue recompesas por tu trabajo
               </li>
           </ul>
-          <p>Cómo empezar</p>
+          <p className={styles.subtitle}>
+            Cómo empezar
+          </p>
           <Box>
           <Tabs 
             value={tabIndex} 
             onChange={handleTabChange}
             centered
           >
-            <Tab label="Crea tu publicación" />
-            <Tab label="Añade incentvos" />
-            <Tab label="Comienza a ganar" />
+            <Tab
+              sx={{ fontSize: "16px" }} 
+              label="Crea tu publicación" 
+            />
+            <Tab 
+              sx={{ fontSize: "16px" }} 
+              label="Añade incentvos" 
+            />
+            <Tab 
+              sx={{ fontSize: "16px" }}
+              label="Comienza a ganar"   
+            />
           </Tabs>
           <Box sx={{ padding: 2 }}>
             {tabIndex === 0 && (
-              <Box>
-                <p>1</p>
-              </Box>
+              <div className={styles.textContainer} >
+                <p className={styles.text}>
+                  ¡Únete a Ingenia y comienza a compartir tus conocimientos con el mundo! 
+                  Nuestra plataforma en línea te brinda la oportunidad de crear y publicar tus propios cursos desde otros partners.  
+                </p>
+              </div>
             )}
             {tabIndex === 1 && (
-              <Box>
-                <p>2</p>
-              </Box>
+              <div className={styles.textContainer}>
+                <p className={styles.text}>
+                  Te alentamos a añadir incentivos atractivos para atraer a más estudiantes. Puedes ofrecer descuentos especiales, material adicional, acceso exclusivo a recursos o crear tus 
+                  propios artículos informativos. ¡La elección es tuya!
+                </p>
+              </div>
             )}
             {tabIndex === 2 && (
-              <Box>
-                <p>3</p>
-              </Box>
+              <div className={styles.textContainer}>
+                <p className={styles.text}>
+                  Puedes empezar a ganar dinero 
+                  por tus cursos en línea. Cada venta que realices te generará ingresos y a medida que tus cursos se vuelvan populares y recibas buenas valoraciones de los 
+                  estudiantes, tu perfil y reputación crecerán.
+                </p>
+              </div>
             )}
           </Box>
         </Box>    
@@ -63,7 +86,8 @@ export default function LandingSeller() {
             disableElevation 
             color="secondary"
             sx={{
-              width: "270px"
+              width: "270px",
+              fontSize: "16px"
             }}
           >          
             Registrate y comienza a ganar

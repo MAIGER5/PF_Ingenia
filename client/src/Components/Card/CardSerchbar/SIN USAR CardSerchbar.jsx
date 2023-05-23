@@ -7,6 +7,7 @@ import { Box, Button, CardActionArea, Grid, Hidden, Rating } from '@mui/material
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from 'react-router-dom';
 
 function CardSerbar({title, description, dificulty,  price, image}) {
   return (
@@ -77,7 +78,7 @@ function CardSerbar({title, description, dificulty,  price, image}) {
                             </Grid>
 
 
-                            <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
+                            <Button component={Link} to={'/SignupUsuario'} variant='contained' startIcon={<ShoppingCartIcon/>} 
                                 >Add
                             </Button>
 

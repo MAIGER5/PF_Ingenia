@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { getCourses } from '../../../Redux/Actions/getCourses';
 import { NavLink } from 'react-router-dom';
 import { getCategories } from '../../../Redux/Actions/getCategories';
+import { postLocalStorage } from '../../../Redux/Actions/actionsCarrito/postLocalStorage';
 
 
 
@@ -21,12 +22,14 @@ export default function HomeComponent() {
   useEffect(()=> {
     dispatch(getCourses());
     dispatch(getCategories());
+    dispatch(postLocalStorage())
   }, [dispatch])
 
   return (
     <Box sx={{width:1600}}>
       <Carrusel/>
-      <div  className={styled.BanerHomeVendeConNosotros}>
+        {Number(localStorage.getItem("userType")) === 0 &&
+        <div  className={styled.BanerHomeVendeConNosotros}>
         <NavLink 
           to={"/LandingSeller"} 
           style={{ textDecoration: 'none' }}
@@ -41,11 +44,11 @@ export default function HomeComponent() {
 
             }}
           >
-            Vende con nosotros
+            ¡Vende con nosotros! - Registrate aquí
           </Typography>
         </NavLink>
-      
-      </div>
+        </div>
+        }
       <div className={styled.Home}>
         <HomeTopVentas />
         <HomeTopPublicaiones/>

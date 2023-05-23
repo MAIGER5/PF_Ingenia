@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define("Publications", {
+  sequelize.define("Publication", {
     idPublications: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -11,18 +11,30 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    tag:{
+    subtitle:{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    publications:{
-        type: DataTypes.STRING,
+    text:{
+        type: DataTypes.STRING(1234),
         allowNull: false,
     },
-    imgProfile:{
+    img:{
         type:DataTypes.STRING,
         isUrl: true,
         allowNull: false,
+    },
+    subtitleTwo:{
+      type: DataTypes.STRING,
+    },
+    textTwo:{
+      type: DataTypes.STRING(1234),
+    },
+    subtitleThree:{
+      type: DataTypes.STRING,
+    },
+    textThree:{
+      type: DataTypes.STRING(1234),
     },
     asset: {
         type: DataTypes.BOOLEAN,

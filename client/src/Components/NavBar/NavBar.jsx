@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import {
   AppBar,
   Box,
   IconButton,
-  Link,
   Typography,
+  Badge
 } from "@mui/material";
 import { ColorModeContext } from "../Layout";
 import { useTheme } from "@emotion/react";
@@ -24,42 +24,31 @@ import { useSelector } from "react-redux";
 
 
 export default function NavBar() {
+
+  //Badge para el cart desde el navbar
+  const cart = useSelector((state)=> state.allCarrito)
+  const cartCourses = cart.length
+  
   //let loginUser = { type: 0 };
   let userType = 0;
-  //console.log(localStorage.getItem("userType"));
-  //console.log(loginUser.userType);
 
   //prevengo un dato "loginUser.userType = null"
   if (localStorage.getItem("userType") == null) {
     localStorage.setItem("userType", "0");
   }
 
+  // Consulto qué tipo de usuario está registrado
   if (localStorage.getItem("userType") != 0) {
     userType = parseInt(localStorage.getItem("userType"), 10);
-    //loginUser.email = localStorage.getItem("email");
-    //loginUser.password = localStorage.getItem("password");
-    console.log(`NavBar/if:`);
-    //console.log(loginUser);
-  } else {
-    //loginUser = useSelector((state) => state.loginUser);
-    //console.log("NavBar/else:" + loginUser);
-  }
+  } 
 
-  //console.log("En el NavBar: ");
-  //console.log(userType);
-  //console.log(userType);
-  /* variable auxiliar temporal:
-    0 => usuario no registrado
-    1 => comprador
-    2 => vendedor
-    4 => administrador */
-
+  // Modo Dark/Ligth
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
   const themeMode = theme.palette.mode === "light" ? "black" : "white";
 
   return (
-    <>
+    <div>
       <AppBar
         position="static"
         elevation={0}
@@ -73,15 +62,21 @@ export default function NavBar() {
             margin: "30px 30px 25px 0",
           }}
           >
-          <Link href="/" underline="none">
+            {/* Logo ingenia */}
+          <Link to={"/"}
+            style={{ textDecoration: 'none' }}
+          >
             <Typography
               variant="h5"
+              color={'#FF8906'}
               sx={{ fontSize: "36px", fontWeight: "700", marginLeft: "40px" }}
+              
             >
               Ingenia
             </Typography>
           </Link>
 
+          {/* SearchBar */}
           <SearchBar />
 
           <div
@@ -90,84 +85,136 @@ export default function NavBar() {
               // justifyContent: "center",
               justifyContent: "flex-end",
               alignItems: "center",
-              gap: "10px",
+              gap: "20px",
               width: "500px",
-              marginLeft: "-80px",
+              
               position: "relative",
             }}
-          >
-            {userType === 1 ? (
+            >
+
+              {/* Publicaciones */}
+              <div>
+                {userType == 2 ? (
+                  <NavLink
+                  style={{
+                    textDecoration: "none",
+                    color: "#FF8906",
+                    fontSize: "20px",
+                  }}
+                  to={"/postCourse"}
+                  >
+                  <p>Publicaciones</p>
+                </NavLink>
+                ) : null}
+              </div>
+              
+              {/* Artículos */}
+              <div>
+                {userType == 2 ? (
+                  <NavLink
+                  style={{
+                    textDecoration: "none",
+                    color: "#FF8906",
+                    fontSize: "20px",      
+                  }}
+                  to={"/Articles"}
+                  >
+                  <p>Artículos</p>
+                </NavLink>
+                ) : null}
+              </div>
+
+            {/* Mis Cursos - Favoritos */}
+            <div>
+              {userType === 1 ? (
               <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  width: "430px",
-                }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                
+              }}
               >
+                
+                
+                {/* Mis Cursos */}
                 <NavLink
                   style={{
                     textDecoration: "none",
                     color: "#FF8906",
                     fontSize: "20px",
-                    width: "100px",
-                    marginRight: "30px",
+                    
+                    
                   }}
                   to={"/MyCourses"}
-                >
+                  >
                   <p>Mis cursos</p>
                 </NavLink>
 
+                  {/* Favoritos */}
                 <Box>
                   <NavLink to={"/MyCourses"}>
                     <IconButton
                       color="primary"
                       aria-label="upload picture"
                       component="label"
-                    >
-                      {/* <input hidden accept="image/*" type="file" /> */}
+                      >                      
 
                       <FavoriteIcon />
                     </IconButton>
                   </NavLink>
                 </Box>
+              </div>
+            ) : null}
+            </div>
+            
 
-                <Box>
+            {/* Notificaciones */}
+            <div>
+            {userType === 1 || userType === 2 ? (
+                <div>
+                  <Box>
                   <NavLink to={"/Notifications"}>
                     <IconButton
                       color="primary"
                       aria-label="upload picture"
                       component="label"
-                    >
-                      {/* <input hidden accept="image/*" type="file" /> */}
+                    >                      
 
                       <NotificationsIcon />
                     </IconButton>
                   </NavLink>
-                </Box>
-              </div>
-            ) : null}
+                  </Box>
+                </div>
+            ) : null}              
+            </div>
+
+
+            {/* Carrito - Modo Dark/Ligth */}
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                gap: "10px",
-                marginLeft: "-200px",
               }}
-            >
-              <Box>
-                <NavLink to={"/Carrito"}>
+              >
+              {/* Carrito */}
+              {userType == 1 || userType == 0 ? (<Box>
+                <NavLink to="/Carrito">
                   <IconButton
                     color="primary"
                     aria-label="upload picture"
                     component="label"
                   >
                     {/* <input hidden accept="image/*" type="file" /> */}
-                    <ShoppingCartIcon />
+                    <Badge badgeContent={cartCourses} color="secondary">
+                      <ShoppingCartIcon />
+                    </Badge>
                   </IconButton>
                 </NavLink>
-              </Box>
+              </Box>) : null}
+
+              {/* Mode Dark/Ligth */}
               <Box
                 sx={{
                   display: "flex",
@@ -193,21 +240,25 @@ export default function NavBar() {
               </Box>
             </div>
 
-            {userType === 1 ? (
+            {/* Menu Avatar */}
+            <div>
+            {userType === 1 || userType === 2 ? (
               <>
                 <Box>
-                  <MenuAvatar />
+                  <MenuAvatar userType={userType}/>
                 </Box>
               </>
-            ) : null}
+            ) : null}              
+            </div>
 
+
+            {/* Inicio de Sesión - Registro */}
             {userType === 0 ? (
               <SingInButtons themeMode={themeMode} />
             ) : null}
-          </div>
-          {/* </Toolbar> */}
+          </div>          
         </div>
       </AppBar>
-    </>
+    </div>
   );
 }

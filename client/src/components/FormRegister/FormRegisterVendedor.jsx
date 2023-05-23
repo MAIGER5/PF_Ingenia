@@ -1,33 +1,44 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { validationVendor } from "./validations";
 import LoaderPage from "../LoaderPage/LoaderPage";
+import RegisterVendorToBackend from "./RegisterVendorToBackend";
 import { Alert, Snackbar }from '@mui/material';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import styles from "./FormRegisterVendedor.module.css";
+
 
 export default function FormRegisterVendedor() {
 
     const [user, setUser] = useState({
         name: "",
-        lastName: "",
+        lastname: "",
         password: "",
         email: "",
         description: "",
         studies: "",
     })
+
+    const [errors, setErrors] = useState({ 
+        name: "",
+        lastname: "",
+        password: "",
+        email: "",
+        description: "",
+        studies: "",
+    });
     const [isLoading, setisLoading] = useState(false);
-    const [isAlert, setIsAlert] = useState(false);  
+    const [isAlert, setIsAlert] = useState(false); 
+    const [isAlertError, setIsAlertError] = useState(false) 
 
     const navigate = useNavigate();
     
     const handleSubmit = async(event) => {
         event.preventDefault();
 
-        
-      
         console.log(user)
-        setIsAlert(true)
-   
-        // await fetch("http://localhost:3001/user/created", {
+        RegisterVendorToBackend(user)
+        // await fetch("http://localhost:3001/instructor", {
         // method: "POST",
         // headers: {
         //   "Content-Type": "application/json",
@@ -36,20 +47,19 @@ export default function FormRegisterVendedor() {
         // }).catch(error => {
         //     console.log(error);
         // });
-        setTimeout(() => {
-            setisLoading(true);
-            navigate("/")
-        }, "1000");
-        setisLoading(false)
+        // setTimeout(() => {
+        //     setisLoading(true);
+        //     navigate("/")
+        // }, "1000");
+        // setisLoading(false)
         setUser({
             name: "",
-            lastName: "",
+            lastname: "",
             password: "",
             email: "", 
             description: "",
             studies: "",
         })
-
     }
 
     const handleInput = (event) => {
@@ -59,8 +69,13 @@ export default function FormRegisterVendedor() {
             ...user,
             [name]: value
         });
+        setErrors(
+            validationVendor({
+              ...user,
+              [name]: value 
+            })
+        )
     }
-
     
   return (
     <>
@@ -72,7 +87,7 @@ export default function FormRegisterVendedor() {
                 Registrado Satisfactoriamente
             </Alert>
         </Snackbar>)}
-         <form 
+        <form 
         className={styles.form}
         onSubmit={handleSubmit}
         >
@@ -86,14 +101,38 @@ export default function FormRegisterVendedor() {
                     onChange={handleInput}
                     className={styles.input}
                 />
+                {errors.name && 
+                    <p className={styles.error}>
+                    <ErrorOutlineIcon
+                        sx={{ 
+                            width: "15px",
+                            marginRight: "5px",
+                            marginBottom: "-7px" 
+                        }}
+                    />
+                    {errors.name}
+                    </p>
+                }
                 <input 
                     type="text" 
-                    placeholder="Contraseña"
-                    name="lastName"
-                    value={user.lastName}
+                    placeholder="apellido"
+                    name="lastname"
+                    value={user.lastname}
                     onChange={handleInput}
                     className={styles.input}
                 />
+                {errors.lastname && 
+                    <p className={styles.error}>
+                    <ErrorOutlineIcon
+                        sx={{ 
+                            width: "15px",
+                            marginRight: "5px",
+                            marginBottom: "-7px" 
+                        }}
+                    />
+                    {errors.lastname}
+                    </p>
+                }
                 <input 
                     type="email" 
                     placeholder="Correo Electrónico"
@@ -102,6 +141,18 @@ export default function FormRegisterVendedor() {
                     onChange={handleInput}
                     className={styles.input}
                 />
+                {errors.email && 
+                    <p className={styles.error}>
+                    <ErrorOutlineIcon
+                        sx={{ 
+                            width: "15px",
+                            marginRight: "5px",
+                            marginBottom: "-7px" 
+                        }}
+                    />
+                    {errors.email}
+                    </p>
+                }
                 <input 
                     type="password" 
                     placeholder="Contraseña"
@@ -110,15 +161,39 @@ export default function FormRegisterVendedor() {
                     onChange={handleInput}
                     className={styles.input}
                 />
+                {errors.password &&
+                    <p className={styles.error}>
+                    <ErrorOutlineIcon
+                        sx={{ 
+                            width: "15px",
+                            marginRight: "5px",
+                            marginBottom: "-7px" 
+                        }}
+                    />
+                    {errors.password}
+                    </p>
+                }
             </div>
             <div className={styles.containerLarge} >
                 <textarea
-                    placeholder="¿Cuentas con algún estudio en tu especialidad?"
+                    placeholder="Cuéntanos sobre los estudios o especialidades con las que cuentas"
                     name="studies"
                     value={user.studies}
                     onChange={handleInput}
                     className={styles.textareaMedium}
                 />
+                {errors.studies &&
+                    <p className={styles.error}>
+                    <ErrorOutlineIcon
+                        sx={{ 
+                            width: "15px",
+                            marginRight: "5px",
+                            marginBottom: "-7px" 
+                        }}
+                    />
+                    {errors.studies}
+                    </p>
+                }
                 <textarea 
                     placeholder="Presentate con el mundo, describe lo que haces"
                     name="description"
@@ -126,16 +201,30 @@ export default function FormRegisterVendedor() {
                     onChange={handleInput}
                     className={styles.textareaLarge}
                 />
+                {errors.description &&
+                    <p className={styles.error}>
+                    <ErrorOutlineIcon
+                        sx={{ 
+                            width: "15px",
+                            marginRight: "5px",
+                            marginBottom: "-7px" 
+                        }}
+                    />
+                    {errors.description}
+                    </p>
+                }
             </div>
-        </div>      
-        <button className={styles.button}  type="submit">
-            <span className={styles.button_text}>Registrate</span>
-        </button>
-    </form>
-
-
-
+        </div>
+        {Object.entries(errors).length === 0 ?
+            <button className={styles.button}  type="submit">
+                <span className={styles.button_text}>Registrate</span>
+            </button>
+            : <button className={styles.buttonOff} disabled>
+                <span className={styles.button_text}>Registrate</span>
+            </button>
+        }      
+       
+        </form>
     </>
-   
   )
 }

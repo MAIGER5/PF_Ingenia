@@ -10,36 +10,43 @@
   "dificulty":"BASIC",
   "requirement":"Estos son los requerimientos",
   "learnTo": [ "Computadora", "WEB", "CSS" ],
-  "studyMethod": "Este es el método de estudio"
+  "studyMethod": "Este es el método de estudio",
+  "catego":[1],
+  "users": ""
   }
-  
-  {
-  "title":"Desarrollo Web con React",
-  "description":"Aprenda a construir aplicaciones web con React",
-  "image":"https://miro.medium.com/max/1400/1*HSisLuifMO6KbLfPOKtLow.jpeg",
-  "lenguage":"INGLÉS",
-  "price":39.99,
-  "duration":"3 meses",
-  "habilities":"Aprenda a desarrollar aplicaciones web interactivas con React",
-  "dificulty":"INTERMEDIATE",
-  "requirement":["JavaScript","HTML","CSS"],
-  "users":[],
-  "categoria":[2,4,6]
-  }
-  
   {
   "title":"Machine Learning Fundamentals",
   "description":"Curso introductorio al aprendizaje automático",
   "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStKtA4Um2ReQD86HS3bytmT8BxQawMnnVUboW00aHmqVP4vezIxFJCUr_3bRiE5NzU1Zo&usqp=CAU",
-  "lenguage":"INGLÉS",
+  "lenguage":"ENGLISH",
   "price":59.99,
   "duration":"4 meses",
+  "content": "este es el contenido",
   "habilities":"Este curso lo iniciará en los fundamentos del aprendizaje automático",
   "dificulty":"ADVANCED",
-  "requirement":["Python","Matemáticas"],
-  "users":[],
-  "categoria":[3,5,8]
+  "requirement":"Estos son los requerimientos",
+   "learnTo": [ "Computadora", "WEB", "CSS" ],
+  "categoria":[4],
+  "users": ""
   }
+
+
+  {
+  "title":"Desarrollo Web con React",
+  "description":"Aprenda a construir aplicaciones web con React",
+  "image":"https://miro.medium.com/max/1400/1*HSisLuifMO6KbLfPOKtLow.jpeg",
+  "lenguage":"ENGLISH",
+  "price":39.99,
+  "duration":"3 meses",
+  "content": "este es el contenido",
+  "habilities":"Aprenda a desarrollar aplicaciones web interactivas con React",
+  "dificulty":"MEDIUM",
+  "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+  "catego":[6]
+  }
+  
+
   
   {
   "title":"Desarrollo de Videojuegos con Unity",
@@ -48,11 +55,12 @@
   "lenguage":"ESPAÑOL",
   "price":49.99,
   "duration":"3 meses",
+  "content": "este es el contenido",
   "habilities":"Desarrolle habilidades para crear videojuegos utilizando Unity",
-  "dificulty":"INTERMEDIATE",
-  "requirement":["C#","Unity"],
-  "users":[],
-  "categoria":[2,4,6]
+  "dificulty":"MEDIUM",
+  "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+  "categoria":[4]
   }
   
   {
@@ -62,39 +70,43 @@
   "lenguage":"ESPAÑOL",
   "price":29.99,
   "duration":"2 meses",
+  "content": "este es el contenido",
+  "dificulty":"MEDIUM",
   "habilities":"Aprenda los fundamentos de la seguridad informática",
   "dificulty":"BASIC",
-  "requirement":["Ninguno"],
-  "users":[],
-  "categoria":[3,5,7]
+  "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+  "categoria":[1]
   }
 
-  {
+{
 "title":"Programación Orientada a Objetos en Java",
 "description":"Curso avanzado de programación en Java",
 "image":"https://www.computerworld.es/archivos/202205/java-concurrency.png",
 "lenguage":"ESPAÑOL",
 "price":49.99,
 "duration":"3 meses",
+"content": "este es el contenido",
 "habilities":"Este curso lo iniciará en la programación orientada a objetos en Java",
 "dificulty":"ADVANCED",
-"requirement":["Java","Programación básica"],
-"users":[],
-"categoria":[1,4,7]
+ "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+"categoria":[1]
 }
 
 {
 "title":"Desarrollo de Aplicaciones Móviles con Flutter",
 "description":"Aprenda a crear aplicaciones móviles con Flutter",
 "image":"https://i.ytimg.com/vi/fq4N0hgOWzU/maxresdefault.jpg",
-"lenguage":"INGLÉS",
+"lenguage":"ENGLISH",
 "price":59.99,
 "duration":"4 meses",
 "habilities":"Desarrolle habilidades para crear aplicaciones móviles con Flutter",
-"dificulty":"INTERMEDIATE",
-"requirement":["Dart","Programación móvil"],
-"users":[],
-"categoria":[2,4,8]
+"dificulty":"MEDIUM",
+"content": "este es el contenido",
+ "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+"categoria":[8]
 }
 
 {
@@ -105,24 +117,26 @@
 "price":39.99,
 "duration":"3 meses",
 "habilities":"Aprenda a desarrollar aplicaciones web interactivas con Angular",
-"dificulty":"INTERMEDIATE",
-"requirement":["JavaScript","HTML","CSS"],
-"users":[],
-"categoria":[2,5,7]
+"dificulty":"MEDIUM",
+"content": "este es el contenido",
+ "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+"categoria":[7]
 }
 
 {
 "title":"Aprendizaje Profundo con TensorFlow",
 "description":"Curso avanzado de aprendizaje profundo utilizando TensorFlow",
 "image":"https://i.ytimg.com/vi/yjprpOoH5c8/maxresdefault.jpg",
-"lenguage":"INGLÉS",
+"lenguage":"ENGLISH",
 "price":69.99,
 "duration":"5 meses",
 "habilities":"Aprenda a aplicar técnicas avanzadas de aprendizaje profundo utilizando TensorFlow",
 "dificulty":"ADVANCED",
-"requirement":["Python","Aprendizaje automático"],
-"users":[],
-"categoria":[3,6,8]
+"content": "este es el contenido",
+ "requirement":"Estos son los requerimientos",
+  "learnTo": [ "Computadora", "WEB", "CSS" ],
+"categoria":[6]
 }
 
 {
@@ -139,6 +153,7 @@
 "categoria":[3,5]
 }
 
+-------
 {
 "title":"Desarrollo de Aplicaciones para Android con Kotlin",
 "description":"Aprenda a crear aplicaciones para Android utilizando el lenguaje Kotlin",

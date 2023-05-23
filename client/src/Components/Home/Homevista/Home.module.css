@@ -8,7 +8,7 @@
 }
 .Home{
     display: flex;
-    flex-direction: row;
     margin-top: 8rem;
-   
+    justify-content: space-around;
+    align-items: flex-start;
 }

@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
     },
     lastname: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     Is: {
-      type: DataTypes.ENUM("STUDEN", "INSTRUCTOR", "ADMIN"),
+      type: DataTypes.ENUM("STUDENT", "INSTRUCTOR", "ADMIN"),
     },
     assessment: {
       type: DataTypes.DOUBLE,

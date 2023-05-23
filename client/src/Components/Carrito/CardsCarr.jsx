@@ -15,8 +15,8 @@ export const CardsCarr = () => {
               <CardCarrito
                 key={ele.idCourse}
                 idCourse={ele.idCourse}
-                instructorName={ele.Users? ele.Users[0].name : "nada"}
-                instructorLastName={ele.Users? ele.Users[0].lastname : "nada"}
+                instructorName={ele.users?.name}
+                instructorLastName={ele.users?.lastname}
                 title={ele.title}
                 description={ele.description}
                 duration={ele.duration}
@@ -24,7 +24,7 @@ export const CardsCarr = () => {
                 price={ele.price}
                 image={ele.image}
                 lenguage={ele.lenguage}
-                categories={ele.Categories[0].name}
+                categories={ele.categories}
               />
             )): "nada"
         }

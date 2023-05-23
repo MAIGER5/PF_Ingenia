@@ -6,9 +6,11 @@ const userDataForm = ({
   imgProfile,
   Is,
   assessment,
+  description,
   studies,
   asset,
   CourseIdCourse,
+  tokenSession,
   createdAt,
   updatedAt,
 }) => {
@@ -23,6 +25,8 @@ const userDataForm = ({
     CourseIdCourse,
     createdAt,
     updatedAt,
+    tokenSession,
+    loginVerification: true,
   };
 
   const userInstructor = {
@@ -33,14 +37,17 @@ const userDataForm = ({
     imgProfile,
     Is,
     assessment,
+    description,
     studies,
     asset,
     CourseIdCourse,
     createdAt,
     updatedAt,
+    tokenSession,
+    loginVerification: true,
   };
 
-  if (Is === "STUDEN") {
+  if (Is === "STUDENT") {
     return userStuden;
   } else if (Is === "INSTRUCTOR") {
     return userInstructor;
