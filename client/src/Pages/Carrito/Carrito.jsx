@@ -12,7 +12,7 @@ export default function Carrito() {
     const car = useSelector((state)=>state.allCarrito)
 
     const sumar = car.reduce((accumulator, ele)=> accumulator + ele.price, 0)
-    localStorage.setItem("TotalCarrito", sumar);
+    localStorage.getItem('name')? localStorage.setItem("TotalCarrito", sumar): localStorage.setItem("TotalCarrito", 0)
 
 
   return (
