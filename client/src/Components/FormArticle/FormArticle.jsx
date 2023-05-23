@@ -1,189 +1,283 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
+import axios from "axios";
+
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import { Typography, Alert, Snackbar  } from "@mui/material";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import styles from "./FormArticle.module.css";
 
 export default function FormArticle() {
 
-    const [article, setArticle] = useState({
-        image: "",
-        title1: "",
-        subtitle1: "",
-        text1: "",
-        title2: "",
-        subtitle2: "",
-        text2: "",
-        title3: "",
-        subtitle3: "",
-        text3: "",
-    })
+    const [title, setTitle] = useState("");
+    const [subtitle, setSubtitle] = useState("");
+    const [text, setText] = useState("");    
+    const [subtitleTwo, setSubtitleTwo] = useState("");
+    const [textTwo, setTextTwo] = useState("");
+    const [subtitleThree, setSubtitleThree] = useState("");
+    const [textThree, setTextThree] = useState("");
+    const [productImg, setProductImg] = useState("");
 
-    const [fileImage, setfileImage] = useState("");
-    const [fileInputState, setfileInputState] = useState("");
-    const [selectedFile, setSelectedFile] = useState("");
     const [previewSource, setPreviewSource] = useState();
+
+    const [isAlert, setIsAlert] = useState(false); 
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-     
-        // axios.post('http://localhost:3001/user/created', user)
-        // .then(res => console.log("res", res))
-        // .catch((error) => {
-        //     console.log(error);
-        // });
+        console.log({
+            idUser: 1,
+            title,
+            subtitle,
+            text,
+            img: productImg,
+            subtitleTwo,
+            textTwo,
+            subtitleThree,
+            textThree
+          });
 
-        if(!previewSource) return;
-        uploadImage(previewSource);
-
-        console.log(article)
-        setArticle({
-            image: "",
-            title1: "",
-            subtitle1: "",
-            text1: "",
-            title2: "",
-            subtitle2: "",
-            text2: "",
-            title3: "",
-            subtitle3: "",
-            text3: "",
-        })
+        if(!title || 
+            !subtitle ||
+            !text ||
+            !productImg ||
+            !subtitleTwo ||
+            !textTwo ||
+            !subtitleThree ||
+            !textThree ) {
+            return
+        }
+           
+            await axios.post(
+              `http://localhost:3001/instructor/publication`,
+              {
+                idUser: 1,
+                title,
+                subtitle,
+                text,
+                img: productImg,
+                subtitleTwo,
+                textTwo,
+                subtitleThree,
+                textThree
+              }  
+            ).then(async (response) => {
+                console.log(response);
+                //let id = response.data?.idCourse
+                //navigate(`/DetailCourse/${id}`)
+                //let id = response.data?.idCourse
+                //navigate(`/DetailCourse/${id}`)
+            })
     }
 
-    const handleInput = (event) => {
-        const { name, value } = event.target;
-
-        setArticle({
-            ...article,
-            [name]: value
-        });
-    }
-
-    const handleFileImage = (event) => {
+    const handleProductImageUpload = (event) => {
         const file = event.target.files[0];
-        previewFile(file)
-    }
+        TransformFileData(file);
+        previewFile(file)   
+    };
 
     const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             setPreviewSource(reader.result);
+        };
+    };
+    
+    const TransformFileData = (file) => {
+        const reader = new FileReader();
+    
+        if (file) {
+          reader.readAsDataURL(file);
+          reader.onloadend = () => {
+            setProductImg(reader.result);
+          };
+        } else {
+          setProductImg("");
         }
     }
 
-    const uploadImage = async(base64EncondedImage) => {
-        console.log(base64EncondedImage)
-        // try {
-        //     await fetch('http://localhost:3001/courses/upload', {
-        //         method: "POST",
-        //         body: JSON.stringify({data: base64EncondedImage}),
-        //         headers: {'content-type': "application/json"}
-        //     })
-        // } catch (error) {
-        //     console.log(error)
-        // }
-    }
+    //Tooltip para el usuario
+    const HtmlTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+      ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+          backgroundColor: '#f5f5f9',
+          color: 'rgba(0, 0, 0, 0.87)',
+          maxWidth: 220,
+          fontSize: theme.typography.pxToRem(12),
+          border: '1px solid #dadde9',
+        },
+      }));
 
   return (
     <form 
     className={styles.form}
     onSubmit={handleSubmit}
     >
-        {/* <input 
-            type="text" 
-            placeholder="Selecciona tu imagen"
-            name="image"
-            value={article.image}
-            onChange={handleInput}
-            className={styles.input}
-        /> */}
-        <input 
-            type="file"
-            name="image"
-            onChange={handleFileImage}
-            value={fileInputState}
-            className={styles.input}
+        {isAlert && (<Snackbar open={isAlert} autoHideDuration={2000} onClose={()=>setIsAlert(false)}>
+            <Alert 
+                variant="filled" severity="error"
+            >
+                Debes de llenar todos lo campos
+            </Alert>
+        </Snackbar>)}
+        <div className={styles.container}>
+            <div className={styles.subContainer}>
+                <div className={styles.inputContainer}>
+                <Typography color="secondary" sx={{ fontSize: "13px"}}>
+                    Tamaño max de 5MB
+                </Typography>
+                <label className={styles.inputImageLabel}> 
+                    Seleccionar Imagen
+                    <input
+                        id="fileInput"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleProductImageUpload}
+                        className={styles.inputImage}
+                    />
+                </label>
+                </div>
+            
+                {previewSource && (
+                    <img
+                        src={previewSource}
+                        alt="chosen"
+                        style={{ 
+                        height: '300px', width: '600px' 
+                        }}
+                    />
+                )} 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Ingresá un título que cautive a las personas"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">Título de tu publicación</Typography>
+                    </HtmlTooltip>
+                    <input 
+                        type="text" 
+                        placeholder="Título tu publicación"
+                        onChange={(e) => setTitle(e.target.value)}
+                        className={styles.input}
+                    />
+                </div> 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Ingresá un título que cautive a las personas"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">Título de tu publicación</Typography>
+                    </HtmlTooltip>
+                    <input 
+                        type="text" 
+                        placeholder="Título tu publicación"
+                        onChange={(e) => setSubtitle(e.target.value)}
+                        className={styles.input}
+                    />
+                </div> 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Describe de que trata tu curso, los motivos del porqué estudiarlo"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Describe tu publicación
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea
+                        type="text" 
+                        placeholder="Describe tu publicación"
+                        onChange={(e) => setText(e.target.value)}
+                        className={styles.textareaMedium}
+                    />
+                </div>               
+            </div>
+            <div className={styles.subContainer}>  
+            <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Ingresá un título que cautive a las personas"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">Título de tu publicación</Typography>
+                    </HtmlTooltip>
+                    <input 
+                        type="text" 
+                        placeholder="Título tu publicación"
+                        onChange={(e) => setSubtitleTwo(e.target.value)}
+                        className={styles.input}
+                    />
+                </div> 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Describe de que trata tu curso, los motivos del porqué estudiarlo"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Describe tu publicación
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea
+                        type="text" 
+                        placeholder="Describe tu publicación"
+                        onChange={(e) => setSubtitleTwo(e.target.value)}
+                        className={styles.textareaMedium}
+                    />
+                </div> 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Ingresá un título que cautive a las personas"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">Título de tu publicación</Typography>
+                    </HtmlTooltip>
+                    <input 
+                        type="text" 
+                        placeholder="Título tu publicación"
+                        onChange={(e) => setSubtitleThree(e.target.value)}
+                        className={styles.input}
+                    />
+                </div> 
+                <div className={styles.inputContainer}>
+                    <HtmlTooltip
+                        title={
+                        <Fragment>
+                            {"Describe de que trata tu curso, los motivos del porqué estudiarlo"}
+                        </Fragment>
+                        }
+                    >
+                        <Typography color="secondary">
+                            Describe tu publicación
+                        </Typography>
+                    </HtmlTooltip>
+                    <textarea
+                        type="text" 
+                        placeholder="Describe tu publicación"
+                        onChange={(e) => setSubtitleTwo(e.target.value)}
+                        className={styles.textareaMedium}
+                    />
+                </div> 
+            </div>     
+        </div>
 
-        />
-        {previewSource && (
-            <img 
-                src={previewSource} 
-                alt="preview"  
-                style={{height: "300px" }}
-            />
-        )}
-
-        <input 
-            type="text" 
-            placeholder="title1"
-            name="title1"
-            value={article.title1}
-            onChange={handleInput}
-            className={styles.input}
-        />
-        <input 
-            type="text" 
-            placeholder="subtitle1"
-            name="subtitle1"
-            value={article.subtitle1}
-            onChange={handleInput}
-            className={styles.input}
-        />
-          <input 
-            type="text" 
-            placeholder="text1"
-            name="text1"
-            value={article.text1}
-            onChange={handleInput}
-            className={styles.input}
-        />
-         <input 
-            type="text" 
-            placeholder="title2"
-            name="title2"
-            value={article.title2}
-            onChange={handleInput}
-            className={styles.input}
-        />
-        <input 
-            type="text" 
-            placeholder="subtitle2"
-            name="subtitle2"
-            value={article.subtitle2}
-            onChange={handleInput}
-            className={styles.input}
-        />
-          <input 
-            type="text" 
-            placeholder="text2"
-            name="text2"
-            value={article.text2}
-            onChange={handleInput}
-            className={styles.input}
-        />
-        <input 
-            type="text" 
-            placeholder="title3"
-            name="title3"
-            value={article.title3}
-            onChange={handleInput}
-            className={styles.input}
-        />
-        <input 
-            type="text" 
-            placeholder="subtitle3"
-            name="subtitle3"
-            value={article.subtitle3}
-            onChange={handleInput}
-            className={styles.input}
-        />
-          <input 
-            type="text" 
-            placeholder="text3"
-            name="text3"
-            value={article.text3}
-            onChange={handleInput}
-            className={styles.input}
-        />
         <button className={styles.button} type="submit">
             <span className={styles.button_text}>Crea tu publicación</span>
         </button>

@@ -14,6 +14,7 @@ export default function LoginToBackendOwnAccess(data) {
         localStorage.setItem("Token", response.data.tokenSession);
         localStorage.setItem("name", response.data.user.name);
         localStorage.setItem("lastname", response.data.user.lastname);
+        localStorage.setItem("idUser", response.data.user.idUser);
         if(response.data.user.Is == "STUDENT") localStorage.setItem("userType", "1");
         if(response.data.user.Is == "INSTRUCTOR") localStorage.setItem("userType", "2");
         if(response.data.user.Is == "ADMIN") localStorage.setItem("userType", "3");

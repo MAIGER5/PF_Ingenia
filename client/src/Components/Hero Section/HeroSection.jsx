@@ -19,7 +19,7 @@ export default function Carrusel() {
         <motion.img
           className={styled.imgcarrusel}
           key={index}
-          src={images[index]}e 
+          src={images[index]}
           alt="slide"
           initial={{ x: 300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
