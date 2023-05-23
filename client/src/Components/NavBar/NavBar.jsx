@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+//material UI
 import {
   AppBar,
   Box,
@@ -7,29 +9,40 @@ import {
   Typography,
   Badge
 } from "@mui/material";
-import { ColorModeContext } from "../Layout";
 import { useTheme } from "@emotion/react";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+//componente
+import { ColorModeContext } from "../Layout";
 import MenuAvatar from "./MenuAvatar";
 import SearchBar from "./SearchBar";
 import SingInButtons from "./SingInButtons";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useSelector } from "react-redux";
-
-
-
+//actions
+import { getCourses } from "../../Redux/Actions/getCourses";
+import { getCategories } from "../../Redux/Actions/getCategories";
+import { postLocalStorage } from "../../Redux/Actions/actionsCarrito/postLocalStorage";
 
 
 export default function NavBar() {
 
-  //const userType = useSelector((state) => state.user.userType);
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(getCourses());
+    dispatch(getCategories());
+    dispatch(postLocalStorage())
+  }, [dispatch])
+
 
   //Badge para el cart desde el navbar
   const cart = useSelector((state)=> state.allCarrito)
   const cartCourses = cart.length
+
+  const all = useSelector((state)=> state)
+  console.log(all);
   
   //let loginUser = { type: 0 };
   let userType = 0;

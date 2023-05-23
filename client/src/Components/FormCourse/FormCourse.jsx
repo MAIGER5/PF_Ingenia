@@ -1,8 +1,8 @@
 import { useState, Fragment } from "react";
+import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { categoryOptions } from "./validations";
-
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
@@ -12,6 +12,8 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import styles from "./FormCourse.module.css";
 
 export default function FormCourseCopy() {
+
+    const state = useSelector((state) => state);
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -32,6 +34,7 @@ export default function FormCourseCopy() {
 
     const [isAlert, setIsAlert] = useState(false); 
     const navigate = useNavigate(); 
+
 
     const handleSubmit = async(event) => {
         event.preventDefault();
