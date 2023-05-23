@@ -55,7 +55,7 @@ export default function Carrito() {
             {localStorage.getItem("userType") != 0 
                 ? 
                 <NavLink
-                    to={"/"}
+                    to={"/Pay"}
                     exact={true}  
                 >
                     <Button
