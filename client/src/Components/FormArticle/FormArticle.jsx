@@ -32,7 +32,7 @@ export default function FormArticle() {
             img: productImg,
             subtitleTwo,
             textTwo,
-            subtitleThree,
+            subtitleThree, 
             textThree
           });
 
