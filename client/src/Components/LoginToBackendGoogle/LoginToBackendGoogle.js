@@ -1,23 +1,39 @@
 import axios from "axios";
+import { DATA_LOGIN } from "../LoginToBackendOwnAccess/LoginToBackendOwnAccess";
 
-export default function LoginToBackendGoogle(credentials, userType) {
+export default function LoginToBackendGoogle(credentials, userType, dispatch) {
   //De los datos recibidos, extraigo los datos que necesito enviar al Backend
   let data = credentials.user.auth.currentUser.providerData[0];
   data.emailVerified = credentials.user.auth.currentUser.emailVerified;
-  //delete data.uid;
   delete data.phoneNumber;
-  //if (data.userType == "SignupUsuario") data.userType = "STUDENT";
-  //if (data.userType == "SignupVendedor") data.userType = "INSTRUCTOR";
-  //console.log("data.userType:");
-  //console.log(data.userType);
+
   if (userType == "SignupUsuario") data.userType = "STUDENT";
   if (userType == "SignupVendedor") data.userType = "INSTRUCTOR";
 
   //Para visualizar los datos recibidos de Google:
-  console.log("Datos recibidos de Google:");
-  console.log(data);
+  //console.log("Datos recibidos de Google:");
+  //console.log(data);
+
+  // Solicitud al servidor:
   async function dataOwnAccessToBackent() {
-    axios
+    const response = await axios.post(`http://localhost:3001/user/login/google`, data)
+    //console.log(response);
+    let respBack = response.data.user;
+
+    if (respBack.Is == "STUDENT") respBack.userType = 1;
+    if (respBack.Is == "INSTRUCTOR") respBack.userType = 2;
+    if (respBack.Is == "ADMIN") respBack.userType = 3;
+
+    //console.log("Variable recibida del Back y adaptada, aun en el LoginToBackendOwnAccess:");
+    //console.log(respBack);
+
+    dispatch({
+      type: DATA_LOGIN,
+      payload: respBack,
+    });
+
+
+/*     axios
       .post(`http://localhost:3001/user/login/google`, data)
       .then((response) => {
         console.log(response);
@@ -41,7 +57,7 @@ export default function LoginToBackendGoogle(credentials, userType) {
         window.alert(objeto.error);
 
         console.log(objeto.loginVerification);
-      });
+      }); */
   }
 
   dataOwnAccessToBackent();

@@ -1,7 +1,7 @@
 import { GET_COURSES } from "../Actions/getCourses";
 import { CLEAN_DETAIL } from "../Actions/cleanDetail";
 import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
-import { LOGIN_USER } from "../../Components/FormLogin/FormLogin";
+//import { LOGIN_USER } from "../../Components/FormLogin/FormLogin";
 import { GET_CATEGORIES } from "../Actions/getCategories";
 import { GET_COURSESCATEGORY } from "../Actions/getCoursescategory"
 import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
