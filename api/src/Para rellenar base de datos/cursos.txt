@@ -11,7 +11,8 @@
   "requirement":"Estos son los requerimientos",
   "learnTo": [ "Computadora", "WEB", "CSS" ],
   "studyMethod": "Este es el método de estudio",
-  "catego":[1]
+  "catego":[1],
+  "users": ""
   }
   {
   "title":"Machine Learning Fundamentals",
@@ -25,7 +26,8 @@
   "dificulty":"ADVANCED",
   "requirement":"Estos son los requerimientos",
    "learnTo": [ "Computadora", "WEB", "CSS" ],
-  "categoria":[4]
+  "categoria":[4],
+  "users": ""
   }
 
 

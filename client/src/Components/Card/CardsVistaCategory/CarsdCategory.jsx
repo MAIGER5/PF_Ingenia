@@ -36,6 +36,7 @@ export default function Cardsresulcategory() {
               idCourse={curso.idCourse}
               instructorName={curso.Users.map(use=> use.name)}
               instructorLastName={curso.Users.map(use=> use.lastname)}
+              categories={curso.Categories.map(cat=> cat.name)}
               title={curso.title}
               description={curso.description}
               duration={curso.duration}

@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { getCourses } from '../../../Redux/Actions/getCourses';
 import { NavLink } from 'react-router-dom';
 import { getCategories } from '../../../Redux/Actions/getCategories';
+import { postLocalStorage } from '../../../Redux/Actions/actionsCarrito/postLocalStorage';
 
 
 
@@ -21,6 +22,7 @@ export default function HomeComponent() {
   useEffect(()=> {
     dispatch(getCourses());
     dispatch(getCategories());
+    dispatch(postLocalStorage())
   }, [dispatch])
 
   return (
