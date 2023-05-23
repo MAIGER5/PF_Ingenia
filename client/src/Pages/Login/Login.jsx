@@ -10,6 +10,7 @@ import styles from "./Login.module.css";
 import LoginToBackendGoogle from "../../Components/LoginToBackendGoogle/LoginToBackendGoogle";
 import { useDispatch } from "react-redux";
 
+export const LOGIN_USER = "LOGIN_USER"
 
 export default function Login() {
   const [tabIndex, setTabIndex] = useState(0);
@@ -30,7 +31,7 @@ export default function Login() {
     signInWithPopup(auth, provider)
     .then(async (result) => {
       //se envían datos para validación por servidor
-      await LoginToBackendGoogle(result, type, dispatch)
+      LoginToBackendGoogle(result, type, dispatch)
 
       navigate("/");
       

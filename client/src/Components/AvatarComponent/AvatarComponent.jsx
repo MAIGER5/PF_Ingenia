@@ -9,10 +9,10 @@ export default function AvatarComponent( props ) {
     /* function stringAvatar(userName, userHeight, userWidth, userFontSize) { */
     function stringAvatar(userHeight, userWidth, userFontSize) {
         // Obtener los valores de 'name' y 'lastname' del localStorage
-        //const name = localStorage.getItem('name');
-        //const lastname = localStorage.getItem('lastname');
-        const name = useSelector(state => state.user.name)
-        const lastname = useSelector(state => state.user.lastname)
+        const name = localStorage.getItem('name');
+        const lastname = localStorage.getItem('lastname');
+        // const name = useSelector(state => state.user.name)
+        // const lastname = useSelector(state => state.user.lastname)
 
         //console.log(name);
 
