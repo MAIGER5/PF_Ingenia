@@ -6,13 +6,21 @@ import Typography from '@mui/material/Typography';
 import { Box, Button, Grid, Rating } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import DeleteIcon from '@mui/icons-material/Delete';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { RemoveOneFromCarrito } from '../../Redux/Actions/actionsCarrito/RemoveOneFromCarrito';
 
 
 
 export function CardCarrito({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName, categories, idCourse}) {
 
+    const dispatch = useDispatch();
+
+    function handClickDelete() {
+        dispatch(RemoveOneFromCarrito(idCourse))
+    }
 
     return (
         <Card sx={{ 
@@ -83,8 +91,8 @@ export function CardCarrito({title, description, dificulty,  price, image, instr
                                 </Grid>
     
     
-                                <Button variant='contained' startIcon={<ShoppingCartIcon/>} 
-                                    >Add
+                                <Button onClick={handClickDelete} variant='contained' startIcon={<DeleteIcon/>} 
+                                    >delete
                                 </Button>
     
                                 <Fab disabled aria-label="like">

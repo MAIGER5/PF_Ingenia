@@ -12,6 +12,8 @@ import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
 //import { DATA_LOGIN } from "../Actions/dataLogin";
 import { DATA_LOGIN } from "../../Components/LoginToBackendOwnAccess/LoginToBackendOwnAccess";
 
+import { POST_LOCAL_STORAGE} from "../Actions/actionsCarrito/postLocalStorage";
+import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFromCarrito";
 
 const initialState = {
     allCourse: [],
@@ -21,6 +23,7 @@ const initialState = {
     filtercourses:[],
     allCourseCategory:[],
     allCarrito:[],
+    localStorageData:null,
     userLogin:{},
     user : {
         userType: 0,
@@ -100,6 +103,20 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allCarrito: [...state.allCarrito, action.payload],
+
+            };
+        case REMOVE_ONE_FROM_CARRITO:
+
+            return {
+                ...state,
+                allCarrito: state.allCarrito.filter((ele)=>ele.idCourse !== action.payload),
+
+            };
+        case POST_LOCAL_STORAGE:
+
+            return {
+                ...state,
+                localStorageData: action.payload,
 
             };
             case FILTER_BY_PRICE:

@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { 
   Alert, 
@@ -14,9 +15,16 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import styles from "./CardHome.module.css"; 
+import { useDispatch } from 'react-redux';
+import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
+import { RemoveOneFromCarrito } from '../../Redux/Actions/actionsCarrito/RemoveOneFromCarrito';
+import Login from '../../Pages/Login/Login';
 
 
 function CardHome({title, image, instructorName, instructorLastName, price, lenguage, ratings = 5, idCourse}) {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [isActive, setIsActive] = useState(false);
   const [colorCart, setcolorCart] = useState("");
@@ -35,11 +43,18 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
   //Lógica para activado/desactivado del carrito
   const handleCart = () => {
     if(!isActive){
-      setIsActive(true)
-      setIsAlertAdd(true)
+      if (localStorage.getItem('name')) {
+        setIsActive(true)
+        setIsAlertAdd(true)
+        dispatch(addToCarrito(idCourse))
+      } else {
+        navigate('/Login')
+      }
+
     }else {
       setIsActive(false)
       setIsAlertDelete(true)
+      dispatch(RemoveOneFromCarrito(idCourse))
     }
   }
 
@@ -137,6 +152,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
                 }}/>
               }
             </button>
+
           </div>
           <p className={styles.pricetag}>
           ${price} USD
