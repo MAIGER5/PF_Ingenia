@@ -21,7 +21,7 @@ const initialState = {
     filtercourses:[],
     allCourseCategory:[],
     allCarrito:[],
-    localStorageData:null
+    localStorageData:{}
 
 
 };
