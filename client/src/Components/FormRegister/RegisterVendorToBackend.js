@@ -13,6 +13,7 @@ export default function RegisterVendorToBackend(data) {
           localStorage.setItem("Token", response.data.tokenSession);
           localStorage.setItem("name", response.data.user.name);
           localStorage.setItem("lastname", response.data.user.lastname);
+          localStorage.setItem("idUser", response.data.user.idUser);
           localStorage.setItem("userType", "2");
           window.location.href = '/'
         })
