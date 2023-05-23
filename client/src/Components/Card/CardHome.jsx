@@ -50,6 +50,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
         setIsActive(true)
         setIsAlertAdd(true)
         dispatch(addToCarritoBd(idCourse, userId))
+        console.log(userId)
         dispatch(addToCarrito(idCourse))
       } else {
         navigate('/Login')
