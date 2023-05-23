@@ -12,6 +12,8 @@ import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
 import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
 import { POST_LOCAL_STORAGE} from "../Actions/actionsCarrito/postLocalStorage";
 import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFromCarrito";
+import { BUTTON_PAYPAL } from "../Actions/butonpaypal";
+
 
 const initialState = {
     allCourse: [],
@@ -113,6 +115,13 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filtercourses: action.payload,
+
+            };
+            case BUTTON_PAYPAL:
+
+            return {
+                ...state,
+                ButtonPaypal: action.payload,
 
             };
 

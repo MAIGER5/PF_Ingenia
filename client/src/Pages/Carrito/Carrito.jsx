@@ -4,7 +4,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import { CardsCarr } from '../../Components/Carrito/CardsCarr';
 import HomeRebajas from '../../Components/Home/Home Rebajas/HomeRebajas';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { color } from 'framer-motion';
+
 
 
 export default function Carrito() {
@@ -56,7 +56,7 @@ export default function Carrito() {
             {localStorage.getItem("userType") != 0 
                 ? 
                 <NavLink
-                    to={"/"}
+                    to={"/Pay"}
                     exact={true}  
                 >
                     <Button
