@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1234),
       allowNull: false,
     },
     image: {
@@ -38,11 +38,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     duration: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1234),
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1234),
       allowNull: false,
     },
     dificulty: {
@@ -51,7 +51,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     requirement:{
-      type:DataTypes.STRING,
+      type:DataTypes.STRING(1234),
       allowNull:false
     },
     learnTo:{
@@ -59,7 +59,7 @@ module.exports = (sequelize) => {
       allowNull:false
     },
     studyMethod:{
-      type:DataTypes.STRING,
+      type:DataTypes.STRING(1234),
       allowNull:true
     },
     asset: {
