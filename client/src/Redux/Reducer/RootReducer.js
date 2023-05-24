@@ -79,13 +79,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allCarrito: [...state.allCarrito, action.payload],
       };
-    // case GET_TO_CARRITO_BD :
+    case GET_TO_CARRITO_BD :
 
-    //     return {
-    //         ...state,
-    //         allCarrito: [...state.allCarrito, action.payload],
+        return {
+            ...state,
+            allCarrito: [...state.allCarrito, action.payload],
 
-    //     };
+        };
     case REMOVE_ONE_FROM_CARRITO:
       return {
         ...state,
@@ -108,8 +108,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         ButtonPaypal: action.payload,
       };
-
-<<<<<<< HEAD
         case CLEAN_DETAIL:
             return {
                 ...state,
@@ -200,11 +198,7 @@ const rootReducer = (state = initialState, action) => {
         default:
             return { ...state };
     }
-=======
-    default:
-      return { ...state };
-  }
->>>>>>> 7337fd9a49436b0dbb7b607ccf8f925b0f38484e
+
 };
 
 export default rootReducer;
