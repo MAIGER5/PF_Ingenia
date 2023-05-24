@@ -28,7 +28,7 @@ const trolleyControllers =async (idcuros,iduser)=>{
         // carrito.addUsers(iduser)
         return carrito;
     }else{
-        return "Ya se guardo en el carrito"
+        return "successfully added"
     }
 
 
