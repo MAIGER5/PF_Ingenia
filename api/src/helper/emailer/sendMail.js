@@ -10,7 +10,7 @@ const sendMail = async (email, displayName, password) => {
     html: emailMessage(email, password, displayName),
   };
   const info = await transporter.sendMail(mailOptions);
-  console.log("message sent: %s", info.messageId);
+  console.log("message sent: ", info.messageId);
 
   return;
 };
