@@ -25,6 +25,7 @@ import SingInButtons from "./SingInButtons";
 import { getCourses } from "../../Redux/Actions/getCourses";
 import { getCategories } from "../../Redux/Actions/getCategories";
 import { postLocalStorage } from "../../Redux/Actions/actionsCarrito/postLocalStorage";
+import setActiveTab from "../../Redux/Actions/setActiveTab";
 
 
 export default function NavBar() {
@@ -61,6 +62,11 @@ export default function NavBar() {
       const theme = useTheme();
       const colorMode = React.useContext(ColorModeContext);
       const themeMode = theme.palette.mode === "light" ? "black" : "white";
+
+  // Estado del Tab en Cursos/Favoritos:
+  const tabSet = (activeTab) => {
+    dispatch(setActiveTab(activeTab))
+  }
 
   return (
     <div>
@@ -109,12 +115,12 @@ export default function NavBar() {
                        <div style={{ display: "flex", alignItems: "center", gap: "10px", }} >
 
                          {/* Mis Cursos */}
-                             <NavLink style={{ textDecoration: "none", color: "#FF8906", fontSize: "20px", }} to={"/MyCourses"} >
+                             <NavLink style={{ textDecoration: "none", color: "#FF8906", fontSize: "20px", }} to={"/MyCourses"} onClick={()=>tabSet(0)}>
                              <p>Mis cursos</p>
                              </NavLink>
 
                          {/* Favoritos */}
-                             <Box> <NavLink to={"/MyCourses"}>
+                             <Box> <NavLink to={"/MyCourses"}  onClick={()=>tabSet(1)}>
                              <IconButton color="primary" aria-label="upload picture" component="label" >
                              <Tooltip title="Favoritos" placement="top">
                              <FavoriteIcon />
