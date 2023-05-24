@@ -26,6 +26,7 @@ const initialState = {
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+
     case GET_COURSES:
       return {
         ...state,
@@ -83,8 +84,7 @@ const rootReducer = (state = initialState, action) => {
 
         return {
             ...state,
-            allCarrito: [...state.allCarrito, action.payload],
-
+            allCarrito: action.payload,
         };
     case REMOVE_ONE_FROM_CARRITO:
       return {
@@ -108,93 +108,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         ButtonPaypal: action.payload,
       };
-        case CLEAN_DETAIL:
-            return {
-                ...state,
-                courseDetail: [],
-            };
-        case GET_COURSESCATEGORY:
-            return {
-                ...state,
-                allCourseCategory: action.payload,
-
-            };
-        case GET_CATEGORIES:
-            return {
-                ...state,
-                categories: action.payload,
-            };
-        case FILTER_BY_LANGUAGE:
-
-            return {
-                ...state,
-                filtercourses: action.payload,
-
-            };
-        case FILTER_BY_DIFFICULTY:
-
-            return {
-                ...state,
-                filtercourses: action.payload,
-
-            };
-        case ORDER_BY_DATE:
-
-            return {
-                ...state,
-                filtercourses: action.payload,
-
-            };
-        case GET_COURSESEACH:
-
-            return {
-                ...state,
-                allCourseCategory: action.payload,
-
-            };
-        case ADD_TO_CARRITO:
-
-            return {
-                ...state,
-                allCarrito: [...state.allCarrito, action.payload],
-
-            };
-        case GET_TO_CARRITO_BD :
-
-            return {
-                ...state,
-                allCarrito: [...state.allCarrito, action.payload],
-
-            };
-        case REMOVE_ONE_FROM_CARRITO:
-
-            return {
-                ...state,
-                allCarrito: state.allCarrito.filter((ele)=>ele.idCourse !== action.payload),
-
-            };
-        case POST_LOCAL_STORAGE:
-
-            return {
-                ...state,
-                localStorageData: action.payload,
-
-            };
-            case FILTER_BY_PRICE:
-
-            return {
-                ...state,
-                filtercourses: action.payload,
-
-            };
-            case BUTTON_PAYPAL:
-
-            return {
-                ...state,
-                ButtonPaypal: action.payload,
-
-            };
-
         default:
             return { ...state };
     }
