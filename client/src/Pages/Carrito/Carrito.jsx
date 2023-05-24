@@ -1,19 +1,24 @@
 import { NavLink } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Grid, Typography } from "@mui/material";
 import { CardsCarr } from '../../Components/Carrito/CardsCarr';
 import HomeRebajas from '../../Components/Home/Home Rebajas/HomeRebajas';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { color } from 'framer-motion';
+import { useEffect } from 'react';
+import { totalcarrito } from '../../Redux/Actions/TotalCarrito';
+
 
 
 export default function Carrito() {
-
+    const dispach=useDispatch()
     const car = useSelector((state)=>state.allCarrito)
 
-    const sumar = car.reduce((accumulator, ele)=> accumulator + ele.price, 0)
-
-
+    const sumar = car.reduce((accumulator, ele) => accumulator + ele.price, 0);
+    useEffect(() => {
+      dispach(totalcarrito(sumar))
+    }, [sumar])
+    
+  
   return (
     <Grid container spacing={2} margin={10}>
         <Grid item xs={9}>
@@ -55,7 +60,7 @@ export default function Carrito() {
             {localStorage.getItem("userType") != 0 
                 ? 
                 <NavLink
-                    to={"/"}
+                    to={"/Pay"}
                     exact={true}  
                 >
                     <Button

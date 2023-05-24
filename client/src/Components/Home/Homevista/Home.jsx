@@ -7,23 +7,19 @@ import HomeTopPublicaiones from '../HomeTopPublicaiones/HomeTopPublicaiones';
 import HomeRebajas from '../Home Rebajas/HomeRebajas';
 import HomeMejorcalificados from '../HomeMejorcalificados/HomeMejorcalificados';
 import HomeCategorias from '../HomeCategorias/HomeCategorias';
-import { useDispatch } from 'react-redux';
-import { getCourses } from '../../../Redux/Actions/getCourses';
 import { NavLink } from 'react-router-dom';
-import { getCategories } from '../../../Redux/Actions/getCategories';
-import { postLocalStorage } from '../../../Redux/Actions/actionsCarrito/postLocalStorage';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getToCarritoBd } from '../../../Redux/Actions/getToCarritoBd';
 
 export default function HomeComponent() {
 
   const dispatch = useDispatch();
+  const user = localStorage.getItem('idUser')
+  const carrito = useSelector((state)=> state.allCarrito)
 
-  useEffect(()=> {
-    dispatch(getCourses());
-    dispatch(getCategories());
-    dispatch(postLocalStorage())
-  }, [dispatch])
+  useEffect(()=>{
+    !carrito.length? dispatch(getToCarritoBd(user)): "nada"
+  }, []);
 
   return (
     <Box sx={{width:1600}}>

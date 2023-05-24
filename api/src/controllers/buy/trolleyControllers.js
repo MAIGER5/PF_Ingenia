@@ -7,7 +7,7 @@ const trolleyControllers =async (idcuros,iduser)=>{
         }
     })
 
-    const a = newUsers.find((obj)=> obj.idBuy === parseInt(idcuros))
+    const a = newUsers.find((obj)=> obj.idCor === parseInt(idcuros))
 
     if(!a){
         const response = await Course.findByPk(idcuros,{
@@ -22,13 +22,13 @@ const trolleyControllers =async (idcuros,iduser)=>{
         })
         const {idCourse,title,description,image,price,pro,pricePro,Users}=response
         const userInstrucotor = Users[0].name + ' ' + Users[0].lastname
-        const idBuy = idCourse
+        const idCor = idCourse
         const UserIdUser = iduser
-        const carrito = await Buy.create({idBuy,title,description,image,price,pro,pricePro,userInstrucotor,UserIdUser})
+        const carrito = await Buy.create({idCor,title,description,image,price,pro,pricePro,userInstrucotor,UserIdUser})
         // carrito.addUsers(iduser)
         return carrito;
     }else{
-        return "Ya se guardo en el carrito"
+        return "successfully added"
     }
 
 

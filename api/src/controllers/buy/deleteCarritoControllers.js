@@ -2,11 +2,11 @@ const {Buy} = require('../../database')
 const deleteCarritoControllers =(curso,user)=>{
     Buy.destroy({
         where:{
-            idBuy:curso,
+            idCor:curso,
             UserIdUser:user
         }
     })
-    return 'eliminado con excito'
+    return 'successfully removed'
 
 }
 module.exports=deleteCarritoControllers;

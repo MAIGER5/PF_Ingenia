@@ -10,19 +10,36 @@ export default function AvatarComponent( props ) {
             const lastname = useSelector(state => state.user.lastname)
 
         if (lastname == null) {
+
             return {
-                sx: { bgcolor: "#FF8906", height: `${userHeight}`, width: `${userWidth}`, fontSize: `${userFontSize}`, },
-                children: `${name.charAt(0)}`,
-                    };
+                sx: {
+                bgcolor: "#FF8906",
+                height: `${userHeight}`,
+                width: `${userWidth}`,
+                fontSize: `${userFontSize}`,
+                },
+                /* children: `${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`, */
+                children: `${name.charAt(0).toUpperCase()}`,
+            };
         } else {
             return {
-                sx: { bgcolor: "#FF8906", height: `${userHeight}`, width: `${userWidth}`, fontSize: `${userFontSize}`, },
-                children: `${name.charAt(0)}${lastname.charAt(0)}`,
-                    };}}
+            sx: {
+            bgcolor: "#FF8906",
+            height: `${userHeight}`,
+            width: `${userWidth}`,
+            fontSize: `${userFontSize}`,
+            },
+            /* children: `${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`, */
+            children: `${name.charAt(0).toUpperCase()}${lastname.charAt(0).toUpperCase()}`,
+        };
+        }
 
-    return (
-        <div>
-            <Avatar {...stringAvatar( height, width, fontSize)} />
-                </div>
-                    )
+    }
+
+  return (
+
+        <div>{/* <Avatar {...stringAvatar( name, height, width, fontSize)} /> */}
+        <Avatar {...stringAvatar( height, width, fontSize)} /></div>
+
+  )
 }

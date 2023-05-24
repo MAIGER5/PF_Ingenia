@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.subcontainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.subcontainerUser{
+    display: flex;
+}

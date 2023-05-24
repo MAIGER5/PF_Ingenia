@@ -23,6 +23,9 @@ import Purchaserejection from './Pages/purchaserejection/purchaserejection';
 import SerchCardResults from './Pages/serchCardResults/serchCardResults';
 import Purchaseconfirmation from './Pages/purchaseconfirmation/purchaseconfirmation';
 import Carrito from './Pages/Carrito/Carrito';
+import Article from './Pages/Article/Article';
+import Vendor from './Pages/Vendor/Vendor';
+import Pay from './Pages/pay/Pay';
 
 function App() {
 return (
@@ -50,6 +53,9 @@ return (
           <Route path="/SerchCardResults" element={<SerchCardResults/>}/> 
           <Route path="/Purchaseconfirmation" element={<Purchaseconfirmation/>}/> 
           <Route path="/Purchaserejection" element={<Purchaserejection/>}/> 
+          <Route path='/Article/:id' element={<Article/>}/> 
+          <Route path='/Vendor/:id' element={<Vendor/>}/> 
+          <Route path="/Pay" element={< Pay/>}/> 
           <Route path="*" element={<NotFound/>} />
         </Routes>
       <Footer/>
