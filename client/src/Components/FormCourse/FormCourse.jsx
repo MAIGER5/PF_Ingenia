@@ -13,7 +13,8 @@ import styles from "./FormCourse.module.css";
 
 export default function FormCourseCopy() {
 
-    const state = useSelector((state) => state);
+    const user = useSelector((state) => state.localStorageData);
+    const navigate = useNavigate(); 
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -29,12 +30,10 @@ export default function FormCourseCopy() {
     const [productImg, setProductImg] = useState("");
     const [category, setCategory] = useState("");
     const [previewSource, setPreviewSource] = useState("");
-    //TODO : agregar delivery Method
-    const [deliveryMethod, setDeliveryMethod] = useState("");
 
     const [isAlert, setIsAlert] = useState(false); 
-    const navigate = useNavigate(); 
-
+ 
+    console.log(user);
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -50,7 +49,8 @@ export default function FormCourseCopy() {
             dificulty,
             requirement,
             learnTo: learnTo,
-            studyMethod
+            studyMethod,
+            users: user.idUser,
           });
 
         if(!title || 
@@ -86,6 +86,7 @@ export default function FormCourseCopy() {
                 //learnTo: learnTo.split(','),
                 learnTo: [learnTo],
                 studyMethod,
+                users: user.idUser,
                 catego: category,
               }  
             ).then(async (response) => {
@@ -267,33 +268,6 @@ export default function FormCourseCopy() {
                         className={styles.textarea}
                     />
                 </div>
-                <div className={styles.inputContainer}>
-                    <HtmlTooltip
-                        title={
-                        <Fragment>
-                            <Typography color="inherit">Sólo lo verán quienes adquiran tu curso</Typography>
-                            {"Ingresa los pasos a seguir para las personas que compren tu curso"}
-                        </Fragment>
-                        }
-                    >
-                        <Typography color="secondary">
-                            <ErrorOutlineIcon 
-                                color="secondary" 
-                                sx={{
-                                    width: "20px",
-                                    marginRight: "5px",
-                                    marginBottom: "-7px"
-                                }}
-                            />
-                            Realización de entrega
-                        </Typography>
-                    </HtmlTooltip>
-                    <textarea  
-                        placeholder="Realización de entrega"
-                        onChange={(e) => setDeliveryMethod(e.target.value)}
-                        className={styles.textarea}
-                    />
-                </div> 
             </div>
             <div className={styles.subContainer}>  
                 <div className={styles.subContainerSelect}>
