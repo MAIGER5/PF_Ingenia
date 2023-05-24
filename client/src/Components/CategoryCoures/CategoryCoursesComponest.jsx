@@ -11,7 +11,7 @@ export default function CategoryCoursesComponest() {
 return (
   <Box sx={{marginTop:6}}>
      
-      <Typography variant="h5" color="initial" sx={{marginBottom:4 ,marginLeft:-170}}>{`${cursosInitiales.length} resultados para la categoria de ${cursosInitiales[0]?.Categories[0]?.name}`}</Typography>
+      <Typography variant="h5" color="initial" sx={{marginBottom:4 ,marginLeft:-150}}>{`${cursosInitiales.length} resultados para la categoria de ${cursosInitiales[0]?.Categories[0]?.name}`}</Typography>
       <Stack
         direction="row"
         spacing={15}

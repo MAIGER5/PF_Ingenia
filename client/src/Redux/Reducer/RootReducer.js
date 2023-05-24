@@ -24,7 +24,6 @@ const initialState = {
   allCourseCategory: [],
   allCarrito: [],
   localStorageData: {},
-  localStorageData:null,
   totalCarrito:0
 };
 const rootReducer = (state = initialState, action) => {
