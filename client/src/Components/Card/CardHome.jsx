@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -19,12 +18,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
 import { RemoveOneFromCarrito } from '../../Redux/Actions/actionsCarrito/RemoveOneFromCarrito';
 import { addToCarritoBd } from '../../Redux/Actions/addToCarritoBd';
+import { RemoveToByBD } from '../../Redux/Actions/RemoveToByBD';
 
 
 function CardHome({title, image, instructorName, instructorLastName, price, lenguage, ratings = 5, idCourse}) {
 
   const localStorageInfoUser = useSelector((state) => state.localStorageData);
-  const userId = localStorageInfoUser.idUser
+  const userId = localStorageInfoUser.idUser;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,6 +50,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
         setIsActive(true)
         setIsAlertAdd(true)
         dispatch(addToCarritoBd(idCourse, userId))
+        console.log(userId)
         dispatch(addToCarrito(idCourse))
       } else {
         navigate('/Login')
@@ -59,6 +60,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
       setIsActive(false)
       setIsAlertDelete(true)
       dispatch(RemoveOneFromCarrito(idCourse))
+      dispatch(RemoveToByBD(idCourse, userId))
     }
   }
 
