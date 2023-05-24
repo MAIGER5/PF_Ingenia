@@ -22,7 +22,7 @@ import { RemoveToByBD } from '../../Redux/Actions/RemoveToByBD';
 
 
 function CardHome({title, image, instructorName, instructorLastName, price, lenguage, ratings = 5, idCourse}) {
-
+  //prueba
   // const localStorageInfoUser = useSelector((state) => state.localStorageData);
   const userId = localStorage.getItem('idUser');
 
