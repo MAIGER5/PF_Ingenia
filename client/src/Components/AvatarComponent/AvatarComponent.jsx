@@ -6,9 +6,8 @@ export default function AvatarComponent( props ) {
     const { height, width, fontSize } = props;
 
     function stringAvatar(userHeight, userWidth, userFontSize) {
-        const name = useSelector(state => state.user.name)
-            const lastname = useSelector(state => state.user.lastname)
-
+        const name = localStorage.getItem('name');
+        const lastname = localStorage.getItem('lastname');
         if (lastname == null) {
 
             return {
