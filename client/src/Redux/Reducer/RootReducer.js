@@ -13,6 +13,7 @@ import { POST_LOCAL_STORAGE } from "../Actions/actionsCarrito/postLocalStorage";
 import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFromCarrito";
 import { GET_TO_CARRITO_BD } from "../Actions/getToCarritoBd";
 import { BUTTON_PAYPAL } from "../Actions/butonpaypal";
+import { TOTAL_CARRITO } from "../Actions/TotalCarrito";
 
 const initialState = {
   allCourse: [],
@@ -23,6 +24,7 @@ const initialState = {
   allCourseCategory: [],
   allCarrito: [],
   localStorageData: {},
+  totalCarrito:0
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -192,6 +194,13 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ButtonPaypal: action.payload,
+
+            };
+            case TOTAL_CARRITO:
+
+            return {
+                ...state,
+                totalCarrito: action.payload,
 
             };
 
