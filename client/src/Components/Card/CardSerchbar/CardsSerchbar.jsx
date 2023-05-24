@@ -13,8 +13,8 @@ export default function Cardsresulserchbar() {
   const itemsPerPage =3;
 
   useEffect(() => {
-    setCurrentPage(1); // Reinicia la página actual cuando cambie el estado de cursos
-  }, [cursos]);
+    setCurrentPage(1);
+  }, [cursosfiltrados]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
