@@ -6,11 +6,11 @@ const axios = require('axios');
 
 
 const PAYPAL_API = 'https://api-m.sandbox.paypal.com';
-const user = 0;
+//const user = 0;
 
 const buyHandlers = async (req,res)=>{
-    const {costo,idUser} = req.query  
-    user = idUser
+    const {costo,} = req.query  
+    //user = idUser
     const body = {
         "intent": "CAPTURE",
         "purchase_units": [{
@@ -49,7 +49,7 @@ const executePayment = async (req,res)=>{
         }}
         )
         const info = response.data
-        const factura = await facturacion(info,user);
+        const factura = await facturacion(info);
         res.redirect('http://localhost:5173/Purchaseconfirmation')
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -58,7 +58,7 @@ const executePayment = async (req,res)=>{
 
 const cancelPayment = (req,res) =>{
     try {
-        res.redirect('https://samuraielectric.online/')
+        res.redirect('http://localhost:5173/Purchaserejection')
     } catch (error) {
         
     }
