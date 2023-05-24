@@ -8,12 +8,18 @@ import HomeRebajas from '../Home Rebajas/HomeRebajas';
 import HomeMejorcalificados from '../HomeMejorcalificados/HomeMejorcalificados';
 import HomeCategorias from '../HomeCategorias/HomeCategorias';
 import { NavLink } from 'react-router-dom';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getToCarritoBd } from '../../../Redux/Actions/getToCarritoBd';
 
 export default function HomeComponent() {
 
+  const dispatch = useDispatch();
+  const user = useSelector((state)=> state.localStorageData)
+  const carrito = useSelector((state)=> state.allCarrito)
 
+  useEffect(()=>{
+    !carrito.length? dispatch(getToCarritoBd(user.idUser)): "nada"
+  }, []);
 
   return (
     <Box sx={{width:1600}}>
