@@ -44,18 +44,18 @@ export default function NavBar() {
       const cartCourses = cart.length
 
   // userType de localStorage que se dejó de usar:
-      //let loginUser = { type: 0 };
-      //let userType = 0;
+      let loginUser = { type: 0 };
+      let userType = 0;
 
       //prevengo un dato "loginUser.userType = null"
-      //if (localStorage.getItem("userType") == null) {
-      //  localStorage.setItem("userType", "0");
-      //}
+      if (localStorage.getItem("userType") == null) {
+       localStorage.setItem("userType", "0");
+      }
 
       // Consulto qué tipo de usuario está registrado
-      //if (localStorage.getItem("userType") != 0) {
-      //  userType = parseInt(localStorage.getItem("userType"), 10);
-      //} */
+      if (localStorage.getItem("userType") != 0) {
+       userType = parseInt(localStorage.getItem("userType"), 10);
+      }
 
   // Modo Dark/Ligth
       const theme = useTheme();
