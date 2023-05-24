@@ -58,7 +58,7 @@ export default function MenuAvatar({userType}) {
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="Cuenta de Usuario">
+        <Tooltip title="Cuenta de Usuario" placement="top">
           <IconButton
             onClick={handleClick}
             size="small"
