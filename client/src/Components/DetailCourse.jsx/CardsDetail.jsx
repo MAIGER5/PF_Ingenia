@@ -8,7 +8,7 @@ import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
 
 
@@ -69,12 +69,14 @@ export function CardsDetail({}) {
                     alignItems="flex-start">
                         
                     <Grid item xs={8}>
-                        <Typography variant="h6" color="text.Primary" sx={{
-                            textAlign: 'justify'
+                        <Link to={`/VendedorPublico/${id}`}>
+                            <Typography variant="h6" color="text.Primary" sx={{
+                                textAlign: 'justify'
 
-                        }}>
-                            Por: {curses.users?.name} {curses.users?.lastname}
-                        </Typography>
+                            }}>
+                                Por: {curses.users?.name} {curses.users?.lastname}
+                            </Typography>
+                        </Link>
 
                         <Typography gutterBottom variant="h8" component="div" sx={{
                         textAlign: 'justify'

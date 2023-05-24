@@ -13,13 +13,13 @@ import { getToCarritoBd } from '../../../Redux/Actions/getToCarritoBd';
 
 export default function HomeComponent() {
 
-  const dispatch = useDispatch();
-  const user = localStorage.getItem('idUser')
-  const carrito = useSelector((state)=> state.allCarrito)
+  // const dispatch = useDispatch();
+  // const user = localStorage.getItem('idUser')
+  // const carrito = useSelector((state)=> state.allCarrito)
 
-  useEffect(()=>{
-    !carrito.length? dispatch(getToCarritoBd(user)): "nada"
-  }, []);
+  // useEffect(()=>{
+  //   !carrito.length? dispatch(getToCarritoBd(user)): "nada"
+  // }, []);
 
   return (
     <Box sx={{width:1600}}>

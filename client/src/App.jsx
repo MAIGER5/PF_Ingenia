@@ -26,6 +26,7 @@ import Carrito from './Pages/Carrito/Carrito';
 import Article from './Pages/Article/Article';
 import Vendor from './Pages/Vendor/Vendor';
 import Pay from './Pages/pay/Pay';
+import { VendedorPublico } from './Pages/Vendor/VendedorPublico';
 
 function App() {
 return (
@@ -54,7 +55,7 @@ return (
           <Route path="/Purchaseconfirmation" element={<Purchaseconfirmation/>}/> 
           <Route path="/Purchaserejection" element={<Purchaserejection/>}/> 
           <Route path='/Article/:id' element={<Article/>}/> 
-          <Route path='/Vendor/:id' element={<Vendor/>}/> 
+          <Route path='/VendedorPublico/:id' element={<VendedorPublico/>}/> 
           <Route path="/Pay" element={< Pay/>}/> 
           <Route path="*" element={<NotFound/>} />
         </Routes>

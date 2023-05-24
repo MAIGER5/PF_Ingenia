@@ -25,18 +25,22 @@ import SingInButtons from "./SingInButtons";
 import { getCourses } from "../../Redux/Actions/getCourses";
 import { getCategories } from "../../Redux/Actions/getCategories";
 import { postLocalStorage } from "../../Redux/Actions/actionsCarrito/postLocalStorage";
+import { getToCarritoBd } from "../../Redux/Actions/getToCarritoBd";
 import setActiveTab from "../../Redux/Actions/setActiveTab";
 
 
 export default function NavBar() {
 
   // Suscribo al estado global:
-      const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const user = localStorage.getItem('idUser')
+  const carrito = useSelector((state)=> state.allCarrito)
 
   useEffect(()=> {
     dispatch(getCourses());
     dispatch(getCategories());
     dispatch(postLocalStorage())
+    !carrito.length? dispatch(getToCarritoBd(user)): "nada"
   }, [dispatch])
 
 
