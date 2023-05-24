@@ -29,9 +29,6 @@ export default function FormLogin({ userType }) {
               });
 
 
-
-
-
   // Submit
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -41,10 +38,10 @@ export default function FormLogin({ userType }) {
         console.log(devolution);
       
         // Reset de imputs
-        setUser({password: "", email: "",});
+          setUser({password: "", email: "",});
 
         // Voy al Home
-        navigate("/");
+          navigate("/");
 
       } catch (error) {
           // Imprimo en consola: 
@@ -63,11 +60,7 @@ export default function FormLogin({ userType }) {
       const { name, value } = event.target;
       console.log(event.target.value);
 
-      setUser({
-        ...user,
-        userType,
-        [name]: value,
-      });
+      setUser({...user, userType, [name]: value,});
 
       setErrors(
         validationSign({
@@ -152,7 +145,7 @@ export default function FormLogin({ userType }) {
         </form>
 
         {/* Ventana Modal */}
-        {openModal && <ModalWindow textModal={textModal} onClose={() => setOpenModal(false)}/>}
+          {openModal && <ModalWindow textModal={textModal} onClose={() => setOpenModal(false)}/>}
       </>
     );
 }

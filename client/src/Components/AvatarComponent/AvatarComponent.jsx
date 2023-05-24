@@ -3,21 +3,18 @@ import { useSelector } from 'react-redux';
 
 
 export default function AvatarComponent( props ) {
-    /* const { name, height, width, fontSize } = props */
     const { height, width, fontSize } = props;
 
-    /* function stringAvatar(userName, userHeight, userWidth, userFontSize) { */
     function stringAvatar(userHeight, userWidth, userFontSize) {
-        // Obtener los valores de 'name' y 'lastname' del localStorage
-        const name = localStorage.getItem('name');
-        const lastname = localStorage.getItem('lastname');
+        const name = useSelector(state => state.user.name)
+            const lastname = useSelector(state => state.user.lastname)
 
         if (lastname == null) {
 
-            return { 
+            return {
                 sx: {
                 bgcolor: "#FF8906",
-                height: `${userHeight}`, 
+                height: `${userHeight}`,
                 width: `${userWidth}`,
                 fontSize: `${userFontSize}`,
                 },
@@ -25,10 +22,10 @@ export default function AvatarComponent( props ) {
                 children: `${name.charAt(0).toUpperCase()}`,
             };
         } else {
-            return { 
+            return {
             sx: {
             bgcolor: "#FF8906",
-            height: `${userHeight}`, 
+            height: `${userHeight}`,
             width: `${userWidth}`,
             fontSize: `${userFontSize}`,
             },
@@ -36,13 +33,13 @@ export default function AvatarComponent( props ) {
             children: `${name.charAt(0).toUpperCase()}${lastname.charAt(0).toUpperCase()}`,
         };
         }
-        
+
     }
 
   return (
 
         <div>{/* <Avatar {...stringAvatar( name, height, width, fontSize)} /> */}
         <Avatar {...stringAvatar( height, width, fontSize)} /></div>
-    
+
   )
 }
