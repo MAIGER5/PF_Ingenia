@@ -17,12 +17,25 @@ export default function LoginToBackendGoogle(credentials, userType, dispatch) {
   // Solicitud al servidor:
   async function dataOwnAccessToBackent() {
     const response = await axios.post(`http://localhost:3001/user/login/google`, data)
-    //console.log(response);
+    console.log(response);
     let respBack = response.data.user;
 
     if (respBack.Is == "STUDENT") respBack.userType = 1;
     if (respBack.Is == "INSTRUCTOR") respBack.userType = 2;
     if (respBack.Is == "ADMIN") respBack.userType = 3;
+
+    console.log(response);
+    localStorage.setItem("Token", response.data.tokenSession);
+    localStorage.setItem("name", response.data.user.name);
+    localStorage.setItem("lastname", response.data.user.lastname);
+    localStorage.setItem("idUser", response.data.user.idUser);
+    console.log(response);
+    if (response.data.user.Is == "STUDENT")
+      localStorage.setItem("userType", "1");
+    if (response.data.user.Is == "INSTRUCTOR")
+      localStorage.setItem("userType", "2");
+    if (response.data.user.Is == "ADMIN")
+      localStorage.setItem("userType", "3");
 
     //console.log("Variable recibida del Back y adaptada, aun en el LoginToBackendOwnAccess:");
     //console.log(respBack);
