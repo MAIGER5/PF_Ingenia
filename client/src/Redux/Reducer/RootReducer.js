@@ -2,46 +2,40 @@ import { GET_COURSES } from "../Actions/getCourses";
 import { CLEAN_DETAIL } from "../Actions/cleanDetail";
 import { GET_DATAIL_COURSE } from "../Actions/getDetailCourse";
 import { GET_CATEGORIES } from "../Actions/getCategories";
-import { GET_COURSESCATEGORY } from "../Actions/getCoursescategory"
+import { GET_COURSESCATEGORY } from "../Actions/getCoursescategory";
 import { FILTER_BY_LANGUAGE } from "../Actions/filterporlenguaje";
 import { FILTER_BY_DIFFICULTY } from "../Actions/filterDificulti";
 import { ORDER_BY_DATE } from "../Actions/filterByDate";
 import { GET_COURSESEACH } from "../Actions/SerchcCourses";
 import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
 import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
-import { POST_LOCAL_STORAGE} from "../Actions/actionsCarrito/postLocalStorage";
+import { POST_LOCAL_STORAGE } from "../Actions/actionsCarrito/postLocalStorage";
 import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFromCarrito";
-import { GET_TO_CARRITO_BD } from "../Actions/getToCarritoBd";
 
 const initialState = {
-    allCourse: [],
-    allCourseCopy: [],
-    courseDetail: [],
-    categories:[], 
-    filtercourses:[],
-    allCourseCategory:[],
-    allCarrito:[],
-    localStorageData:{}
-
-
+  allCourse: [],
+  allCourseCopy: [],
+  courseDetail: [],
+  categories: [],
+  filtercourses: [],
+  allCourseCategory: [],
+  allCarrito: [],
+  localStorageData: {},
 };
 const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case GET_COURSES:
+      return {
+        ...state,
+        allCourse: action.payload,
+        allCourseCopy: action.payload,
+      };
 
-
-      case GET_COURSES:
-        return {
-            ...state,
-            allCourse: action.payload,
-            allCourseCopy: action.payload,
-        };
-
-
-        case GET_DATAIL_COURSE:
-            return {
-                ...state,
-                courseDetail: action.payload
-            };
+    case GET_DATAIL_COURSE:
+      return {
+        ...state,
+        courseDetail: action.payload,
+      };
 
         case CLEAN_DETAIL:
             return {
@@ -94,13 +88,13 @@ const rootReducer = (state = initialState, action) => {
                 allCarrito: [...state.allCarrito, action.payload],
 
             };
-        case GET_TO_CARRITO_BD :
+        // case GET_TO_CARRITO_BD :
 
-            return {
-                ...state,
-                allCarrito: [...state.allCarrito, action.payload],
+        //     return {
+        //         ...state,
+        //         allCarrito: [...state.allCarrito, action.payload],
 
-            };
+        //     };
         case REMOVE_ONE_FROM_CARRITO:
 
             return {
@@ -130,9 +124,9 @@ const rootReducer = (state = initialState, action) => {
 
             };
 
-        default:
-            return { ...state };
-    }
+    default:
+      return { ...state };
+  }
 };
 
 export default rootReducer;
