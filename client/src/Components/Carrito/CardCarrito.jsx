@@ -11,15 +11,18 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { RemoveOneFromCarrito } from '../../Redux/Actions/actionsCarrito/RemoveOneFromCarrito';
+import { RemoveToByBD } from '../../Redux/Actions/RemoveToByBD';
 
 
 
 export function CardCarrito({title, description, dificulty,  price, image, instructorName, lenguage, instructorLastName, categories, idCourse}) {
 
     const dispatch = useDispatch();
+    const userId = localStorage.getItem('idUser');
 
     function handClickDelete() {
         dispatch(RemoveOneFromCarrito(idCourse))
+        dispatch(RemoveToByBD(idCourse, userId))
     }
 
     return (
