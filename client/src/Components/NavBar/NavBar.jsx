@@ -40,9 +40,6 @@ export default function NavBar() {
   //Badge para el cart desde el navbar
   const cart = useSelector((state)=> state.allCarrito)
   const cartCourses = cart.length
-
-  const all = useSelector((state)=> state)
-  console.log(all);
   
   //let loginUser = { type: 0 };
   let userType = 0;
@@ -130,7 +127,7 @@ export default function NavBar() {
                     color: "#FF8906",
                     fontSize: "20px",      
                   }}
-                  to={"/Articles"}
+                  to={"/PostArticle"}
                   >
                   <p>Artículos</p>
                 </NavLink>

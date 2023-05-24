@@ -15,13 +15,14 @@ export default function Pay() {
       spacing={4}
       >
         <Box>
-         <Formulario/>
+        < Detallesdelpedido/>
         </Box>
         <Box >
           <Detallededompara/>
+          <Formulario/>
         </Box>
       </Stack>
-      < Detallesdelpedido/>
+      
     </Box>
   )
 }

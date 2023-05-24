@@ -10,9 +10,11 @@ export default function Detallesdelpedido() {
   justifyContent="center"
   alignItems="flex-start"
   spacing={4}
-  sx={{marginTop:4, width:200}}
+  
   >
+    <Typography variant="h2" color="primary">Pagar</Typography>
    <Typography variant="body1" color="primary">Detalles del pedido</Typography>
+   
    <CardsCarr/>
    </Stack>
    </>
