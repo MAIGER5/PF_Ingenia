@@ -11,7 +11,7 @@ import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
 import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
 import { POST_LOCAL_STORAGE} from "../Actions/actionsCarrito/postLocalStorage";
 import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFromCarrito";
-// import { GET_TO_CARRITO_BD } from "../Actions/getToCarritoBd";
+import { GET_TO_CARRITO_BD } from "../Actions/getToCarritoBd";
 
 const initialState = {
     allCourse: [],
