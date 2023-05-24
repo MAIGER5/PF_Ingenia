@@ -12,6 +12,7 @@ import { FILTER_BY_PRICE } from "../Actions/filterByPrice";
 import { ADD_TO_CARRITO } from "../Actions/actionsCarrito/addToCarrito";
 import { POST_LOCAL_STORAGE} from "../Actions/actionsCarrito/postLocalStorage";
 import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFromCarrito";
+import { GET_TO_CARRITO_BD } from "../Actions/getToCarritoBd";
 
 const initialState = {
     allCourse: [],
@@ -21,7 +22,7 @@ const initialState = {
     filtercourses:[],
     allCourseCategory:[],
     allCarrito:[],
-    localStorageData:null
+    localStorageData:{}
 
 
 };
@@ -88,6 +89,13 @@ const rootReducer = (state = initialState, action) => {
 
             };
         case ADD_TO_CARRITO:
+
+            return {
+                ...state,
+                allCarrito: [...state.allCarrito, action.payload],
+
+            };
+        case GET_TO_CARRITO_BD :
 
             return {
                 ...state,
