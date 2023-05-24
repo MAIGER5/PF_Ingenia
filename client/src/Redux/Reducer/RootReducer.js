@@ -14,6 +14,7 @@ import { REMOVE_ONE_FROM_CARRITO } from "../Actions/actionsCarrito/RemoveOneFrom
 import { GET_TO_CARRITO_BD } from "../Actions/getToCarritoBd";
 import { BUTTON_PAYPAL } from "../Actions/butonpaypal";
 import { TOTAL_CARRITO } from "../Actions/TotalCarrito";
+import { SET_ACTIVE_TAB } from "../Actions/setActiveTab";
 
 const initialState = {
   allCourse: [],
@@ -24,7 +25,8 @@ const initialState = {
   allCourseCategory: [],
   allCarrito: [],
   localStorageData: {},
-  totalCarrito:0
+  totalCarrito:0,
+  setActiveTab: 0
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -117,6 +119,12 @@ const rootReducer = (state = initialState, action) => {
         totalCarrito: action.payload,
 
     };
+
+    case SET_ACTIVE_TAB:
+      return  {
+        ...state,
+        setActiveTab: action.payload,
+      };
 
     default:
       return { ...state };
