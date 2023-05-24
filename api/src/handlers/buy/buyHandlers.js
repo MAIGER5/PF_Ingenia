@@ -6,11 +6,9 @@ const axios = require('axios');
 
 
 const PAYPAL_API = 'https://api-m.sandbox.paypal.com';
-//const user = 0;
 
 const buyHandlers = async (req,res)=>{
-    const {costo,} = req.query  
-    //user = idUser
+    const {costo,idUser} = req.query  
     const body = {
         "intent": "CAPTURE",
         "purchase_units": [{
@@ -23,7 +21,7 @@ const buyHandlers = async (req,res)=>{
         "brand_name": "Ingenia",
         "landing_page":"NO_PREFERENCE", 
         "user_action":"PAY_NOW",
-        "return_url": `http://localhost:3001/buy/execute-payment`, 
+        "return_url": `http://localhost:3001/buy/execute-payment?idUser=${idUser}`, 
         "cancel_url": "http://localhost:3001/buy/cancel-payment"
         }
       }
@@ -40,7 +38,7 @@ const buyHandlers = async (req,res)=>{
     }
 }
 const executePayment = async (req,res)=>{
-    const {token} = req.query;
+    const {idUser,token} = req.query;
     try {
         const response = await axios.post(`${PAYPAL_API}/v2/checkout/orders/${token}/capture`,{},{
         auth :{
@@ -49,7 +47,8 @@ const executePayment = async (req,res)=>{
         }}
         )
         const info = response.data
-        const factura = await facturacion(info);
+        const factura = await facturacion(info,idUser);
+
         res.redirect('http://localhost:5173/Purchaseconfirmation')
     } catch (error) {
         res.status(500).json({ error: error.message });

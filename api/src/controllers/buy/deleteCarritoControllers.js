@@ -6,7 +6,7 @@ const deleteCarritoControllers =(curso,user)=>{
             UserIdUser:user
         }
     })
-    return 'eliminado con excito'
+    return 'successfully removed'
 
 }
 module.exports=deleteCarritoControllers;
