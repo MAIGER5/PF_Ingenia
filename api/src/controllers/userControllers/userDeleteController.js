@@ -1,5 +1,4 @@
 const { User } = require("../../database");
-const userDataForm = require("../../helper/userDataForm");
 
 const userDeleteController = async (email, userType) => {
   const deleteUser = await User.update(
@@ -11,7 +10,7 @@ const userDeleteController = async (email, userType) => {
       },
     }
   );
-  return { user: userDataForm(deleteUser) };
+  return { user: deleteUser };
 };
 
 module.exports = userDeleteController;
