@@ -433,7 +433,7 @@ export default function FormCourseCopy() {
                         </button>
                     </div>
                    
-                    <div>
+                    <div className={styles.listContainer}>
                         <ul className={styles.listLearn}>
                             {elementos.map((elemento, index) => (
                             
@@ -457,11 +457,12 @@ export default function FormCourseCopy() {
                                     onClick={() => handleDelete(index)}
                                     className={styles.buttonOptions}
                                 >
-                                    <RemoveCircleOutlineIcon    
+                                      <RemoveCircleOutlineIcon    
                                         color="secondary"
                                         sx={{
                                             marginBottom: "-5px",
-                                            marginLeft: "5px"
+                                            marginLeft: "5px",
+                                            width: "18px"
                                         }}
                                     />
                                 </button>

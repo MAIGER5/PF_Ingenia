@@ -13,7 +13,7 @@ const publicationControllers = async (idUser,title,subtitle,text,img,subtitleTwo
         asset:true,
         UserIdUser:idUser
     })
-    return "Se agrego con excito"
+    return "Se agrego con exito"
 }
 
 const publisById = async (id)=>{
