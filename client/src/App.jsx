@@ -27,6 +27,7 @@ import Article from './Pages/Article/Article';
 import Vendor from './Pages/Vendor/Vendor';
 import Pay from './Pages/pay/Pay';
 import { VendedorPublico } from './Pages/Vendor/VendedorPublico';
+import ProfileVendedor from './Pages/ProfileVendedor/ProfilevendedorVendedor';
 
 function App() {
 return (
@@ -57,7 +58,8 @@ return (
           <Route path='/Article/:id' element={<Article/>}/> 
           <Route path='/VendedorPublico/:id' element={<VendedorPublico/>}/> 
           <Route path="/Pay" element={< Pay/>}/> 
-          <Route path="*" element={<NotFound/>} />
+          <Route path="/ProfileVendedor" element={< ProfileVendedor/>}/> 
+         <Route path="*" element={<NotFound/>} />
         </Routes>
       <Footer/>
     </BrowserRouter>

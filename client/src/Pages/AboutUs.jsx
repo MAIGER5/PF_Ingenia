@@ -1,23 +1,20 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
 import { Box, Stack } from '@mui/material'
+import Manitos from '../assets/manitosabaut'
 
 
 
 export default function AboutUs() {
   return (
-    <Box sx={{marginTop:10 ,marginBottom:16}}>
+    <Box sx={{marginTop:10 ,marginBottom:40}}>
       <Stack
      direction="row"
      justifyContent="center"
-    
+     
      spacing={14}
       >
-      <img  
-        src='https://res.cloudinary.com/dvvqbwhcc/image/upload/v1684286572/ingeniaAssets/banner-vendedor_p1ztmc.png' 
-        alt='banner_ingenia' 
-        width="800" 
-      />
+     <Manitos/>
      <Stack  spacing={4}>
       <Typography variant="h2" color="primary"> Somos Ingenia</Typography>
       <Typography variant="body1" color="initial" sx={{width: 536,height: 150}} >
