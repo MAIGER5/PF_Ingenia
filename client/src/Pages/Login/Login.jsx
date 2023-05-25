@@ -33,15 +33,16 @@ export default function Login() {
       //se envían datos para validación por servidor
       LoginToBackendGoogle(result, type, dispatch)
 
-      navigate("/");
-      
+      //navigate("/");
+      window.location.href = "/";
+
     }).catch((error) => {
       console.log(error.message)
     });
   }
 
   const loginBottom = (type) => {
-    return ( 
+    return (
       <div className={styles.containerBottom}>
         <div className={styles.decoContainer}>
           <hr className={styles.line}/>
@@ -59,7 +60,7 @@ export default function Login() {
         </Button>
         <p className={styles.textBottom}>
           ¿Aún no tienes una cuenta?
-          <NavLink 
+          <NavLink
             style={{ textDecoration: 'none'}}
             to={`/${type}`}
           >
@@ -77,18 +78,18 @@ export default function Login() {
         Inicia sesión en tu cuenta Ingenia
       </p>
       <Box>
-        <Tabs 
-          value={tabIndex} 
+        <Tabs
+          value={tabIndex}
           onChange={handleTabChange}
           centered
         >
-          <Tab 
-            label="Usuario" 
+          <Tab
+            label="Usuario"
             sx={{ fontSize: "16px" }}
           />
-          <Tab 
-            label="Vendedor" 
-            sx={{ fontSize: "16px" }}  
+          <Tab
+            label="Vendedor"
+            sx={{ fontSize: "16px" }}
           />
         </Tabs>
         <Box sx={{ padding: 2 }}>
