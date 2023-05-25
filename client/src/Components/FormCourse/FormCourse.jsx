@@ -2,7 +2,7 @@ import { useState, Fragment } from "react";
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { categoryOptions } from "./validations";
+import { categoryOptions, validationCourse } from "./validations";
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
@@ -18,107 +18,79 @@ export default function FormCourseCopy() {
 
     const user = useSelector((state) => state.localStorageData);
     const navigate = useNavigate(); 
-
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-    const [lenguage, setLenguage] = useState("")
-    const [price, setPrice] = useState("")
     const [pro, setPro] = useState(false)
-    const [duration, setDuration] = useState("")
-    const [content, setContent] = useState("")
-    const [dificulty, setDificulty] = useState("")
-    const [requirement, setRequirement] = useState("")
-    const [studyMethod, setStudyMethod] = useState("")
-    const [productImg, setProductImg] = useState("");
-    const [category, setCategory] = useState("");
-    const [previewSource, setPreviewSource] = useState("");
     const [isAlert, setIsAlert] = useState(false); 
- 
+    
+    const [previewSource, setPreviewSource] = useState("");
+    const [productImg, setProductImg] = useState("");
     const [inputText, setInputText] = useState("");
     const [elementos, setElementos] = useState([]);
-
-    console.log(user);
+    const [course, setCourse] = useState({
+        title: "",
+        description: "",
+        image: "",
+        lenguage: "",
+        price: "",
+        pro: "",
+        duration: "", 
+        content: "",
+        dificulty: "",
+        requirement: "",
+        learnTo: [],
+        studyMethod: "",
+        users: "",
+        catego: "",
+    })
+    const [errors, setErrors] = useState({
+        title: "",
+        description: "",
+        image: "",
+        lenguage: "",
+        price: "",
+        pro: "",
+        duration: "", 
+        content: "",
+        dificulty: "",
+        requirement: "",
+        learnTo: "",
+        studyMethod: "",
+        users: "",
+        catego: "",
+    });
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-        console.log({
-            title,
-            description,
-            image: productImg,
-            lenguage,
-            price,
-            pro,
-            duration, 
-            content,
-            dificulty,
-            requirement,
-            learnTo: elementos,
-            studyMethod,
-            users: user.idUser,
-          });
+        console.log(course);
 
-        if(!title || 
-            !description || 
-            !lenguage || 
-            !price || 
-            !duration ||
-            !content ||
-            !dificulty ||
-            !requirement ||
-            !elementos ||
-            !studyMethod ||
-            !productImg ||
-            !category ||
-            !previewSource ) {
-            setIsAlert(true)
-            return
-        }
-           
-            await axios.post(
-              `http://localhost:3001/courses/`,
-              {
-                title,
-                description,
-                image: productImg,
-                lenguage,
-                price,
-                pro,
-                duration, 
-                content,
-                dificulty,
-                requirement,
-                learnTo: elementos,
-                studyMethod,
-                users: user.idUser,
-                catego: category,
-              }  
-            ).then(async (response) => {
+        course.users = user.idUser
+        course.image = productImg
+        course.pro = pro
+        course.learnTo = elementos 
+        await axios.post(`http://localhost:3001/courses/`,course)
+            .then(async (response) => {
                 console.log(response);
                 let id = response.data?.idCourse
                 navigate(`/DetailCourse/${id}`)
-                // setPreviewSource('')
-                // setProductImg('');
-                // setTitle('')
-                // setDescription('')
-                // setLenguage('')
-                // setPrice('')
-                // setPro('')
-                // setDuration('')
-                // setContent('')
-                // setDificulty('')
-                // setRequirement('')
-                // setCategory('')
-                // setLearnTo('')
-                // setDeliveryMethod('')
-                //window.location.reload()
-            })
+            }).catch((error) => {
+                // const objetojson = error.request.response;
+                // const objeto = JSON.parse(objetojson);
+            });
     }
 
-    const handleProductImageUpload = (e) => {
-        const file = e.target.files[0];
-        TransformFileData(file);
-        previewFile(file)   
-    };
+    const handleInput = (event) => {
+        const { name, value } = event.target;
+
+        setCourse({
+        ...course,
+        [name]: value,
+        });
+        setErrors(
+        validationCourse({
+            ...course,
+            [name]: value,
+        })
+        )
+    }
 
     const handleChangeToLearn = event => {
         setInputText(event.target.value);
@@ -137,13 +109,16 @@ export default function FormCourseCopy() {
         setElementos(newElementos);
     };
 
-    console.log(inputText);
-    console.log("elementos", elementos);
-
     const handlePromo = () => {
         if(pro === true) setPro(false);
         if(pro === false) setPro(true);
     }
+
+    const handleProductImageUpload = (e) => {
+        const file = e.target.files[0];
+        TransformFileData(file);
+        previewFile(file)   
+    };
 
     const previewFile = (file) => {
         const reader = new FileReader();
@@ -210,7 +185,21 @@ export default function FormCourseCopy() {
                     />
                 </label>
                 </div>
-            
+                {!productImg && 
+                    <div>
+                        <ErrorOutlineIcon
+                            color="secondary"
+                            sx={{ 
+                                width: "15px",
+                                marginRight: "5px",
+                                marginBottom: "-7px" 
+                            }}
+                        />
+                        <p className={styles.errorImage}>
+                            Agrega una imagen para tu publicación 
+                        </p>
+                    </div>
+                }
                 {previewSource && (
                     <img
                         src={previewSource}
@@ -233,9 +222,23 @@ export default function FormCourseCopy() {
                     <input 
                         type="text" 
                         placeholder="Título tu publicación"
-                        onChange={(e) => setTitle(e.target.value)}
+                        name="title"
+                        value={course.title}
+                        onChange={handleInput}
                         className={styles.input}
                     />
+                    {errors.title && 
+                        <p className={styles.error}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            {errors.title}
+                        </p>
+                    }
                 </div> 
                 <div className={styles.inputContainer}>
                     <HtmlTooltip
@@ -252,9 +255,23 @@ export default function FormCourseCopy() {
                     <textarea
                         type="text" 
                         placeholder="Describe tu publicación"
-                        onChange={(e) => setDescription(e.target.value)}
+                        name="description"
+                        value={course.description}
+                        onChange={handleInput}
                         className={styles.textareaMedium}
                     />
+                    {errors.description && 
+                        <p className={styles.error}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            {errors.description}
+                        </p>
+                    }
                 </div>       
                 <div className={styles.inputContainer}>
                     <HtmlTooltip
@@ -270,9 +287,23 @@ export default function FormCourseCopy() {
                     </HtmlTooltip>
                     <textarea
                     placeholder="Contenido de tu publicación"
-                    onChange={(e) => setContent(e.target.value)}
+                    name="content"
+                    value={course.content}
+                    onChange={handleInput}
                     className={styles.textarea}
                     />
+                    {errors.content && 
+                        <p className={styles.error}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            {errors.content}
+                        </p>
+                    }
                 </div>
                 <div className={styles.inputContainer}>
                     <HtmlTooltip
@@ -288,16 +319,32 @@ export default function FormCourseCopy() {
                     </HtmlTooltip>
                     <textarea  
                         placeholder="Método de Entrega"
-                        onChange={(e) => setStudyMethod(e.target.value)}
+                        name="studyMethod"
+                        value={course.studyMethod}
+                        onChange={handleInput}
                         className={styles.textarea}
                     />
+                    {errors.studyMethod && 
+                        <p className={styles.error}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            {errors.content}
+                        </p>
+                    }
                 </div>
             </div>
             <div className={styles.subContainer}>  
                 <div className={styles.subContainerSelect}>
                     <div className={styles.subContainerDivision}>
                         <select
-                            onChange={(e) => setDificulty(e.target.value)}
+                            name="dificulty"
+                            value={course.dificulty}
+                            onChange={handleInput}
                             className={styles.inputSelect}
                         >
                             <option disabled="" value="">
@@ -307,8 +354,22 @@ export default function FormCourseCopy() {
                             <option value="MEDIUM">Intermedio</option>
                             <option value="ADVANCED">Avanzado</option>
                         </select>
+                        {errors.dificulty && 
+                        <p className={styles.error}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            {errors.dificulty}
+                        </p>
+                        }
                         <select
-                            onChange={(e) => setCategory(e.target.value)}
+                            name="catego"
+                            value={course.catego}
+                            onChange={handleInput}
                             className={styles.inputSelect}
                         >
                             <option disabled="" value="">
@@ -320,21 +381,49 @@ export default function FormCourseCopy() {
                                 </option>
                             ))}
                         </select>
+                        {errors.catego && 
+                            <p className={styles.error}>
+                                <ErrorOutlineIcon
+                                    sx={{ 
+                                        width: "15px",
+                                        marginRight: "5px",
+                                        marginBottom: "-7px" 
+                                    }}
+                                />
+                                {errors.catego}
+                            </p>
+                        }
                     </div>
                     <div className={styles.subContainerDivision}>
                         <div className={styles.priceContainer}>
                             <input 
                                 type="number" 
                                 placeholder="Price"
-                                onChange={(e) => setPrice(e.target.value)}
+                                name="price"
+                                value={course.price}
+                                onChange={handleInput}
                                 className={styles.inputPrice}
                             /> 
                             <p className={styles.labelPrice} >
                                 $USD
                             </p>
+                            {errors.labelPrice && 
+                                <p className={styles.error}>
+                                    <ErrorOutlineIcon
+                                        sx={{ 
+                                            width: "15px",
+                                            marginRight: "5px",
+                                            marginBottom: "-7px" 
+                                        }}
+                                    />
+                                    {errors.labelPrice}
+                                </p>
+                            }
                         </div>
                         <select
-                            onChange={(e) => setLenguage(e.target.value)}
+                            name="lenguage"
+                            value={course.lenguage}
+                            onChange={handleInput}
                             className={styles.inputSelect}
                         >
                             <option disabled="" value="">
@@ -342,7 +431,19 @@ export default function FormCourseCopy() {
                             </option>
                             <option value="ESPAÑOL">Español</option>
                             <option value="ENGLISH">Inglés</option>
-                        </select>  
+                        </select> 
+                        {errors.lenguage && 
+                            <p className={styles.error}>
+                                <ErrorOutlineIcon
+                                    sx={{ 
+                                        width: "15px",
+                                        marginRight: "5px",
+                                        marginBottom: "-7px" 
+                                    }}
+                                />
+                                {errors.lenguage}
+                            </p>
+                        }
                     </div>              
                 </div>
                  
@@ -376,9 +477,23 @@ export default function FormCourseCopy() {
                     <input 
                     type="text" 
                     placeholder="Duración estimada"
-                    onChange={(e) => setDuration(e.target.value)}
+                    name="duration"
+                    value={course.duration}
+                    onChange={handleInput}
                     className={styles.input}
                     /> 
+                    {errors.duration && 
+                        <p className={styles.error}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            {errors.duration}
+                        </p>
+                    }
                 </div>
                 
                 <div className={styles.inputContainer}>
@@ -395,15 +510,29 @@ export default function FormCourseCopy() {
                     </HtmlTooltip>
                     <textarea 
                     placeholder="Escribe aquí los requerimientos"
-                    onChange={(e) => setRequirement(e.target.value)}
+                    name="requirement"
+                    value={course.requirement}
+                    onChange={handleInput}
                     className={styles.textarea}
                     />
+                    {errors.requirement && 
+                        <p className={styles.error}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            {errors.requirement}
+                        </p>
+                    }
                 </div>
                 <div className={styles.inputContainerOptions}>
                     <HtmlTooltip
                         title={
                         <Fragment>
-                            {"Ingresa por favor los puntos resumidos de lo que aprenderás en este curso"}
+                            {"Ingresa por favor los puntos resumidos de lo que aprenderán en este curso"}
                         </Fragment>
                         }
                     >
