@@ -1,13 +1,14 @@
 import AvatarComponent from '../../Components/AvatarComponent/AvatarComponent';
 import { ListItemButton, ListItemText, Divider } from '@mui/material';
-import styles from "./Profile.module.css";
-import Datos from './Datos';
-import ImagenDePerfil from './ImagenDePerfil';
-import MisCompras from './MisCompras';
-import MetodoDePago from './MetodoDePago';
+import styles from "./ProfileVendedor.module.css";
 import { useState } from 'react';
+import DatosVendedor from './DatosVendedor';
+import ImagenDePerfilVendedor from './ImagenDePerfilVendedor';
+import MiPerfil from './MiPerfil';
+import MisCUrsos from './MisCUrsos';
+import MisArticulos from './MisArticulos';
 
-export default function Profile() {
+export default function ProfileVendedor() {
     const [selectedComponent, setSelectedComponent] = useState("datos");
 
     const handleClick = (component) => {
@@ -26,7 +27,7 @@ export default function Profile() {
                         fontSize={"45px"}
                     />
                     <h3 className={styles.userText}>
-                        Felipe Garcia
+                        Gisell vanegas
                     </h3>
                 </div>
                 <div className={styles.optionsContainer}>
@@ -39,24 +40,25 @@ export default function Profile() {
                         <ListItemText primary="Imagen de Perfil" />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton onClick={() => handleClick('compras')}>
-                        <ListItemText primary="Mis compras" />
+                    <ListItemButton onClick={() => handleClick('cursos')}>
+                        <ListItemText primary="Mis cursos" />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton onClick={() => handleClick('metodoPago')}>
-                        <ListItemText primary="Métodos de pago" />
+                    <ListItemButton onClick={() => handleClick('miperfil')}>
+                        <ListItemText primary="Mi perfil" />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton onClick={() => handleClick('cerrarSesion')}>
-                        <ListItemText primary="Cerrar Sesión" />
+                    <ListItemButton onClick={() => handleClick('misarticulos')}>
+                        <ListItemText primary="Mis articulos" />
                     </ListItemButton>
                     <Divider />
                 </div>
             </div>
-            {selectedComponent === 'datos' && <Datos />}
-            {selectedComponent === 'imagen' && <ImagenDePerfil />}
-            {selectedComponent === 'compras' && <MisCompras />}
-            {selectedComponent === 'metodoPago' && <MetodoDePago />}
+            {selectedComponent === 'datos' && < DatosVendedor/>}
+            {selectedComponent === 'imagen' && <ImagenDePerfilVendedor/>}
+            {selectedComponent === 'miperfil' && <MiPerfil/>}
+            {selectedComponent === 'cursos' && <MisCUrsos />}
+            {selectedComponent === 'misarticulos' && <MisArticulos/>}
 
         </div>
     )

@@ -3,8 +3,8 @@ import { Avatar, Grid, Rating, Typography } from "@mui/material"
 
 export const CardVendedor = () => {
   return (
-    <Grid marginX={15} border={2}>
-        <Typography variant="h2" align="left" marginLeft={22}> Daniel Díaz</Typography>
+    <Grid border={0} marginRight={15}>
+        <Typography variant="h2" align="left" marginLeft={20}> Daniel Díaz</Typography>
 
         <Grid container
                 direction="row"
@@ -13,17 +13,19 @@ export const CardVendedor = () => {
                 className='interno dos'
                 marginTop={5}
                 maxHeight={300}
-                border={1}>
+                border={0}>
             <Grid item xs={0}
-                border={1}
-                marginLeft={20}
+                border={0}
+                marginLeft={15}
             >
                 <Grid marginBottom={2}>
                     <Avatar 
                         sx={{ bgcolor: '#E53170',
                         width: 120, 
                         height: 120}}
-                    >M</Avatar>
+                    >
+                        <Typography variant="h3">D</Typography>
+                    </Avatar>
                 </Grid>
                 <Rating 
                     name="half-rating" 
@@ -31,7 +33,7 @@ export const CardVendedor = () => {
                     defaultValue={2.5} 
                     precision={0.5} />
             </Grid>
-            <Grid item xs={9} border={1}>
+            <Grid item xs={9} border={0}>
                 <Typography variant="h5" align="left">
                     Aqui va la descripcion del profesor, todas sus habiliddes , destrezas, cursos, profesiones, experincias, proyectros y demas informacion relevante para describir al instructor de una menra clara para dar la mejor experiencia de usuario 
                 </Typography>
