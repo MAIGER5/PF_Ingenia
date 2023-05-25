@@ -8,6 +8,9 @@ import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { Typography, Alert, Snackbar  } from "@mui/material";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import CircleIcon from '@mui/icons-material/Circle';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 import styles from "./FormCourse.module.css";
 
@@ -25,14 +28,15 @@ export default function FormCourseCopy() {
     const [content, setContent] = useState("")
     const [dificulty, setDificulty] = useState("")
     const [requirement, setRequirement] = useState("")
-    const [learnTo, setLearnTo] = useState([])
     const [studyMethod, setStudyMethod] = useState("")
     const [productImg, setProductImg] = useState("");
     const [category, setCategory] = useState("");
     const [previewSource, setPreviewSource] = useState("");
-
     const [isAlert, setIsAlert] = useState(false); 
  
+    const [inputText, setInputText] = useState("");
+    const [elementos, setElementos] = useState([]);
+
     console.log(user);
 
     const handleSubmit = async(event) => {
@@ -48,7 +52,7 @@ export default function FormCourseCopy() {
             content,
             dificulty,
             requirement,
-            learnTo: learnTo,
+            learnTo: elementos,
             studyMethod,
             users: user.idUser,
           });
@@ -61,7 +65,7 @@ export default function FormCourseCopy() {
             !content ||
             !dificulty ||
             !requirement ||
-            !learnTo ||
+            !elementos ||
             !studyMethod ||
             !productImg ||
             !category ||
@@ -83,8 +87,7 @@ export default function FormCourseCopy() {
                 content,
                 dificulty,
                 requirement,
-                //learnTo: learnTo.split(','),
-                learnTo: [learnTo],
+                learnTo: elementos,
                 studyMethod,
                 users: user.idUser,
                 catego: category,
@@ -117,6 +120,26 @@ export default function FormCourseCopy() {
         previewFile(file)   
     };
 
+    const handleChangeToLearn = event => {
+        setInputText(event.target.value);
+    };
+
+    const handleAdd = () => {
+        if (inputText.trim() !== '') {
+        setElementos([...elementos, inputText]);
+        setInputText('');
+        }
+    };
+
+    const handleDelete = index => {
+        const newElementos = [...elementos];
+        newElementos.splice(index, 1);
+        setElementos(newElementos);
+    };
+
+    console.log(inputText);
+    console.log("elementos", elementos);
+
     const handlePromo = () => {
         if(pro === true) setPro(false);
         if(pro === false) setPro(true);
@@ -143,6 +166,7 @@ export default function FormCourseCopy() {
         }
     };
 
+
     //Tooltip para el usuario
     const HtmlTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
@@ -154,8 +178,8 @@ export default function FormCourseCopy() {
           fontSize: theme.typography.pxToRem(12),
           border: '1px solid #dadde9',
         },
-      }));
-    
+    }));
+
 
   return (
     <form 
@@ -375,11 +399,11 @@ export default function FormCourseCopy() {
                     className={styles.textarea}
                     />
                 </div>
-                <div className={styles.inputContainer}>
+                <div className={styles.inputContainerOptions}>
                     <HtmlTooltip
                         title={
                         <Fragment>
-                            {"Ingresa los puntos resumidos de lo que aprenderás en este curso"}
+                            {"Ingresa por favor los puntos resumidos de lo que aprenderás en este curso"}
                         </Fragment>
                         }
                     >
@@ -387,14 +411,68 @@ export default function FormCourseCopy() {
                         Lo que aprenderán en el curso
                         </Typography>
                     </HtmlTooltip>
-                    <textarea
-                    placeholder="Escribe lo que aprenderán las personas"
-                    onChange={(e) => setLearnTo(e.target.value)}
-                    className={styles.textareaMedium}
-                    />
+                    <div>
+                        <input
+                            type="text"
+                            value={inputText}
+                            onChange={handleChangeToLearn}
+                            className={styles.inputOptions}
+                        />
+                        <button 
+                            type="button" 
+                            onClick={handleAdd}
+                            className={styles.buttonOptions}
+                        >
+                            <AddCircleOutlineIcon 
+                                color="secondary" 
+                                sx={{
+                                    marginBottom: "-6px",
+                                    marginLeft: "10px"
+                                }}
+                            />
+                        </button>
+                    </div>
+                   
+                    <div>
+                        <ul className={styles.listLearn}>
+                            {elementos.map((elemento, index) => (
+                            
+                            <li
+                                key={index}
+                                className={styles.listBullet}
+                            >
+                                <CircleIcon
+                                    color="secondary"
+                                    sx={{
+                                        marginBottom: "-7px",
+                                        marginRight: "10px",
+                                        width: "10px"
+                                    }}
+                                />
+                              
+                                {elemento}
+                          
+                                <button 
+                                    type="button" 
+                                    onClick={() => handleDelete(index)}
+                                    className={styles.buttonOptions}
+                                >
+                                    <RemoveCircleOutlineIcon    
+                                        color="secondary"
+                                        sx={{
+                                            marginBottom: "-5px",
+                                            marginLeft: "5px"
+                                        }}
+                                    />
+                                </button>
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                   
+                    </div>
                 </div>
-            </div>     
-        </div>
+            </div>   
 
         <button className={styles.button} type="submit">
             <span className={styles.button_text}>Crea tu publicación</span>

@@ -1,7 +1,7 @@
-const createTrans = require("./transporter");
-const emailMessage = require("./emailPasswordGoogle");
+const createTrans = require("../transporter");
+const emailMessage = require("../htmlMail/emailPasswordGoogle");
 
-const sendMail = async (email, displayName, password) => {
+const BienvenidaGoogle = async (email, displayName, password) => {
   const transporter = createTrans();
   const mailOptions = {
     from: '"Ingenia" <ingenia.info2023@gmail.com>',
@@ -15,4 +15,4 @@ const sendMail = async (email, displayName, password) => {
   return;
 };
 
-module.exports = { sendMail };
+module.exports = BienvenidaGoogle;

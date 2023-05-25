@@ -49,6 +49,14 @@
     align-items: flex-start;
 }
 
+.inputContainerOptions{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: flex-start;
+    width: 250px;
+}
+
 .input{
     padding-left: 10px;
     border-color: black;
@@ -63,6 +71,15 @@
     border-color: black;
     border-width: 1px;
     width: 200px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.inputOptions{
+    padding-left: 10px;
+    border-color: black;
+    border-width: 1px;
+    width: 350px;
     height: 40px;
     border-radius: 5px;
 }
@@ -85,6 +102,10 @@
     width: 250px;
     height: 40px;
     color: #FFFFFE;
+}
+
+.listLearn{
+    list-style-type: none;
 }
 
 .inputSelect{
@@ -127,6 +148,11 @@
     width: 250px;
 }
 
+.textOptions{
+    width: 200px;
+    margin: 0;
+}
+
 .button{
     background: #FF8906;
     border-radius: 5px;
@@ -149,6 +175,13 @@
     font-family: 'Figtree', sans-serif;
 }
 
+.buttonOptions{
+    background: none;
+    cursor: pointer;
+    border-radius: 25px;
+    border-style: none;
+}
+
 @media only screen and (min-width: 600px) {
 
     .subContainer{
@@ -167,6 +200,10 @@
     }
   
     .input{
+        width: 400px;
+    }
+
+    .inputContainerOptions{
         width: 400px;
     }
 

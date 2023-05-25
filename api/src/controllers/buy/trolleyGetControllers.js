@@ -28,7 +28,14 @@ const trolleyGetControllers = async (iduser) =>{
             }
           ],
         })
-        cars.push(response)
+        const {idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,
+            dificulty,requirement,learnTo,studyMethod,asset,createdAt,updatedAt,Users,Categories} = response;
+        
+            const users = Users[0]
+            const categories = Categories[0].name
+        
+            cars.push({idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,
+            dificulty,requirement,learnTo,studyMethod,asset,createdAt,updatedAt,users,categories})
     }
     
     
