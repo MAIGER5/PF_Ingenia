@@ -12,6 +12,7 @@ import styles from "./FormArticle.module.css";
 export default function FormArticle() {
 
     const user = useSelector((state) => state.localStorageData);
+    //const navigate = useNavigate(); 
 
     const [productImg, setProductImg] = useState("");
     const [previewSource, setPreviewSource] = useState();
@@ -42,17 +43,26 @@ export default function FormArticle() {
     
         article.idUSer = user.idUser
         article.img = productImg
-        console.log(article);
         await axios.post(
             `http://localhost:3001/instructor/publication`,
             article
         ).then(async (response) => {
             console.log(response);
-            //let id = response.data?.idCourse
-            //navigate(`/DetailCourse/${id}`)
-            //let id = response.data?.idCourse
-            //navigate(`/DetailCourse/${id}`)
         })
+        setIsAlert(true)
+        setArticle({
+            title: "",
+            subtitle: "",
+            text: "",
+            img:"",
+            subtitleTwo:"",
+            textTwo: "",
+            subtitleThree: "",
+            textThree: "",
+        })
+        setProductImg("")
+        //let id = response.data?.idCourse
+        //navigate(`/DetailCourse/${id}`)
     }
 
     const handleInput = (event) => {
@@ -117,9 +127,9 @@ export default function FormArticle() {
     >
         {isAlert && (<Snackbar open={isAlert} autoHideDuration={2000} onClose={()=>setIsAlert(false)}>
             <Alert 
-                variant="filled" severity="error"
+                variant="filled" severity="success"
             >
-                Debes de llenar todos lo campos
+                Tu artículo se ha creado con éxito
             </Alert>
         </Snackbar>)}
         <div className={styles.container}>
