@@ -19,7 +19,7 @@ export default function FormLogin({ userType }) {
 
   // Estados
     const [isAlert, setIsAlert] = useState(false);
-      const [openModal, setOpenModal] = useState(false); 
+      const [openModal, setOpenModal] = useState(false);
         const [textModal, setTextModal] = useState({title: "", message: ""})
           const [errors, setErrors] = useState({password: "", email: "",});
             const [user, setUser] = useState({
@@ -32,19 +32,20 @@ export default function FormLogin({ userType }) {
   // Submit
     const handleSubmit = async (event) => {
       event.preventDefault();
-    
+
       try {
-        const devolution = await LoginToBackendOwnAccess(user, dispatch);  
+        const devolution = await LoginToBackendOwnAccess(user, dispatch);
         console.log(devolution);
-      
+
         // Reset de imputs
           setUser({password: "", email: "",});
 
         // Voy al Home
-          navigate("/");
+          //navigate("/");
+          window.location.href = "/";
 
       } catch (error) {
-          // Imprimo en consola: 
+          // Imprimo en consola:
             console.log("En cath - error:");
               console.log(error);
           // Seteo el texto modal en su correspondiente estado:
