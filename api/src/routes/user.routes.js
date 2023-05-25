@@ -4,6 +4,7 @@ const userPostHandler = require("../handlers/user/userPostHandler");
 const userAuthenticated = require("../handlers/user/userAuthenticatedHandler");
 const userPostGooHandler = require("../handlers/user/userPostGooHandler");
 const userDeleteHandler = require("../handlers/user/userDeleteHandler");
+const updateInfoHandler = require("../handlers/user/updateInfo/updateInfoHandler");
 const user = require("../controllers/userControllers/userPrueba");
 
 const checkAuth = require("../middleware/authUser");
@@ -24,5 +25,7 @@ userRouter.post("/login", validateLogin, userAuthenticated);
 userRouter.post("/login/google", userPostGooHandler);
 
 userRouter.post("/delete", userDeleteHandler);
+
+userRouter.post("/updatedInfo", updateInfoHandler);
 
 module.exports = userRouter;
