@@ -5,6 +5,7 @@ const userAuthenticated = require("../handlers/user/userAuthenticatedHandler");
 const userPostGooHandler = require("../handlers/user/userPostGooHandler");
 const userDeleteHandler = require("../handlers/user/userDeleteHandler");
 const user = require("../controllers/userControllers/userPrueba");
+const {myCoursesHandlers,myBillsHandlers} = require('../handlers/user/myCoursesHandlers')
 
 const checkAuth = require("../middleware/authUser");
 const checkRoleAuth = require("../middleware/roleAuth");
@@ -18,6 +19,10 @@ const userRouter = Router();
 userRouter.get("/", checkAuth, checkRoleAuth(["STUDENT"]), user);
 
 userRouter.post("/created", validateCreate, userPostHandler);
+
+// Perfil del user
+userRouter.get('/myCourses/:id',myCoursesHandlers)
+userRouter.get('/myBills/:id', myBillsHandlers)
 
 userRouter.post("/login", validateLogin, userAuthenticated);
 
