@@ -1,9 +1,10 @@
-const { User, Category, Course } = require("../../database");
+const { User, Category } = require("../../database");
 const createCourse = require("../courseControllers/createCourse");
-
+const {publicationControllers} = require('../instructorControllers/publicationControllers')
 const categorias = require("./categorias");
 const instructores = require("./instructores");
 const cursos = require("./cursos");
+const articulos = require('./artuculos')
 
 const rellenarControllers = async () => {
   for (let i = 0; i < categorias.length; i++) {
@@ -47,6 +48,20 @@ const rellenarControllers = async () => {
       users,
       catego
     );
+  }
+
+  for(let j = 0; j < articulos.length; j++){
+    const idAr = articulos[j].idUser
+    const titleAr = articulos[j].title
+    const imgAr = articulos[j].img
+    const {
+      subtitle,
+      text,
+      subtitleTwo,
+      textTwo,
+      subtitleThree,
+      textThree} = articulos[j]
+    const publi = await publicationControllers(idAr,titleAr,subtitle,text,imgAr,subtitleTwo,textTwo,subtitleThree,textThree)
   }
 
   return { Data: "Agregada" };
