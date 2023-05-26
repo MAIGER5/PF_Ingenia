@@ -104,8 +104,26 @@
     color: #FFFFFE;
 }
 
+.listContainer{
+    width: 250px;
+    display: flex;
+    background-color: #DDDDDD;
+    border-radius: 5px;
+    height: 190px;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-bottom: 15px;
+}
+
 .listLearn{
     list-style-type: none;
+    justify-content: left;
+    height: 190px;
+}
+
+.listBullet{
+    text-align: left;;
 }
 
 .inputSelect{
@@ -198,6 +216,10 @@
         column-gap: 20px;
         align-items: center;
     }
+
+    .listContainer{
+        width: 400px;
+    }    
   
     .input{
         width: 400px;

@@ -5,10 +5,9 @@ module.exports = (sequelize) => {
     idAssessment: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      allowNull: false,
       primaryKey: true,
     },
-    valor: {
+    idCor: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
