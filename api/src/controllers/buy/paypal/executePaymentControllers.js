@@ -38,6 +38,11 @@ const facturacion = async (info,user)=>{
     };
 
 }
+const billsControllers = async ()=>{
+    const response = await Bill.findAll()
+    return response
+}
 module.exports = {
     facturacion,
+    billsControllers
 };
