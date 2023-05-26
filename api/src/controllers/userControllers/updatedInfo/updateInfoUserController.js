@@ -1,10 +1,11 @@
-const { User } = require("../../database");
+const { User } = require("../../../database");
 
-const updateInfoUserController = (name, lastname, password, userType) => {
-  const updateInfo = User.update(
+const updateInfoUserController = async (name, lastname, password, idUser) => {
+  const updateInfo = await User.update(
     { name, lastname, password },
-    { where: { name, Is: userType } }
+    { where: { idUser } }
   );
+
   return updateInfo;
 };
 
