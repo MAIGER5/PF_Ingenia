@@ -4,11 +4,11 @@ const { tokenSingUp } = require("../../helper/tokenSingUp");
 const bcryptjs = require("bcryptjs");
 
 const userAuthenticated = async (email, password, userType) => {
-  const loginUser = await User.findOne({ where: { email, Is: userType } });
+  const loginUser = await User.findOne({
+    where: { email, Is: userType, asset: true },
+  });
 
   if (!loginUser) {
-    throw Error("Lo sentimos, no se encontró el usuario especificado.");
-  } else if (!loginUser.asset) {
     throw Error("Lo sentimos, no se encontró el usuario especificado.");
   }
 
