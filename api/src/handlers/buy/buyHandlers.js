@@ -48,7 +48,7 @@ const executePayment = async (req,res)=>{
         )
         const info = response.data
         const factura = await facturacion(info,idUser);
-
+        // res.json(factura)
         res.redirect('http://localhost:5173/Purchaseconfirmation')
     } catch (error) {
         res.status(500).json({ error: error.message });

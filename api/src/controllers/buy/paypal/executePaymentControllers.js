@@ -1,4 +1,4 @@
-const {Bill,Buy} = require('../../../database')
+const {Bill,Buy,Assessment} = require('../../../database')
 
 const facturacion = async (info,user)=>{
     console.log(info.id);
@@ -29,6 +29,13 @@ const facturacion = async (info,user)=>{
             UserIdUser:user
         }
     })
+
+    for(let i=0;i<courses.length;i++){
+       const asses = await Assessment.create({
+            idCor:courses[i],
+            UserIdUser:user
+        })
+    };
 
 }
 module.exports = {

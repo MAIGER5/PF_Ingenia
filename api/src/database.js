@@ -5,10 +5,10 @@ const { Sequelize } = require("sequelize");
 //********************   Nueva base de dato *******************
 const functionAssessment = require('./models/Assessment');
 const functionCategory = require('./models/Category');
-const functionComment = require('./models/Comment');
+const functionPoint = require('./models/Point')
 const functionCourse = require('./models/Course')
-const functionBill = require('./models/Buy')
-const functionSold = require('./models/Bill');
+const functionBuy = require('./models/Buy')
+const functionBill = require('./models/Bill');
 const functionPublications = require('./models/Publication');
 const functionUser =require('./models/User');
 
@@ -24,15 +24,15 @@ const sequelize = new Sequelize(
 
 functionAssessment(sequelize);
 functionCategory(sequelize);
-functionComment(sequelize);
+functionPoint(sequelize);
 functionCourse(sequelize);
+functionBuy(sequelize);
 functionBill(sequelize);
-functionSold(sequelize);
 functionPublications(sequelize);
 functionUser(sequelize);
 
 
-const { Assessment,Category,Comment,Course,Buy,Bill,Publication,User} = sequelize.models;
+const { Assessment,Category,Point,Course,Buy,Bill,Publication,User} = sequelize.models;
 // RELACION DE TABALS AQUÍ ABAJO
 
 User.belongsToMany(Course,{through:"UserCourse"});
@@ -50,8 +50,17 @@ Publication.belongsTo(User)
 User.hasMany(Bill)
 Bill.belongsTo(User)
 
-Bill.belongsToMany(Course,{through:"UserBill"});
-Course.belongsToMany(Bill,{through:"UserBill"})
+Bill.belongsToMany(Course,{through:"CourseBill"});
+Course.belongsToMany(Bill,{through:"CourseBill"})
+
+User.hasMany(Assessment)
+Assessment.belongsTo(User)
+
+User.hasMany(Point)
+Point.belongsTo(User)
+
+Course.hasMany(Point)
+Point.belongsTo(Course)
 
 module.exports = {
   sequelize,
