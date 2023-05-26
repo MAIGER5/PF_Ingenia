@@ -101,18 +101,14 @@ export default function MenuAvatar({userType}) {
 
           {/* Mis Cursos */}
               {userType == 1 ? (
-              <MenuItem onClick={handleClose}>
-              <Link to="/MyCourses" onClick={()=>tabSet(0)} style={{ textDecoration: "none", color: "inherit" }}>
+              <MenuItem onClick={() => { handleClose(); tabSet(0); }} component={Link} to="/MyCourses" >
               Mis Cursos
-              </Link>
               </MenuItem>) : null}
 
           {/* Favoritos */}
               {userType == 1 ? (
-              <MenuItem onClick={handleClose}>
-              <Link to="/MyCourses" onClick={()=>tabSet(1)} style={{ textDecoration: "none", color: "inherit" }}>
+              <MenuItem onClick={() => { handleClose(); tabSet(1); }} component={Link} to="/MyCourses" >
               Favoritos
-              </Link>
               </MenuItem>) : null}
 
           {/* Notificaciones */}

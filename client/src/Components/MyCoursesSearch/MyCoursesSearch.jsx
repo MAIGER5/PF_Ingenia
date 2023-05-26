@@ -31,24 +31,11 @@ export default function MyCoursesSearch() {
     <>
       <form onChange={handleChange} onSubmit={handleSubmit}>
         <TextField id="search2" label="Buscar Mis Cursos" variant="filled" type="search"
-            sx={{
-              background: 'white',
+            sx={{ background: 'white', }}
+            inputProps={{ style: { color:"grey", background: "white", } }}
+            InputLabelProps={{ style: { color: 'grey', },}}
 
-            }}
-            inputProps={{
-              style: {
-                color:"grey",
-                background: "white",
-              }
-
-            }}
-
-            InputLabelProps={{
-              style: {
-                color: 'grey',
-              },}}
-
-              InputProps={{
+            InputProps={{
               endAdornment: (
                 <InputAdornment position="start">
                   <Button variant="text" onClick={handleCLICK} sx={{ color: 'grey' }}>
@@ -57,54 +44,7 @@ export default function MyCoursesSearch() {
                     </NavLink>
                   </Button>
                 </InputAdornment>
-              ),}}/>
-
-
-        <TextField
-          id="search"
-          label="Buscar Mis Cursos"
-          type="search"
-          variant="filled"
-          sx={{
-            width: {
-              sm: "200px",
-              md: "200px",
-              lg: "400px"
-            },
-          }}
-          InputLabelProps={{
-
-            style: {
-              color: "black",
-              display: ''
-            },
-          }}
-          inputProps={{
-            style: {
-              background: "white",
-              borderRadius: "40px",
-              color: "grey", // Color de las letras gris
-              padding: "10px", // Ajusta el espaciado interior
-            },
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <Button variant="text" color="primary" onClick={handleCLICK}>
-                  <NavLink to="/SerchCardResults" style={{ color: "orange" }}>
-                    <SearchIcon />
-                  </NavLink>
-                </Button>
-              </InputAdornment>
-            ),
-            style: {
-              background: "white",
-              borderRadius: "2px",
-              alignItems: "center",
-              justifyContent: "center"
-            }
-          }}
-        />
+                ),}}/>
       </form>
     </>
   );
