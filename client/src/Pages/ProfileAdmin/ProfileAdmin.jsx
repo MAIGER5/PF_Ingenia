@@ -62,8 +62,8 @@ export const ProfileAdmin = () => {
                                         </TableCell>
                                         <TableCell align="left">{row.Users[0]?.name}</TableCell>
                                         <TableCell align="center">{row.createdAt}</TableCell>
-                                        <TableCell align="center">Activo</TableCell>
-                                        <TableCell align="right">No</TableCell>
+                                        <TableCell align="center"> {row.asset === true? "Vigente": "Pausado"} </TableCell>
+                                        <TableCell align="right">{row.asset === true? "Si": "No"}</TableCell>
                                         <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
                                         <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
                                         <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>

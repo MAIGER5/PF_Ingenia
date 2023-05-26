@@ -30,8 +30,13 @@ const publisByIdDetail =async (id)=>{
     return publi
 }
 
+const publiGet = async ()=>{
+    const response = await Publication.findAll()
+    return response
+}
 module.exports={
     publicationControllers,
     publisById,
-    publisByIdDetail
+    publisByIdDetail,
+    publiGet
 }
