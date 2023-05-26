@@ -33,8 +33,13 @@ module.exports = (sequelize) => {
     Is: {
       type: DataTypes.ENUM("STUDENT", "INSTRUCTOR", "ADMIN"),
     },
-    assessment: {
-      type: DataTypes.DOUBLE,
+    numberSales:{
+      type:DataTypes.DOUBLE,
+      default:0
+    },
+    assessment:{
+      type:DataTypes.DOUBLE,
+      default:0
     },
     studies: {
       type: DataTypes.STRING,
