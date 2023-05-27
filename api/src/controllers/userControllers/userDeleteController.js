@@ -4,25 +4,19 @@ const userDeleteController = async (idUser) => {
   const user = await User.findByPk(idUser);
 
   if (user) {
-    if (user.asset) {
-      const userState = await User.update(
-        { asset: false },
-        {
-          where: {
-            idUser,
-          },
-        }
-      );
+    const newAsset = !user.asset;
+
+    const userState = await User.update(
+      { asset: newAsset },
+      {
+        where: {
+          idUser,
+        },
+      }
+    );
+    if (!newAsset) {
       return { userState, state: "Deshabilitado" };
     } else {
-      const userState = await User.update(
-        { asset: true },
-        {
-          where: {
-            idUser,
-          },
-        }
-      );
       return { userState, state: "Habilitado" };
     }
   }
