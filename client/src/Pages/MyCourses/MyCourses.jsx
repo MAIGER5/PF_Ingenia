@@ -4,21 +4,22 @@ import { Box, Tab, Tabs } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 import setActiveTab from "../../Redux/Actions/setActiveTab";
-
+import MyCoursesSearch from "../../Components/MyCoursesSearch/MyCoursesSearch";
+import PaginationGrid from "../../Components/PaginationGrid/PaginationGrid";
 import AvatarComponent from "../../Components/AvatarComponent/AvatarComponent"
 
+export default function MyCourses() {
+  const dispatch = useDispatch();
 
-export default function MyCourses({proptabindex}) {
+  // Estado Global: elementos a visualizar
+    const curs = useSelector((state)=> state.allCourse)
 
-  // Redux:
+  // Estado Global: estado actual de Tab
     const tabIndex = useSelector((state) => state.setActiveTab);
-      const dispatch = useDispatch();
 
-  //const [tabIndex, setTabIndex] = useState(0);
-
+  // Función para el cambio de Tabs:
   const handleTabChange = (event, newTabIndex) => {
     dispatch(setActiveTab(newTabIndex));
-    //setTabIndex(newTabIndex);
   };
 
   return (
@@ -26,32 +27,43 @@ export default function MyCourses({proptabindex}) {
       <h3 className={styles.title}>
         Mis Cursos
       </h3>
-      <Box>
-        <Tabs
-          value={tabIndex}
-          onChange={handleTabChange}
-        >
-          <Tab
-            label="Todos Mis Cursos"
-            sx={{ fontSize: "23px" }}
-          />
-          <Tab
-            label="Mis Favoritos"
-            sx={{ fontSize: "23px" }}
-          />
-        </Tabs>
-        <Box sx={{ padding: 2 }}>
+
+      <Box sx={{ padding: 2, width: "100%", height: "100%" }}>
+      <Box sx={{ padding: 2, width: "100%", height: "100%" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', height: '100%' }}>
+
+          {/* Nombres de Tabs */}
+          <div>
+          <Tabs value={tabIndex} onChange={handleTabChange} >
+            <Tab label="Todos Mis Cursos" sx={{ fontSize: "23px" }} />
+            <Tab label="Mis Favoritos" sx={{ fontSize: "23px" }} />
+          </Tabs>
+          </div>
+
+          {/* Barra de Búsqueda */}
+          <div><MyCoursesSearch/></div>
+
+        </div></Box>
+
+
+        <Box sx={{ padding: 2, width: "100%", height: "100%" }}>
+
           {tabIndex === 0 && (
             <Box>
-              <p>Mis cursos</p>
+              {curs.length === 0 ? ("Todavía no tienes Cursos en ésta sección.") :
+              (<PaginationGrid arrayPag={curs} visualize = {8}/>)}
             </Box>
           )}
+
           {tabIndex === 1 && (
             <Box>
-              <p>Mis Favoritos</p>
+              {curs.length === 0 ? ("Todavía no tienes Cursos en ésta sección.") :
+              (<PaginationGrid arrayPag={curs} visualize = {8}/>)}
+
             </Box>
           )}
         </Box>
+
       </Box>
 
     </div>

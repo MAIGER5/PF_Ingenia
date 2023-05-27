@@ -14,7 +14,7 @@ import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
 
 
 export function CardsDetail({}) {
-    
+
     const curses = useSelector((state)=> state.courseDetail)
     const {id} = useParams();
     const dispatch = useDispatch();
@@ -25,10 +25,10 @@ export function CardsDetail({}) {
     function handleclick(){
         localStorage.getItem('name')? dispatch(addToCarrito(id)):  navigate('/Login');
     }
-  
+
     return (
 
-    <Card sx={{ 
+    <Card sx={{
         display: 'flex',
         alignItems: 'center',
         }}
@@ -67,7 +67,7 @@ export function CardsDetail({}) {
                     direction="row"
                     justifyContent="flex-start"
                     alignItems="flex-start">
-                        
+
                     <Grid item xs={8}>
                         <Link to={`/VendedorPublico/${id}`}>
                             <Typography variant="h6" color="text.Primary" sx={{
@@ -84,7 +84,7 @@ export function CardsDetail({}) {
                         }}>
                             {/* {curses.lenguage} */}
                         </Typography>
-                        
+
                         <Grid width={600}
                             container
                             direction="row"
@@ -97,7 +97,7 @@ export function CardsDetail({}) {
 
                             {/* component={Link} to={'/SignupUsuario'} */}
 
-                            <Button onClick={handleclick} variant='contained' startIcon={<ShoppingCartIcon/>} 
+                            <Button onClick={handleclick} variant='contained' startIcon={<ShoppingCartIcon/>}
                                 >Add
                             </Button>
                             {/* {<Login />} */}
@@ -122,7 +122,7 @@ export function CardsDetail({}) {
                                     <Button variant="text"  sx={{backgroundColor:"#E53170", color: 'black'}} > {curses.dificulty}  </Button>
                                 </Grid>
                                 <Grid marginX={1}>
-                                    <Button marginLeft='2' sx={{backgroundColor:"#E53170", color: 'black'}}> {curses.lenguage} </Button>
+                                    <Button  sx={{marginLeft:'2', backgroundColor:"#E53170", color: 'black'}}> {curses.lenguage} </Button>
                                 </Grid>
                                 <Grid>
                                     <Button  sx={{backgroundColor:"#E53170", color: 'black'}}> {curses.categories} </Button>
