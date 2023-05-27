@@ -1,22 +1,28 @@
 const updateInfoController = require("../../../controllers/userControllers/updatedInfo/updateInfoUserController");
+const bcrypt = require("bcryptjs");
 
 const updateInfoHandler = async (req, res) => {
-  const { idUser, name, lastaname, password } = req.body;
+  const { idUser, name, lastname, imgProfile, description, studies, password } =
+    req.body;
+
+  const passwordHash = await bcrypt.hash(password, 8);
 
   try {
     const userInfo = await updateInfoController(
+      idUser,
       name,
-      lastaname,
-      password,
-      idUser
+      lastname,
+      imgProfile,
+      description,
+      studies,
+      passwordHash
     );
-    if (userInfo[0] === 1) {
-      res.status(200).json({ process: true });
-    } else {
-      throw new Error(
-        "En este momento no podemos procesar tu solicitud, intentalo mas tardé"
-      );
-    }
+
+    const { state } = userInfo;
+
+    userInfo.updateInfo[0]
+      ? res.status(200).json({ state, process: true })
+      : null;
   } catch (error) {
     res.status(400).json({ error: error.message, process: false });
   }
