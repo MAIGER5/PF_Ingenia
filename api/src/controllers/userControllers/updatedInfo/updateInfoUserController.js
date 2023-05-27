@@ -1,12 +1,32 @@
 const { User } = require("../../../database");
 
-const updateInfoUserController = async (name, lastname, password, idUser) => {
-  const updateInfo = await User.update(
-    { name, lastname, password },
-    { where: { idUser } }
-  );
+const updateInfoUserController = async (
+  idUser,
+  name,
+  lastname,
+  imgProfile,
+  description,
+  studies,
+  passwordHash
+) => {
+  const user = await User.findByPk(idUser);
 
-  return updateInfo;
+  if (user) {
+    const updateInfo = await User.update(
+      {
+        name,
+        lastname,
+        imgProfile,
+        description,
+        studies,
+        password: passwordHash,
+      },
+      { where: { idUser } }
+    );
+    return { updateInfo, state: "Cambio actualizado" };
+  } else {
+    throw new Error("El usuario no se encuentra registrado");
+  }
 };
 
 module.exports = updateInfoUserController;
