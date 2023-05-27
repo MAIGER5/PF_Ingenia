@@ -32,7 +32,52 @@ const publisByIdDetail =async (id)=>{
 
 const publiGet = async ()=>{
     const response = await Publication.findAll()
-    return response
+
+    let publi = [];
+
+    for(let i=0;i<response.length;i++){
+
+        const {UserIdUser} = response[i]
+
+        const responseUser = await User.findByPk(UserIdUser)
+        const {name,lastname} = responseUser
+
+        const {
+            idPublications,
+            title,
+            subtitle,
+            text,
+            img,
+            subtitleTwo,
+            textTwo,
+            subtitleThree,
+            textThree,
+            asset,
+            createdAt,
+            updatedAt
+        } = response[i]
+
+        publi.push({
+            idPublications,
+            title,
+            subtitle,
+            text,
+            img,
+            subtitleTwo,
+            textTwo,
+            subtitleThree,
+            textThree,
+            asset,
+            createdAt,
+            updatedAt,
+            User:{
+                name,
+                lastname
+            }
+        })
+    }
+    return publi
+
 }
 module.exports={
     publicationControllers,
