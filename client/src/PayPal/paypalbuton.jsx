@@ -5,10 +5,11 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import { useSelector } from 'react-redux';
 export default function Paypalbutton() {
   const totalpagar=useSelector(state=>state.totalCarrito)
-  const id=useSelector(state=>state.localStorageData.idUser)
+  const idUser=localStorage.getItem("idUser")
+  
   const handlePaymentSuccess = async () => {
     try {
-      const response = await axios.post(`http://localhost:3001/buy?costo=${totalpagar}&idUser=${id}` )
+      const response = await axios.post(`http://localhost:3001/buy?costo=${totalpagar}&idUser=${idUser}` )
       window.location.href=response.data.links[1].href
      
     } catch (error) {
