@@ -24,20 +24,20 @@ export const ProfileAdmin = () => {
     };
 
 
-    useEffect(() => {
-        dispatch(getArticulos())
-        dispatch(getFacturas())
-        dispatch(getInstructorUser())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(getArticulos())
+    //     dispatch(getFacturas())
+    //     dispatch(getInstructorUser())
+    // }, [])
 
 
     return (
-        <Grid marginLeft={20} marginRight={15}>
+        <Grid marginLeft={15} marginRight={4}>
             <Typography variant='h4' align='left' marginLeft={1}>Admin</Typography>
             <Typography variant='h4' align='left' marginLeft={1}>Ingenia</Typography>
 
             <Grid container spacing={2} >
-                <Grid marginTop={8} marginRight={15} item xs={1.5}>
+                <Grid marginTop={8} marginRight={10} item xs={1.5}>
                     <List component="nav" aria-label="mailbox folders">
                         <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
                             <ListItemText primary="Cursos Publicados" />
