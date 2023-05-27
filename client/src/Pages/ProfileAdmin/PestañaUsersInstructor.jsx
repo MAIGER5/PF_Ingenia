@@ -1,45 +1,68 @@
-// import React from 'react';
-// import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-// import MailOutlineIcon from '@mui/icons-material/MailOutline';
-// import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
-// import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import { useSelector } from "react-redux";
 
-// export const PestañaUsersInstructor = () => {
+export const PestañaUsersInstructor = () => {
 
-//     const artiuculs = useSelector((state)=> state.articulos);
+    const instructs = useSelector((state)=> state.instructor);
 
-//     return (
-//         <TableContainer component={Paper}>
-//             <Table sx={{ minWidth: 650 }} aria-label="caption table">
-//                 <caption>A basic table example with a caption</caption>
-//                 <TableHead>
-//                     <TableRow>
-//                         <TableCell>Id Publicación</TableCell>
-//                         <TableCell>Id Usuario</TableCell>
-//                         <TableCell align="left">Title</TableCell>
-//                         <TableCell align="center">Fecha</TableCell>
-//                         <TableCell align="center">Status</TableCell>
-//                         <TableCell align="right">Actualizado</TableCell>
-//                     </TableRow>
-//                 </TableHead>
-//                 <TableBody>
-//                     {artiuculs.data.map((row) => (
-//                         <TableRow key={row.idPublications}>
-//                             <TableCell align="left">{row.idPublications}</TableCell>
-//                             <TableCell component="th" scope="row">
-//                                 {row.UserIdUser}
-//                             </TableCell>
-//                             <TableCell align="left">{row.title}</TableCell>
-//                             <TableCell align="center">{row.createdAt}</TableCell>
-//                             <TableCell align="center"> {row.asset === true? "Vigente": "Pausado"} </TableCell>
-//                             <TableCell align="right">{row.updatedAt}</TableCell>
-//                             <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
-//                             <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
-//                             <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>
-//                         </TableRow>
-//                     ))}
-//                 </TableBody>
-//             </Table>
-//         </TableContainer>
-//     )
-// }
+    const [pg, setpg] = useState(0);
+    const [rpg, setrpg] = useState(5);
+  
+    function handleChangePage(event, newpage) {
+        setpg(newpage);
+    }
+  
+    function handleChangeRowsPerPage(event) {
+        setrpg(parseInt(event.target.value, 10));
+        setpg(0);
+    }
+
+    return (
+        <Paper>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="caption table">
+                    <caption>A basic table example with a caption</caption>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Id User</TableCell>
+                            <TableCell>Name</TableCell>
+                            <TableCell align="left">Email</TableCell>
+                            <TableCell align="center">Tipo Usuario</TableCell>
+                            <TableCell align="center">Calificación</TableCell>
+                            <TableCell align="right">Fecha de Alta</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {instructs.data?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
+                            <TableRow key={row.idUser}>
+                                <TableCell align="left">{row.idUser}</TableCell>
+                                <TableCell component="th" scope="row">
+                                    {row.name} {row.lastname}
+                                </TableCell>
+                                <TableCell align="left">{row.email}</TableCell>
+                                <TableCell align="center">{row.Is}</TableCell>
+                                <TableCell align="center"> {row.assessment} </TableCell>
+                                <TableCell align="right">{row.createdAt}</TableCell>
+                                <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
+                                <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
+                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <TablePagination sx={{width:'100%', display:'flex', justifyContent:'center'}}
+                rowsPerPageOptions={[5, 10, 25]}
+                component="div"
+                count={instructs.data?.length}
+                rowsPerPage={rpg}
+                page={pg}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+        </Paper>
+    )
+}

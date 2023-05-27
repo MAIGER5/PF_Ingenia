@@ -17,6 +17,7 @@ import { TOTAL_CARRITO } from "../Actions/TotalCarrito";
 import { SET_ACTIVE_TAB } from "../Actions/setActiveTab";
 import { GET_ARTICULOS } from "../actionsProfileAdmin/getArticulos";
 import { GET_FACTURAS } from "../actionsProfileAdmin/getFacturas";
+import { GET_INSTRUCTOR_USER } from "../actionsProfileAdmin/getInstructorUser";
 
 const initialState = {
   allCourse: [],
@@ -30,7 +31,8 @@ const initialState = {
   totalCarrito:0,
   setActiveTab: 0,
   articulos: [],
-  facturas: []
+  facturas: [],
+  instructor: []
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -130,6 +132,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         facturas: action.payload,
+    };
+    case GET_INSTRUCTOR_USER:
+      return {
+        ...state,
+        instructor: action.payload,
     };
     case SET_ACTIVE_TAB:
       return  {
