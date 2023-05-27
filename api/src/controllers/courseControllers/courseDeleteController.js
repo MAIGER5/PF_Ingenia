@@ -4,18 +4,17 @@ const courseDeleteController = async (idCourse) => {
   const course = await Course.findByPk(idCourse);
 
   if (course) {
-    if (course.asset) {
-      const courseState = await Course.update(
-        { asset: false },
-        { where: { idCourse } }
-      );
-      return courseState;
+    const newAsset = !course.asset;
+
+    const courseState = await Course.update(
+      { asset: newAsset },
+      { where: { idCourse } }
+    );
+
+    if (!newAsset) {
+      return { courseState, state: "Deshabilitado" };
     } else {
-      const courseState = await Course.update(
-        { asset: true },
-        { where: { idCourse } }
-      );
-      return courseState;
+      return { courseState, state: "Habilitado" };
     }
   }
   throw new Error(
