@@ -76,7 +76,7 @@ export default function MenuAvatar({userType}) {
           </Box>
 
 
-      {/* Lista Deslegable */}
+      {/* Lista Despegable */}
       <Menu anchorEl={anchorEl} id="account-menu"
         open={open} onClose={handleClose} onClick={handleClose}
         PaperProps={{

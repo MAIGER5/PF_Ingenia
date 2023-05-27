@@ -12,7 +12,7 @@ export const DATA_LOGIN = "DATA_LOGIN";
 
 export default function FormLogin({ userType }) {
 
-  // Hoks
+  // Hooks
     const dispatch = useDispatch();
       const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ export default function FormLogin({ userType }) {
         const devolution = await LoginToBackendOwnAccess(user, dispatch);
         console.log(devolution);
 
-        // Reset de imputs
+        // Reset de inputs
           setUser({password: "", email: "",});
 
         // Voy al Home
@@ -46,7 +46,7 @@ export default function FormLogin({ userType }) {
 
       } catch (error) {
           // Imprimo en consola:
-            console.log("En cath - error:");
+            console.log("En catch - error:");
               console.log(error);
           // Seteo el texto modal en su correspondiente estado:
             setTextModal({title: "Inicio de Sesión", message: error.error})

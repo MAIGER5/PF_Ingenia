@@ -4,16 +4,16 @@ import { useState } from 'react';
 import CardHome from '../Card/CardHome'
 
 
-export default function PaginationGrid({ arrayPag, visualize}) {
+export default function PaginationGrid({ arrayPag, visualize }) {
 // arrayPag: Array que será paginado
 // visualize: Cantidad de elementos a visualizar por página
 
     // Paginado:
       // Estado del número de página:
-        const [pageCurrent, setpageCurrent] = useState(1);
-      // Posición del Ültimo elemento:
+        const [pageCurrent, setPageCurrent] = useState(1);
+      // Posición del Último elemento:
         const elementLast = pageCurrent * visualize;
-      // Posición del Primer elmento:
+      // Posición del Primer elemento:
         const elementFirst = elementLast - visualize;
       // Cantidad Total de elementos:
         const elementTotal = arrayPag.length
@@ -23,7 +23,7 @@ export default function PaginationGrid({ arrayPag, visualize}) {
         const elemToDisplay = arrayPag.slice(elementFirst, elementLast);
       // Función para cambiar el estado de la página:
         const handlePageChange = (event, pageNumber) => {
-          setpageCurrent(pageNumber);
+          setPageCurrent(pageNumber);
         };
 
       // Para pruebas de desarrollo:
@@ -51,10 +51,10 @@ return (
           ))}
         </Grid>
 
-        {/* Numeración de la Paginación */}
-            <Stack spacing={2}>
-            <Pagination count={pageTotal}  page={pageCurrent} onChange={handlePageChange} color="primary"/>
-            </Stack>
+        {/* Numeración de la Paginación (si hay más de una página) */}
+        {pageTotal > 1 ?
+        (<Pagination count={pageTotal}  page={pageCurrent} onChange={handlePageChange} color="primary"/>) : null}
+
 
     </Box>
   );
