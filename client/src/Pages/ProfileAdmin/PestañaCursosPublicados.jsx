@@ -66,7 +66,6 @@ export const PestañaCursosPublicados = () => {
                 page={pg}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
-      
             />
         </Paper>
     )

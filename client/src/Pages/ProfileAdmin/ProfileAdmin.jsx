@@ -6,6 +6,8 @@ import { getArticulos } from '../../Redux/actionsProfileAdmin/getArticulos';
 import { PestañaArticulos } from './PestañaArticulos';
 import { getFacturas } from '../../Redux/actionsProfileAdmin/getFacturas';
 import { PestañaFacturas } from './PestañaFacturas';
+import { getInstructorUser } from '../../Redux/actionsProfileAdmin/getInstructorUser';
+import { PestañaUsersInstructor } from './PestañaUsersInstructor';
 
 
 
@@ -25,6 +27,7 @@ export const ProfileAdmin = () => {
     useEffect(() => {
         dispatch(getArticulos())
         dispatch(getFacturas())
+        dispatch(getInstructorUser())
     }, [])
 
 
@@ -58,7 +61,7 @@ export const ProfileAdmin = () => {
                 </Grid>
 
                 <Grid item xs={9} marginTop={9}> 
-                    {selectedIndex == 0? <PestañaCursosPublicados/> : selectedIndex == 1? <PestañaArticulos/> : selectedIndex == 3? <PestañaFacturas/> : "nada" } 
+                    {selectedIndex == 0? <PestañaCursosPublicados/> : selectedIndex == 1? <PestañaArticulos/> : selectedIndex == 3? <PestañaFacturas/> : <PestañaUsersInstructor/> } 
                 </Grid>
             </Grid>
         </Grid>
