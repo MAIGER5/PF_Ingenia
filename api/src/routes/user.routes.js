@@ -33,8 +33,8 @@ userRouter.post("/login", validateLogin, userAuthenticated);
 
 userRouter.post("/login/google", userPostGooHandler);
 
-userRouter.post("/delete", userDeleteHandler);
+userRouter.put("/delete", userDeleteHandler);
 
-userRouter.post("/updatedInfo", updateInfoHandler);
+userRouter.put("/updatedInfo", updateInfoHandler);
 
 module.exports = userRouter;

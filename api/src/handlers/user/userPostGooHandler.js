@@ -17,6 +17,11 @@ const userPostGooHandler = async (req, res) => {
 
     const verify = await verifyUserExistence(email, userType, providerId);
 
+    const name = displayName.split(" ")[0];
+
+    console.log(name);
+    const lastname = displayName.split(" ")[1];
+
     if (verify) {
       res.status(200).json(verify);
     } else {
@@ -29,7 +34,8 @@ const userPostGooHandler = async (req, res) => {
           const passwordHash = await bcryptjs.hash(password, 8);
 
           const user = await userPostGoogleController(
-            displayName,
+            name,
+            lastname,
             email,
             passwordHash,
             photoURL,

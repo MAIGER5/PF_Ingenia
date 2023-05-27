@@ -1,14 +1,23 @@
 const createInstructor = require("../../controllers/instructorControllers/createInstructor");
+const userGetControllers = require('../../controllers/instructorControllers/userGetControllers')
 const verifyUserExistence = require("../../helper/verifyUserExistence");
 const bcryptjs = require("bcryptjs");
 const { cloudinary } = require('../../utils/cloudinary');
 const {
   publicationControllers,
   publisById,
-  publisByIdDetail
+  publisByIdDetail,
+  publiGet
 } = require('../../controllers/instructorControllers/publicationControllers')
 
-const instructorGetHandlers = (req, res) => {};
+const instructorGetHandlers = async (req, res) => {
+  try {
+    const response = await userGetControllers()
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 const instructorPostHandlers = async (req, res) => {
   const { name, lastname, email, password, studies, description } = req.body;
 
@@ -99,10 +108,20 @@ const publicationsDetailHandlers = async (req,res)=>{
   }
 }
 
+const publicationsGetPostHandlers = async (req,res)=>{
+  try {
+    const response = await publiGet()
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
 module.exports = {
   instructorGetHandlers,
   instructorPostHandlers,
   publicationsPostHandlers,
   publicationsByIdHandlers,
-  publicationsDetailHandlers
+  publicationsDetailHandlers,
+  publicationsGetPostHandlers
 };

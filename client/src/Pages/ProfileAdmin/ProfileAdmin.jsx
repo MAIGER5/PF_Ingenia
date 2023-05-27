@@ -1,14 +1,35 @@
-import React from 'react'
-import { Button, Divider, Grid, List, ListItem, ListItemText, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, styled } from '@mui/material'
-import { useSelector } from 'react-redux';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import React, { useEffect, useState } from 'react'
+import { Divider, Grid, List, ListItemButton, ListItemText, Typography, styled } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux';
+import { PestañaCursosPublicados } from './PestañaCursosPublicados';
+import { getArticulos } from '../../Redux/actionsProfileAdmin/getArticulos';
+import { PestañaArticulos } from './PestañaArticulos';
+import { getFacturas } from '../../Redux/actionsProfileAdmin/getFacturas';
+import { PestañaFacturas } from './PestañaFacturas';
+import { getInstructorUser } from '../../Redux/actionsProfileAdmin/getInstructorUser';
+import { PestañaUsersInstructor } from './PestañaUsersInstructor';
 
 
 
 export const ProfileAdmin = () => {
 
+    const dispatch = useDispatch();
+
     const cursos = useSelector((state)=> state.allCourse);
+
+    const [selectedIndex, setSelectedIndex] = useState(1)
+
+    const handleListItemClick = (event, index) => {
+        setSelectedIndex(index);
+    };
+
+
+    useEffect(() => {
+        dispatch(getArticulos())
+        dispatch(getFacturas())
+        dispatch(getInstructorUser())
+    }, [])
+
 
     return (
         <Grid marginLeft={20} marginRight={15}>
@@ -18,60 +39,29 @@ export const ProfileAdmin = () => {
             <Grid container spacing={2} >
                 <Grid marginTop={8} marginRight={15} item xs={1.5}>
                     <List component="nav" aria-label="mailbox folders">
-                        <ListItem button>
+                        <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
                             <ListItemText primary="Cursos Publicados" />
-                        </ListItem>
+                        </ListItemButton>
                         <Divider />
-                        <ListItem button divider>
+                        <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)} divider>
                             <ListItemText primary="Articulos" />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemText primary="Controversias" />
-                        </ListItem>
+                        </ListItemButton>
+                        <ListItemButton selected={selectedIndex === 2} onClick={(event) => handleListItemClick(event, 2)}>
+                            <ListItemText primary="Usuarios e Instructores" />
+                        </ListItemButton>
                         <Divider light />
-                        <ListItem button>
+                        <ListItemButton selected={selectedIndex === 3} onClick={(event) => handleListItemClick(event, 3)}>
                             <ListItemText primary="Facturas" />
-                        </ListItem>
+                        </ListItemButton>
                         <Divider light />
-                        <ListItem button>
+                        <ListItemButton selected={selectedIndex === 4} onClick={(event) => handleListItemClick(event, 4)}>
                             <ListItemText primary="Cerrar sesión" />
-                        </ListItem>
+                        </ListItemButton>
                     </List>
                 </Grid>
 
-                <Grid item xs={9} marginTop={9}>
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="caption table">
-                            <caption>A basic table example with a caption</caption>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>idCourse</TableCell>
-                                    <TableCell>Title_Course</TableCell>
-                                    <TableCell align="left">Instructor</TableCell>
-                                    <TableCell align="center">Fecha</TableCell>
-                                    <TableCell align="center">Status</TableCell>
-                                    <TableCell align="right">promo</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {cursos.map((row) => (
-                                    <TableRow key={row.idCourse}>
-                                        <TableCell align="left">{row.idCourse}</TableCell>
-                                        <TableCell component="th" scope="row">
-                                            {row.title}
-                                        </TableCell>
-                                        <TableCell align="left">{row.Users[0]?.name}</TableCell>
-                                        <TableCell align="center">{row.createdAt}</TableCell>
-                                        <TableCell align="center">Activo</TableCell>
-                                        <TableCell align="right">No</TableCell>
-                                        <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
-                                        <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
-                                        <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                <Grid item xs={9} marginTop={9}> 
+                    {selectedIndex == 0? <PestañaCursosPublicados/> : selectedIndex == 1? <PestañaArticulos/> : selectedIndex == 3? <PestañaFacturas/> : <PestañaUsersInstructor/> } 
                 </Grid>
             </Grid>
         </Grid>
