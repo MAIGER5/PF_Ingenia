@@ -6,14 +6,11 @@ const userDeleteHandler = async (req, res) => {
 
     const userDelete = await userDeleteController(idUser);
 
-    if (userDelete.userState[0] === 1) {
-      const { state } = userDelete;
-      res.status(200).json({ state, process: true });
-    } else {
-      throw new Error(
-        "En este momento no podemos procesar tu solicitud, intentalo mas tardé"
-      );
-    }
+    const { state } = userDelete;
+
+    userDelete.userState[0]
+      ? res.status(200).json({ state, process: true })
+      : null;
   } catch (error) {
     res.status(400).json({ error: error.message, process: false });
   }
