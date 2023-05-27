@@ -53,11 +53,12 @@ export default function Profile() {
                     <Divider />
                 </div>
             </div>
+            <div className={styles.subView}>
             {selectedComponent === 'datos' && <Datos />}
             {selectedComponent === 'imagen' && <ImagenDePerfil />}
             {selectedComponent === 'compras' && <MisCompras />}
             {selectedComponent === 'metodoPago' && <MetodoDePago />}
-
+            </div>
         </div>
     )
 }

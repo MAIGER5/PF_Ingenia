@@ -2,14 +2,16 @@ const { User, Course } = require("../../database");
 const userDataForm = require("../../helper/userDataForm");
 
 const userPostGoogleController = async (
-  nameFormat,
+  name,
+  lastname,
   email,
   passwordHash,
   photoURL,
   userType
 ) => {
   const newUser = await User.create({
-    name: nameFormat,
+    name,
+    lastname,
     email,
     password: passwordHash,
     imgProfile: photoURL,

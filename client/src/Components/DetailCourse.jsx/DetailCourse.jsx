@@ -14,14 +14,15 @@ import { useParams } from 'react-router-dom';
 function DetailCourse() {
 
     const {id} = useParams();
-    console.log({id})
+    //console.log({id})
     const dispatch = useDispatch();
 
     const curses = useSelector((state)=>state.courseDetail)
+    console.log(curses);
 
     useEffect(()=> {
         dispatch(getDetailCourse(id));
-        
+
         return ()=> {
             dispatch(cleandDetail())
         }
@@ -29,10 +30,10 @@ function DetailCourse() {
 
     return (
 
-        <Grid 
+        <Grid
             marginX={15}
             marginY={3}
-        > 
+        >
 
             <CardsDetail />
 
@@ -50,12 +51,13 @@ function DetailCourse() {
                         }}>
                             Lo que aprenderás
                         </Typography>
-                        <Typography align='left' marginLeft={2} >
-                            {curses.learnTo? curses.learnTo.map((ele)=>
-                                <Typography> * {ele} </Typography>
-                            ): "nada"
+
+                        <div align='left'style={{ marginLeft: 20 }} >
+                            {curses.learnTo ? (curses.learnTo.map((ele, index)=>
+                                <Typography key={index}> * {ele} </Typography>
+                            )): "nada"
                             }
-                        </Typography>
+                        </div>
 
                         <Typography marginY={3} gutterBottom variant="h5" component="div" sx={{
                             textAlign: 'justify'
@@ -83,7 +85,7 @@ function DetailCourse() {
 
                     </Grid>
                 </Grid>
-                    
+
                 <Grid item xs={5.8}>
                     <Grid >
                         <Typography gutterBottom variant="h5" component="div" sx={{
@@ -118,10 +120,10 @@ function DetailCourse() {
 
 
 
-            <Grid   
+            <Grid
                 container
                 direction="row"
-                justifyContent="space-betwee"
+                justifyContent="space-between"
                 alignItems="center"
                 marginTop={12}
                 spacing={12}

@@ -13,7 +13,7 @@ const publicationControllers = async (idUser,title,subtitle,text,img,subtitleTwo
         asset:true,
         UserIdUser:idUser
     })
-    return "Se agrego con excito"
+    return "Se agrego con exito"
 }
 
 const publisById = async (id)=>{
@@ -30,8 +30,13 @@ const publisByIdDetail =async (id)=>{
     return publi
 }
 
+const publiGet = async ()=>{
+    const response = await Publication.findAll()
+    return response
+}
 module.exports={
     publicationControllers,
     publisById,
-    publisByIdDetail
+    publisByIdDetail,
+    publiGet
 }

@@ -1,13 +1,23 @@
 const createInstructor = require("../../controllers/instructorControllers/createInstructor");
+const userGetControllers = require('../../controllers/instructorControllers/userGetControllers')
 const verifyUserExistence = require("../../helper/verifyUserExistence");
 const bcryptjs = require("bcryptjs");
+const { cloudinary } = require('../../utils/cloudinary');
 const {
   publicationControllers,
   publisById,
-  publisByIdDetail
+  publisByIdDetail,
+  publiGet
 } = require('../../controllers/instructorControllers/publicationControllers')
 
-const instructorGetHandlers = (req, res) => {};
+const instructorGetHandlers = async (req, res) => {
+  try {
+    const response = await userGetControllers()
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 const instructorPostHandlers = async (req, res) => {
   const { name, lastname, email, password, studies, description } = req.body;
 
@@ -32,11 +42,48 @@ const instructorPostHandlers = async (req, res) => {
     res.status(400).json({ error: error.message, createVerification: false });
   }
 };
+
 const publicationsPostHandlers = async (req,res)=>{
   const {idUser,title,subtitle,text,img,subtitleTwo,textTwo,subtitleThree,textThree} = req.body
+  
   try {
-    const response = await publicationControllers(idUser,title,subtitle,text,img,subtitleTwo,textTwo,subtitleThree,textThree)
-    res.status(200).json(response);
+
+    if(img.length > 150){
+      const uploadImage = await cloudinary.uploader.upload(img, {
+        upload_preset: 'ingenia',
+      });
+
+      if(uploadImage){
+        const response = await publicationControllers(
+        idUser,
+        title,
+        subtitle,
+        text,
+        uploadImage.url,
+        subtitleTwo,
+        textTwo,
+        subtitleThree,
+        textThree
+        )
+        res.status(200).json(response);
+      }
+
+    } else {
+
+      const response = await publicationControllers(
+        idUser,
+        title,
+        subtitle,
+        text,
+        img,
+        subtitleTwo,
+        textTwo,
+        subtitleThree,
+        textThree
+      )
+      res.status(200).json(response);
+
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -61,10 +108,20 @@ const publicationsDetailHandlers = async (req,res)=>{
   }
 }
 
+const publicationsGetPostHandlers = async (req,res)=>{
+  try {
+    const response = await publiGet()
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
 module.exports = {
   instructorGetHandlers,
   instructorPostHandlers,
   publicationsPostHandlers,
   publicationsByIdHandlers,
-  publicationsDetailHandlers
+  publicationsDetailHandlers,
+  publicationsGetPostHandlers
 };

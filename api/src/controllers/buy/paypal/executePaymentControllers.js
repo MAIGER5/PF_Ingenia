@@ -1,4 +1,4 @@
-const {Bill,Buy} = require('../../../database')
+const {Bill,Buy,Assessment} = require('../../../database')
 
 const facturacion = async (info,user)=>{
     console.log(info.id);
@@ -30,7 +30,19 @@ const facturacion = async (info,user)=>{
         }
     })
 
+    for(let i=0;i<courses.length;i++){
+       const asses = await Assessment.create({
+            idCor:courses[i],
+            UserIdUser:user
+        })
+    };
+
+}
+const billsControllers = async ()=>{
+    const response = await Bill.findAll()
+    return response
 }
 module.exports = {
     facturacion,
+    billsControllers
 };

@@ -62,6 +62,14 @@ module.exports = (sequelize) => {
       type:DataTypes.STRING(1234),
       allowNull:true
     },
+    numberSales:{
+      type:DataTypes.DOUBLE,
+      default:0
+    },
+    assessment:{
+      type:DataTypes.DOUBLE,
+      default:0
+    },
     asset: {
       type: DataTypes.BOOLEAN,
       default: true,

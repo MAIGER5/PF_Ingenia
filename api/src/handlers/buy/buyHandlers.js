@@ -1,7 +1,7 @@
 const request = require('request');
 require('dotenv').config();
 const {CLIENTPAYPAL,SECRET} = process.env;
-const {facturacion} = require('../../controllers/buy/paypal/executePaymentControllers');
+const {facturacion,billsControllers} = require('../../controllers/buy/paypal/executePaymentControllers');
 const axios = require('axios');
 
 
@@ -9,6 +9,7 @@ const PAYPAL_API = 'https://api-m.sandbox.paypal.com';
 
 const buyHandlers = async (req,res)=>{
     const {costo,idUser} = req.query  
+    console.log(idUser);
     const body = {
         "intent": "CAPTURE",
         "purchase_units": [{
@@ -48,7 +49,7 @@ const executePayment = async (req,res)=>{
         )
         const info = response.data
         const factura = await facturacion(info,idUser);
-
+        // res.json(factura)
         res.redirect('http://localhost:5173/Purchaseconfirmation')
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -62,10 +63,18 @@ const cancelPayment = (req,res) =>{
         
     }
 }
-
+const billsHandlers = async (req,res)=>{
+    try {
+        const response = await billsControllers()
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(400).json({err: error.message})
+    }
+}
 module.exports={
     buyHandlers,
     executePayment,
-    cancelPayment
+    cancelPayment,
+    billsHandlers
 }
 
