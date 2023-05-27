@@ -6,15 +6,21 @@ import ImagenDePerfil from './ImagenDePerfil';
 import MisCompras from './MisCompras';
 import MetodoDePago from './MetodoDePago';
 import { useState } from 'react';
+import LogoutComponent from '../../Components/LogoutComponent/LogoutCoponent';
+import { useSelector } from 'react-redux';
 
 export default function Profile() {
     const [selectedComponent, setSelectedComponent] = useState("datos");
-
+    const [openModal, setOpenModal] = useState(false);
+    const usuarios=useSelector(state=>state. instructor)
     const handleClick = (component) => {
         setSelectedComponent(component);
     };
+    const handleclosesecion=()=>{
+        setOpenModal(true);
+    }
 
-
+ console.log(usuarios)
     return (
         <div className={styles.container}>
             <div className={styles.subContainer}>
@@ -47,10 +53,11 @@ export default function Profile() {
                         <ListItemText primary="Métodos de pago" />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton onClick={() => handleClick('cerrarSesion')}>
+                    <ListItemButton onClick={() =>handleclosesecion()}>
                         <ListItemText primary="Cerrar Sesión" />
                     </ListItemButton>
                     <Divider />
+                    {openModal && <LogoutComponent onClose={() => setOpenModal(false)} />}
                 </div>
             </div>
             <div className={styles.subView}>

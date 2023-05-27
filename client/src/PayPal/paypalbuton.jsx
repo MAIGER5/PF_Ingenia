@@ -17,7 +17,7 @@ export default function Paypalbutton() {
     
   };
  
- console.log(id)
+
   return (
     <Button variant="contained" color="primary" sx={{color:"white",fontSize:19}} onClick={handlePaymentSuccess} startIcon={<PaymentIcon sx={{color:"white"}}/>}>
       pagar con paypal

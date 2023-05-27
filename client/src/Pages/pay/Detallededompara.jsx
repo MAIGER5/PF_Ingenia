@@ -28,7 +28,7 @@ export default function Detallededompara() {
   direction="row"
   spacing={3}
   >
-  <Typography variant="body1" color="initial">Total:</Typography>
+  <Typography variant="body1" sx={{color:"gray"}}>Total:</Typography>
   <Typography variant="body1" color="initial">${totalpagar} </Typography>
    </Stack>
   <Typography variant="body1" color="initial">Al completar la compra, aceptas estas Condiciones de uso.</Typography>
