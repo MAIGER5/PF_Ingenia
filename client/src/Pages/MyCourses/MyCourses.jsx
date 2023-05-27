@@ -2,7 +2,11 @@ import { useState } from "react";
 import styles from "./MyCourses.module.css";
 import { Box, Tab, Tabs } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+
 import setActiveTab from "../../Redux/Actions/setActiveTab";
+
+import AvatarComponent from "../../Components/AvatarComponent/AvatarComponent"
+
 
 export default function MyCourses({proptabindex}) {
 

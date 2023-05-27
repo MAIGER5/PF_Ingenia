@@ -12,6 +12,7 @@
     row-gap: 30px;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .subContainer{
@@ -171,6 +172,30 @@
     margin: 0;
 }
 
+.error{
+    margin: -12px 0 0 0;
+    text-align: left;
+    color: #E53170;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.errorSmall{
+    margin: 0 0 0 0;
+    text-align: left;
+    color: #E53170;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.errorImage{
+    margin: 0;
+    text-align: left;
+    color: #E53170;
+    font-size: 13px;
+    font-weight: 500;
+}
+
 .button{
     background: #FF8906;
     border-radius: 5px;
@@ -198,6 +223,14 @@
     cursor: pointer;
     border-radius: 25px;
     border-style: none;
+}
+
+.buttonOff{
+    background: #9B9B9B;
+    border-radius: 5px;
+    border-style: none;
+    width: 285px;
+    height: 40px;
 }
 
 @media only screen and (min-width: 600px) {

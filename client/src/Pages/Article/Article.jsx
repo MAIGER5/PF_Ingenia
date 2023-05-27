@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-// import Typography from '@mui/material/Typography';
-// import { Grid, Rating } from '@mui/material';
+import { useEffect } from 'react';
 // import ValoracionesCurso from './ValoracionesCurso';
 // import AcercaProfesor from './AcercaProfesor';
 // import CardsDetail from './CardsDetail';
@@ -8,6 +6,10 @@ import React, { useEffect } from 'react';
 // import { getDetailCourse } from '../../Redux/Actions/getDetailCourse';
 // import { cleandDetail } from '../../Redux/Actions/cleanDetail';
 import { useParams } from 'react-router-dom';
+import { Grid, Avatar, Rating, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+
+import CardHome from '../../Components/Card/CardHome';
 
 import styles from "./Article.module.css"
 
@@ -15,8 +17,11 @@ export default function Article() {
     const {id} = useParams();
     console.log({id})
     //const dispatch = useDispatch();
+    const curs = useSelector((state)=> state.allCourse)
 
-    let publication = "publication";
+    let publication = "publication"; 
+    const cursos = curs.slice(0, 6);
+    const ratings = 3.5
 
     useEffect(()=> {
         //dispatch(getDetailCourse(id));
@@ -25,6 +30,37 @@ export default function Article() {
         //     dispatch(cleandDetail())
         // }
     }, [id]);
+
+
+    function stringAvatar(userHeight, userWidth, userFontSize) {
+        const name = "Daniel"
+        const lastname = "Diaz"
+        if (lastname == null) {
+
+            return {
+                sx: {
+                bgcolor: "#FF8906",
+                height: `${userHeight}`,
+                width: `${userWidth}`,
+                fontSize: `${userFontSize}`,
+                },
+                /* children: `${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`, */
+                children: `${name.charAt(0).toUpperCase()}`,
+            };
+        } else {
+            return {
+            sx: {
+            bgcolor: "#FF8906",
+            height: `${userHeight}`,
+            width: `${userWidth}`,
+            fontSize: `${userFontSize}`,
+            },
+            /* children: `${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`, */
+            children: `${name.charAt(0).toUpperCase()}${lastname.charAt(0).toUpperCase()}`,
+        };
+        }
+
+    }
 
   return (
     <div className={styles.container}>
@@ -45,7 +81,7 @@ export default function Article() {
                     <h3 className={styles.subtitle}>
                         Subtitulo
                     </h3>
-                    <p>
+                    <p className={styles.text}>
                     Este curso se divide en 4 modulos don de aprenderas lo siguiente;
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo
                         r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -55,11 +91,11 @@ export default function Article() {
                 </div>
             </div>
             <div className={styles.containersubText}>
-                <div>
+                <div className={styles.containerParagraph}>
                     <h3 className={styles.subtitle}>
                         Subtitulo 2
                     </h3>
-                    <p>
+                    <p className={styles.text}>
                     Este curso se divide en 4 modulos don de aprenderas lo siguiente;
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo
                     r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -67,11 +103,11 @@ export default function Article() {
                     reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                     </p>
                 </div>
-                <div>
+                <div className={styles.containerParagraph}>
                     <h3 className={styles.subtitle}>
                         Subtitulo 3
                     </h3>
-                    <p>
+                    <p className={styles.text}>
                     Este curso se divide en 4 modulos don de aprenderas lo siguiente;
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo
                     r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -88,9 +124,26 @@ export default function Article() {
                 Acerca de
             </h3>
             <div>
-                {/* Avatar */}
+                <Avatar {...stringAvatar( '80px', '80px', '40px')} />
                 <h5>Daniel Díaz</h5>
-                {/* Rating */}
+                <div>
+                    <Typography  
+                        variant="body2" 
+                        sx={{ color: "#e91e63" }}
+                    >
+                        {ratings}
+                    </Typography>
+                    <Rating 
+                        name="half-rating-read" 
+                        precision={0.5} 
+                        value={ratings} 
+                        readOnly 
+                        sx={{ 
+                            color: "#e91e63", 
+                            marginLeft: "5px"
+                        }} 
+                    />
+                </div>
             </div>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo
@@ -101,6 +154,22 @@ export default function Article() {
           <div>
             <h3 className={styles.subtitle}>
                 Cursos de 
+                <div>
+                    {cursos.map((curso) => (
+                <Grid item xs={1} sm={1} md={1} key={curso.idCourse}>
+                <CardHome
+                    idCourse = {curso.idCourse}
+                    title={curso.title}
+                    lenguage={curso.lenguage}
+                    image={curso.image}
+                    instructorLastName={curso.Users[0]?.lastname}
+                    instructorName={curso.Users[0]?.name}
+                    price={curso.price}
+                    habilities={curso.habilities}
+                />
+                </Grid>
+            ))}
+                </div>
             </h3>
           </div>
       </div>

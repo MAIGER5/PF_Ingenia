@@ -36,7 +36,7 @@ export default function FormCourseCopy() {
         content: "",
         dificulty: "",
         requirement: "",
-        learnTo: [],
+        learnTo: "",
         studyMethod: "",
         users: "",
         catego: "",
@@ -89,8 +89,11 @@ export default function FormCourseCopy() {
             ...course,
             [name]: value,
         })
-        )
+        ) 
     }
+    
+    console.log(course);
+    console.log("errors",errors);
 
     const handleChangeToLearn = event => {
         setInputText(event.target.value);
@@ -333,7 +336,7 @@ export default function FormCourseCopy() {
                                     marginBottom: "-7px" 
                                 }}
                             />
-                            {errors.content}
+                            {errors.studyMethod}
                         </p>
                     }
                 </div>
@@ -341,48 +344,22 @@ export default function FormCourseCopy() {
             <div className={styles.subContainer}>  
                 <div className={styles.subContainerSelect}>
                     <div className={styles.subContainerDivision}>
-                        <select
-                            name="dificulty"
-                            value={course.dificulty}
-                            onChange={handleInput}
-                            className={styles.inputSelect}
-                        >
-                            <option disabled="" value="">
-                            Elige un dificultad
-                            </option>
-                            <option value="BASIC">Principiante</option>
-                            <option value="MEDIUM">Intermedio</option>
-                            <option value="ADVANCED">Avanzado</option>
-                        </select>
-                        {errors.dificulty && 
-                        <p className={styles.error}>
-                            <ErrorOutlineIcon
-                                sx={{ 
-                                    width: "15px",
-                                    marginRight: "5px",
-                                    marginBottom: "-7px" 
-                                }}
-                            />
-                            {errors.dificulty}
-                        </p>
-                        }
-                        <select
-                            name="catego"
-                            value={course.catego}
-                            onChange={handleInput}
-                            className={styles.inputSelect}
-                        >
-                            <option disabled="" value="">
-                            Elige una categoria
-                            </option>
-                            {categoryOptions.map(({idCategory, name}) => (
-                                <option value={idCategory} key={idCategory}>
-                                {name}
+                        <div>    
+                            <select
+                                name="dificulty"
+                                value={course.dificulty}
+                                onChange={handleInput}
+                                className={styles.inputSelect}
+                            >
+                                <option disabled="" value="">
+                                Elige una dificultad
                                 </option>
-                            ))}
-                        </select>
-                        {errors.catego && 
-                            <p className={styles.error}>
+                                <option value="BASIC">Principiante</option>
+                                <option value="MEDIUM">Intermedio</option>
+                                <option value="ADVANCED">Avanzado</option>
+                            </select>
+                            {errors.dificulty && 
+                            <p className={styles.errorSmall}>
                                 <ErrorOutlineIcon
                                     sx={{ 
                                         width: "15px",
@@ -390,25 +367,28 @@ export default function FormCourseCopy() {
                                         marginBottom: "-7px" 
                                     }}
                                 />
-                                {errors.catego}
+                                {errors.dificulty}
                             </p>
-                        }
-                    </div>
-                    <div className={styles.subContainerDivision}>
-                        <div className={styles.priceContainer}>
-                            <input 
-                                type="number" 
-                                placeholder="Price"
-                                name="price"
-                                value={course.price}
+                            }
+                        </div>
+                        <div>
+                            <select
+                                name="catego"
+                                value={course.catego}
                                 onChange={handleInput}
-                                className={styles.inputPrice}
-                            /> 
-                            <p className={styles.labelPrice} >
-                                $USD
-                            </p>
-                            {errors.labelPrice && 
-                                <p className={styles.error}>
+                                className={styles.inputSelect}
+                            >
+                                <option disabled="" value="">
+                                Elige una categoria
+                                </option>
+                                {categoryOptions.map(({idCategory, name}) => (
+                                    <option value={idCategory} key={idCategory}>
+                                    {name}
+                                    </option>
+                                ))}
+                            </select>
+                            {errors.catego && 
+                                <p className={styles.errorSmall}>
                                     <ErrorOutlineIcon
                                         sx={{ 
                                             width: "15px",
@@ -416,34 +396,69 @@ export default function FormCourseCopy() {
                                             marginBottom: "-7px" 
                                         }}
                                     />
-                                    {errors.labelPrice}
+                                    {errors.catego}
+                                </p>
+                            }
+                        </div>   
+                    </div>
+                    <div className={styles.subContainerDivision}>
+                        <div className={styles.priceContainer}>
+                            <div>
+                                <input 
+                                    type="number" 
+                                    placeholder="Price"
+                                    name="price"
+                                    value={course.price}
+                                    onChange={handleInput}
+                                    className={styles.inputPrice}
+                                /> 
+                              
+                              
+                                {errors.price && 
+                                    <p className={styles.errorSmall}>
+                                        <ErrorOutlineIcon
+                                            sx={{ 
+                                                width: "15px",
+                                                marginRight: "5px",
+                                                marginBottom: "-7px" 
+                                            }}
+                                        />
+                                        {errors.price}
+                                    </p>
+                                }
+                            </div>
+                            <p className={styles.labelPrice} >
+                                $USD
+                            </p>
+                         
+                        </div>
+                        <div>
+                            <select
+                                name="lenguage"
+                                value={course.lenguage}
+                                onChange={handleInput}
+                                className={styles.inputSelect}
+                            >
+                                <option disabled="" value="">
+                                    Elige un idioma
+                                </option>
+                                <option value="ESPAÑOL">Español</option>
+                                <option value="ENGLISH">Inglés</option>
+                            </select> 
+                            {errors.lenguage && 
+                                <p className={styles.errorSmall}>
+                                    <ErrorOutlineIcon
+                                        sx={{ 
+                                            width: "15px",
+                                            marginRight: "5px",
+                                            marginBottom: "-7px" 
+                                        }}
+                                    />
+                                    {errors.lenguage}
                                 </p>
                             }
                         </div>
-                        <select
-                            name="lenguage"
-                            value={course.lenguage}
-                            onChange={handleInput}
-                            className={styles.inputSelect}
-                        >
-                            <option disabled="" value="">
-                                Elige un idioma
-                            </option>
-                            <option value="ESPAÑOL">Español</option>
-                            <option value="ENGLISH">Inglés</option>
-                        </select> 
-                        {errors.lenguage && 
-                            <p className={styles.error}>
-                                <ErrorOutlineIcon
-                                    sx={{ 
-                                        width: "15px",
-                                        marginRight: "5px",
-                                        marginBottom: "-7px" 
-                                    }}
-                                />
-                                {errors.lenguage}
-                            </p>
-                        }
+                      
                     </div>              
                 </div>
                  
@@ -561,7 +576,6 @@ export default function FormCourseCopy() {
                             />
                         </button>
                     </div>
-                   
                     <div className={styles.listContainer}>
                         <ul className={styles.listLearn}>
                             {elementos.map((elemento, index) => (
@@ -599,14 +613,30 @@ export default function FormCourseCopy() {
                             ))}
                         </ul>
                     </div>
-                   
+                    {elementos.length === 0 && 
+                        <p className={styles.errorSmall}>
+                            <ErrorOutlineIcon
+                                sx={{ 
+                                    width: "15px",
+                                    marginRight: "5px",
+                                    marginBottom: "-7px" 
+                                }}
+                            />
+                            Este campo es obligatorio
+                        </p>
+                    }
                     </div>
                 </div>
             </div>   
 
-        <button className={styles.button} type="submit">
-            <span className={styles.button_text}>Crea tu publicación</span>
-        </button>
+        {Object.entries(errors).length === 0 && productImg && elementos.length != 0 ?
+            <button className={styles.button}  type="submit">
+                <span className={styles.button_text}>Publicar Artículo</span>
+            </button>
+            : <button className={styles.buttonOff} disabled>
+                <span className={styles.button_text}>Publicar Artículo</span>
+            </button>
+        }  
     </form>
   )
 }
