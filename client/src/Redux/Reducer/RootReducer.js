@@ -15,6 +15,8 @@ import { GET_TO_CARRITO_BD } from "../Actions/getToCarritoBd";
 import { BUTTON_PAYPAL } from "../Actions/butonpaypal";
 import { TOTAL_CARRITO } from "../Actions/TotalCarrito";
 import { SET_ACTIVE_TAB } from "../Actions/setActiveTab";
+import { GET_ARTICULOS } from "../actionsProfileAdmin/getArticulos";
+import { GET_FACTURAS } from "../actionsProfileAdmin/getFacturas";
 
 const initialState = {
   allCourse: [],
@@ -26,7 +28,9 @@ const initialState = {
   allCarrito: [],
   localStorageData: {},
   totalCarrito:0,
-  setActiveTab: 0
+  setActiveTab: 0,
+  articulos: [],
+  facturas: []
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -113,13 +117,20 @@ const rootReducer = (state = initialState, action) => {
         ButtonPaypal: action.payload,
       };
     case TOTAL_CARRITO:
-
       return {
         ...state,
         totalCarrito: action.payload,
-
     };
-
+    case GET_ARTICULOS:
+      return {
+        ...state,
+        articulos: action.payload,
+    };
+    case GET_FACTURAS:
+      return {
+        ...state,
+        facturas: action.payload,
+    };
     case SET_ACTIVE_TAB:
       return  {
         ...state,
