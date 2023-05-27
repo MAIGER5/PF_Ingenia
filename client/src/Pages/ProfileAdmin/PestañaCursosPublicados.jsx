@@ -36,7 +36,7 @@ export const PestañaCursosPublicados = () => {
                             <TableCell align="left">Instructor</TableCell>
                             <TableCell align="center">Fecha</TableCell>
                             <TableCell align="center">Status</TableCell>
-                            <TableCell align="right">promo</TableCell>
+                            <TableCell align="right">Promo</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
