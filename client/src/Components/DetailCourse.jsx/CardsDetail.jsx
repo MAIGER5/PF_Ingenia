@@ -10,6 +10,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
+import { getInstructorDetail } from '../../Redux/Actions/getInstructorDetail';
+import { getCoursesInstructor } from '../../Redux/Actions/getCoursesInstructor';
+import { getArticulosInstructor } from '../../Redux/Actions/getArticulosInstructor';
 
 
 
@@ -24,6 +27,11 @@ export function CardsDetail({}) {
 
     function handleclick(){
         localStorage.getItem('name')? dispatch(addToCarrito(id)):  navigate('/Login');
+    }
+    function handleInstructorClick(){
+        dispatch(getInstructorDetail(curses.users?.name))
+        dispatch(getCoursesInstructor(curses.users?.name))
+        dispatch(getArticulosInstructor(curses.users?.name))
     }
 
     return (
@@ -69,7 +77,7 @@ export function CardsDetail({}) {
                     alignItems="flex-start">
 
                     <Grid item xs={8}>
-                        <Link to={`/VendedorPublico/${id}`}>
+                        <Link to={`/VendedorPublico/${id}`} onClick={handleInstructorClick}>
                             <Typography variant="h6" color="text.Primary" sx={{
                                 textAlign: 'justify'
 

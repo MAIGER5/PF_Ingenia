@@ -9,7 +9,7 @@ export const TopVentasVendor = () => {
                 maxWidth: "700px"
         }}
         >
-            <Typography variant="h5" color="primary" align='left' marginBottom={5}>Mas Veniddos</Typography>
+            <Typography variant="h5" color="primary" align='left' marginBottom={5}>Cursos Registrados</Typography>
             <CardsTopv/>
             
         </Box>

@@ -7,9 +7,9 @@ import { Avatar, Stack } from '@mui/material';
 
 
 
-function CardComentshome() {
+function CardComentshome({name, lastName, articulo, articulo1 }) {
   return (
-    <Card sx={{width:400}}>
+    <Card sx={{width:'100%', display:'flex', justifyContent:'left'}}>
        
        <Stack
        direction="row"
@@ -17,14 +17,14 @@ function CardComentshome() {
        alignItems="center"
        spacing={2}
        >
-        <Avatar sx={{ bgcolor: "#e91e63" }}>G</Avatar>
+        <Avatar sx={{ bgcolor: "#e91e63", marginLeft:'20px' }}> {Array.from(name).shift()} </Avatar>
         <Stack>
-        <Typography gutterBottom variant="h5" component="div">
-        Crea una página en Next
-                </Typography>
+        <Typography gutterBottom variant="h5" component="div" align='center'>
+          {articulo}
+        </Typography>
 
-                <Typography gutterBottom variant="h8" component="div">
-                Por: Giselle
+                <Typography gutterBottom variant="h8" component="div" align='left'>
+                  Por: {name} {lastName}
                 </Typography>
         </Stack>
          

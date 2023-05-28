@@ -6,8 +6,8 @@ import CardHome from '../../../Components/Card/CardHome';
 
 export const CardsTopv = () => {
 
-    const curs = useSelector((state)=> state.allCourse)
-    const cursos = curs.slice(0, 3);
+    const curs = useSelector((state)=> state.coursesInstructor)
+    const cursos = curs.slice(0, 6);
 
     return (
         <Box  >
