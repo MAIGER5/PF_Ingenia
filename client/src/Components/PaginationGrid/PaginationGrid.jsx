@@ -34,22 +34,24 @@ export default function PaginationGrid({ arrayPag, visualize }) {
 
 return (
     <Box  >
-        <Grid container spacing={5} sx={{marginLeft:3 }} >
-          {elemToDisplay.map((curso) => (
-            <Grid item xs={3} sm={6} md={3} xl={3} key={curso.idCourse}>
-              <CardHome
-                idCourse = {curso.idCourse}
-                title={curso.title}
-                lenguage={curso.lenguage}
-                image={curso.image}
-                instructorLastName={curso.Users[0]?.lastname}
-                instructorName={curso.Users[0]?.name}
-                price={curso.price}
-                habilities={curso.habilities}
-              />
-            </Grid>
-          ))}
-        </Grid>
+
+        {/* Renderizado de las tarjetas a visualizar */}
+          <Grid container spacing={5} sx={{marginLeft:3 }} >
+            {elemToDisplay.map((curso) => (
+              <Grid item xs={3} sm={6} md={3} xl={3} key={curso.idCourse}>
+                <CardHome
+                  idCourse = {curso.idCourse}
+                  title={curso.title}
+                  lenguage={curso.lenguage}
+                  image={curso.image}
+                  instructorLastName={curso.Users[0]?.lastname}
+                  instructorName={curso.Users[0]?.name}
+                  price={curso.price}
+                  habilities={curso.habilities}
+                />
+              </Grid>
+            ))}
+          </Grid>
 
         {/* Numeración de la Paginación (si hay más de una página) */}
         {pageTotal > 1 ?

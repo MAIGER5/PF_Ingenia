@@ -2,18 +2,18 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import { 
-  Alert, 
-  Snackbar, 
-  CardMedia, 
-  Typography, 
+import {
+  Alert,
+  Snackbar,
+  CardMedia,
+  Typography,
   Rating,
 }from '@mui/material';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-import styles from "./CardHome.module.css"; 
+import styles from "./CardHome.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
 import { RemoveOneFromCarrito } from '../../Redux/Actions/actionsCarrito/RemoveOneFromCarrito';
@@ -26,13 +26,16 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
   // const localStorageInfoUser = useSelector((state) => state.localStorageData);
   const userId = localStorage.getItem('idUser');
 
+  // En la vista MisCursos, no se debe visualizar el precio y carrito. Se utiliza el siguiente estado:
+    const tabIndex = useSelector((state) => state.setActiveTab);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isActive, setIsActive] = useState(false);
   const [colorCart, setcolorCart] = useState("");
-  const [isAlertAdd, setIsAlertAdd] = useState(false);  
-  const [isAlertDelete, setIsAlertDelete] = useState(false);  
+  const [isAlertAdd, setIsAlertAdd] = useState(false);
+  const [isAlertDelete, setIsAlertDelete] = useState(false);
 
   //Logica para el cambio de color del carrito
   useEffect(() => {
@@ -63,30 +66,30 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
     }
   }
 
- 
+
   return (
     <>
-      {isAlertAdd && 
+      {isAlertAdd &&
         (<Snackbar open={isAlertAdd} autoHideDuration={2000} onClose={()=>setIsAlertAdd(false)}>
-            <Alert 
+            <Alert
                 variant="filled" severity="info"
-                icon={<InsertEmoticonIcon fontSize="inherit" />} 
+                icon={<InsertEmoticonIcon fontSize="inherit" />}
             >
-              Has agregado un curso a tu carrito 
+              Has agregado un curso a tu carrito
             </Alert>
         </Snackbar>)}
-      {isAlertDelete && 
+      {isAlertDelete &&
         (<Snackbar open={isAlertDelete} autoHideDuration={2000} onClose={()=>setIsAlertDelete(false)}>
-            <Alert 
+            <Alert
                 variant="filled" severity="info"
-                icon={<SentimentVeryDissatisfiedIcon fontSize="inherit" />} 
+                icon={<SentimentVeryDissatisfiedIcon fontSize="inherit" />}
             >
               Has eliminado un curso de tu carrito
             </Alert>
         </Snackbar>)}
     <div className={styles.container}>
       <div>
-        <NavLink 
+        <NavLink
             to={`/DetailCourse/${idCourse}`}
             style={{ textDecoration: 'none' }}
         >
@@ -99,71 +102,61 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
         </NavLink>
         <div className={styles.containerInfo}>
           <div className={styles.containerInfo} >
-            <NavLink 
+            <NavLink
             to={`/DetailCourse/${idCourse}`}
             style={{ textDecoration: 'none' }}
             >
-            <Typography 
-              align='left' 
-              gutterBottom 
-              color="primary" 
+            <Typography
+              align='left'
+              gutterBottom
+              color="primary"
               component="div"
               sx={{ fontWeight: 600, fontSize: "1.3rem" }}
             >
             {title}
             </Typography>
-            <Typography 
-              variant="body2" 
+            <Typography
+              variant="body2"
               color="text.secondary"
-              align='left' 
+              align='left'
             >
             Instructor: {instructorLastName} {instructorName}
             </Typography>
-            <Typography  
-              variant="body2" 
+            <Typography
+              variant="body2"
               color="text.secondary"
-              align='left' 
+              align='left'
             >
             Idioma: {lenguage}
             </Typography>
             </NavLink>
           </div>
           <div className={styles.containerRating}>
-            <Typography  
-              variant="body2" 
+            <Typography
+              variant="body2"
               sx={{ color: "#e91e63" }}
             >
               {ratings}
             </Typography>
-            <Rating name="read-only" value={ratings} readOnly sx={{ 
-              color: "#e91e63", 
+            <Rating name="read-only" value={ratings} readOnly sx={{
+              color: "#e91e63",
               marginLeft: "5px"
             }} />
-            <button 
+            <button
               onClick={handleCart}
               className={styles.button}
             >
 
-              {isActive ? 
-                <ShoppingCartIcon 
-                  color='secondary'
-                  sx={{ width: "20px" }}
-                />
-              
-              :
-              <ShoppingCartIcon sx={{
-                color: `${colorCart}`,
-                width: "20px"
-                }}/>
-              }
+              {tabIndex === 0 ? null :
+                  (isActive ? <ShoppingCartIcon color='secondary' sx={{ width: "20px" }} /> :
+                      <ShoppingCartIcon sx={{ color: `${colorCart}`, width: "20px" }}/>
+              )}
             </button>
 
           </div>
-          <p className={styles.pricetag}>
-          ${price} USD
-          </p>
+            {tabIndex === 0 ? null : (<p className={styles.pricetag}> ${price} USD </p>)}
         </div>
-      </div>   
+      </div>
     </div>
     </>
   )

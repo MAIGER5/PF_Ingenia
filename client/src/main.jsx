@@ -7,9 +7,9 @@ import { Provider } from 'react-redux'
 import store from "./Redux/Store/Store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  
+
   <Provider store={store}>
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <div
         style={{
           height: "100vh",
@@ -25,6 +25,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <App />
         </Layout>
       </div>
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </Provider>
 );
