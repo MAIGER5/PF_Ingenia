@@ -29,7 +29,7 @@ const initialState = {
   allCarrito: [],
   localStorageData: {},
   totalCarrito:0,
-  setActiveTab: 0,
+  setActiveTab: 1,
   articulos: [],
   facturas: [],
   instructor: []

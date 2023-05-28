@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./MyCourses.module.css";
 import { Box, Tab, Tabs } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,9 +7,14 @@ import setActiveTab from "../../Redux/Actions/setActiveTab";
 import MyCoursesSearch from "../../Components/MyCoursesSearch/MyCoursesSearch";
 import PaginationGrid from "../../Components/PaginationGrid/PaginationGrid";
 import AvatarComponent from "../../Components/AvatarComponent/AvatarComponent"
+import RequestDataCourses from "../../Components/RequestDataCourses/RequestDataCourses";
+import { useLocation } from "react-router-dom";
 
 export default function MyCourses() {
-  const dispatch = useDispatch();
+
+  // Estados locales:
+    const [userCourses, setUserCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
 
   // Estado Global: elementos a visualizar
     const curs = useSelector((state)=> state.allCourse)
@@ -17,10 +22,48 @@ export default function MyCourses() {
   // Estado Global: estado actual de Tab
     const tabIndex = useSelector((state) => state.setActiveTab);
 
+  // Redux:
+    const dispatch = useDispatch();
+
+  // Pedido de datos al servidor
+    useEffect(() => {
+
+      // Cambiar el estado de setActiveTab en Redux antes de salir de la página
+      const beforeUnload = () => {
+        const newTabIndex = 1;
+          dispatch(setActiveTab(newTabIndex));
+            //console.log("salgo de la página;");
+              };
+
+      async function fetchData() {
+        try {
+          const courses = await RequestDataCourses();
+            setUserCourses(courses);
+              setLoading(false);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+            setLoading(false); } }
+
+      fetchData();
+
+
+      return () => { beforeUnload(); };
+
+    }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>; }
+
+
   // Función para el cambio de Tabs:
-  const handleTabChange = (event, newTabIndex) => {
-    dispatch(setActiveTab(newTabIndex));
-  };
+    const handleTabChange = (event, newTabIndex) => {
+      dispatch(setActiveTab(newTabIndex)); };
+
+  // Para pruebas de desarrollo:
+    // console.log("Arreglo todos los cursos: ");
+    // console.log(curs);
+    // console.log("Arreglo Cursos de usuario: ");
+    // console.log(userCourses);
 
   return (
     <div className={styles.container}>
@@ -50,8 +93,8 @@ export default function MyCourses() {
 
           {tabIndex === 0 && (
             <Box>
-              {curs.length === 0 ? ("Todavía no tienes Cursos en ésta sección.") :
-              (<PaginationGrid arrayPag={curs} visualize = {8}/>)}
+              {userCourses.length === 0 ? ("Todavía no tienes Cursos en ésta sección.") :
+              (<PaginationGrid arrayPag={userCourses} visualize = {8}/>)}
             </Box>
           )}
 
