@@ -1,7 +1,9 @@
 import { useState, Fragment } from "react";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { validationArticle } from "./validations";
+
+import { validationArticle } from "./validations"
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
@@ -12,7 +14,7 @@ import styles from "./FormArticle.module.css";
 export default function FormArticle() {
 
     const user = useSelector((state) => state.localStorageData);
-    //const navigate = useNavigate(); 
+    const navigate = useNavigate(); 
 
     const [productImg, setProductImg] = useState("");
     const [previewSource, setPreviewSource] = useState();
@@ -49,7 +51,8 @@ export default function FormArticle() {
         ).then(async (response) => {
             console.log(response);
         })
-        setIsAlert(true)
+      
+       
         setArticle({
             title: "",
             subtitle: "",
@@ -59,11 +62,19 @@ export default function FormArticle() {
             textTwo: "",
             subtitleThree: "",
             textThree: "",
-        })
+        }) 
         setProductImg("")
-        //let id = response.data?.idCourse
-        //navigate(`/DetailCourse/${id}`)
+        setPreviewSource("")
+        setIsAlert(true)
+        setTimeout(() => {
+            let id = response.data?.idCourse
+            //navigate(`/DetailCourse/${id}`)
+        }, 1000);
+      
     }
+
+    console.log(previewSource);
+    console.log("productimg",productImg);
 
     const handleInput = (event) => {
         const { name, value } = event.target;

@@ -21,6 +21,7 @@ import { GET_INSTRUCTOR_USER } from "../actionsProfileAdmin/getInstructorUser";
 import { GET_INSTRUCTOR_DATAIL } from "../Actions/getInstructorDetail";
 import { GET_COURSES_INSTRUCTOR } from "../Actions/getCoursesInstructor";
 import { GET_ARTICULOS_INSTRUCTOR } from "../Actions/getArticulosInstructor";
+import { GET_DETAIL_ARTICLE } from "../Actions/getDatailArticle";
 
 const initialState = {
   allCourse: [],
@@ -39,7 +40,8 @@ const initialState = {
   cursosRebajas: [],
   instructorDetail:{},
   coursesInstructor:[],
-  articulosInstructors: []
+  articulosInstructors: [],
+  articleDetail: []
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -165,6 +167,11 @@ const rootReducer = (state = initialState, action) => {
       return  {
         ...state,
         setActiveTab: action.payload,
+    };
+    case GET_DETAIL_ARTICLE:
+      return {
+        ...state,
+        articleDetail: action.payload,
       };
 
     default:
