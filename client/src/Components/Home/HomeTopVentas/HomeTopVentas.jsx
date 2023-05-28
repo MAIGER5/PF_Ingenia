@@ -8,7 +8,7 @@ export default function HomeTopVentas() {
         maxWidth: "700px"
       }}
     >
-      <Typography variant="h5" color="primary"  sx={{marginBottom:4, marginLeft: "-50px" }} align='left'>Top ventas</Typography>
+      <Typography variant="h5" color="primary"  sx={{marginBottom:4, marginLeft: "-0px" }} align='left'>Top ventas</Typography>
       <Cards/>
         
     </Box>

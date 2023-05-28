@@ -36,7 +36,7 @@ export const PestañaUsersInstructor = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {instructs.data?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
+                        {instructs?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
                             <TableRow key={row.idUser}>
                                 <TableCell align="left">{row.idUser}</TableCell>
                                 <TableCell component="th" scope="row">
@@ -57,7 +57,7 @@ export const PestañaUsersInstructor = () => {
             <TablePagination sx={{width:'100%', display:'flex', justifyContent:'center'}}
                 rowsPerPageOptions={[5, 10, 25]}
                 component="div"
-                count={instructs.data?.length}
+                count={instructs?.length}
                 rowsPerPage={rpg}
                 page={pg}
                 onPageChange={handleChangePage}

@@ -18,6 +18,9 @@ import { SET_ACTIVE_TAB } from "../Actions/setActiveTab";
 import { GET_ARTICULOS } from "../actionsProfileAdmin/getArticulos";
 import { GET_FACTURAS } from "../actionsProfileAdmin/getFacturas";
 import { GET_INSTRUCTOR_USER } from "../actionsProfileAdmin/getInstructorUser";
+import { GET_INSTRUCTOR_DATAIL } from "../Actions/getInstructorDetail";
+import { GET_COURSES_INSTRUCTOR } from "../Actions/getCoursesInstructor";
+import { GET_ARTICULOS_INSTRUCTOR } from "../Actions/getArticulosInstructor";
 
 const initialState = {
   allCourse: [],
@@ -32,7 +35,11 @@ const initialState = {
   setActiveTab: 1,
   articulos: [],
   facturas: [],
-  instructor: []
+  instructor: [],
+  cursosRebajas: [],
+  instructorDetail:{},
+  coursesInstructor:[],
+  articulosInstructors: []
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -42,12 +49,28 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allCourse: action.payload,
         allCourseCopy: action.payload,
+        cursosRebajas: action.payload.filter((cur)=>cur.pro === false)
       };
 
     case GET_DATAIL_COURSE:
       return {
         ...state,
         courseDetail: action.payload,
+      };
+    case GET_INSTRUCTOR_DATAIL:
+      return {
+        ...state,
+        instructorDetail: action.payload,
+      };
+    case GET_COURSES_INSTRUCTOR:
+      return {
+        ...state,
+        coursesInstructor: action.payload,
+      };
+    case GET_ARTICULOS_INSTRUCTOR:
+      return {
+        ...state,
+        articulosInstructors: action.payload,
       };
 
     case CLEAN_DETAIL:

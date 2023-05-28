@@ -17,19 +17,19 @@ export default function HomeCategorias() {
   };
 
   return (
-    <Box sx={{ marginTop: 4, width: 1550 }}>
-      <Typography variant="h5" color="primary" sx={{ marginBottom: 4, marginTop: 4, marginLeft: -165 }}>
+    <Box marginLeft={7} sx={{ marginTop: 4, width: 1360 }}>
+      <Typography variant="h5" color="primary" sx={{ marginBottom: 4, marginTop: 4, marginLeft: -128 }}>
         Categorias
       </Typography>
-      <Grid container spacing={3} sx={{ marginLeft: 3 }}>
+      <Grid container spacing={1} sx={{ marginLeft: 3 }}>
         {categorias.map((categori) => (
-          <Grid item xs={3} sm={5} md={4} xl={2} key={categori.idCategory}>
+          <Grid marginRight={5} item xs={3} sm={5} md={4} xl={2} key={categori.idCategory}>
             <Link to="/CategoryCourses">
               <Button
                 onClick={() => handledispach(categori)}
                 variant="contained"
                 color="secondary"
-                sx={{ width: 220, height: 60 }}
+                sx={{ width: 220, height: 60}}
               >
                 {categori.name}
               </Button>
