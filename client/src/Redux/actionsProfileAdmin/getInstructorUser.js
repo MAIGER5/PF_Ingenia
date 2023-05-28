@@ -6,6 +6,6 @@ const URLinstructorUser = 'http://localhost:3001/instructor'
 export const getInstructorUser = () => {
   return async function(dispatch) {
     const response = await axios.get(`${URLinstructorUser}`);
-    dispatch({type: GET_INSTRUCTOR_USER, payload: response})
+    dispatch({type: GET_INSTRUCTOR_USER, payload: response.data})
   }
 }

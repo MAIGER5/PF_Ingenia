@@ -36,7 +36,7 @@ export const PestañaArticulos = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {artiuculs.data?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
+                        {artiuculs?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
                             <TableRow key={row.idPublications}>
                                 <TableCell align="left">{row.idPublications}</TableCell>
                                 <TableCell component="th" scope="row">
@@ -57,7 +57,7 @@ export const PestañaArticulos = () => {
                 <TablePagination sx={{width:'100%', display:'flex', justifyContent:'center'}}
                 rowsPerPageOptions={[5, 10, 25]}
                 component="div"
-                count={artiuculs.data?.length}
+                count={artiuculs?.length}
                 rowsPerPage={rpg}
                 page={pg}
                 onPageChange={handleChangePage}
