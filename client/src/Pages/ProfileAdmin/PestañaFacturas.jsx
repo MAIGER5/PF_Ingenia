@@ -36,7 +36,7 @@ export const PestañaFacturas = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {facturs.data?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
+                        {facturs?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
                             <TableRow key={row.idBill}>
                                 <TableCell align="left">{row.idBill}</TableCell>
                                 <TableCell component="th" scope="row">
@@ -57,7 +57,7 @@ export const PestañaFacturas = () => {
             <TablePagination sx={{width:'100%', display:'flex', justifyContent:'center'}}
                 rowsPerPageOptions={[5, 10, 25]}
                 component="div"
-                count={facturs.data?.length}
+                count={facturs?.length}
                 rowsPerPage={rpg}
                 page={pg}
                 onPageChange={handleChangePage}

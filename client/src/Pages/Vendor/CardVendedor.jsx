@@ -29,7 +29,7 @@ export const CardVendedor = () => {
                             width: 120, 
                             height: 120}}
                         >
-                            <Typography variant="h3"> {Array.from(instructor[0]?.name).shift()} </Typography>
+                            <Typography variant="h3">  </Typography>
                         </Avatar>
                     </Grid>
                     <Rating 
