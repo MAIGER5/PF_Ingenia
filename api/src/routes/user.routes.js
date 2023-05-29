@@ -10,6 +10,7 @@ const {
   myCoursesHandlers,
   myBillsHandlers,
 } = require("../handlers/user/myCoursesHandlers");
+const userGetHandler = require("../handlers/user/userGetHandler");
 
 const checkAuth = require("../middleware/authUser");
 const checkRoleAuth = require("../middleware/roleAuth");
@@ -20,7 +21,8 @@ const { validateLogin } = require("../utils/validators/userLogin");
 const userRouter = Router();
 
 // Ruta para users
-userRouter.get("/", checkAuth, checkRoleAuth(["STUDENT"]), user);
+// userRouter.get("/", checkAuth, checkRoleAuth(["STUDENT"]), user);
+userRouter.get("/:idUser", userGetHandler);
 
 userRouter.post("/created", validateCreate, userPostHandler);
 
