@@ -20,9 +20,6 @@ export default function FormArticle() {
     const [previewSource, setPreviewSource] = useState();
     const [isAlert, setIsAlert] = useState(false); 
 
-    console.log(user);
-    console.log(user.idUser);
-
     const [article, setArticle] = useState({
         title: "",
         subtitle: "",
@@ -45,6 +42,7 @@ export default function FormArticle() {
 
     const handleSubmit = async(event) => {
         event.preventDefault();
+        let id;
     
         article.idUser = user.idUser
         article.img = productImg
@@ -52,7 +50,7 @@ export default function FormArticle() {
             `http://localhost:3001/instructor/publication`,
             article
         ).then(async (response) => {
-            console.log(response);
+            id = response.data?.idPublications
         })
       
        
@@ -70,14 +68,10 @@ export default function FormArticle() {
         setPreviewSource("")
         setIsAlert(true)
         setTimeout(() => {
-            let id = response.data?.idCourse
-            //navigate(`/DetailCourse/${id}`)
+            navigate(`/Article/${id}`)
         }, 1000);
       
     }
-
-    console.log(previewSource);
-    console.log("productimg",productImg);
 
     const handleInput = (event) => {
         const { name, value } = event.target;
