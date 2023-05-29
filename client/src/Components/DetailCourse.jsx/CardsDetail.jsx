@@ -13,17 +13,18 @@ import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
 import { getInstructorDetail } from '../../Redux/Actions/getInstructorDetail';
 import { getCoursesInstructor } from '../../Redux/Actions/getCoursesInstructor';
 import { getArticulosInstructor } from '../../Redux/Actions/getArticulosInstructor';
+import { useEffect } from 'react';
 
 
 
-export function CardsDetail({}) {
+export function CardsDetail() {
 
     const curses = useSelector((state)=> state.courseDetail)
     const {id} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const [mostrarLogin, setmostrarLogin] = React.useState(false);
+    const [purchasedCourse, setPurchasedCourse] = React.useState(false);
 
     function handleclick(){
         localStorage.getItem('name')? dispatch(addToCarrito(id)):  navigate('/Login');
@@ -33,6 +34,25 @@ export function CardsDetail({}) {
         dispatch(getCoursesInstructor(curses.users?.name))
         dispatch(getArticulosInstructor(curses.users?.name))
     }
+
+    useEffect(() => {
+        // Para que la página se en la parte superior:
+            window.scrollTo(0, 0);
+        // Para consultar si el actual curso fue adquirido por el usuario:
+            let myCourses = localStorage.getItem("myCourses").split(",")
+            if (!purchasedCourse) setPurchasedCourse(myCourses.includes(id))
+            //console.log(myCourses.includes(id));
+    }, []);
+
+    // Control de consola:
+        // console.log(idCurso);
+        // console.log("id de curso:");
+        // console.log("Curso comprado?");
+        // console.log(purchasedCourse);
+        // console.log("array");
+        // console.log(myCourses);
+
+
 
     return (
 
@@ -105,19 +125,15 @@ export function CardsDetail({}) {
 
                             {/* component={Link} to={'/SignupUsuario'} */}
 
-                            <Button onClick={handleclick} variant='contained' startIcon={<ShoppingCartIcon/>}
-                                >Add
-                            </Button>
+                            {purchasedCourse == false ? (<Button onClick={handleclick} variant='contained' startIcon={<ShoppingCartIcon/>} >Add </Button>) : null}
+
                             {/* {<Login />} */}
 
                             <Fab disabled aria-label="like">
                                 <FavoriteIcon />
                             </Fab>
                             <Grid item xs={4.5}>
-                                <Box component='h2'
-                                >
-                                   $ {curses.price} USD
-                                </Box>
+                                {purchasedCourse == false ? (<Box component='h2' > $ {curses.price} USD </Box>) : null }
                             </Grid>
                         </Grid>
 

@@ -18,7 +18,7 @@ function DetailCourse() {
     const dispatch = useDispatch();
 
     const curses = useSelector((state)=>state.courseDetail)
-    console.log(curses);
+    // console.log(curses);
 
     useEffect(()=> {
         dispatch(getDetailCourse(id));

@@ -7,6 +7,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import LoginToBackendOwnAccess from "../LoginToBackendOwnAccess/LoginToBackendOwnAccess";
 import styles from "./FormLogin.module.css";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
+import RequestDataCourses from "../RequestDataCourses/RequestDataCourses";
 
 export const DATA_LOGIN = "DATA_LOGIN";
 
@@ -36,6 +37,23 @@ export default function FormLogin({ userType }) {
       try {
         const devolution = await LoginToBackendOwnAccess(user, dispatch);
         console.log(devolution);
+
+        // Consulto si el usuario tiene cursos
+        // y los guardo en el localStorage
+            async function fetchData() {
+              try {
+                const courses = await RequestDataCourses();
+                  let userCourseIds = [];
+                      for (let index = 0; index < courses.length; index++) {
+                          userCourseIds.push(courses[index].idCourse) }
+                console.log(userCourseIds);
+                localStorage.setItem("myCourses", userCourseIds);
+
+              } catch (error) {
+                console.error("Error fetching data:", error);
+                  setLoading(false); } }
+
+            fetchData();
 
         // Reset de inputs
           setUser({password: "", email: "",});
