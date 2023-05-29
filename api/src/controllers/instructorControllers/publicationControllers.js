@@ -1,4 +1,4 @@
-const {User,Publication} = require('../../database')
+const {User,Publication,Course} = require('../../database')
 
 const publicationControllers = async (idUser,title,subtitle,text,img,subtitleTwo,textTwo,subtitleThree,textThree)=>{
     const publi = await Publication.create({
@@ -27,7 +27,39 @@ const publisById = async (id)=>{
 
 const publisByIdDetail =async (id)=>{
     const publi = await Publication.findByPk(id)
-    return publi
+    const {
+        UserIdUser,            
+        title,
+        subtitle,
+        text,
+        img,
+        subtitleTwo,
+        textTwo,
+        subtitleThree,
+        textThree
+    } = publi
+
+    const user = await User.findByPk(UserIdUser,{
+        include:[{
+            model: Course,
+            through:{
+                attributes:[],
+            },
+        }
+      ],
+    })
+    return {
+        UserIdUser,            
+        title,
+        subtitle,
+        text,
+        img,
+        subtitleTwo,
+        textTwo,
+        subtitleThree,
+        textThree,
+        user
+    }
 }
 
 const publiGet = async ()=>{
