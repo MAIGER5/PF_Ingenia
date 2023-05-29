@@ -36,7 +36,7 @@ export function CardsDetail() {
     }
 
     useEffect(() => {
-        // Para que la página se en la parte superior:
+        // Para que la página se visualice en la parte superior:
             window.scrollTo(0, 0);
         // Para consultar si el actual curso fue adquirido por el usuario:
             let myCourses = localStorage.getItem("myCourses").split(",")

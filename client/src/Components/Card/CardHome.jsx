@@ -36,6 +36,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
   const [colorCart, setcolorCart] = useState("");
   const [isAlertAdd, setIsAlertAdd] = useState(false);
   const [isAlertDelete, setIsAlertDelete] = useState(false);
+  const [purchasedCourse, setPurchasedCourse] = React.useState(false);
 
   //Logica para el cambio de color del carrito
   useEffect(() => {
@@ -44,6 +45,12 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
     } else {
       setcolorCart('#000000')
     }
+
+      // Consulto si el usuario ha comprado éste curso:
+      let myCourses = localStorage.getItem("myCourses").split(",").map((courseId) => parseInt(courseId));
+      console.log("En CardHome");
+      if(myCourses.includes(idCourse)) setPurchasedCourse(true);
+
   },[])
 
   //Lógica para activado/desactivado del carrito
@@ -65,7 +72,6 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
       dispatch(RemoveToByBD(idCourse, userId))
     }
   }
-
 
   return (
     <>
@@ -147,14 +153,14 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
               className={styles.button}
             >
 
-              {tabIndex === 0 ? null :
+              {!purchasedCourse &&
                   (isActive ? <ShoppingCartIcon color='secondary' sx={{ width: "20px" }} /> :
                       <ShoppingCartIcon sx={{ color: `${colorCart}`, width: "20px" }}/>
               )}
             </button>
 
           </div>
-            {tabIndex === 0 ? null : (<p className={styles.pricetag}> ${price} USD </p>)}
+            {!purchasedCourse && (<p className={styles.pricetag}> ${price} USD </p>)}
         </div>
       </div>
     </div>
