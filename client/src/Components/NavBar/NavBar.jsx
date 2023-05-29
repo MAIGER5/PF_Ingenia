@@ -63,6 +63,7 @@ export default function NavBar() {
       //prevengo un dato "loginUser.userType = null"
       if (localStorage.getItem("userType") == null) {
        localStorage.setItem("userType", "0");
+       localStorage.setItem("myCourses", "0")
       }
 
       // Consulto qué tipo de usuario está registrado
