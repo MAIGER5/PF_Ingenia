@@ -52,7 +52,7 @@ export default function Login() {
               console.error("Error fetching data:", error);
                  } }
 
-          fetchData();
+          await fetchData();
 
         window.location.href = "/";
 
