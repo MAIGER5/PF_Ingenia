@@ -9,6 +9,7 @@ import { Box, Tab, Tabs, Button } from "@mui/material";
 import styles from "./Login.module.css";
 import LoginToBackendGoogle from "../../Components/LoginToBackendGoogle/LoginToBackendGoogle";
 import { useDispatch } from "react-redux";
+import RequestDataCourses from "../../Components/RequestDataCourses/RequestDataCourses";
 
 export const LOGIN_USER = "LOGIN_USER"
 
@@ -30,11 +31,34 @@ export default function Login() {
   const signInGoogle = (type) => {
     signInWithPopup(auth, provider)
     .then(async (result) => {
-      //se envían datos para validación por servidor
-      LoginToBackendGoogle(result, type, dispatch)
 
-      //navigate("/");
-      window.location.href = "/";
+      try {
+
+        const devolution = await LoginToBackendGoogle(result, type, dispatch)
+        console.log(devolution);
+
+        // Consulto si el usuario tiene cursos
+        // y los guardo en el localStorage
+          async function fetchData() {
+            try {
+              const courses = await RequestDataCourses();
+                let userCourseIds = [];
+                    for (let index = 0; index < courses.length; index++) {
+                        userCourseIds.push(courses[index].idCourse) }
+              console.log(userCourseIds);
+              localStorage.setItem("myCourses", userCourseIds);
+
+            } catch (error) {
+              console.error("Error fetching data:", error);
+                 } }
+
+          fetchData();
+
+        window.location.href = "/";
+
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
 
     }).catch((error) => {
       console.log(error.message)
@@ -64,7 +88,7 @@ export default function Login() {
             style={{ textDecoration: 'none'}}
             to={`/${type}`}
           >
-            <span className={styles.textLink}> Registrate</span>
+            <span className={styles.textLink}> Regístrate</span>
           </NavLink>
         </p>
       </div>
