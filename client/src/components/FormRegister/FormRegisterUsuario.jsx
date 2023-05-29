@@ -49,11 +49,7 @@ export default function FormRegisterUsuario() {
         event.preventDefault();
 
         RegisterUserToBackend(user)
-        // setTimeout(() => {
-        //     setisLoading(true);
-        //     navigate("/")
-        // }, "1000");
-        // setisLoading(false)
+    
         setUser({
             name: "",
             lastname: "",

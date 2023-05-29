@@ -20,6 +20,9 @@ export default function FormArticle() {
     const [previewSource, setPreviewSource] = useState();
     const [isAlert, setIsAlert] = useState(false); 
 
+    console.log(user);
+    console.log(user.idUser);
+
     const [article, setArticle] = useState({
         title: "",
         subtitle: "",
@@ -43,7 +46,7 @@ export default function FormArticle() {
     const handleSubmit = async(event) => {
         event.preventDefault();
     
-        article.idUSer = user.idUser
+        article.idUser = user.idUser
         article.img = productImg
         await axios.post(
             `http://localhost:3001/instructor/publication`,
@@ -396,7 +399,7 @@ export default function FormArticle() {
                         onChange={handleInput}
                         className={styles.textareaMedium}
                     />
-                    {errors.subtitleThree && 
+                    {errors.textThree && 
                         <p className={styles.error}>
                             <ErrorOutlineIcon
                                 sx={{ 
@@ -405,7 +408,7 @@ export default function FormArticle() {
                                     marginBottom: "-7px" 
                                 }}
                             />
-                            {errors.subtitleThree}
+                            {errors.textThree}
                         </p>
                     } 
                 </div> 
