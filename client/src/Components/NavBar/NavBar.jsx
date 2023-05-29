@@ -30,6 +30,7 @@ import setActiveTab from "../../Redux/Actions/setActiveTab";
 import { getArticulos } from "../../Redux/actionsProfileAdmin/getArticulos";
 import { getFacturas } from "../../Redux/actionsProfileAdmin/getFacturas";
 import { getInstructorUser } from "../../Redux/actionsProfileAdmin/getInstructorUser";
+import { getIdCoursesuser } from "../../Redux/Actions/getIdCoursesuser";
 
 
 export default function NavBar() {
@@ -46,6 +47,7 @@ export default function NavBar() {
     dispatch(getFacturas())
     dispatch(getInstructorUser())
     dispatch(postLocalStorage())
+    dispatch(getIdCoursesuser(user))
     !carrito.length? dispatch(getToCarritoBd(user)): "nada"
   }, [dispatch])
 

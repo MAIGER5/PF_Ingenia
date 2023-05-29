@@ -8,6 +8,7 @@ import { getFacturas } from '../../Redux/actionsProfileAdmin/getFacturas';
 import { PestañaFacturas } from './PestañaFacturas';
 import { getInstructorUser } from '../../Redux/actionsProfileAdmin/getInstructorUser';
 import { PestañaUsersInstructor } from './PestañaUsersInstructor';
+import LogoutComponent from '../../Components/LogoutComponent/LogoutCoponent';
 
 
 
@@ -17,11 +18,19 @@ export const ProfileAdmin = () => {
 
     const cursos = useSelector((state)=> state.allCourse);
 
+    const [openModal, setOpenModal] = useState(false);
+
     const [selectedIndex, setSelectedIndex] = useState(1)
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
+        index ==4? setOpenModal(true) : "nada"
     };
+
+    const handleLogoutClick = () => {
+        setOpenModal(true);
+    };
+
 
 
     // useEffect(() => {
@@ -61,8 +70,9 @@ export const ProfileAdmin = () => {
                 </Grid>
 
                 <Grid item xs={9} marginTop={9}> 
-                    {selectedIndex == 0? <PestañaCursosPublicados/> : selectedIndex == 1? <PestañaArticulos/> : selectedIndex == 3? <PestañaFacturas/> : <PestañaUsersInstructor/> } 
+                    {selectedIndex == 0? <PestañaCursosPublicados/> : selectedIndex == 1? <PestañaArticulos/> : selectedIndex == 2? <PestañaUsersInstructor/>: selectedIndex == 3? <PestañaFacturas/> : selectedIndex == 4? handleLogoutClick:"nada"} 
                 </Grid>
+                {openModal && <LogoutComponent onClose={() => setOpenModal(false)} />}
             </Grid>
         </Grid>
     )

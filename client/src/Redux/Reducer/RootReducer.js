@@ -22,6 +22,7 @@ import { GET_INSTRUCTOR_DATAIL } from "../Actions/getInstructorDetail";
 import { GET_COURSES_INSTRUCTOR } from "../Actions/getCoursesInstructor";
 import { GET_ARTICULOS_INSTRUCTOR } from "../Actions/getArticulosInstructor";
 import { GET_DETAIL_ARTICLE } from "../Actions/getDatailArticle";
+import { GET_ID_COURSES_USER } from "../Actions/getIdCoursesuser";
 
 const initialState = {
   allCourse: [],
@@ -41,7 +42,8 @@ const initialState = {
   instructorDetail:{},
   coursesInstructor:[],
   articulosInstructors: [],
-  articleDetail: []
+  articleDetail: [],
+  cursosUsers: []
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -68,6 +70,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         coursesInstructor: action.payload,
+      };
+    case GET_ID_COURSES_USER:
+      return {
+        ...state,
+        cursosUsers: action.payload,
       };
     case GET_ARTICULOS_INSTRUCTOR:
       return {
