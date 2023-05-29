@@ -36,22 +36,8 @@ export default function FormRegisterVendedor() {
     const handleSubmit = async(event) => {
         event.preventDefault();
 
-        console.log(user)
         RegisterVendorToBackend(user)
-        // await fetch("http://localhost:3001/instructor", {
-        // method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
-        // body: JSON.stringify(user),
-        // }).catch(error => {
-        //     console.log(error);
-        // });
-        // setTimeout(() => {
-        //     setisLoading(true);
-        //     navigate("/")
-        // }, "1000");
-        // setisLoading(false)
+     
         setUser({
             name: "",
             lastname: "",
