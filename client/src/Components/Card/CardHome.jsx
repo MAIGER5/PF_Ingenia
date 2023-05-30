@@ -47,8 +47,10 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
     }
 
       // Consulto si el usuario ha comprado éste curso:
-      let myCourses = localStorage.getItem("myCourses").split(",").map((courseId) => parseInt(courseId));
-      console.log("En CardHome");
+      let myCoursesString = localStorage.getItem("myCourses");
+        //let myCourses = myCoursesString.includes(",") ? myCoursesString.split(",") : [myCoursesString];
+      let myCourses =  myCoursesString ? myCoursesString.split(",").map(Number) : [Number(myCoursesString)];
+      //console.log("En CardHome");
       if(myCourses.includes(idCourse)) setPurchasedCourse(true);
 
   },[])

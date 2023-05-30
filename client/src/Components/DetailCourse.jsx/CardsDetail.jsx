@@ -14,6 +14,7 @@ import { getInstructorDetail } from '../../Redux/Actions/getInstructorDetail';
 import { getCoursesInstructor } from '../../Redux/Actions/getCoursesInstructor';
 import { getArticulosInstructor } from '../../Redux/Actions/getArticulosInstructor';
 import { useEffect } from 'react';
+import RatingComponent from '../RatingComponent/RatingComponent';
 
 
 
@@ -25,6 +26,9 @@ export function CardsDetail() {
     const navigate = useNavigate();
 
     const [purchasedCourse, setPurchasedCourse] = React.useState(false);
+    const [ ratingCourse, setRatingCourse ] = React.useState(false);
+    const [ modalRating, setModalRating ] = React.useState(false)
+    const [ valueRating, setValueRating ] = React.useState(0)
 
     function handleclick(){
         localStorage.getItem('name')? dispatch(addToCarrito(id)):  navigate('/Login');
@@ -35,22 +39,36 @@ export function CardsDetail() {
         dispatch(getArticulosInstructor(curses.users?.name))
     }
 
+
+    function handleRatingChange (event, newValue) {
+        setValueRating(newValue)
+        setModalRating(true)
+    }
+
     useEffect(() => {
         // Para que la página se visualice en la parte superior:
             window.scrollTo(0, 0);
         // Para consultar si el actual curso fue adquirido por el usuario:
-            let myCourses = localStorage.getItem("myCourses").split(",")
+        let myCoursesString = localStorage.getItem("myCourses");
+        let myCourses = myCoursesString.includes(",") ? myCoursesString.split(",") : [myCoursesString];
             if (!purchasedCourse) setPurchasedCourse(myCourses.includes(id))
-            //console.log(myCourses.includes(id));
+        // Para consultar si el actual curso, fue calificado por el usuario:
+            let myRatingCoursesString = localStorage.getItem("myRatingCourses");
+            let myRatingCourses = myRatingCoursesString.includes(",") ? myRatingCoursesString.split(",") : [myRatingCoursesString];
+            if(!ratingCourse) setRatingCourse(myRatingCourses.includes(id))
+
     }, []);
 
     // Control de consola:
-        // console.log(idCurso);
         // console.log("id de curso:");
+        // console.log(id);
         // console.log("Curso comprado?");
         // console.log(purchasedCourse);
         // console.log("array");
         // console.log(myCourses);
+        // console.log("Después purchasedCourse && !ratingCourse:");
+        // console.log(purchasedCourse);
+        // console.log(ratingCourse);
 
 
 
@@ -120,7 +138,17 @@ export function CardsDetail() {
                             alignItems="baseline"
                         >
                             <Grid>
-                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
+                                {/* Primero pregunto si ya compró el curso, luego pregunto si lo calificó */}
+                                    {purchasedCourse == false ? (<Rating name="half-rating-read" defaultValue={2.5} precision={0.5} size='large' readOnly/>) :
+                                        (ratingCourse == false ? (<div><Rating name="half-rating-read" defaultValue={2.5} precision={0.5} size='large' readOnly/>
+                                                        <Typography variant="body2" color="secondary" style={{ padding: '10px', fontStyle: 'italic' }}>
+                                                            Ya has calificado este curso
+                                                                </Typography></div>) : (<div> <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' onChange={handleRatingChange}/>
+                                                        <Typography variant="body2" color="primary" style={{ padding: '10px', fontStyle: 'italic' }}> Califica este curso!! </Typography></div>)
+
+                                            )  }
+                                {modalRating && <RatingComponent id={id} valueRating={valueRating} onClose={() => setModalRating(false)} />}
+
                             </Grid>
 
                             {/* component={Link} to={'/SignupUsuario'} */}

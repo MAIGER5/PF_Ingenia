@@ -12,6 +12,7 @@ const assignPointsViewHandlers = async (req,res)=>{
 
 const assignPointsHandlers = async (req,res)=>{
     const {user,course,comement,assessment} = req.body
+    console.log(req.body);
     try {
         const response = await assignPointsControllers(user,course,comement,assessment)
         res.status(200).json(response)

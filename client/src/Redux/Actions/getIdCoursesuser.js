@@ -7,6 +7,7 @@ export const getIdCoursesuser = (id) => {
   //console.log("getIdCoursesUser");
 
     return async function(dispatch) {
+      if(id === null) id = 0;
       const response = await axios.get(`${import.meta.env.VITE_HOST}/user/myCourses/${id}`);
       const responseId = response.data.map((ele)=>ele.idCourse);
       //console.log(responseId.length);
