@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Divider, Grid, List, ListItemButton, ListItemText, Typography, styled } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { PestañaCursosPublicados } from './PestañaCursosPublicados';
-import { getArticulos } from '../../Redux/actionsProfileAdmin/getArticulos';
 import { PestañaArticulos } from './PestañaArticulos';
-import { getFacturas } from '../../Redux/actionsProfileAdmin/getFacturas';
 import { PestañaFacturas } from './PestañaFacturas';
-import { getInstructorUser } from '../../Redux/actionsProfileAdmin/getInstructorUser';
 import { PestañaUsersInstructor } from './PestañaUsersInstructor';
 import LogoutComponent from '../../Components/LogoutComponent/LogoutCoponent';
 
@@ -30,14 +27,6 @@ export const ProfileAdmin = () => {
     const handleLogoutClick = () => {
         setOpenModal(true);
     };
-
-
-
-    // useEffect(() => {
-    //     dispatch(getArticulos())
-    //     dispatch(getFacturas())
-    //     dispatch(getInstructorUser())
-    // }, [])
 
 
     return (
