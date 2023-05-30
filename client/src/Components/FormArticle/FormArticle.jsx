@@ -47,7 +47,7 @@ export default function FormArticle() {
         article.idUser = user.idUser
         article.img = productImg
         await axios.post(
-            `http://localhost:3001/instructor/publication`,
+            `${import.meta.env.VITE_HOST}/instructor/publication`,
             article
         ).then(async (response) => {
             id = response.data?.idPublications
