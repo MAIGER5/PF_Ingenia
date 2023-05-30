@@ -6,6 +6,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useDispatch, useSelector } from "react-redux";
 import { PusarCurso } from "../../Redux/Actions/BorradoLogico/PusarCurso";
+import { Link } from "react-router-dom";
 
 
 
@@ -30,7 +31,6 @@ export const PestañaCursosPublicados = () => {
     }
 
     function handlePausClick(idCourse) {
-        console.log(idCourse)
         SetBoxEmerg(true);
         dispatch(PusarCurso(idCourse))
         
@@ -39,6 +39,7 @@ export const PestañaCursosPublicados = () => {
 
     function handleClose() {
         SetBoxEmerg(false);
+        window.location.reload();
         
     }
 
@@ -62,13 +63,17 @@ export const PestañaCursosPublicados = () => {
                             <TableRow key={row.idCourse}>
                                 <TableCell align="left">{row.idCourse}</TableCell>
                                 <TableCell component="th" scope="row">
-                                    {row.title}
+                                    <Link  to = {`/DetailCourse/${row.idCourse}`} style={{ textDecoration: 'none' }}> 
+                                        <Typography variant="body1" color={'secondary'}>
+                                            {row.title}
+                                        </Typography>
+                                    </Link> 
                                 </TableCell>
-                                <TableCell align="left">{row.Users[0]?.name}</TableCell>
+                                <TableCell align="left"> {row.Users[0]?.name} {row.Users[0]?.lastname}</TableCell>
                                 <TableCell align="center">{row.createdAt}</TableCell>
-                                <TableCell align="center"> {row.asset === true? "Vigente": "Pausado"} </TableCell>
+                                <TableCell align="center"> {row.asset === true? "Vigente": <Typography color={"aqua"}>Pausado</Typography> } </TableCell>
                                 <TableCell align="right">{row.asset === true? "Si": "No"}</TableCell>
-                                <Button onClick={()=>handlePausClick(row.idCourse)}  variant="outlined" sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
+                                <Button onClick={()=>handlePausClick(row.idCourse)}  variant="outlined" sx={{marginBottom:'10px', marginRight:'10px'}}>  {row.asset === true? "Pausar": <Typography color={"aqua"}>Activar</Typography>}  </Button>
 
                             </TableRow>
                         ))}
@@ -84,12 +89,11 @@ export const PestañaCursosPublicados = () => {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
-            <Dialog onClose={handleClose} open={boxEmerg} maxWidth="md" PaperProps={{ sx: { width: '400px', height:'180px', maxWidth: 'none' }}} >
+            <Dialog onClose={handleClose} open={boxEmerg} maxWidth="md" PaperProps={{ sx: { width: '400px', height:'190', maxWidth: 'none' }}} >
                 <DialogContent>
-                    <Typography align="center" variant="h5">Confirmación de Pusado</Typography>
-                    <Typography align="center" variant="body1">Se encuentra seguro de pausar el curso</Typography>
-                    <Divider ></Divider>
-                    <Button onClick={handleClose} variant="contained" sx={{ marginLeft: '140px', marginTop:'40px'}}>Pausar</Button>
+                    <Typography align="center" variant="h5" marginBottom={5}>Confirmación de cambio de Estado</Typography>
+                    <Typography align="center" variant="body1">Pausado/Activado con exito</Typography>
+                    <Button onClick={handleClose} variant="contained" sx={{ marginLeft: '140px', marginTop:'40px'}}>Finalizar</Button>
                 </DialogContent>
             </Dialog>
         </Paper>
