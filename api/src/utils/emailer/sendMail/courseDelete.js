@@ -1,13 +1,13 @@
 const createTrans = require("../transporter");
 const emailCourseDelete = require("../htmlMail/emailCourseDelete");
 
-const courseDelete = async (email, displayName, password) => {
+const courseDelete = async (title, date, name, lastname, email) => {
   const transporter = createTrans();
   const mailOptions = {
     from: '"Ingenia" <ingenia.info2023@gmail.com>',
     to: `${email}`,
-    subject: `Hola ${displayName}, bienvenido a ingenia`,
-    html: emailCourseDelete(email, password, displayName),
+    subject: `Bloqueo de curso: Acción tomada en tu curso ${title}`,
+    html: emailCourseDelete(title, date, name, lastname, email),
   };
   const info = await transporter.sendMail(mailOptions);
   console.log("message sent: ", info.messageId);
