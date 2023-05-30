@@ -34,6 +34,8 @@ const createCourse = async (
         requirement,
         learnTo,
         studyMethod,
+        numberSales:0,
+        assessment:0,
         asset:true
     }); 
     newCourse.addUsers(users)
