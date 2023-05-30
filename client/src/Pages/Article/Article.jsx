@@ -26,8 +26,10 @@ export default function Article() {
     console.log(article);    
 
     function stringAvatar(userHeight, userWidth, userFontSize) {
-        const name = article.user?.name || "Hola"
-        const lastname = article.user?.lastname || "Hola"
+        // const name = article.user?.name || "Hola"
+        // const lastname = article.user?.lastname || "Hola"
+         const name = "Hola"
+        const lastname = "Hola"
         if (lastname == null) {
 
             return {
@@ -215,7 +217,7 @@ export default function Article() {
             </div>
             <p>{article.user?.description}  </p>
           </div>
-          {article.user?.Courses.length >= 1 && 
+          {/* {article.user?.Courses.length >= 1 && 
           <div className={styles.subModule}>
             <h3 className={styles.subtitle}>
                 Cursos de {article.user?.name}
@@ -236,7 +238,7 @@ export default function Article() {
                 </div>
             </h3>
           </div>
-            }
+            } */}
       </div>
 
 

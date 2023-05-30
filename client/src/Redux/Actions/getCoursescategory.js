@@ -2,12 +2,10 @@ import axios from 'axios';
 
 export const GET_COURSESCATEGORY = 'GET_COURSESCATEGORY';
 
-const URLcourse = 'http://localhost:3001/courses'
-
 export function getCoursesCategory(categoria) {
   return async function(dispatch) {
     try {
-      const response = await axios.get(`${URLcourse}/`);
+      const response = await axios.get(`${import.meta.env.VITE_HOST}/courses/`);
       const cursos = response.data;
       
       const cursosFiltrados = cursos.filter(element => {

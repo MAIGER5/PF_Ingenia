@@ -19,7 +19,7 @@ export default function LoginToBackendOwnAccess(data, dispatch) {
 
   return new Promise((resolve, reject) => {
     axios
-      .post(`http://localhost:3001/user/login`, data)
+      .post(`${import.meta.env.VITE_HOST}/user/login`, data)
       .then((response) => {
         console.log(response);
         let respBack = response.data.user;

@@ -9,7 +9,7 @@ export default function Paypalbutton() {
 
   const handlePaymentSuccess = async () => {
     try {
-      const response = await axios.post(`http://localhost:3001/buy?costo=${totalpagar}&idUser=${idUser}` )
+      const response = await axios.post(`${import.meta.env.VITE_HOST}/buy?costo=${totalpagar}&idUser=${idUser}` )
       window.location.href=response.data.links[1].href
 
     } catch (error) {
