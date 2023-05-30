@@ -34,6 +34,7 @@ export default function LogoutComponent({ onClose }) {
         localStorage.removeItem('userType');
         localStorage.removeItem('idUser');
         localStorage.removeItem('myCourses');
+        localStorage.removeItem('myRatingCourses');
 
     // Redireccionar a la página "/", borra los estados de Redux
         window.location.href = '/';

@@ -31,6 +31,7 @@ import { getArticulos } from "../../Redux/actionsProfileAdmin/getArticulos";
 import { getFacturas } from "../../Redux/actionsProfileAdmin/getFacturas";
 import { getInstructorUser } from "../../Redux/actionsProfileAdmin/getInstructorUser";
 import { getIdCoursesuser } from "../../Redux/Actions/getIdCoursesuser";
+import { getIdRatingCourses } from "../../Redux/Actions/getIdRatingCourses";
 
 
 export default function NavBar() {
@@ -47,7 +48,8 @@ export default function NavBar() {
     dispatch(getFacturas())
     dispatch(getInstructorUser())
     dispatch(postLocalStorage())
-    dispatch(getIdCoursesuser(user))
+    dispatch(getIdCoursesuser(user));
+    dispatch(getIdRatingCourses(user));
     !carrito.length? dispatch(getToCarritoBd(user)): "nada"
   }, [dispatch])
 
@@ -60,13 +62,17 @@ export default function NavBar() {
       let loginUser = { type: 0 };
       let userType = 0;
 
-      //prevengo un dato "loginUser.userType = null"
-      if (localStorage.getItem("userType") == null) {
-       localStorage.setItem("userType", "0");
-       localStorage.setItem("myCourses", "0")
-      }
+  //prevengo un dato "loginUser.userType = null"
+       if (localStorage.getItem("userType") == null)
+        localStorage.setItem("userType", "0");
 
-      // Consulto qué tipo de usuario está registrado
+      /*if (localStorage.getItem("myCourses") == null)
+        localStorage.setItem("myCourses", "nada");*/
+
+      if(localStorage.getItem("myRatingCourses") == null)
+        localStorage.setItem("myRatingCourses", "0");
+
+  // Consulto qué tipo de usuario está registrado
       if (localStorage.getItem("userType") != 0) {
        userType = parseInt(localStorage.getItem("userType"), 10);
       }
