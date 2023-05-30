@@ -13,7 +13,6 @@ import LandingSeller from './Pages/LandingSeller/LandingSeller';
 import DetailCourse from './Components/DetailCourse.jsx/DetailCourse';
 import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import MyCourses from './Pages/MyCourses/MyCourses';
-import Notifications from './Pages/Notifications/Notifications';
 import Support from './Pages/Support/Support';
 import Footer from './Components/Footer/Footer';
 import Terms from './Pages/Terms/Terms';
@@ -24,7 +23,6 @@ import SerchCardResults from './Pages/serchCardResults/serchCardResults';
 import Purchaseconfirmation from './Pages/purchaseconfirmation/purchaseconfirmation';
 import Carrito from './Pages/Carrito/Carrito';
 import Article from './Pages/Article/Article';
-import Vendor from './Pages/Vendor/Vendor';
 import Pay from './Pages/pay/Pay';
 import { VendedorPublico } from './Pages/Vendor/VendedorPublico';
 import ProfileVendedor from './Pages/ProfileVendedor/ProfilevendedorVendedor';
@@ -47,7 +45,6 @@ return (
           <Route path="/LandingSeller" element={<LandingSeller/>}/>
           <Route path="/ResetPassword" element={<ResetPassword/>}/>
           <Route path="/MyCourses" element={<MyCourses/>}/>
-          <Route path="/Notifications" element={<Notifications/>}/> 
           <Route path="/Carrito" element={<Carrito />}/>  
           <Route path="/Support" element={<Support/>}/> 
           <Route path="/Terms" element={<Terms/>}/>   

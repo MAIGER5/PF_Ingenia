@@ -149,19 +149,6 @@ export default function NavBar() {
                        </div> ) : null}
                    </div>
 
-
-              {/* Notificaciones */}
-                  <div> {userType === 1 || userType === 2 ? (
-                  <div> <Box> <NavLink to={"/Notifications"}>
-                  <IconButton color="primary" aria-label="upload picture" component="label" >
-                  <Tooltip title="Notificaciones" placement="top">
-                  <NotificationsIcon />
-                  </Tooltip>
-                  </IconButton>
-                  </NavLink> </Box> </div>
-                  ) : null} </div>
-
-
               {/* Carrito - Modo Dark/Ligth */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", }} >
                   {/* Carrito */}

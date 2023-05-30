@@ -111,11 +111,6 @@ export default function MenuAvatar({userType}) {
               Favoritos
               </MenuItem>) : null}
 
-          {/* Notificaciones */}
-              <MenuItem onClick={handleClose} component={Link} to="/Notifications" >
-              Notificaciones
-              </MenuItem>
-
           {/* Ayuda */}
               <MenuItem onClick={handleClose} component={Link} to="/Support" >
               Ayuda
