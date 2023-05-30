@@ -3,7 +3,7 @@ const getCourseByIDControllers = async (id)=>{
     const response = await Course.findByPk(id,{
         include:[{
             model: User,
-            attributes:["name","lastname","description","imgProfile","assessment"],
+            attributes:["name","lastname","description","imgProfile","numberSales","assessment",],
             through:{
                 attributes:[],
             },
@@ -23,12 +23,32 @@ const getCourseByIDControllers = async (id)=>{
     }
   
   const {idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,
-    dificulty,requirement,learnTo,studyMethod,asset,createdAt,updatedAt,Users,Categories} = response;
+    dificulty,requirement,learnTo,studyMethod,numberSales,asset,createdAt,updatedAt,Users,Categories} = response;
+    
+    //para el curos
+    const valueCourses = response.assessment
+    const assessment = valueCourses / numberSales
 
-    const users = Users[0]
     const categories = Categories[0].name
 
+    // para el usuario
+    const {name,lastname,imgProfile} = Users[0]
+    const descriUser = Users[0].description
+    const valueUser = Users[0].assessment
+    const cantidadVenta = Users[0].numberSales
+
+    const valorReal = valueUser / cantidadVenta
+
   return {idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,
-    dificulty,requirement,learnTo,studyMethod,asset,createdAt,updatedAt,users,categories}
+    dificulty,requirement,learnTo,studyMethod,numberSales,assessment,asset,createdAt,updatedAt,
+    users:{
+      name,
+      lastname,
+      description:descriUser,
+      imgProfile,
+      numberSales:cantidadVenta,
+      assessment:valorReal
+    },
+    categories}
 }
 module.exports = getCourseByIDControllers;

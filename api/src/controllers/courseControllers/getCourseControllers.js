@@ -55,8 +55,20 @@ const getCourseControllers = async (page,size,title)=>{
     if(courses.length){
       return courses
     }else{
-      return coursesBase
+      for(let i=0;i<coursesBase.length;i++){
+        const {
+          idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,dificulty,
+          requirement,learnTo,studyMethod,numberSales,asset,createdAt,updatedAt,Users,Categories
+        } = coursesBase[i] // este hace referencia a todos los cursos sin ningun filtro
+        const value = coursesBase[i].assessment
+        const assessment = value / numberSales
+        response.push({
+          idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,dificulty,
+          requirement,learnTo,studyMethod,numberSales,assessment,asset,createdAt,updatedAt,Users,Categories
+        })
+      }
+      return response
     }
-    // courses.length ? courses : coursesBase
+
 }
 module.exports = getCourseControllers;
