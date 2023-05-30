@@ -1,13 +1,14 @@
 const updateInfoController = require("../../../controllers/userControllers/updatedInfo/updateInfoUserController");
 const { cloudinary } = require("../../../utils/cloudinary.js");
 const bcrypt = require("bcryptjs");
+const { validateUpdate } = require("../../../utils/validators/userUpdate");
 
 const updateInfoHandler = async (req, res) => {
   const { idUser, name, lastname, imgProfile, description, studies, password } =
     req.body;
   try {
     if (password && imgProfile) {
-      // Actualizar tanto el password como la imagen de perfil
+      validateUpdate(password);
       const passwordHash = await bcrypt.hash(password, 8);
       if (imgProfile.length > 150) {
         const uploadImage = await cloudinary.uploader.upload(imgProfile, {
@@ -31,7 +32,7 @@ const updateInfoHandler = async (req, res) => {
         }
       }
     } else if (password) {
-      // Actualizar solo el password
+      validateUpdate(password);
       const passwordHash = await bcrypt.hash(password, 8);
       const userInfo = await updateInfoController(
         idUser,
@@ -47,7 +48,6 @@ const updateInfoHandler = async (req, res) => {
         ? res.status(200).json({ state, process: true })
         : null;
     } else if (imgProfile) {
-      // Actualizar solo la imagen de perfil
       if (imgProfile.length > 150) {
         const uploadImage = await cloudinary.uploader.upload(imgProfile, {
           upload_preset: "ingenia",
@@ -60,8 +60,7 @@ const updateInfoHandler = async (req, res) => {
             lastname,
             uploadImage,
             description,
-            studies,
-            password
+            studies
           );
           const { state } = userInfo;
           userInfo.updateInfo[0]
