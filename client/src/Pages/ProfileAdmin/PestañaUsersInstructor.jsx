@@ -47,8 +47,8 @@ export const PestañaUsersInstructor = () => {
                                 <TableCell align="center"> {row.assessment} </TableCell>
                                 <TableCell align="right">{row.createdAt}</TableCell>
                                 <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
-                                <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
-                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>
+                                {/* <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
+                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/> */}
                             </TableRow>
                         ))}
                     </TableBody>

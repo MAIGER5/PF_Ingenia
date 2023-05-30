@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { PusarCurso } from "../../Redux/Actions/BorradoLogico/PusarCurso";
 
 
 
@@ -12,9 +13,13 @@ export const PestañaCursosPublicados = () => {
 
     const cursos = useSelector((state)=> state.allCourse);
 
+    const dispatch = useDispatch();
+
     const [pg, setpg] = React.useState(0);
     const [rpg, setrpg] = React.useState(5);
-  
+    
+    const [boxEmerg, SetBoxEmerg] = useState(false);
+    
     function handleChangePage(event, newpage) {
         setpg(newpage);
     }
@@ -22,6 +27,19 @@ export const PestañaCursosPublicados = () => {
     function handleChangeRowsPerPage(event) {
         setrpg(parseInt(event.target.value, 10));
         setpg(0);
+    }
+
+    function handlePausClick(idCourse) {
+        console.log(idCourse)
+        SetBoxEmerg(true);
+        dispatch(PusarCurso(idCourse))
+        
+        
+    }
+
+    function handleClose() {
+        SetBoxEmerg(false);
+        
     }
 
     return (
@@ -50,9 +68,8 @@ export const PestañaCursosPublicados = () => {
                                 <TableCell align="center">{row.createdAt}</TableCell>
                                 <TableCell align="center"> {row.asset === true? "Vigente": "Pausado"} </TableCell>
                                 <TableCell align="right">{row.asset === true? "Si": "No"}</TableCell>
-                                <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
-                                <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
-                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>
+                                <Button onClick={()=>handlePausClick(row.idCourse)}  variant="outlined" sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
+
                             </TableRow>
                         ))}
                     </TableBody>
@@ -67,6 +84,20 @@ export const PestañaCursosPublicados = () => {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <Dialog onClose={handleClose} open={boxEmerg} maxWidth="md" PaperProps={{ sx: { width: '400px', height:'180px', maxWidth: 'none' }}} >
+                <DialogContent>
+                    <Typography align="center" variant="h5">Confirmación de Pusado</Typography>
+                    <Typography align="center" variant="body1">Se encuentra seguro de pausar el curso</Typography>
+                    <Divider ></Divider>
+                    <Button onClick={handleClose} variant="contained" sx={{ marginLeft: '140px', marginTop:'40px'}}>Pausar</Button>
+                </DialogContent>
+            </Dialog>
         </Paper>
     )
 }
+
+
+                                {/* {boxEmerg && <Box width={400} border={1} borderColor={"aqua"}>  <Typography>hola vamos a pausar</Typography> </Box>} */}
+                                
+                                {/* <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
+                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/> */}

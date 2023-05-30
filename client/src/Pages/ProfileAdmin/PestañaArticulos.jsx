@@ -47,8 +47,8 @@ export const PestañaArticulos = () => {
                                 <TableCell align="center"> {row.asset === true? "Vigente": "Pausado"} </TableCell>
                                 <TableCell align="right">{row.updatedAt}</TableCell>
                                 <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
-                                <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
-                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>
+                                {/* <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/> */}
+                                {/* <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/> */}
                             </TableRow>
                         ))}
                     </TableBody>
