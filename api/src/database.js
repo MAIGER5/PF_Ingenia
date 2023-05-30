@@ -12,10 +12,10 @@ const functionBill = require('./models/Bill');
 const functionPublications = require('./models/Publication');
 const functionUser =require('./models/User');
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB, DB_PORT } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB}`,
   {
     logging: false, // establecer en console.log para ver las consultas SQL sin procesar
     native: false, // permite que Sequelize sepa que podemos usar pg-native para ~30% más de velocidad
