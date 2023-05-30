@@ -20,7 +20,7 @@ export const ProfileAdmin = () => {
 
     const [openModal, setOpenModal] = useState(false);
 
-    const [selectedIndex, setSelectedIndex] = useState(1)
+    const [selectedIndex, setSelectedIndex] = useState(0)
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
