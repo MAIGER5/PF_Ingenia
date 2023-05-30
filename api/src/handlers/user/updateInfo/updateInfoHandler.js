@@ -1,4 +1,5 @@
 const updateInfoController = require("../../../controllers/userControllers/updatedInfo/updateInfoUserController");
+const { cloudinary } = require('../../../utils/cloudinary.js');
 const bcrypt = require("bcryptjs");
 
 const updateInfoHandler = async (req, res) => {
@@ -8,15 +9,41 @@ const updateInfoHandler = async (req, res) => {
   const passwordHash = await bcrypt.hash(password, 8);
 
   try {
-    const userInfo = await updateInfoController(
-      idUser,
-      name,
-      lastname,
-      imgProfile,
-      description,
-      studies,
-      passwordHash
-    );
+
+    if(imgProfile.length > 150){
+      const uploadImage = await cloudinary.uploader.upload(imgProfile, {
+        upload_preset: 'ingenia',
+      });
+
+      if(uploadImage){
+        const userInfo = await updateInfoController(
+          idUser,
+          name,
+          lastname,
+          uploadImage,
+          description,
+          studies,
+          passwordHash
+        );
+      }
+
+
+    } else {
+
+      const userInfo = await updateInfoController(
+        idUser,
+        name,
+        lastname,
+        imgProfile,
+        description,
+        studies,
+        passwordHash
+      );
+    
+    }
+
+
+   
 
     const { state } = userInfo;
 

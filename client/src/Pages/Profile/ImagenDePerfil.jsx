@@ -1,5 +1,7 @@
-import { useState  }from 'react'
+import { useState  }from 'react';
+import { useSelector } from 'react-redux';
 import Typography from '@mui/material/Typography'
+import axios from 'axios'
 import Button from '@mui/material/Button'
 import { Stack } from '@mui/material'
 
@@ -7,6 +9,7 @@ import styles from "./ImagenDePerfil.module.css";
 
 export default function ImagenDePerfil() {
 
+    const user = useSelector((state) => state.localStorageData);
     const [previewSource, setPreviewSource] = useState("");
     const [productImg, setProductImg] = useState("");
 
@@ -14,19 +17,18 @@ export default function ImagenDePerfil() {
     //     alert("cambio de foto")
     // }
 
+    console.log("este es el usuario", user);
 
-
-    const CambioDeFoto=()=>{
+    const CambioDeFoto= async( )=>{
       alert("cambio de foto")
-        // await axios.post(`http://localhost:3001/courses/`,course)
-        // .then(async (response) => {
-        //     console.log(response);
-        //     let id = response.data?.idCourse
-        //     navigate(`/DetailCourse/${id}`)
-        // }).catch((error) => {
-        //     // const objetojson = error.request.response;
-        //     // const objeto = JSON.parse(objetojson);
-        // });
+        await axios.put(`${import.meta.env.VITE_HOST}/user/updatedInfo`,{ idUser: user.idUser ,imgProfile: productImg})
+        .then(async (response) => {
+            console.log(response);
+            //navigate(`/DetailCourse/${id}`)
+        }).catch((error) => {
+            // const objetojson = error.request.response;
+            // const objeto = JSON.parse(objetojson);
+        });
   }
 
     const handleProductImageUpload = (e) => {

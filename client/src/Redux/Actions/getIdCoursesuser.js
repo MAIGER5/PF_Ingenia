@@ -2,14 +2,13 @@ import axios from "axios"
 
 export const GET_ID_COURSES_USER = 'GET_ID_COURSES_USER';
 
-const URLcoursesUsers = 'http://localhost:3001/user/myCourses';
 
 export const getIdCoursesuser = (id) => {
   //console.log("getIdCoursesUser");
 
     return async function(dispatch) {
       if(id === null) id = 0;
-      const response = await axios.get(`${URLcoursesUsers}/${id}`);
+      const response = await axios.get(`${import.meta.env.VITE_HOST}/user/myCourses/${id}`);
       const responseId = response.data.map((ele)=>ele.idCourse);
       //console.log(responseId.length);
       if (responseId.length) localStorage.setItem("myCourses", responseId);

@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import { Button, Dialog, DialogContent, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { PausarUserOInstructor } from '../../Redux/Actions/BorradoLogico/PausarUserOInstructor';
 
 export const PestañaUsersInstructor = () => {
 
     const instructs = useSelector((state)=> state.instructor);
 
+    const dispatch = useDispatch();
+
     const [pg, setpg] = useState(0);
     const [rpg, setrpg] = useState(5);
+
+    const [boxEmerg, SetBoxEmerg] = useState(false);
+
   
     function handleChangePage(event, newpage) {
         setpg(newpage);
@@ -18,6 +24,19 @@ export const PestañaUsersInstructor = () => {
     function handleChangeRowsPerPage(event) {
         setrpg(parseInt(event.target.value, 10));
         setpg(0);
+    }
+
+    function handlePausClick(idUser) {
+        SetBoxEmerg(true);
+        dispatch(PausarUserOInstructor(idUser))
+        
+        
+    }
+
+    function handleClose() {
+        SetBoxEmerg(false);
+        window.location.reload();
+        
     }
 
     return (
@@ -32,7 +51,8 @@ export const PestañaUsersInstructor = () => {
                             <TableCell align="left">Email</TableCell>
                             <TableCell align="center">Tipo Usuario</TableCell>
                             <TableCell align="center">Calificación</TableCell>
-                            <TableCell align="right">Fecha de Alta</TableCell>
+                            <TableCell align="center">Estado</TableCell>
+                            <TableCell align="center">Fecha de Alta</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -45,10 +65,11 @@ export const PestañaUsersInstructor = () => {
                                 <TableCell align="left">{row.email}</TableCell>
                                 <TableCell align="center">{row.Is}</TableCell>
                                 <TableCell align="center"> {row.assessment} </TableCell>
+                                <TableCell align="center"> {row.asset === true? "Vigente☺": <Typography color={"aqua"}>Pausado</Typography> } </TableCell>
                                 <TableCell align="right">{row.createdAt}</TableCell>
-                                <Button sx={{marginBottom:'10px', marginRight:'10px'}}>Pausar</Button>
-                                <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
-                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/>
+                                <Button onClick={()=>handlePausClick(row.idUser)}  variant="outlined" sx={{marginBottom:'10px', marginRight:'10px'}}>  {row.asset === true? "Pausar": <Typography color={"aqua"}>Activar</Typography>}  </Button>
+                                {/* <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
+                                <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/> */}
                             </TableRow>
                         ))}
                     </TableBody>
@@ -63,6 +84,13 @@ export const PestañaUsersInstructor = () => {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <Dialog onClose={handleClose} open={boxEmerg} maxWidth="md" PaperProps={{ sx: { width: '400px', height:'190', maxWidth: 'none' }}} >
+                <DialogContent>
+                    <Typography align="center" variant="h5" marginBottom={5}>Confirmación de cambio de Estado</Typography>
+                    <Typography align="center" variant="body1">Pausado/Activado con exito</Typography>
+                    <Button onClick={handleClose} variant="contained" sx={{ marginLeft: '140px', marginTop:'40px'}}>Finalizar</Button>
+                </DialogContent>
+            </Dialog>
         </Paper>
     )
 }

@@ -66,7 +66,7 @@ export default function FormCourseCopy() {
         course.image = productImg
         course.pro = pro
         course.learnTo = elementos 
-        await axios.post(`http://localhost:3001/courses/`,course)
+        await axios.post(`${import.meta.env.VITE_HOST}/courses/`,course)
             .then(async (response) => {
                 console.log(response);
                 let id = response.data?.idCourse

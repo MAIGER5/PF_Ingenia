@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const GET_TO_CARRITO_BD = 'GET_TO_CARRITO_BD';
 
-const URLcarritoBd = 'http://localhost:3001/buy/carrito/';
 
 // const cleaner = (array) => {
 //     return array.map((arr) => {
@@ -25,7 +24,7 @@ const URLcarritoBd = 'http://localhost:3001/buy/carrito/';
 
 export const getToCarritoBd = (idUser) => {
   return async function(dispatch){
-    const response = await axios.get(`${URLcarritoBd}${idUser}`);
+    const response = await axios.get(`${import.meta.env.VITE_HOST}/buy/carrito/${idUser}`);
     // const carrito = cleaner(response.data)
     dispatch({type: GET_TO_CARRITO_BD, payload: response.data})
   };

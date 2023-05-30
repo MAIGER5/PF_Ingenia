@@ -35,6 +35,7 @@
     justify-content: flex-start;
     flex-direction: column;
     width: 500px;
+    word-wrap: break-word ;
 }
 
 .containersubText{
@@ -79,11 +80,17 @@
     display: flex;
 }
 
-
 .title{
     font-size: 36px;
     font-weight: 600;
     color: #FF8906;
+    margin: 0;
+}
+
+.titleOff{
+    font-size: 36px;
+    font-weight: 600;
+    color: #757575;
     margin: 0;
 }
 
@@ -95,13 +102,25 @@
     text-align: left;
 }
 
+.subtitleOff{
+    font-size: 28px;
+    font-weight: 500;
+    color: #757575;
+    margin: 0 ;
+    text-align: left;
+}
+
 .subModule{
     width: 500px;
 }
 
-
 .text{
     text-align: left;
+}
+
+.textOff{
+    text-align: left;
+    color: #757575;
 }
 
 .legend{
@@ -111,9 +130,31 @@
     margin: 0 0 10px 0;
 }
 
+.legendOff{
+    font-size: 18px;
+    font-weight: 400;
+    color: #757575;
+    margin: 0 0 10px 0;
+}
+
 .image{
     object-fit: cover;
     width:100%;
     height:100%;
 }
 
+.errorText{
+    color: white;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.errorBanner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 50px;
+}

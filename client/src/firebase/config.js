@@ -4,11 +4,8 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 
-//`${import.meta.env.REACT_APP_FB_API_KEY}`
-//"AIzaSyD3ToUSR1jwFA5oUswh7AlCij7HZRjzyk0"
-
 export const firebaseConfig = {
-  apiKey: `AIzaSyD3ToUSR1jwFA5oUswh7AlCij7HZRjzyk0`,
+  apiKey: `${import.meta.env.VITE_FB_API_KEY}`,
   authDomain: "ingenia-9b3cf.firebaseapp.com",
   projectId: "ingenia-9b3cf",
   storageBucket: "ingenia-9b3cf.appspot.com",

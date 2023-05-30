@@ -8,7 +8,7 @@ export default function RegisterUserToBackend(data) {
    
     async function dataOwnAccessToBacken() {
         axios
-          .post(`http://localhost:3001/user/created`, data)
+          .post(`${import.meta.env.VITE_HOST}/user/created`, data)
           .then((response) => {console.log(response)
           localStorage.setItem("Token", response.data.tokenSession);
           localStorage.setItem("name", response.data.user.name);

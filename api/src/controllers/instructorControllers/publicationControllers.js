@@ -36,7 +36,8 @@ const publisByIdDetail =async (id)=>{
         subtitleTwo,
         textTwo,
         subtitleThree,
-        textThree
+        textThree,
+        asset,
     } = publi
 
     const user = await User.findByPk(UserIdUser,{
@@ -58,6 +59,7 @@ const publisByIdDetail =async (id)=>{
         textTwo,
         subtitleThree,
         textThree,
+        asset,
         user
     }
 }

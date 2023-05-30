@@ -8,7 +8,7 @@ export default function RegisterVendorToBackend(data) {
    
     async function dataOwnAccessToBacken() {
         axios
-          .post(`http://localhost:3001/instructor`, data)
+          .post(`${import.meta.env.VITE_HOST}/instructor`, data)
           .then((response) => {console.log(response)
           localStorage.setItem("Token", response.data.tokenSession);
           localStorage.setItem("name", response.data.user.name);
