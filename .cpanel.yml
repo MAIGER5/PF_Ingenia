@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home2/ingenia/public_html/
-    - /bin/cp -R PF_Ingenia $DEPLOYPATH
+    -/bin/cp -R * $DEPLOYPATH
