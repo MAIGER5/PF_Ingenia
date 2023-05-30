@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Box, Typography} from '@mui/material';
 import Carrusel from '../../Hero Section/HeroSection';
 import styled from "./Home.module.css"
@@ -8,18 +7,8 @@ import HomeRebajas from '../Home Rebajas/HomeRebajas';
 import HomeMejorcalificados from '../HomeMejorcalificados/HomeMejorcalificados';
 import HomeCategorias from '../HomeCategorias/HomeCategorias';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getToCarritoBd } from '../../../Redux/Actions/getToCarritoBd';
 
 export default function HomeComponent() {
-
-  // const dispatch = useDispatch();
-  // const user = localStorage.getItem('idUser')
-  // const carrito = useSelector((state)=> state.allCarrito)
-
-  // useEffect(()=>{
-  //   !carrito.length? dispatch(getToCarritoBd(user)): "nada"
-  // }, []);
 
   return (
     <Box sx={{width:1600}}>
