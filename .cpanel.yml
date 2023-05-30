@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home2/ingenia/public_html/
-    - /bin/rsync -av PF_Ingenia/ $DEPLOYPATH
+    - /bin/cp -R PF_Ingenia $DEPLOYPATH
