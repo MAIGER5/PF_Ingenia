@@ -1,3 +1,5 @@
+const assessmentValue = require("./assessmentValue");
+
 const userDataForm = ({
   idUser,
   name,
@@ -9,6 +11,7 @@ const userDataForm = ({
   description,
   studies,
   asset,
+  numberSales,
   CourseIdCourse,
   tokenSession,
   createdAt,
@@ -29,6 +32,8 @@ const userDataForm = ({
     loginVerification: true,
   };
 
+  const value = assessmentValue(assessment, numberSales);
+
   const userInstructor = {
     idUser,
     name,
@@ -36,10 +41,11 @@ const userDataForm = ({
     email,
     imgProfile,
     Is,
-    assessment,
+    assessment: value,
     description,
     studies,
     asset,
+    numberSales,
     CourseIdCourse,
     createdAt,
     updatedAt,
