@@ -105,6 +105,7 @@ const publiGet = async ()=>{
             createdAt,
             updatedAt,
             User:{
+                UserIdUser:UserIdUser,
                 name,
                 lastname
             }

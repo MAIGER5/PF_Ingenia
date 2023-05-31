@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom"
-import FormRegisterUsuario from "../../components/FormRegister/FormRegisterUsuario"
+import FormRegisterUsuario from "../../Components/FormRegister/FormRegisterUsuario"
 import { auth } from "../../firebase/config";
 import { GoogleAuthProvider, signInWithPopup,} from "firebase/auth";
 import signupGoogle from "./signupGoogle";

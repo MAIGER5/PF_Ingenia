@@ -75,9 +75,9 @@ export default function Article() {
                 to={`/VendedorPublico/${article.UserIdUser}`}
                 style={{textDecoration: 'none'}}
             >
-            <h5 className={styles.legend}>
-                Por {article.user?.name} {article.user?.lastname}
-            </h5>
+                <h5 className={styles.legend}>
+                    Por {article.user?.name} {article.user?.lastname}
+                </h5>
             </NavLink>
                 <div className={styles.containerText}>
                     <div className={styles.imageContainer}>

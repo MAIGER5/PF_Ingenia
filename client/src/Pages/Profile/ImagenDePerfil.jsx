@@ -17,6 +17,8 @@ export default function ImagenDePerfil() {
     //     alert("cambio de foto")
     // }
 
+    
+
     console.log("este es el usuario", user);
 
     const CambioDeFoto= async( )=>{
