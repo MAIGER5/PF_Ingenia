@@ -58,19 +58,19 @@ export default function FormLogin({ userType }) {
 
           // Consulto si el usuario tiene calificaciones en sus cursos
           // y los guardo en el localStorage
-        //   async function fetchDataRating() {
-        //     try {
-        //       const ratingCourses = await RequestRatingUserCourses();
-        //       let ratingCoursesIds = await ratingCourses.map((element) => element.idCourse)
-        //       await localStorage.setItem("myRatingCourses", ratingCoursesIds);
-        //       console.log("ratingCoursesIds");
-        //       console.log(ratingCoursesIds);
+          async function fetchDataRating() {
+            try {
+              const ratingCourses = await RequestRatingUserCourses();
+              let ratingCoursesIds = await ratingCourses.map((element) => element.idCourse)
+              await localStorage.setItem("myRatingCourses", ratingCoursesIds);
+              console.log("ratingCoursesIds");
+              console.log(ratingCoursesIds);
 
-        //     } catch (error) {
-        //       console.error("Error fetching data:", error);
-        //          } }
+            } catch (error) {
+              console.error("Error fetching data:", error);
+                 } }
 
-        // await fetchDataRating();
+        await fetchDataRating();
 
         // Reset de inputs
           setUser({password: "", email: "",});
