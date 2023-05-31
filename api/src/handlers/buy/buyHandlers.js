@@ -22,8 +22,8 @@ const buyHandlers = async (req,res)=>{
         "brand_name": "Ingenia",
         "landing_page":"NO_PREFERENCE", 
         "user_action":"PAY_NOW",
-        "return_url": `http://localhost:3001/buy/execute-payment?idUser=${idUser}`, 
-        "cancel_url": "http://localhost:3001/buy/cancel-payment"
+        "return_url": `https://pfingenia-production.up.railway.app/buy/execute-payment?idUser=${idUser}`, 
+        "cancel_url": "https://pfingenia-production.up.railway.app/buy/cancel-payment"
         }
       }
     try {

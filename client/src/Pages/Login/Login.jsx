@@ -2,7 +2,7 @@ import { useState  } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, signInWithPopup,} from "firebase/auth";
 import { auth } from "../../firebase/config";
-import FormLogin from "../../Components/FormLogin/FormLogin";
+import FormLogin from "../../Components/FormLogin/FormLogin"
 
 import GoogleIcon from "@mui/icons-material/Google";
 import { Box, Tab, Tabs, Button } from "@mui/material";
