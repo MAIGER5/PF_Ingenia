@@ -17,7 +17,7 @@ export default function MyCourses() {
     const [loading, setLoading] = useState(true);
 
   // Estado Global: elementos a visualizar
-    const curs = useSelector((state)=> state.allCourse)
+    const curs = useSelector((state)=> state.favorites)
 
   // Estado Global: estado actual de Tab
     const tabIndex = useSelector((state) => state.setActiveTab);
@@ -30,7 +30,7 @@ export default function MyCourses() {
 
       // Cambiar el estado de setActiveTab en Redux antes de salir de la página
       const beforeUnload = () => {
-        const newTabIndex = 1;
+        const newTabIndex = 0;
           dispatch(setActiveTab(newTabIndex));
             //console.log("salgo de la página;");
               };

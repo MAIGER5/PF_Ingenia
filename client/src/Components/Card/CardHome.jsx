@@ -8,6 +8,7 @@ import {
   CardMedia,
   Typography,
   Rating,
+  Fab,
 }from '@mui/material';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
@@ -19,6 +20,9 @@ import { addToCarrito } from '../../Redux/Actions/actionsCarrito/addToCarrito';
 import { RemoveOneFromCarrito } from '../../Redux/Actions/actionsCarrito/RemoveOneFromCarrito';
 import { addToCarritoBd } from '../../Redux/Actions/addToCarritoBd';
 import { RemoveToByBD } from '../../Redux/Actions/RemoveToByBD';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { deletFavoritosRedux } from '../../Redux/Actions/FavoritosActions/deletFavoritosRedux';
+import { deletFavoritos } from '../../Redux/Actions/FavoritosActions/deletFavoritos';
 
 
 function CardHome({title, image, instructorName, instructorLastName, price, lenguage, ratings = 5, idCourse}) {
@@ -37,6 +41,7 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
   const [isAlertAdd, setIsAlertAdd] = useState(false);
   const [isAlertDelete, setIsAlertDelete] = useState(false);
   const [purchasedCourse, setPurchasedCourse] = React.useState(false);
+
 
   //Logica para el cambio de color del carrito
   useEffect(() => {
@@ -73,6 +78,11 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
       dispatch(RemoveOneFromCarrito(idCourse))
       dispatch(RemoveToByBD(idCourse, userId))
     }
+  }
+
+  const handleFavoriteClick = ()=>{
+    dispatch(deletFavoritosRedux(idCourse));
+    dispatch(deletFavoritos( userId, idCourse ))
   }
 
   return (
@@ -160,6 +170,11 @@ function CardHome({title, image, instructorName, instructorLastName, price, leng
                       <ShoppingCartIcon sx={{ color: `${colorCart}`, width: "20px" }}/>
               )}
             </button>
+
+            { tabIndex === 0? <Typography></Typography> : tabIndex === 1? <Fab onClick={handleFavoriteClick} sx={{background:'#E53170'}}>
+              <FavoriteIcon />
+            </Fab>: <Typography></Typography> }
+            
 
           </div>
             {!purchasedCourse && (<p className={styles.pricetag}> ${price} USD </p>)}
