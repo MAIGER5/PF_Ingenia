@@ -41,20 +41,20 @@ export default function FormLogin({ userType }) {
 
           // Consulto si el usuario tiene cursos
           // y los guardo en el localStorage
-            async function fetchData() {
-              try {
-                const courses = await RequestDataCourses();
-                  let userCourseIds = [];
-                      for (let index = 0; index < courses.length; index++) {
-                          userCourseIds.push(courses[index].idCourse) }
-                console.log(userCourseIds);
-                localStorage.setItem("myCourses", userCourseIds);
+            // async function fetchData() {
+            //   try {
+            //     const courses = await RequestDataCourses();
+            //       let userCourseIds = [];
+            //           for (let index = 0; index < courses.length; index++) {
+            //               userCourseIds.push(courses[index].idCourse) }
+            //     console.log(userCourseIds);
+            //     localStorage.setItem("myCourses", userCourseIds);
 
-              } catch (error) {
-                console.error("Error fetching data:", error);
-                   } }
+            //   } catch (error) {
+            //     console.error("Error fetching data:", error);
+            //        } }
 
-        await fetchData();
+        // await fetchData();
 
           // Consulto si el usuario tiene calificaciones en sus cursos
           // y los guardo en el localStorage

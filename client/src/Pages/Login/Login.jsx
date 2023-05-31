@@ -2,6 +2,7 @@ import { useState  } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, signInWithPopup,} from "firebase/auth";
 import { auth } from "../../firebase/config";
+
 import FormLogin from "../../Components/FormLogin/FormLogin"
 
 import GoogleIcon from "@mui/icons-material/Google";
@@ -39,36 +40,36 @@ export default function Login() {
 
         // Consulto si el usuario tiene cursos
         // y los guardo en el localStorage
-          async function fetchData() {
-            try {
-              const courses = await RequestDataCourses();
-                let userCourseIds = [];
-                    for (let index = 0; index < courses.length; index++) {
-                        userCourseIds.push(courses[index].idCourse) }
-              console.log(userCourseIds);
-              localStorage.setItem("myCourses", userCourseIds);
+          // async function fetchData() {
+          //   try {
+          //     const courses = await RequestDataCourses();
+          //       let userCourseIds = [];
+          //           for (let index = 0; index < courses.length; index++) {
+          //               userCourseIds.push(courses[index].idCourse) }
+          //     console.log(userCourseIds);
+          //     localStorage.setItem("myCourses", userCourseIds);
 
-            } catch (error) {
-              console.error("Error fetching data:", error);
-                 } }
+          //   } catch (error) {
+          //     console.error("Error fetching data:", error);
+          //        } }
 
-          await fetchData();
+          // await fetchData();
 
           // Consulto si el usuario tiene calificaciones en sus cursos
           // y los guardo en el localStorage
-          async function fetchDataRating() {
-            try {
-              const ratingCourses = await RequestRatingUserCourses();
-              let ratingCoursesIds = await ratingCourses.map((element) => element.idCourse)
-              await localStorage.setItem("myRatingCourses", ratingCoursesIds);
-              console.log("ratingCoursesIds");
-              console.log(ratingCoursesIds);
+        //   async function fetchDataRating() {
+        //     try {
+        //       const ratingCourses = await RequestRatingUserCourses();
+        //       let ratingCoursesIds = await ratingCourses.map((element) => element.idCourse)
+        //       await localStorage.setItem("myRatingCourses", ratingCoursesIds);
+        //       console.log("ratingCoursesIds");
+        //       console.log(ratingCoursesIds);
 
-            } catch (error) {
-              console.error("Error fetching data:", error);
-                 } }
+        //     } catch (error) {
+        //       console.error("Error fetching data:", error);
+        //          } }
 
-        await fetchDataRating();
+        // await fetchDataRating();
 
         window.location.href = "/";
 
