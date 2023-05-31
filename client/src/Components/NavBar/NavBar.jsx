@@ -32,13 +32,14 @@ import { getFacturas } from "../../Redux/actionsProfileAdmin/getFacturas";
 import { getInstructorUser } from "../../Redux/actionsProfileAdmin/getInstructorUser";
 import { getIdCoursesuser } from "../../Redux/Actions/getIdCoursesuser";
 import { getIdRatingCourses } from "../../Redux/Actions/getIdRatingCourses";
+import { GetFavoritos } from "../../Redux/Actions/FavoritosActions/GetFavoritos";
 
 
 export default function NavBar() {
 
   // Suscribo al estado global:
-  const dispatch = useDispatch();
   const user = localStorage.getItem('idUser')
+  const dispatch = useDispatch();
   const carrito = useSelector((state)=> state.allCarrito)
 
   useEffect(()=> {
@@ -49,6 +50,7 @@ export default function NavBar() {
     dispatch(getInstructorUser())
     dispatch(postLocalStorage())
     dispatch(getIdCoursesuser(user));
+    dispatch(GetFavoritos(user));
     dispatch(getIdRatingCourses(user));
     !carrito.length? dispatch(getToCarritoBd(user)): "nada"
   }, [dispatch])
