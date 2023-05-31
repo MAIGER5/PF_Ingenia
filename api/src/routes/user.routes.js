@@ -11,6 +11,7 @@ const {
   myBillsHandlers,
 } = require("../handlers/user/myCoursesHandlers");
 const userGetHandler = require("../handlers/user/userGetHandler");
+const {favoritePostHandlers,favoriteGetHandlers,favoriteDeleteHandlers} = require('../handlers/user/favoritePostHandlers')
 
 const checkAuth = require("../middleware/authUser");
 const checkRoleAuth = require("../middleware/roleAuth");
@@ -38,5 +39,11 @@ userRouter.post("/login/google", userPostGooHandler);
 userRouter.put("/delete", userDeleteHandler);
 
 userRouter.put("/updatedInfo", updateInfoHandler);
+
+userRouter.post("/favorite",favoritePostHandlers)
+
+userRouter.delete("/favorite",favoriteDeleteHandlers)
+
+userRouter.get("/favorite/:id",favoriteGetHandlers)
 
 module.exports = userRouter;
