@@ -21,6 +21,8 @@ export default function HomeCardComents() {
             lastName={comentario.User?.lastname}
             articulo={comentario.subtitleTwo}
             articulo1={comentario.text}
+            idPublications={comentario.idPublications}
+            title={comentario.title}
           />
         ))}
     </Stack>

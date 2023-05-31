@@ -4,7 +4,7 @@ export default async function RequestDataCourses () {
 
     try {
         const idUser = localStorage.getItem("idUser");
-        const response = await axios.get(`http://localhost:3001/user/myCourses/${idUser}`);
+        const response = await axios.get(`${import.meta.env.VITE_HOST}/user/myCourses/${idUser}`);
         const data = response.data;
 
         for (let i = 0; i < data.length; i++) {

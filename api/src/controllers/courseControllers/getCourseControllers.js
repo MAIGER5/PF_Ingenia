@@ -20,40 +20,43 @@ const getCourseControllers = async (page,size,title)=>{
     ],
   })
 
-    const options = {
-      limit: +size,
-      offset: +page * +size,
-      where: { title: '' },
-      order: [['createdAt', 'DESC']],
-    };
-
-    if (title) {
-      options.where.title = {
-        [Op.iLike]: `%${title}%`,
-      };
-    }
-
-    const courses = await Course.findAll(options,{
-      include:[{
-          model: User,
-          attributes:["name","lastname"],
-          through:{
-              attributes:[],
-          },
-      },
-      {
-        model:Category,
-        attributes:['name'],
-        through:{
-          attributes:[],
-      },
+  const courses = await Course.findAll({
+    where:{
+      title:{
+      [Op.iLike]:`%${title}%` 
       }
-    ],
+    },
+    include:[{
+      model: User,
+      attributes:["name","lastname"],
+      through:{
+          attributes:[],
+        },
+    },
+    {
+      model:Category,
+      attributes:['name'],
+      through:{
+      attributes:[],
+      },
+    }] 
   });
 
   let response = []
     if(courses.length){
-      return courses
+      for(let i=0;i<courses.length;i++){
+        const {
+          idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,dificulty,
+          requirement,learnTo,studyMethod,numberSales,asset,createdAt,updatedAt,Users,Categories
+        } = courses[i] 
+        const value = courses[i].assessment
+        const assessment = value / numberSales
+        response.push({
+          idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,dificulty,
+          requirement,learnTo,studyMethod,numberSales,assessment,asset,createdAt,updatedAt,Users,Categories
+        })
+      }
+      return response  
     }else{
       for(let i=0;i<coursesBase.length;i++){
         const {
