@@ -8,6 +8,7 @@ import LoginToBackendOwnAccess from "../LoginToBackendOwnAccess/LoginToBackendOw
 import styles from "./FormLogin.module.css";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import RequestDataCourses from "../RequestDataCourses/RequestDataCourses";
+import RequestRatingUserCourses from "../RequestRatingUserCourses/RequestRatingUserCourses";
 
 export const DATA_LOGIN = "DATA_LOGIN";
 
@@ -40,20 +41,36 @@ export default function FormLogin({ userType }) {
 
           // Consulto si el usuario tiene cursos
           // y los guardo en el localStorage
-            async function fetchData() {
-              try {
-                const courses = await RequestDataCourses();
-                  let userCourseIds = [];
-                      for (let index = 0; index < courses.length; index++) {
-                          userCourseIds.push(courses[index].idCourse) }
-                console.log(userCourseIds);
-                localStorage.setItem("myCourses", userCourseIds);
+            // async function fetchData() {
+            //   try {
+            //     const courses = await RequestDataCourses();
+            //       let userCourseIds = [];
+            //           for (let index = 0; index < courses.length; index++) {
+            //               userCourseIds.push(courses[index].idCourse) }
+            //     console.log(userCourseIds);
+            //     localStorage.setItem("myCourses", userCourseIds);
 
-              } catch (error) {
-                console.error("Error fetching data:", error);
-                   } }
+            //   } catch (error) {
+            //     console.error("Error fetching data:", error);
+            //        } }
 
-        await fetchData();
+        // await fetchData();
+
+          // Consulto si el usuario tiene calificaciones en sus cursos
+          // y los guardo en el localStorage
+          async function fetchDataRating() {
+            try {
+              const ratingCourses = await RequestRatingUserCourses();
+              let ratingCoursesIds = await ratingCourses.map((element) => element.idCourse)
+              await localStorage.setItem("myRatingCourses", ratingCoursesIds);
+              console.log("ratingCoursesIds");
+              console.log(ratingCoursesIds);
+
+            } catch (error) {
+              console.error("Error fetching data:", error);
+                 } }
+
+        await fetchDataRating();
 
         // Reset de inputs
           setUser({password: "", email: "",});

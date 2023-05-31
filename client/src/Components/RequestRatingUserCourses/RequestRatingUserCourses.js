@@ -1,15 +1,15 @@
 import axios from "axios";
 
-export default async function RequestDataCourses () {
+export default async function RequestRatingUserCourses () {
 
     try {
         const idUser = localStorage.getItem("idUser");
-        const response = await axios.get(`${import.meta.env.VITE_HOST}/user/myCourses/${idUser}`);
+        const response = await axios.get(`${import.meta.env.VITE_HOST}/buy/assignPointView/${idUser}`);
         const data = response.data;
 
-        for (let i = 0; i < data.length; i++) {
+        /* for (let i = 0; i < data.length; i++) {
             data[i].Categories = [{name: data[i].categories}]
-            data[i].Users = [data[i].users] }
+            data[i].Users = [data[i].users] } */
 
         return data;
       } catch (error) {

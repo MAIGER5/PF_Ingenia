@@ -11,11 +11,13 @@ const functionBuy = require('./models/Buy')
 const functionBill = require('./models/Bill');
 const functionPublications = require('./models/Publication');
 const functionUser =require('./models/User');
+const functionFavorite = require('./models/Favorite');
+const user = require("./controllers/userControllers/userPrueba");
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB, DB_PORT } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB}`,
   {
     logging: false, // establecer en console.log para ver las consultas SQL sin procesar
     native: false, // permite que Sequelize sepa que podemos usar pg-native para ~30% más de velocidad
@@ -30,9 +32,10 @@ functionBuy(sequelize);
 functionBill(sequelize);
 functionPublications(sequelize);
 functionUser(sequelize);
+functionFavorite(sequelize);
 
 
-const { Assessment,Category,Point,Course,Buy,Bill,Publication,User} = sequelize.models;
+const { Assessment,Category,Point,Course,Buy,Bill,Publication,User,Favorite} = sequelize.models;
 // RELACION DE TABALS AQUÍ ABAJO
 
 User.belongsToMany(Course,{through:"UserCourse"});
@@ -61,6 +64,12 @@ Point.belongsTo(User)
 
 Course.hasMany(Point)
 Point.belongsTo(Course)
+
+User.hasMany(Favorite)
+Favorite.belongsTo(User)
+
+Favorite.belongsToMany(Course,{through:"CourseFavorite"});
+Course.belongsToMany(Favorite,{through:"CourseFavorite"})
 
 module.exports = {
   sequelize,

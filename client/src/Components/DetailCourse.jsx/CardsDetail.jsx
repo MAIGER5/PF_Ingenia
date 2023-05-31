@@ -14,17 +14,25 @@ import { getInstructorDetail } from '../../Redux/Actions/getInstructorDetail';
 import { getCoursesInstructor } from '../../Redux/Actions/getCoursesInstructor';
 import { getArticulosInstructor } from '../../Redux/Actions/getArticulosInstructor';
 import { useEffect } from 'react';
+import RatingComponent from '../RatingComponent/RatingComponent';
+import { addFavoritos } from '../../Redux/Actions/FavoritosActions/addFavoritos';
+import { deletFavoritos } from '../../Redux/Actions/FavoritosActions/deletFavoritos';
 
 
 
 export function CardsDetail() {
 
     const curses = useSelector((state)=> state.courseDetail)
+    const cursesId = curses.idCourse;
     const {id} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [purchasedCourse, setPurchasedCourse] = React.useState(false);
+    const [ ratingCourse, setRatingCourse ] = React.useState(false);
+    const [ modalRating, setModalRating ] = React.useState(false)
+    const [ valueRating, setValueRating ] = React.useState(0)
+    const [ favorit, setFavorit ] = React.useState(false)
 
     function handleclick(){
         localStorage.getItem('name')? dispatch(addToCarrito(id)):  navigate('/Login');
@@ -35,22 +43,46 @@ export function CardsDetail() {
         dispatch(getArticulosInstructor(curses.users?.name))
     }
 
+
+    function handleRatingChange (event, newValue) {
+        setValueRating(newValue)
+        setModalRating(true)
+    }
+
+    function handleFavoriteClick () {
+        if (favorit === false) {
+            dispatch(addFavoritos(id, cursesId));
+            setFavorit(true);
+        } else {
+            dispatch(deletFavoritos(id, cursesId));
+            setFavorit(true);
+        }
+    }
+
     useEffect(() => {
         // Para que la página se visualice en la parte superior:
             window.scrollTo(0, 0);
         // Para consultar si el actual curso fue adquirido por el usuario:
-            let myCourses = localStorage.getItem("myCourses").split(",")
+        let myCoursesString = localStorage.getItem("myCourses");
+        let myCourses = myCoursesString.includes(",") ? myCoursesString.split(",") : [myCoursesString];
             if (!purchasedCourse) setPurchasedCourse(myCourses.includes(id))
-            //console.log(myCourses.includes(id));
+        // Para consultar si el actual curso, fue calificado por el usuario:
+            let myRatingCoursesString = localStorage.getItem("myRatingCourses");
+            let myRatingCourses = myRatingCoursesString.includes(",") ? myRatingCoursesString.split(",") : [myRatingCoursesString];
+            if(!ratingCourse) setRatingCourse(myRatingCourses.includes(id))
+
     }, []);
 
     // Control de consola:
-        // console.log(idCurso);
         // console.log("id de curso:");
+        // console.log(id);
         // console.log("Curso comprado?");
         // console.log(purchasedCourse);
         // console.log("array");
         // console.log(myCourses);
+        // console.log("Después purchasedCourse && !ratingCourse:");
+        // console.log(purchasedCourse);
+        // console.log(ratingCourse);
 
 
 
@@ -120,7 +152,17 @@ export function CardsDetail() {
                             alignItems="baseline"
                         >
                             <Grid>
-                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' />
+                                {/* Primero pregunto si ya compró el curso, luego pregunto si lo calificó */}
+                                    {purchasedCourse == false ? (<Rating name="half-rating-read" defaultValue={2.5} precision={0.5} size='large' readOnly/>) :
+                                        (ratingCourse == false ? (<div><Rating name="half-rating-read" defaultValue={2.5} precision={0.5} size='large' readOnly/>
+                                                        <Typography variant="body2" color="secondary" style={{ padding: '10px', fontStyle: 'italic' }}>
+                                                            Ya has calificado este curso
+                                                                </Typography></div>) : (<div> <Rating name="half-rating" defaultValue={2.5} precision={0.5} size='large' onChange={handleRatingChange}/>
+                                                        <Typography variant="body2" color="primary" style={{ padding: '10px', fontStyle: 'italic' }}> Califica este curso!! </Typography></div>)
+
+                                            )  }
+                                {modalRating && <RatingComponent id={id} valueRating={valueRating} onClose={() => setModalRating(false)} />}
+
                             </Grid>
 
                             {/* component={Link} to={'/SignupUsuario'} */}
@@ -130,7 +172,7 @@ export function CardsDetail() {
                             {/* {<Login />} */}
 
                             <Fab disabled aria-label="like">
-                                <FavoriteIcon />
+                                <FavoriteIcon sx={favorit ===false? {background:'#E53170'}:{background:'#FF8906'}} component={Button} onClick={handleFavoriteClick}/>
                             </Fab>
                             <Grid item xs={4.5}>
                                 {purchasedCourse == false ? (<Box component='h2' > $ {curses.price} USD </Box>) : null }
