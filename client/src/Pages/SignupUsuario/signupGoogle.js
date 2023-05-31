@@ -13,7 +13,7 @@ export default function signupGoogle(credentials, userType) {
         // Solicitud al servidor:
         async function dataOwnAccessToBackent() {
             console.log(data);
-          const response = await axios.post(`http://localhost:3001/user/login/google`, data)
+          const response = await axios.post(`${import.meta.env.VITE_HOST}/user/login/google`, data)
       
           // Edito los datos para trabajar mejor:
               let respBack = response.data.user;
