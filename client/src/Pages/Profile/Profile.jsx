@@ -5,14 +5,23 @@ import Datos from './Datos';
 import ImagenDePerfil from './ImagenDePerfil';
 import MisCompras from './MisCompras';
 import MetodoDePago from './MetodoDePago';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LogoutComponent from '../../Components/LogoutComponent/LogoutCoponent';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsiarios } from '../../Redux/Actions/getusers';
+
+
 
 export default function Profile() {
     const [selectedComponent, setSelectedComponent] = useState("datos");
     const [openModal, setOpenModal] = useState(false);
-    const usuarios=useSelector(state=>state. instructor)
+    const usuer=useSelector(state=>state.usercrud)
+    const dispach=useDispatch()
+    useEffect(() => {
+     dispach(getUsiarios(1))
+    }, [])
+    
+    
     const handleClick = (component) => {
         setSelectedComponent(component);
     };
@@ -20,19 +29,19 @@ export default function Profile() {
         setOpenModal(true);
     }
 
- console.log(usuarios)
+ 
     return (
         <div className={styles.container}>
             <div className={styles.subContainer}>
                 <div className={styles.user}>
                     <AvatarComponent
-                        name={"Luis Felipe"}
+                        name={usuer.data?.name}
                         width={"90px"}
                         height={"90px"}
                         fontSize={"45px"}
                     />
                     <h3 className={styles.userText}>
-                        Felipe Garcia
+                    {usuer.data?.name} {usuer.data?.lastname}
                     </h3>
                 </div>
                 <div className={styles.optionsContainer}>

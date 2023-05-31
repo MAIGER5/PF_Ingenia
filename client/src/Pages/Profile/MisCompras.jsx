@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+import Modalfactura from './ModalFacturas';
 
 function createData(nombredelcurso,fecha, preciototal,factura) {
   return {nombredelcurso, fecha, preciototal, factura };
@@ -14,7 +15,7 @@ function createData(nombredelcurso,fecha, preciototal,factura) {
 
 const rows = [
  
-  createData('Curso basico de Javascript', "01/01/2020", 16.0 ,<Button variant="outlined" sx={{width:10,height:30}}>Factura</Button>),
+  createData('Curso basico de Javascript', "01/01/2020", 16.0 ,<Modalfactura/>),
   createData('Curso basico de Javascript', "01/01/2020", 16.0, <Button variant="outlined" sx={{width:10,height:30}}>Factura</Button>),
   createData('Curso basico de Javascript', "01/01/2020", 16.0 ,<Button variant="outlined" sx={{width:10,height:30}}>Factura</Button>),
   createData('Curso basico de Javascript', "01/01/2020", 16.0,<Button variant="outlined" sx={{width:10,height:30}}>Factura</Button>),
