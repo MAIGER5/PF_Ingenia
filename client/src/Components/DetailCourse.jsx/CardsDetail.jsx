@@ -15,12 +15,15 @@ import { getCoursesInstructor } from '../../Redux/Actions/getCoursesInstructor';
 import { getArticulosInstructor } from '../../Redux/Actions/getArticulosInstructor';
 import { useEffect } from 'react';
 import RatingComponent from '../RatingComponent/RatingComponent';
+import { addFavoritos } from '../../Redux/Actions/FavoritosActions/addFavoritos';
+import { deletFavoritos } from '../../Redux/Actions/FavoritosActions/deletFavoritos';
 
 
 
 export function CardsDetail() {
 
     const curses = useSelector((state)=> state.courseDetail)
+    const cursesId = curses.idCourse;
     const {id} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -29,6 +32,7 @@ export function CardsDetail() {
     const [ ratingCourse, setRatingCourse ] = React.useState(false);
     const [ modalRating, setModalRating ] = React.useState(false)
     const [ valueRating, setValueRating ] = React.useState(0)
+    const [ favorit, setFavorit ] = React.useState(false)
 
     function handleclick(){
         localStorage.getItem('name')? dispatch(addToCarrito(id)):  navigate('/Login');
@@ -43,6 +47,16 @@ export function CardsDetail() {
     function handleRatingChange (event, newValue) {
         setValueRating(newValue)
         setModalRating(true)
+    }
+
+    function handleFavoriteClick () {
+        if (favorit === false) {
+            dispatch(addFavoritos(id, cursesId));
+            setFavorit(true);
+        } else {
+            dispatch(deletFavoritos(id, cursesId));
+            setFavorit(true);
+        }
     }
 
     useEffect(() => {
@@ -158,7 +172,7 @@ export function CardsDetail() {
                             {/* {<Login />} */}
 
                             <Fab disabled aria-label="like">
-                                <FavoriteIcon />
+                                <FavoriteIcon sx={favorit ===false? {background:'#E53170'}:{background:'#FF8906'}} component={Button} onClick={handleFavoriteClick}/>
                             </Fab>
                             <Grid item xs={4.5}>
                                 {purchasedCourse == false ? (<Box component='h2' > $ {curses.price} USD </Box>) : null }
