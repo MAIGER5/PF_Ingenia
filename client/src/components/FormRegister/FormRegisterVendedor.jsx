@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { validationVendor } from "./validations";
+import { validationVendor } from "./validations.js";
 import LoaderPage from "../LoaderPage/LoaderPage";
 import RegisterVendorToBackend from "./RegisterVendorToBackend";
 import { Alert, Snackbar }from '@mui/material';
