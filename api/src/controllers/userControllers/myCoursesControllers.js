@@ -39,14 +39,14 @@ const myCoursesControllers = async (id)=>{
             })
             const {title,description,image,lenguage,price,pro,pricePro,duration,content,
                 dificulty,requirement,learnTo,studyMethod,asset,createdAt,updatedAt,Users,Categories} = cours;
-            
+
             const users = Users[0]
             const categories = Categories[0].name
-            
+
             myCor.push({idCourse,title,description,image,lenguage,price,pro,pricePro,duration,content,
                 dificulty,requirement,learnTo,studyMethod,asset,createdAt,updatedAt,users,categories})
         }
-        
+
     }
     return myCor
 }

@@ -9,13 +9,16 @@ export const getIdRatingCourses = (id) => {
 
     return async function(dispatch) {
       if(id === null) id = 0;
-      const response = await axios.get(`${import.meta.env.VITE_HOST}/buy/assignPointView/${id}`);
+      console.log(id);
+      const response = await axios.get(`${import.meta.env.VITE_HOST}/buy/assignPointView/${id}`)
+                                .catch( (error) => {return {data : [{idCourse : 0}]}});
+      console.log(response);
       let responseId = await response.data.map((ele)=>ele.idCourse);
       //responseId = [4,5,7]
       //console.log(responseId);
       if (responseId.length) localStorage.setItem("myRatingCourses", responseId);
       else localStorage.setItem("myRatingCourses", "0")
-      console.log(responseId.length);
+      // console.log(responseId.length);
       dispatch({type:GET_ID_RATING_USER, payload:responseId})
     }
 }

@@ -84,7 +84,7 @@ export default function MyCourses() {
           </div>
 
           {/* Barra de Búsqueda */}
-          <div><MyCoursesSearch/></div>
+          {/* <div><MyCoursesSearch/></div> */}
 
         </div></Box>
 
