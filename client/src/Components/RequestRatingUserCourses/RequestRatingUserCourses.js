@@ -4,7 +4,7 @@ export default async function RequestRatingUserCourses () {
 
     try {
         const idUser = localStorage.getItem("idUser");
-        const response = await axios.get(`http://localhost:3001/buy/assignPointView/${idUser}`);
+        const response = await axios.get(`${import.meta.env.VITE_HOST}/buy/assignPointView/${idUser}`);
         const data = response.data;
 
         /* for (let i = 0; i < data.length; i++) {
