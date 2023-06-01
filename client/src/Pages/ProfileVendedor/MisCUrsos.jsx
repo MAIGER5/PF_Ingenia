@@ -6,56 +6,83 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button, IconButton } from '@mui/material';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import {  Button, TablePagination } from '@mui/material';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-function createData(nombredelcurso,fecha, estatus,editar,eliminar) {
-  return {nombredelcurso, fecha, estatus, editar,eliminar };
-}
 
-const rows = [
- 
-  createData('Curso basico de Javascript', "01/01/2020", "vigente" ,<Button variant="outlined" sx={{width:10,height:30}}>Editar</Button>,<IconButton><DeleteForeverIcon color='primary'/></IconButton>),
-  createData('Curso basico de Javascript', "01/01/2020", "vigente", <Button variant="outlined" sx={{width:10,height:30}}>Editar</Button>,<IconButton><DeleteForeverIcon color='primary'/></IconButton>),
-  createData('Curso basico de Javascript', "01/01/2020", "vigente" ,<Button variant="outlined" sx={{width:10,height:30}}>Editar</Button>,<IconButton><DeleteForeverIcon color='primary'/></IconButton>),
-  createData('Curso basico de Javascript', "01/01/2020", "vigente",<Button variant="outlined" sx={{width:10,height:30}}>Editar</Button>,<IconButton><DeleteForeverIcon color='primary'/></IconButton>),
-  createData('Curso basico de Javascript', "01/01/2020", "vigente",<Button variant="outlined" sx={{width:10,height:30}}>Editar</Button>,<IconButton><DeleteForeverIcon color='primary'/></IconButton>),
-  createData('Curso basico de Javascript', "01/01/2020", "vigente",<Button variant="outlined" sx={{width:10,height:30}}>Editar</Button> ,<IconButton><DeleteForeverIcon color='primary'/></IconButton>),
-  createData('Curso basico de Javascript', "01/01/2020", "vigente",<Button variant="outlined" sx={{width:10,height:30}}>Editar</Button>,<IconButton><DeleteForeverIcon color='primary'/></IconButton>),
- 
+export default function MisCompras() {
+    const [miscompras, setcompras] = useState([]);
+    const idUser = localStorage.getItem("idUser");
+    const dispatch = useDispatch();
+    console.log(miscompras)
+    useEffect(() => {
+      fetch(`https://pfingenia-production.up.railway.app/instructor/publication/${idUser}`)
+        .then(response => response.json())
+        .then(response => {
+          setcompras(response);
+         
+        })
+        .catch(err => console.error(err));
+    }, [dispatch, idUser]);
+  
+  const [pg, setpg] = useState(0);
+  const [rpg, setrpg] = useState(5);
 
-];
+  function handleChangePage(event, newpage) {
+      setpg(newpage);
+  }
 
-export default function MisCUrsos () {
+  function handleChangeRowsPerPage(event) {
+      setrpg(parseInt(event.target.value, 10));
+      setpg(0);
+  }
+
   return (
-    <TableContainer component={Paper} sx={{ width:800,height:400 ,marginTop:5}}>
-      <Table sx={{ minWidth: 100, }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Nombre del curos</TableCell>
-            <TableCell align="right">Fecha</TableCell>
-            <TableCell align="right">estatus</TableCell>
-            <TableCell align="right">Editar</TableCell>
-            <TableCell align="right">Eliminar</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={Math.random()}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.nombredelcurso}
-              </TableCell>
-              <TableCell align="right">{row.fecha}</TableCell>
-              <TableCell align="right">{row.estatus}</TableCell>
-              <TableCell align="right">{row.editar}</TableCell>
-              <TableCell align="right">{row.eliminar}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
-}
+      <Paper>
+          <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="caption table">
+                  <caption> tus cursos</caption>
+                  <TableHead>
+                      <TableRow>
+                          <TableCell>nombre del curso</TableCell>
+                          <TableCell>vigencia</TableCell>
+                          <TableCell align="left">fecha</TableCell>
+                          <TableCell align="left">borrar</TableCell>
+                      </TableRow>
+                  </TableHead>
+                  <TableBody>
+                      {miscompras?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
+                          <TableRow key={row.idCourse}>
+                              <TableCell align="left">{row.title}</TableCell>
+
+                              {row.asset===true?<TableCell component="th" scope="row">
+                                  vigente
+                              </TableCell>:<TableCell component="th" scope="row">
+                                  vencido
+                              </TableCell>}
+                              
+                              <TableCell align="left">{row.createdAt}</TableCell>
+                              <TableCell align="center">{row.dificulty}</TableCell>
+                              
+                              
+                             
+                              {/* <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/>
+                              <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/> */}
+                          </TableRow>
+                      ))}
+                  </TableBody>
+              </Table>
+          </TableContainer>
+          <TablePagination sx={{width:'100%', display:'flex', justifyContent:'center'}}
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={miscompras?.length}
+              rowsPerPage={rpg}
+              page={pg}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+      </Paper>
+  )}

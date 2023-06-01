@@ -8,6 +8,7 @@ import CardCategory from '../CardsVistaCategory/CardCategory';
 
 export default function Cardsresulserchbar() {
   const cursos = useSelector((state) => state.allCourseCategory);
+  console.log(cursos)
   const cursosfiltrados = useSelector((state) => state.filtercourses);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage =3;
@@ -34,14 +35,14 @@ export default function Cardsresulserchbar() {
           <CardCategory
           key={curso.idCourse}
           idCourse={curso.idCourse}
-          instructorName={curso.Users.map(use=> use.name)}
-          instructorLastName={curso.Users.map(use=> use.lastname)}
-          categories={curso.Categories.map(cat=> cat.name)}
+         // instructorName={curso.Users.map(use=> use?.name)}
+        //  instructorLastName={curso.Users?.map(use=> use.lastname)}
+         // categories={curso.Categories.map(cat=> cat.name)}
           title={curso.title}
           description={curso.description}
           duration={curso.duration}
           dificulty={curso.dificulty}
-          price={curso.price}
+          price={curso.price}S
           image={curso.image}
           lenguage={curso.lenguage}
           />

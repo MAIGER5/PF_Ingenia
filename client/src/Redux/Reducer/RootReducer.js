@@ -27,6 +27,9 @@ import { GET_ID_RATING_USER } from "../Actions/getIdRatingCourses";
 import { GET_FAVORITE } from "../Actions/FavoritosActions/GetFavoritos";
 import { ADD_FAVORITE_REDUX } from "../Actions/FavoritosActions/addFavoritosRedux";
 import { DELET_FAVORITOS_REDUX } from "../Actions/FavoritosActions/deletFavoritosRedux";
+import { GET_USER } from "../Actions/getusers";
+
+
 
 const initialState = {
   allCourse: [],
@@ -49,7 +52,6 @@ const initialState = {
   articleDetail: [],
   cursosUsers: [],
   myRatingCourses: [],
-  favorites: [],
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -209,7 +211,12 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           myRatingCourses: action.payload,
         };
-
+        case  GET_USER:
+      return {
+        ...state,
+        usercrud: action.payload,
+      };
+      
     default:
       return { ...state };
     }

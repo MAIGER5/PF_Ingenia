@@ -2,17 +2,21 @@ import AvatarComponent from '../../Components/AvatarComponent/AvatarComponent';
 import { ListItemButton, ListItemText, Divider } from '@mui/material';
 import styles from "./Profile.module.css";
 import Datos from './Datos';
-import ImagenDePerfil from './ImagenDePerfil';
 import MisCompras from './MisCompras';
 import MetodoDePago from './MetodoDePago';
-import { useState } from 'react';
+import {  useState } from 'react';
 import LogoutComponent from '../../Components/LogoutComponent/LogoutCoponent';
 import { useSelector } from 'react-redux';
+
+
+
 
 export default function Profile() {
     const [selectedComponent, setSelectedComponent] = useState("datos");
     const [openModal, setOpenModal] = useState(false);
-    const usuarios=useSelector(state=>state. instructor)
+    const usuer=useSelector(state=>state.usercrud)
+   
+    
     const handleClick = (component) => {
         setSelectedComponent(component);
     };
@@ -20,29 +24,25 @@ export default function Profile() {
         setOpenModal(true);
     }
 
- console.log(usuarios)
+ 
     return (
         <div className={styles.container}>
             <div className={styles.subContainer}>
                 <div className={styles.user}>
                     <AvatarComponent
-                        name={"Luis Felipe"}
+                        name={usuer.data?.name}
                         width={"90px"}
                         height={"90px"}
                         fontSize={"45px"}
                     />
                     <h3 className={styles.userText}>
-                        Felipe Garcia
+                    {usuer.data?.name} {usuer.data?.lastname}
                     </h3>
                 </div>
                 <div className={styles.optionsContainer}>
                     <Divider />
                     <ListItemButton onClick={() => handleClick('datos')} >
                         <ListItemText primary="Mis datos" />
-                    </ListItemButton>
-                    <Divider />
-                    <ListItemButton onClick={() => handleClick('imagen')}>
-                        <ListItemText primary="Imagen de Perfil" />
                     </ListItemButton>
                     <Divider />
                     <ListItemButton onClick={() => handleClick('compras')}>
@@ -62,7 +62,6 @@ export default function Profile() {
             </div>
             <div className={styles.subView}>
             {selectedComponent === 'datos' && <Datos />}
-            {selectedComponent === 'imagen' && <ImagenDePerfil />}
             {selectedComponent === 'compras' && <MisCompras />}
             {selectedComponent === 'metodoPago' && <MetodoDePago />}
             </div>

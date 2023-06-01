@@ -25,8 +25,9 @@ import Carrito from './Pages/Carrito/Carrito';
 import Article from './Pages/Article/Article';
 import Pay from './Pages/pay/Pay';
 import { VendedorPublico } from './Pages/Vendor/VendedorPublico';
-import ProfileVendedor from './Pages/ProfileVendedor/ProfilevendedorVendedor';
+
 import { ProfileAdmin } from './Pages/ProfileAdmin/ProfileAdmin';
+import MiPerfil from './Pages/Profile/perfilusuarioindex';
 
 function App() {
 return (
@@ -41,7 +42,6 @@ return (
           <Route path="/SignupVendedor" element={<SignupVendedor/>} />
           <Route path="/DetailCourse/:id" element={<DetailCourse/>} />
           <Route path="/CategoryCourses" element={<CategoryCourses/>}/>
-          <Route path="/Profile" element={<Profile/>}/>
           <Route path="/LandingSeller" element={<LandingSeller/>}/>
           <Route path="/ResetPassword" element={<ResetPassword/>}/>
           <Route path="/MyCourses" element={<MyCourses/>}/>
@@ -56,7 +56,7 @@ return (
           <Route path='/Article/:id' element={<Article/>}/> 
           <Route path='/VendedorPublico/:id' element={<VendedorPublico/>}/> 
           <Route path="/Pay" element={< Pay/>}/> 
-          <Route path="/ProfileVendedor" element={< ProfileVendedor/>}/> 
+          <Route path="/Profile" element={<MiPerfil/>}/>
           <Route path="/ProfileAdmin" element={< ProfileAdmin/>}/> 
           <Route path="*" element={<NotFound/>} />
         </Routes>
