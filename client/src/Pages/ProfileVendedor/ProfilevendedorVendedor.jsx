@@ -27,7 +27,7 @@ export default function ProfileVendedor() {
                         fontSize={"45px"}
                     />
                     <h3 className={styles.userText}>
-                    {usuer.data?.name} {usuer.data?.lastname}  
+                    {usuer?.data.name} {usuer?.data.lastname}  
                     </h3>
                 </div>
                 <div className={styles.optionsContainer}>

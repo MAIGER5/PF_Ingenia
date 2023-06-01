@@ -30,13 +30,13 @@ export default function Profile() {
             <div className={styles.subContainer}>
                 <div className={styles.user}>
                     <AvatarComponent
-                        name={usuer.data?.name}
+                        name={usuer?.data.name}
                         width={"90px"}
                         height={"90px"}
                         fontSize={"45px"}
                     />
                     <h3 className={styles.userText}>
-                    {usuer.data?.name} {usuer.data?.lastname}
+                    {usuer?.data.name} {usuer?.data.lastname}
                     </h3>
                 </div>
                 <div className={styles.optionsContainer}>
