@@ -4,6 +4,7 @@ import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { PausarArticulos } from "../../Redux/Actions/BorradoLogico/PausarArticulos";
+import { Link } from "react-router-dom";
 
 export const PestañaArticulos = () => {
 
@@ -45,28 +46,30 @@ export const PestañaArticulos = () => {
                     <caption>A basic table example with a caption</caption>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Id Publicación</TableCell>
+                            <TableCell align="center">Id Publicación</TableCell>
                             <TableCell>Usuario</TableCell>
-                            <TableCell align="left">Title</TableCell>
+                            <TableCell align="center">Title</TableCell>
                             <TableCell align="center">Fecha</TableCell>
                             <TableCell align="center">Status</TableCell>
-                            <TableCell align="right">Actualizado</TableCell>
+                            <TableCell align="center">Actualizado</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {artiuculs?.slice(pg * rpg, pg * rpg + rpg).map((row) => (
                             <TableRow key={row.idPublications}>
-                                <TableCell align="left">{row.idPublications}</TableCell>
+                                <TableCell align="center">{row.idPublications}</TableCell>
                                 <TableCell component="th" scope="row">
                                     {row.User?.name} {row.User?.lastname}
                                 </TableCell>
-                                <TableCell align="left">{row.title}</TableCell>
+                                <Link  to = {`/Article/${row.idPublications}`} style={{ textDecoration: 'none' }}> 
+                                    <Typography variant="h7" color={'secondary'}>
+                                        {row.title}
+                                    </Typography>
+                                </Link> 
                                 <TableCell align="center">{row.createdAt}</TableCell>
                                 <TableCell align="center"> {row.asset === true? "Vigente": <Typography color={"aqua"}>Pausado</Typography> } </TableCell>
-                                <TableCell align="right">{row.updatedAt}</TableCell>
+                                <TableCell align="center">{row.updatedAt}</TableCell>
                                 <Button onClick={()=>handlePausClick(row.idPublications)}  variant="outlined" sx={{marginBottom:'10px', marginRight:'10px'}}>  {row.asset === true? "Pausar": <Typography color={"aqua"}>Activar</Typography>}  </Button>
-                                {/* <MailOutlineIcon  sx={{marginTop:'20px', marginRight:'20px'}}/> */}
-                                {/* <DeleteForeverOutlinedIcon  sx={{marginTop:'20px'}}/> */}
                             </TableRow>
                         ))}
                     </TableBody>
