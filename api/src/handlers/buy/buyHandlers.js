@@ -50,7 +50,7 @@ const executePayment = async (req,res)=>{
         const info = response.data
         const factura = await facturacion(info,idUser);
         // res.json(factura)
-        res.redirect('http://localhost:5173/Purchaseconfirmation')
+        res.redirect('https://client-six-weld.vercel.app/Purchaseconfirmation')
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -58,7 +58,7 @@ const executePayment = async (req,res)=>{
 
 const cancelPayment = (req,res) =>{
     try {
-        res.redirect('http://localhost:5173/Purchaserejection')
+        res.redirect('https://client-six-weld.vercel.app/Purchaserejection')
     } catch (error) {
         
     }
