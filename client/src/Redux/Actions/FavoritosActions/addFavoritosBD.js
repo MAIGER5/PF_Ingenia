@@ -1,13 +1,13 @@
 import axios from "axios";
 import env from "../../../../env";
 
-export const DELET_FAVORITE = "DELET_FAVORITE";
+export const ADD_FAVORITE_BD = "ADD_FAVORITE_BD";
 
-export const deletFavoritos = (idUser, idCourse) => {
+export const addFavoritosBD = (idUser, idCourse) => {
   return async function (dispatch) {
-    await axios.delete(
+    await axios.post(
       `${env.VITE_HOST}/user/favorite?idUser=${idUser}&idCourse=${idCourse}`
     );
-    dispatch({ type: DELET_FAVORITE });
+    dispatch({ type: ADD_FAVORITE_BD });
   };
 };

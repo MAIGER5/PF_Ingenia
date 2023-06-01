@@ -40,12 +40,13 @@ return (
             {elemToDisplay.map((curso) => (
               <Grid item xs={3} sm={6} md={3} xl={3} key={curso.idCourse}>
                 <CardHome
+                  key={curso.idCourse}
                   idCourse = {curso.idCourse}
                   title={curso.title}
                   lenguage={curso.lenguage}
                   image={curso.image}
-                  instructorLastName={curso.Users[0]?.lastname}
-                  instructorName={curso.Users[0]?.name}
+                  instructorLastName={ curso.Users? curso.Users[0]?.name: curso.users[0]?.name }
+                  instructorName={ curso.Users? curso.Users[0]?.lastname: curso.users[0]?.lastname }
                   price={curso.price}
                   habilities={curso.habilities}
                 />

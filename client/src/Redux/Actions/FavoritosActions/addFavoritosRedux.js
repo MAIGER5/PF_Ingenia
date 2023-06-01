@@ -1,11 +1,11 @@
 import axios from "axios";
 import env from "../../../../env";
 
-export const ADD_TO_CARRITO = "ADD_TO_CARRITO";
+export const ADD_FAVORITE_REDUX = "ADD_FAVORITE_REDUX";
 
-export const addToCarrito = (id) => {
+export const addFavoritosRedux = (id) => {
   return async function (dispatch) {
     const response = await axios.get(`${env.VITE_HOST}/courses/${id}`);
-    dispatch({ type: ADD_TO_CARRITO, payload: response.data });
+    dispatch({ type: ADD_FAVORITE_REDUX, payload: response.data });
   };
 };

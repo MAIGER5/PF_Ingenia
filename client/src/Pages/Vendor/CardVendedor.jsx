@@ -5,7 +5,6 @@ import { useSelector } from "react-redux"
 export const CardVendedor = () => {
 
     const instructor = useSelector((state)=> state.instructorDetail)
-    
         
     return (
         <Grid border={0} marginRight={15}>
@@ -29,7 +28,7 @@ export const CardVendedor = () => {
                             width: 120, 
                             height: 120}}
                         >
-                            <Typography variant="h3">  </Typography>
+                            <Typography variant="h3"> {instructor.length > 0 ? instructor[0]?.name[0] : 'nada'} </Typography>
                         </Avatar>
                     </Grid>
                     <Rating 

@@ -32,14 +32,17 @@ import { getFacturas } from "../../Redux/actionsProfileAdmin/getFacturas";
 import { getInstructorUser } from "../../Redux/actionsProfileAdmin/getInstructorUser";
 import { getIdCoursesuser } from "../../Redux/Actions/getIdCoursesuser";
 import { getIdRatingCourses } from "../../Redux/Actions/getIdRatingCourses";
+import { GetFavoritos } from "../../Redux/Actions/FavoritosActions/GetFavoritos";
 
 
 export default function NavBar() {
 
   // Suscribo al estado global:
-  const dispatch = useDispatch();
   const user = localStorage.getItem('idUser')
+  const dispatch = useDispatch();
   const carrito = useSelector((state)=> state.allCarrito)
+  const favorite = useSelector((state)=> state.favorites)
+  const favoriteLength = favorite.length;
 
   useEffect(()=> {
     dispatch(getCourses());
@@ -49,6 +52,7 @@ export default function NavBar() {
     dispatch(getInstructorUser())
     dispatch(postLocalStorage())
     dispatch(getIdCoursesuser(user));
+    dispatch(GetFavoritos(user));
     dispatch(getIdRatingCourses(user));
     !carrito.length? dispatch(getToCarritoBd(user)): "nada"
   }, [dispatch])
@@ -140,11 +144,13 @@ export default function NavBar() {
 
                          {/* Favoritos */}
                              <Box> <NavLink to={"/MyCourses"}  onClick={()=>tabSet(1)}>
-                             <IconButton color="primary" aria-label="upload picture" component="label" >
-                             <Tooltip title="Favoritos" placement="top">
-                             <FavoriteIcon />
-                             </Tooltip>
-                             </IconButton>
+                            <Badge badgeContent={favoriteLength} color="secondary">
+                              <IconButton color="primary" aria-label="upload picture" component="label" >
+                              <Tooltip title="Favoritos" placement="top">
+                              <FavoriteIcon />
+                              </Tooltip>
+                              </IconButton>
+                            </Badge>
                              </NavLink> </Box>
                        </div> ) : null}
                    </div>
