@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { categoryOptions, validationCourse } from "./validations";
+import env from "../../../env";
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
@@ -66,7 +67,7 @@ export default function FormCourseCopy() {
         course.image = productImg
         course.pro = pro
         course.learnTo = elementos 
-        await axios.post(`${import.meta.env.VITE_HOST}/courses/`,course)
+        await axios.post(`${env.VITE_HOST}/courses/`,course)
             .then(async (response) => {
                 console.log(response);
                 let id = response.data?.idCourse

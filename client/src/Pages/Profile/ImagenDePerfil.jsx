@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography'
 import axios from 'axios'
 import Button from '@mui/material/Button'
 import { Stack } from '@mui/material'
+import env from "../../../env";
 
 import styles from "./ImagenDePerfil.module.css";
 
@@ -23,7 +24,7 @@ export default function ImagenDePerfil() {
 
     const CambioDeFoto= async( )=>{
       alert("cambio de foto")
-        await axios.put(`${import.meta.env.VITE_HOST}/user/updatedInfo`,{ idUser: user.idUser ,imgProfile: productImg})
+        await axios.put(`${env.VITE_HOST}/user/updatedInfo`,{ idUser: user.idUser ,imgProfile: productImg})
         .then(async (response) => {
             console.log(response);
             //navigate(`/DetailCourse/${id}`)
