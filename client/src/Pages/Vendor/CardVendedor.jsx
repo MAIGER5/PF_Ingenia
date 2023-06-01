@@ -28,7 +28,9 @@ export const CardVendedor = () => {
                             width: 120, 
                             height: 120}}
                         >
+
                             <Typography variant="h3">{instructor[0]?.name ? instructor[0].name[0] : 'nada'}</Typography>
+
                         </Avatar>
                     </Grid>
                     <Rating 

@@ -42,8 +42,8 @@ export function CardsDetail() {
     }
     function handleInstructorClick(){
         dispatch(getInstructorDetail(curses.users?.name))
-        dispatch(getCoursesInstructor(curses.users?.name))
-        dispatch(getArticulosInstructor(curses.users?.name))
+        dispatch(getCoursesInstructor(curses.users?.idUser))
+        dispatch(getArticulosInstructor(curses.users?.idUser))
     }
 
 
