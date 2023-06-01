@@ -41,6 +41,8 @@ export default function NavBar() {
   const user = localStorage.getItem('idUser')
   const dispatch = useDispatch();
   const carrito = useSelector((state)=> state.allCarrito)
+  const favorite = useSelector((state)=> state.favorites)
+  const favoriteLength = favorite.length;
 
   useEffect(()=> {
     dispatch(getCourses());
@@ -142,11 +144,13 @@ export default function NavBar() {
 
                          {/* Favoritos */}
                              <Box> <NavLink to={"/MyCourses"}  onClick={()=>tabSet(1)}>
-                             <IconButton color="primary" aria-label="upload picture" component="label" >
-                             <Tooltip title="Favoritos" placement="top">
-                             <FavoriteIcon />
-                             </Tooltip>
-                             </IconButton>
+                            <Badge badgeContent={favoriteLength} color="secondary">
+                              <IconButton color="primary" aria-label="upload picture" component="label" >
+                              <Tooltip title="Favoritos" placement="top">
+                              <FavoriteIcon />
+                              </Tooltip>
+                              </IconButton>
+                            </Badge>
                              </NavLink> </Box>
                        </div> ) : null}
                    </div>
