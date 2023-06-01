@@ -26,6 +26,8 @@ import { GET_ID_COURSES_USER } from "../Actions/getIdCoursesuser";
 import { GET_ID_RATING_USER } from "../Actions/getIdRatingCourses";
 import { GET_USER } from "../Actions/getusers";
 
+
+
 const initialState = {
   allCourse: [],
   allCourseCopy: [],
@@ -47,7 +49,8 @@ const initialState = {
   articleDetail: [],
   cursosUsers: [],
   myRatingCourses: [],
-  usercrud:[]
+  usercrud:[],
+  micourses:[]
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -195,7 +198,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         usercrud: action.payload,
       };
-
+      
     default:
       return { ...state };
     }

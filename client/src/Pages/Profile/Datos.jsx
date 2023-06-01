@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
 import styles from "./Profile.module.css";
 import EditIcon from '@mui/icons-material/Edit';
-import {  TextField, Stack, Button } from '@mui/material';
-import { useSelector } from 'react-redux';
+import {  TextField, Stack, Button, Alert, Collapse, IconButton, Box } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import CloseIcon from '@mui/icons-material/Close';
+
 export default function Datos() {
     const usuer=useSelector(state=>state.usercrud)
-   
+    const idUser=localStorage.getItem("idUser")
+    const [open, setOpen] = React.useState(false);
+    const dispach=useDispatch()
     const[informacion,setinformacio]= useState({
-       idUser:usuer.data?.idUser,
+       idUser:idUser,
         name:"",
         lastname:"",
         password:""
     })
-    console.log(informacion)
-   
+  
+  
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setinformacio({ ...informacion, [name]: value });
@@ -29,17 +33,15 @@ export default function Datos() {
           })
             .then(response => response.json())
             .then(data => {
-             
-             alert("datos actualizados")
+             setOpen(true)
             })
             .catch(error => {
              
               console.error('Error al enviar los datos al backend:', error);
             });
+          
     }
-    const CambioDeContraseña=()=>{
-        alert("cambio de constraseña")
-    }
+   
   return (
     <div className={styles.form}>
     <Stack
@@ -78,11 +80,31 @@ export default function Datos() {
         <Button variant="contained" color="primary" sx={{color:"white"}} onClick={Cambiodedatos}>
       Guardar
     </Button>
-    <Button variant="contained" color="primary" sx={{color:"white"}}  onClick={CambioDeContraseña}>
-    Restablcer contraseña
-    </Button>
+   
     </Stack>
     </Stack>
+    <Box sx={{ width: '100%' , marginTop:4}}>
+      <Collapse in={open}>
+        <Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          datos actualizados
+        </Alert>
+      </Collapse>
+      
+    </Box>
     
 </div>
   )

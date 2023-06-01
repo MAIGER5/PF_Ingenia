@@ -3,14 +3,14 @@ import { ListItemButton, ListItemText, Divider } from '@mui/material';
 import styles from "./ProfileVendedor.module.css";
 import { useState } from 'react';
 import DatosVendedor from './DatosVendedor';
-import ImagenDePerfilVendedor from './ImagenDePerfilVendedor';
 import MiPerfil from './MiPerfil';
 import MisCUrsos from './MisCUrsos';
 import MisArticulos from './MisArticulos';
+import { useSelector } from 'react-redux';
 
 export default function ProfileVendedor() {
     const [selectedComponent, setSelectedComponent] = useState("datos");
-
+    const usuer=useSelector(state=>state.usercrud)
     const handleClick = (component) => {
         setSelectedComponent(component);
     };
@@ -27,7 +27,7 @@ export default function ProfileVendedor() {
                         fontSize={"45px"}
                     />
                     <h3 className={styles.userText}>
-                        Gisell vanegas
+                    {usuer.data?.name} {usuer.data?.lastname}  
                     </h3>
                 </div>
                 <div className={styles.optionsContainer}>
@@ -35,10 +35,7 @@ export default function ProfileVendedor() {
                     <ListItemButton onClick={() => handleClick('datos')} >
                         <ListItemText primary="Mis datos" />
                     </ListItemButton>
-                    <Divider />
-                    <ListItemButton onClick={() => handleClick('imagen')}>
-                        <ListItemText primary="Imagen de Perfil" />
-                    </ListItemButton>
+                 
                     <Divider />
                     <ListItemButton onClick={() => handleClick('cursos')}>
                         <ListItemText primary="Mis cursos" />
@@ -55,7 +52,7 @@ export default function ProfileVendedor() {
                 </div>
             </div>
             {selectedComponent === 'datos' && < DatosVendedor/>}
-            {selectedComponent === 'imagen' && <ImagenDePerfilVendedor/>}
+           
             {selectedComponent === 'miperfil' && <MiPerfil/>}
             {selectedComponent === 'cursos' && <MisCUrsos />}
             {selectedComponent === 'misarticulos' && <MisArticulos/>}

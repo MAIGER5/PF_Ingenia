@@ -2,13 +2,12 @@ import AvatarComponent from '../../Components/AvatarComponent/AvatarComponent';
 import { ListItemButton, ListItemText, Divider } from '@mui/material';
 import styles from "./Profile.module.css";
 import Datos from './Datos';
-import ImagenDePerfil from './ImagenDePerfil';
 import MisCompras from './MisCompras';
 import MetodoDePago from './MetodoDePago';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import LogoutComponent from '../../Components/LogoutComponent/LogoutCoponent';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsiarios } from '../../Redux/Actions/getusers';
+import { useSelector } from 'react-redux';
+
 
 
 
@@ -16,11 +15,7 @@ export default function Profile() {
     const [selectedComponent, setSelectedComponent] = useState("datos");
     const [openModal, setOpenModal] = useState(false);
     const usuer=useSelector(state=>state.usercrud)
-    const dispach=useDispatch()
-    useEffect(() => {
-     dispach(getUsiarios(1))
-    }, [])
-    
+   
     
     const handleClick = (component) => {
         setSelectedComponent(component);
@@ -50,10 +45,6 @@ export default function Profile() {
                         <ListItemText primary="Mis datos" />
                     </ListItemButton>
                     <Divider />
-                    <ListItemButton onClick={() => handleClick('imagen')}>
-                        <ListItemText primary="Imagen de Perfil" />
-                    </ListItemButton>
-                    <Divider />
                     <ListItemButton onClick={() => handleClick('compras')}>
                         <ListItemText primary="Mis compras" />
                     </ListItemButton>
@@ -71,7 +62,6 @@ export default function Profile() {
             </div>
             <div className={styles.subView}>
             {selectedComponent === 'datos' && <Datos />}
-            {selectedComponent === 'imagen' && <ImagenDePerfil />}
             {selectedComponent === 'compras' && <MisCompras />}
             {selectedComponent === 'metodoPago' && <MetodoDePago />}
             </div>
