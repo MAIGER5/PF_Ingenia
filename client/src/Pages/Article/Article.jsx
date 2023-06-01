@@ -16,7 +16,7 @@ export default function Article() {
     const dispatch = useDispatch();
     const article = useSelector((state)=> state.articleDetail)
 
-    const ratings = 3.5
+    let ratings = article.user?.assessment || 0
 
     useEffect(()=> {
         dispatch(getDetailArticle(id));
@@ -26,10 +26,9 @@ export default function Article() {
     console.log(article);    
 
     function stringAvatar(userHeight, userWidth, userFontSize) {
-        // const name = article.user?.name || "Hola"
-        // const lastname = article.user?.lastname || "Hola"
-         const name = "Hola"
-        const lastname = "Hola"
+        const name = article.user?.name || "*"
+        const lastname = article.user?.lastname || "*"
+
         if (lastname == null) {
 
             return {
@@ -54,7 +53,7 @@ export default function Article() {
         }
 
     }
-    //TODO renderizar rating
+
   return (
     <div className={styles.container}>
        {!article.asset && 

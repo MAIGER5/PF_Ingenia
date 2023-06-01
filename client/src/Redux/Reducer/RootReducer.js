@@ -24,6 +24,9 @@ import { GET_ARTICULOS_INSTRUCTOR } from "../Actions/getArticulosInstructor";
 import { GET_DETAIL_ARTICLE } from "../Actions/getDatailArticle";
 import { GET_ID_COURSES_USER } from "../Actions/getIdCoursesuser";
 import { GET_ID_RATING_USER } from "../Actions/getIdRatingCourses";
+import { GET_FAVORITE } from "../Actions/FavoritosActions/GetFavoritos";
+import { ADD_FAVORITE_REDUX } from "../Actions/FavoritosActions/addFavoritosRedux";
+import { DELET_FAVORITOS_REDUX } from "../Actions/FavoritosActions/deletFavoritosRedux";
 
 const initialState = {
   allCourse: [],
@@ -35,7 +38,7 @@ const initialState = {
   allCarrito: [],
   localStorageData: {},
   totalCarrito:0,
-  setActiveTab: 1,
+  setActiveTab: 0,
   articulos: [],
   facturas: [],
   instructor: [],
@@ -46,6 +49,7 @@ const initialState = {
   articleDetail: [],
   cursosUsers: [],
   myRatingCourses: [],
+  favorites: [],
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -119,6 +123,23 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allCourseCategory: action.payload,
       };
+    case ADD_FAVORITE_REDUX:
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
+      };
+    case DELET_FAVORITOS_REDUX:
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (ele) => ele.idCourse !== action.payload
+        ),
+      };
+    case GET_FAVORITE :
+        return {
+            ...state,
+            favorites: action.payload,
+        };
     case ADD_TO_CARRITO:
       return {
         ...state,

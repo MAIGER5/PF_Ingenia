@@ -3,12 +3,51 @@
     flex-direction: column;
     align-items: flex-start;
     margin-left: 80px;
-    height: 600px ;
 }
 
+.subContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-left: 80px;
+    height: 600px;
+}
+
+.subContainerText{
+    margin-left: 80px;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
 
 .title{
     font-size: 36px;
     font-weight: 500;
     color: #FF8906;
 }
+
+.subTitle{
+    font-size: 24px;
+    font-weight: 500;
+    color: #FF8906;
+}
+
+.text{
+    text-align: justify;
+}
+
+.emailText{
+    font-size: 18px;
+    font-weight: 500;
+    color: #FF8906;
+}
+
+
+.banner{
+    width:650px;
+    height:520px;
+    background-image: url('https://res.cloudinary.com/dvvqbwhcc/image/upload/v1685565231/ingeniaAssets/soporte_znnzxk.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;	
+  }

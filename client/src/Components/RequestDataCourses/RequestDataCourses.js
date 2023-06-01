@@ -1,20 +1,22 @@
 import axios from "axios";
+import env from "../../../env";
 
-export default async function RequestDataCourses () {
+export default async function RequestDataCourses() {
+  try {
+    const idUser = localStorage.getItem("idUser");
+    const response = await axios.get(
+      `${env.VITE_HOST}/user/myCourses/${idUser}`
+    );
+    const data = response.data;
 
-    try {
-        const idUser = localStorage.getItem("idUser");
-        const response = await axios.get(`${import.meta.env.VITE_HOST}/user/myCourses/${idUser}`);
-        const data = response.data;
+    for (let i = 0; i < data.length; i++) {
+      data[i].Categories = [{ name: data[i].categories }];
+      data[i].Users = [data[i].users];
+    }
 
-        for (let i = 0; i < data.length; i++) {
-            data[i].Categories = [{name: data[i].categories}]
-            data[i].Users = [data[i].users] }
-
-        return data;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        return []; // Devuelve un arreglo vacío en caso de error
-      }
-
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return []; // Devuelve un arreglo vacío en caso de error
+  }
 }

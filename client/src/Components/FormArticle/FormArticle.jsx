@@ -2,6 +2,7 @@ import { useState, Fragment } from "react";
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import env from "../../../env";
 
 import { validationArticle } from "./validations"
 
@@ -47,7 +48,7 @@ export default function FormArticle() {
         article.idUser = user.idUser
         article.img = productImg
         await axios.post(
-            `${import.meta.env.VITE_HOST}/instructor/publication`,
+            `${env.VITE_HOST}/instructor/publication`,
             article
         ).then(async (response) => {
             id = response.data?.idPublications

@@ -5,7 +5,7 @@ const getCourseControllers = async (page,size,title)=>{
     const coursesBase = await Course.findAll({
       include:[{
           model: User,
-          attributes:["name","lastname"],
+          attributes:["idUser","name","lastname"],
           through:{
               attributes:[],
           },
@@ -28,7 +28,7 @@ const getCourseControllers = async (page,size,title)=>{
     },
     include:[{
       model: User,
-      attributes:["name","lastname"],
+      attributes:["idUser","name","lastname"],
       through:{
           attributes:[],
         },
