@@ -1,6 +1,7 @@
 import axios from "axios";
+import env from "../../../env";
 
-export const GET_COURSES_INSTRUCTOR = 'GET_COURSES_INSTRUCTOR';
+export const GET_COURSES_INSTRUCTOR = "GET_COURSES_INSTRUCTOR";
 
 
 export const getCoursesInstructor = (idInstructor) => {

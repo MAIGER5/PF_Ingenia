@@ -1,5 +1,7 @@
 import axios from "axios";
-export const GET_ARTICULOS_INSTRUCTOR = 'GET_ARTICULOS_INSTRUCTOR';
+import env from "../../../env";
+export const GET_ARTICULOS_INSTRUCTOR = "GET_ARTICULOS_INSTRUCTOR";
+
 
 export const getArticulosInstructor = (idInstructor) => {
     return async function(dispatch) {
