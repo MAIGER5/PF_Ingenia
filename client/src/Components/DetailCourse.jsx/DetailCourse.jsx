@@ -128,8 +128,8 @@ function DetailCourse() {
                 marginTop={12}
                 spacing={12}
             >
-                <ValoracionesCurso/>
-                <AcercaProfesor/>
+                {/* <ValoracionesCurso/>
+                <AcercaProfesor/> */}
             </Grid>
         </Grid>
   );
