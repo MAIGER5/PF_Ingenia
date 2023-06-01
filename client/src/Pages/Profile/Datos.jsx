@@ -51,19 +51,19 @@ export default function Datos() {
         spacing={3}
     >
         <Stack direction="row" spacing={2}>
-            <TextField id="outlined-basic" label={usuer.data?.name} variant="outlined" sx={{ width: 400 }} helperText="Nombre" name="name" onChange={handleInputChange} />
+            <TextField id="outlined-basic" label={usuer?.data.name} variant="outlined" sx={{ width: 400 }} helperText="Nombre" name="name" onChange={handleInputChange} />
             <Button variant="text" color="primary" startIcon={<EditIcon color="primary" />}>
                 Editar
             </Button>
         </Stack>
         <Stack direction="row" spacing={2}>
-        <TextField id="outlined-basic" label={usuer.data?.lastname} variant="outlined" sx={{ width: 400 }} helperText="Apellido" name="lastname" onChange={handleInputChange} />
+        <TextField id="outlined-basic" label={usuer?.data.lastname} variant="outlined" sx={{ width: 400 }} helperText="Apellido" name="lastname" onChange={handleInputChange} />
             <Button variant="text" color="primary" startIcon={<EditIcon color="primary" />}>
                 Editar
             </Button>
         </Stack>
         <Stack direction="row" spacing={2}>
-            <TextField id="outlined-basic" label={usuer.data?.email} variant="outlined" sx={{ width: 400,marginLeft:-12 }} helperText="Correo"   disabled/>
+            <TextField id="outlined-basic" label={usuer?.data.email} variant="outlined" sx={{ width: 400,marginLeft:-12 }} helperText="Correo"   disabled/>
         
         </Stack>
         <Stack direction="row" spacing={2}>

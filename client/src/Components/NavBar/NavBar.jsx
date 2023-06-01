@@ -42,10 +42,8 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const carrito = useSelector((state)=> state.allCarrito)
   const favorite = useSelector((state)=> state.favorites)
-  if(favorite){
-    const favoriteLength = favorite.length;
-  }
-  
+  const favoriteLength = favorite?.length;
+
   useEffect(()=> {
     dispatch(getCourses());
     dispatch(getCategories());
