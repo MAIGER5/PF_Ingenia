@@ -16,7 +16,7 @@ export default function Article() {
     const dispatch = useDispatch();
     const article = useSelector((state)=> state.articleDetail)
 
-    const ratings = 3.5
+    let ratings = article.user?.assessment || 0
 
     useEffect(()=> {
         dispatch(getDetailArticle(id));
@@ -53,7 +53,7 @@ export default function Article() {
         }
 
     }
-    //TODO renderizar rating
+
   return (
     <div className={styles.container}>
        {!article.asset && 
