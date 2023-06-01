@@ -26,10 +26,9 @@ export default function Article() {
     console.log(article);    
 
     function stringAvatar(userHeight, userWidth, userFontSize) {
-        // const name = article.user?.name || "Hola"
-        // const lastname = article.user?.lastname || "Hola"
-         const name = "Hola"
-        const lastname = "Hola"
+        const name = article.user?.name || "*"
+        const lastname = article.user?.lastname || "*"
+
         if (lastname == null) {
 
             return {

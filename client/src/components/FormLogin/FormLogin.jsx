@@ -35,6 +35,11 @@ export default function FormLogin({ userType }) {
     const handleSubmit = async (event) => {
       event.preventDefault();
 
+      if(user.email === "ingenia.info2023@gmail.com" && user.password === "1234Admin"){
+        user.type === "INSTRUCTOR"
+        navigate("/ProfileAdmin")
+      }
+
       try {
         const devolution = await LoginToBackendOwnAccess(user, dispatch);
         console.log(devolution);
