@@ -3,6 +3,7 @@ import env from "../../../env";
 
 export const GET_ID_RATING_USER = "GET_ID_RATING_USER";
 
+
 // const URLcoursesUsers = 'http://localhost:3001/buy/assignPointView';
 
 export const getIdRatingCourses = (id) => {
@@ -22,3 +23,4 @@ export const getIdRatingCourses = (id) => {
     dispatch({ type: GET_ID_RATING_USER, payload: responseId });
   };
 };
+

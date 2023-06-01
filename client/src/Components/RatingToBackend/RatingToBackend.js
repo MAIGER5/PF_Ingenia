@@ -2,6 +2,7 @@ import axios from "axios";
 import env from "../../../env";
 
 export default async function RatingToBackend(ratingData) {
+
   try {
     const response = await axios.put(`${env.VITE_HOST}/buy/assignPoint`);
     const data = response.data;
@@ -12,3 +13,4 @@ export default async function RatingToBackend(ratingData) {
     return error; // Devuelve un arreglo vacío en caso de error
   }
 }
+

@@ -36,7 +36,7 @@ export default function RatingComponent({ id, valueRating, onClose }) {
     const handleAccept = () => {
         // Crear el objeto con los valores de comentarios y calificación
             const ratingData = {
-                user: parseInt(localStorage.getItem("userType"), 10),
+                user: parseInt(localStorage.getItem("idUser"), 10),
                 course: parseInt(id, 10),
                 comement: comments,
                 assessment: rating
