@@ -22,6 +22,12 @@ server.use(cors(corsOptions));
 server.use(bodyParser.json({ limit: "10mb", extended: true }));
 server.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 server.use(morgan("dev"));
+
+// Imprimo en consola el pedido:
+  server.use((req, res, next) => {
+    console.log(`Request: ${req.method} ${req.url}`);
+    next(); });
+
 server.use("/", router);
 
 server.use((err, req, res, next) => {
