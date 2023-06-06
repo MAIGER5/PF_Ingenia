@@ -9,9 +9,9 @@ export default async function RequestRatingUserCourses() {
     );
     const data = response.data;
 
-    /* for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
             data[i].Categories = [{name: data[i].categories}]
-            data[i].Users = [data[i].users] } */
+            data[i].Users = [data[i].users] }
 
     return data;
   } catch (error) {

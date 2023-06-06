@@ -24,9 +24,10 @@ server.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 server.use(morgan("dev"));
 
 // Imprimo en consola el pedido:
-  server.use((req, res, next) => {
+/*   server.use((req, res, next) => {
     console.log(`Request: ${req.method} ${req.url}`);
-    next(); });
+    // console.log(req);
+    next(); }); */
 
 server.use("/", router);
 

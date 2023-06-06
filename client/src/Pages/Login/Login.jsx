@@ -11,6 +11,7 @@ import styles from "./Login.module.css";
 import LoginToBackendGoogle from "../../Components/LoginToBackendGoogle/LoginToBackendGoogle";
 import { useDispatch } from "react-redux";
 import RequestDataCourses from "../../Components/RequestDataCourses/RequestDataCourses";
+import { LoginToBackendGoogleCount } from "../../Components/LoginToBackend/LoginToBackend";
 
 export const LOGIN_USER = "LOGIN_USER"
 
@@ -32,8 +33,22 @@ export default function Login() {
   const signInGoogle = (type) => {
     signInWithPopup(auth, provider)
     .then(async (result) => {
+      const Login = await LoginToBackendGoogleCount(result, type, dispatch)
 
-      try {
+
+      if (Login.validate == false) {
+        // Seteo el texto modal en su correspondiente estado:
+          setTextModal({title: "Inicio de Sesión", message: Login.message})
+        // Abro la ventana modal
+          setOpenModal(true);
+      }
+
+      if (Login.validate == true) {
+        // console.log(Login);
+        window.location.href = "/";
+      }
+
+      /* try {
 
         const devolution = await LoginToBackendGoogle(result, type, dispatch)
         console.log(devolution);
@@ -75,7 +90,7 @@ export default function Login() {
 
       } catch (error) {
         console.error("Error fetching data:", error);
-      }
+      } */
 
     }).catch((error) => {
       console.log(error.message)
