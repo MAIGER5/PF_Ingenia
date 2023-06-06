@@ -11,6 +11,7 @@ import RequestDataCourses from "../RequestDataCourses/RequestDataCourses";
 import RequestRatingUserCourses from "../RequestRatingUserCourses/RequestRatingUserCourses";
 import { getIdCoursesuser } from "../../Redux/Actions/getIdCoursesuser";
 import { getIdRatingCourses } from "../../Redux/Actions/getIdRatingCourses";
+import { LoginToBackendIngeniaCount } from "../LoginToBackend/LoginToBackend";
 
 export const DATA_LOGIN = "DATA_LOGIN";
 
@@ -42,63 +43,20 @@ export default function FormLogin({ userType }) {
         navigate("/ProfileAdmin")
       }
 
-      try {
-        const devolution = await LoginToBackendOwnAccess(user, dispatch);
-        console.log(devolution);
+      const Login = await LoginToBackendIngeniaCount(user, dispatch)
 
-        const idUser = await localStorage.getItem('idUser')
-        await dispatch(getIdCoursesuser(idUser));
-        await dispatch(getIdRatingCourses(idUser));
+      if (Login.validate == false) {
+        // Seteo el texto modal en su correspondiente estado:
+          setTextModal({title: "Inicio de Sesión", message: Login.message})
+        // Abro la ventana modal
+          setOpenModal(true);
+      }
 
-          // Consulto si el usuario tiene cursos
-          // y los guardo en el localStorage
-            // async function fetchData() {
-            //   try {
-            //     const courses = await RequestDataCourses();
-            //       let userCourseIds = [];
-            //           for (let index = 0; index < courses.length; index++) {
-            //               userCourseIds.push(courses[index].idCourse) }
-            //     console.log(userCourseIds);
-            //     localStorage.setItem("myCourses", userCourseIds);
+      if (Login.validate == true) {
+        // console.log(Login);
+        window.location.href = "/";
+      }
 
-            //   } catch (error) {
-            //     console.error("Error fetching data:", error);
-            //        } }
-
-        // await fetchData();
-
-          // Consulto si el usuario tiene calificaciones en sus cursos
-          // y los guardo en el localStorage
-        //   async function fetchDataRating() {
-        //     try {
-        //       const ratingCourses = await RequestRatingUserCourses();
-        //       let ratingCoursesIds = await ratingCourses.map((element) => element.idCourse)
-        //       await localStorage.setItem("myRatingCourses", ratingCoursesIds);
-        //       console.log("ratingCoursesIds");
-        //       console.log(ratingCoursesIds);
-
-        //     } catch (error) {
-        //       console.error("Error fetching data:", error);
-        //          } }
-
-        // await fetchDataRating();
-
-        // Reset de inputs
-          setUser({password: "", email: "",});
-
-        // Voy al Home
-          //navigate("/");
-          window.location.href = "/";
-
-      } catch (error) {
-          // Imprimo en consola:
-            console.log("En catch - error:");
-              console.log(error);
-          // Seteo el texto modal en su correspondiente estado:
-            setTextModal({title: "Inicio de Sesión", message: error.error})
-          // Abro la ventana modal
-            setOpenModal(true);
-        }
     };
 
 
